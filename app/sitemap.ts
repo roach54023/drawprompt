@@ -93,8 +93,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic blog/[date] pages — past 90 days, each is a unique indexable prompt page
-  const blogPages: MetadataRoute.Sitemap = getRecentDates(90).map((date, i) => ({
+  // Dynamic blog/[date] pages — past 14 days, each is a unique indexable prompt page
+  const blogPages: MetadataRoute.Sitemap = getRecentDates(14).map((date, i) => ({
     url: `${BASE}/blog/${date}`,
     lastModified: new Date(date + "T12:00:00"),
     changeFrequency: "never" as const,
