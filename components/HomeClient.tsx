@@ -165,10 +165,10 @@ export default function HomeClient() {
             marginBottom: 14,
           }}
         >
-          A fresh drawing prompt,<br />every single day.
+          Drawing Prompt Generator
         </h1>
-        <p style={{ fontSize: 15, color: "#6b5d4a", maxWidth: 420, margin: "0 auto", lineHeight: 1.7 }}>
-          Beat the blank page. Each prompt is a complete creative brief — mood, subject, palette, and style — so you can start drawing in seconds.
+        <p style={{ fontSize: 15, color: "#6b5d4a", maxWidth: 460, margin: "0 auto", lineHeight: 1.7 }}>
+          Free random drawing prompts for artists of every level. Each prompt is a complete creative brief — mood, subject, palette, and style — so you can beat the blank page and start drawing in seconds.
         </p>
         {/* Subtle stat pills */}
         <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 20, flexWrap: "wrap" }}>
@@ -402,7 +402,7 @@ export default function HomeClient() {
         {/* SEO FAQ */}
         <div style={{ marginTop: 64, paddingTop: 40, borderTop: "1px solid #e8e0d0" }}>
           <h2 className="font-serif" style={{ fontSize: 20, fontWeight: 600, color: "#2c2416", marginBottom: 28, letterSpacing: "-0.01em" }}>
-            Frequently Asked Questions
+            Drawing Prompt Generator — Frequently Asked Questions
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {[

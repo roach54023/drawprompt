@@ -3,8 +3,24 @@ import Link from "next/link";
 import { getRecentBlogPosts } from "@/lib/blogData";
 
 export const metadata: Metadata = {
-  title: "Drawing Prompt Archive — Daily Art Challenges & Inspiration",
-  description: "Browse hundreds of past drawing prompts and daily art challenges. Find inspiration for your next sketch, illustration, or painting practice session.",
+  title: "Drawing Prompt Archive — Browse Hundreds of Art Challenges",
+  description:
+    "Browse hundreds of past drawing prompts and daily art challenges. Find inspiration for your next sketch, illustration, or painting practice session. Every prompt is a complete creative brief.",
+  keywords: [
+    "drawing prompt archive",
+    "drawing prompts",
+    "daily drawing challenge",
+    "art prompt ideas",
+    "drawing inspiration",
+  ],
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Drawing Prompt Archive — Browse Hundreds of Art Challenges",
+    description:
+      "Hundreds of past drawing prompts and daily art challenges. Find your next creative brief.",
+    type: "website",
+    url: "/blog",
+  },
 };
 
 const MOOD_THEMES: Record<string, { color: string; bg: string; border: string }> = {

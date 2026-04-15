@@ -110,7 +110,7 @@ export default function CustomClient() {
           className="font-serif"
           style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 10 }}
         >
-          Build Your Own Prompt
+          Custom Drawing Prompt Generator
         </h1>
         <p style={{ fontSize: 15, color: "var(--text-secondary)", maxWidth: 440, margin: "0 auto" }}>
           Choose any combination of dimensions. Lock the ones you love, randomize the rest.
@@ -234,6 +234,19 @@ export default function CustomClient() {
           </p>
         </div>
       )}
+
+      {/* SEO copy */}
+      <div style={{ marginTop: 64, paddingTop: 40, borderTop: "1px solid var(--border)" }}>
+        <h2 className="font-serif" style={{ fontSize: 18, fontWeight: 600, color: "var(--text-primary)", marginBottom: 14 }}>
+          Build the perfect custom drawing prompt
+        </h2>
+        <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: 12 }}>
+          This custom drawing prompt generator lets you control every dimension of your creative brief. Lock in a theme you love, randomize the mood, or pin a specific color palette — then generate until you find the perfect combination.
+        </p>
+        <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.8 }}>
+          Unlike a fully random generator, the custom mode is ideal when you want to practice a specific style, work within a set color palette, or challenge yourself with a particular subject. Mix and match from hundreds of hand-curated options.
+        </p>
+      </div>
     </div>
   );
 }

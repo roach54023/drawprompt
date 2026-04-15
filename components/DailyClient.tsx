@@ -106,7 +106,7 @@ export default function DailyClient() {
           className="font-serif"
           style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 8 }}
         >
-          Daily Drawing Challenge
+          Daily Drawing Prompt Generator
         </h1>
         <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>{dateDisplay}</p>
         <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4 }}>
@@ -194,6 +194,19 @@ export default function DailyClient() {
         <a href="/blog" style={{ fontSize: 13, color: "var(--text-muted)", textDecoration: "none" }}>
           Browse past challenges →
         </a>
+      </div>
+
+      {/* SEO copy */}
+      <div style={{ marginTop: 64, paddingTop: 40, borderTop: "1px solid var(--border)" }}>
+        <h2 className="font-serif" style={{ fontSize: 18, fontWeight: 600, color: "var(--text-primary)", marginBottom: 14 }}>
+          Why use a daily drawing prompt generator?
+        </h2>
+        <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: 12 }}>
+          A daily drawing prompt generator gives you a consistent creative challenge — one new brief every day, shared by artists worldwide. Instead of staring at a blank page, you get a complete starting point: mood, subject, color palette, and style, all in one prompt.
+        </p>
+        <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.8 }}>
+          Building a daily drawing habit is one of the fastest ways to improve. This daily drawing challenge resets every 24 hours so every artist draws from the same prompt — making it easy to compare your interpretation with others and stay motivated.
+        </p>
       </div>
     </div>
   );

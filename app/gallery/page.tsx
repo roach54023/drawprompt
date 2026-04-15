@@ -5,8 +5,23 @@ import { getGalleryEntries } from "@/lib/galleryData";
 import { getBlogPost } from "@/lib/blogData";
 
 export const metadata: Metadata = {
-  title: "Artist Gallery — DrawingPrompt",
-  description: "See how artists around the world interpreted our daily drawing prompts. Browse curated artwork submissions from the DrawingPrompt community.",
+  title: "Drawing Prompt Gallery — Artist Submissions & Inspiration",
+  description:
+    "See how artists around the world interpreted our drawing prompts. Browse curated artwork submissions from the DrawingPromptGenerator community and get inspired for your next piece.",
+  keywords: [
+    "drawing prompt gallery",
+    "drawing prompt examples",
+    "art prompt inspiration",
+    "drawing prompt community",
+  ],
+  alternates: { canonical: "/gallery" },
+  openGraph: {
+    title: "Drawing Prompt Gallery — Artist Submissions & Inspiration",
+    description:
+      "Browse artwork from artists who drew from our prompts. Get inspired and submit your own.",
+    type: "website",
+    url: "/gallery",
+  },
 };
 
 const MOOD_THEMES: Record<string, { color: string; bg: string; border: string }> = {
