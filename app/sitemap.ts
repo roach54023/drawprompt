@@ -2,10 +2,23 @@ import type { MetadataRoute } from "next";
 
 const BASE = "https://drawprompt.org";
 
+/** Generate YYYY-MM-DD strings for the past N days */
+function getRecentDates(count: number): string[] {
+  const dates: string[] = [];
+  const today = new Date();
+  for (let i = 0; i < count; i++) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    dates.push(d.toISOString().split("T")[0]);
+  }
+  return dates;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  return [
+  // Static pages
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE,
       lastModified: now,
@@ -64,13 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/blog`,
       lastModified: now,
       changeFrequency: "daily",
-      priority: 0.6,
-    },
-    {
-      url: `${BASE}/saved`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.4,
+      priority: 0.7,
     },
     {
       url: `${BASE}/about`,
@@ -85,4 +92,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
   ];
+
+  // Dynamic blog/[date] pages — past 90 days, each is a unique indexable prompt page
+  const blogPages: MetadataRoute.Sitemap = getRecentDates(90).map((date, i) => ({
+    url: `${BASE}/blog/${date}`,
+    lastModified: new Date(date + "T12:00:00"),
+    changeFrequency: "never" as const,
+    priority: i === 0 ? 0.8 : 0.5, // today's prompt gets higher priority
+  }));
+
+  return [...staticPages, ...blogPages];
 }
