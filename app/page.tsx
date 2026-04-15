@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   keywords: [
     "drawing prompt generator",
     "drawing prompts generator",
-    "random drawing prompt generator",
     "prompt generator drawing",
     "draw prompt generator",
     "free drawing prompt generator",

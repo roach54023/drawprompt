@@ -173,13 +173,13 @@ export default function CharacterClient() {
       {/* SEO copy */}
       <div style={{ marginTop: 64, paddingTop: 40, borderTop: "1px solid #e8e0d0" }}>
         <h2 className="font-serif" style={{ fontSize: 18, fontWeight: 600, color: "#2c2416", marginBottom: 14 }}>
-          Character drawing prompts for every style
+          Character drawing prompts for figure drawing &amp; illustration practice
         </h2>
         <p style={{ fontSize: 13, color: "#7a6a56", lineHeight: 1.8, marginBottom: 12 }}>
-          Whether you&apos;re designing an original character (OC), practicing figure drawing, or looking for your next illustration subject, a good character prompt gives you more than just a name — it gives you a mood, a setting, and a visual direction.
+          A good character drawing prompt gives you more than a name — it gives you a pose context, a mood, a setting, and a visual direction. Whether you&apos;re practicing figure drawing, working on character design fundamentals, or looking for your next illustration subject, each prompt here is a complete brief you can start sketching from immediately.
         </p>
         <p style={{ fontSize: 13, color: "#7a6a56", lineHeight: 1.8 }}>
-          Use the filter tabs to focus on a specific character type, or leave it on &quot;Any&quot; for a fully random character brief. Every prompt combines a character with a scene, mood, and color palette so you can start drawing immediately.
+          Use the filter tabs to focus on a specific character type — human, mythical, or everyday — or leave it on &quot;Any&quot; for a fully random character brief. Every prompt combines a character archetype with a scene, mood, and color palette.
         </p>
       </div>
     </div>

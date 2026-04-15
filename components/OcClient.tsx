@@ -157,13 +157,13 @@ export default function OcClient() {
       {/* SEO copy */}
       <div style={{ marginTop: 56, paddingTop: 40, borderTop: "1px solid #e8e0d0" }}>
         <h2 className="font-serif" style={{ fontSize: 18, fontWeight: 600, color: "#2c2416", marginBottom: 14 }}>
-          Original character prompts for artists and writers
+          OC prompts built for fandom artists, comic creators &amp; writers
         </h2>
         <p style={{ fontSize: 13, color: "#7a6a56", lineHeight: 1.8, marginBottom: 12 }}>
-          An OC drawing prompt should do more than describe what a character looks like — it should give you a reason to draw them. These prompts combine a character archetype, a setting, a mood, a color palette, and a narrative moment so you have everything you need to create a character with genuine depth.
+          An OC drawing prompt should give your character a reason to exist — not just a look, but a backstory, a personality, and a narrative moment. These prompts combine a character archetype, a fandom-friendly setting, a mood, and a story beat so your OC has genuine depth from the very first sketch.
         </p>
         <p style={{ fontSize: 13, color: "#7a6a56", lineHeight: 1.8 }}>
-          Whether you&apos;re building a character for a comic, a game, a novel, or just for fun, use these prompts as a starting point. Save the ones that spark something and come back to them later.
+          Whether you&apos;re building a character for a comic, a fanfic, a game, or your own original world, use these prompts as a starting point for world-building. Save the ones that spark something — the best OCs usually start with a single unexpected detail.
         </p>
       </div>
     </div>

@@ -49,7 +49,7 @@ export default function GalleryPage() {
           Community Gallery
         </p>
         <h1 className="font-serif" style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 600, color: "#2c2416", letterSpacing: "-0.02em", marginBottom: 12 }}>
-          Artists &amp; their prompts
+          Drawing Prompt Gallery
         </h1>
         <p style={{ fontSize: 15, color: "#6b5d4a", maxWidth: 460, margin: "0 auto 24px", lineHeight: 1.7 }}>
           Every day, artists around the world draw from the same prompt.
@@ -135,11 +135,19 @@ export default function GalleryPage() {
             })}
           </div>
 
-          <div style={{ textAlign: "center", marginTop: 56, paddingTop: 40, borderTop: "1px solid #e8e0d0" }}>
-            <p style={{ fontSize: 14, color: "#6b5d4a", marginBottom: 16 }}>Drew something from one of our prompts?</p>
-            <Link href="/contact" className="btn-primary" style={{ display: "inline-flex", textDecoration: "none", fontSize: 14, padding: "11px 24px" }}>
-              Submit your artwork
-            </Link>
+          <div style={{ marginTop: 64, paddingTop: 40, borderTop: "1px solid #e8e0d0" }}>
+            <h2 className="font-serif" style={{ fontSize: 18, fontWeight: 600, color: "#2c2416", marginBottom: 14 }}>
+              Drawing prompt examples from real artists
+            </h2>
+            <p style={{ fontSize: 13, color: "#7a6a56", lineHeight: 1.8, marginBottom: 20 }}>
+              Every piece in this gallery started from the same drawing prompt as everyone else. Browse these drawing prompt examples to see how different artists interpret the same brief — same mood, same subject, completely different results. It&apos;s the best way to understand what a prompt can unlock.
+            </p>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ fontSize: 14, color: "#6b5d4a", marginBottom: 16 }}>Drew something from one of our prompts?</p>
+              <Link href="/contact" className="btn-primary" style={{ display: "inline-flex", textDecoration: "none", fontSize: 14, padding: "11px 24px" }}>
+                Submit your artwork
+              </Link>
+            </div>
           </div>
         </>
       )}
