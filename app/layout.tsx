@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -55,6 +56,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/contact" style={{ color: "#a8967e", textDecoration: "none" }}>Contact</a>
           </p>
         </footer>
+
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3ZL3HCMN6B"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3ZL3HCMN6B');
+          `}
+        </Script>
       </body>
     </html>
   );
