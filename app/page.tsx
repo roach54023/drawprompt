@@ -2,22 +2,24 @@ import type { Metadata } from "next";
 import HomeClient from "@/components/HomeClient";
 
 export const metadata: Metadata = {
-  title: "Drawing Prompt Generator — Free Random Art Ideas & Inspiration",
+  title: "AI Image Prompts — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
   description:
-    "Generate unlimited drawing prompts instantly. Free drawing prompt generator for artists, beginners, and daily sketching practice — no sign-up, no AI fluff. 150B+ combinations.",
+    "Copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney, and DALL-E. Curated prompt library with breakdowns, tips, and examples across photography, character design, UI/UX, and more.",
   keywords: [
+    "gpt image 2 prompts",
+    "chatgpt photo prompt",
+    "ai image prompt",
+    "chatgpt photo editing prompts",
+    "midjourney prompts",
+    "dall-e prompts",
+    "ai art prompts",
     "drawing prompt generator",
-    "drawing prompts generator",
-    "prompt generator drawing",
-    "draw prompt generator",
-    "free drawing prompt generator",
-    "drawing prompt ideas generator",
   ],
   alternates: { canonical: "https://drawprompt.org/" },
   openGraph: {
-    title: "Drawing Prompt Generator — Free Random Art Ideas & Inspiration",
+    title: "AI Image Prompts — GPT Image 2, ChatGPT & Midjourney",
     description:
-      "Get a fresh drawing prompt in seconds. 150B+ combinations across mood, subject, palette, and style. Free, no sign-up.",
+      "Curated AI image prompts ready to copy & paste. GPT Image 2, ChatGPT, Midjourney, DALL-E — photography, characters, UI design, posters, and more.",
     type: "website",
     url: "https://drawprompt.org/",
   },

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { aiPrompts } from "@/lib/aiPromptData";
 
 const BASE = "https://drawprompt.org";
 
@@ -17,8 +18,8 @@ function getRecentDates(count: number): string[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
+  // ── Core AI prompt pages (highest priority) ──────────────────────
+  const aiPages: MetadataRoute.Sitemap = [
     {
       url: BASE,
       lastModified: now,
@@ -26,58 +27,94 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: `${BASE}/gpt-image-2-prompts`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${BASE}/ai-prompts`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/chatgpt-photo-prompts`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+  ];
+
+  // ── Individual AI prompt detail pages ────────────────────────────
+  const promptPages: MetadataRoute.Sitemap = aiPrompts.map((p) => ({
+    url: `${BASE}/ai-prompts/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  // ── Drawing generator & tools ────────────────────────────────────
+  const toolPages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE}/generator`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE}/random`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.7,
     },
     {
       url: `${BASE}/daily-challenge`,
       lastModified: now,
       changeFrequency: "daily",
-      priority: 0.9,
+      priority: 0.7,
     },
     {
       url: `${BASE}/character`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.6,
     },
     {
       url: `${BASE}/anime`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.6,
     },
     {
       url: `${BASE}/for-kids`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.6,
     },
     {
       url: `${BASE}/oc`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.5,
     },
     {
       url: `${BASE}/custom`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.5,
     },
     {
       url: `${BASE}/gallery`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.6,
+      priority: 0.5,
     },
     {
       url: `${BASE}/blog`,
       lastModified: now,
       changeFrequency: "daily",
-      priority: 0.7,
+      priority: 0.5,
     },
     {
       url: `${BASE}/about`,
@@ -93,13 +130,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic blog/[date] pages — past 14 days, each is a unique indexable prompt page
+  // ── Dynamic blog/[date] pages ────────────────────────────────────
   const blogPages: MetadataRoute.Sitemap = getRecentDates(14).map((date, i) => ({
     url: `${BASE}/blog/${date}`,
     lastModified: new Date(date + "T12:00:00"),
     changeFrequency: "never" as const,
-    priority: i === 0 ? 0.8 : 0.5, // today's prompt gets higher priority
+    priority: i === 0 ? 0.6 : 0.4,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...aiPages, ...promptPages, ...toolPages, ...blogPages];
 }

@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Required for Cloudflare Pages deployment
-  // All pages are already static, so this is safe
+  images: {
+    // All prompt images are now local (public/prompts/), no remote patterns needed
+    // Use unoptimized for static export / Cloudflare Pages
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
