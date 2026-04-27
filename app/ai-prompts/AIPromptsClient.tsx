@@ -168,12 +168,16 @@ export default function AIPromptsClient() {
             const copied = copiedId === prompt.id;
 
             return (
-              <div
+              <Link
                 key={prompt.id}
+                href={`/ai-prompts/${prompt.slug}`}
                 className="img-card animate-fade-up"
                 style={{
                   animationDelay: `${Math.min(i * 0.03, 0.3)}s`,
                   opacity: 0,
+                  textDecoration: "none",
+                  color: "inherit",
+                  display: "block",
                 }}
               >
                 <div className="img-card-image-wrap">
@@ -183,7 +187,6 @@ export default function AIPromptsClient() {
                     width={800}
                     height={600}
                     className="img-card-image"
-                    unoptimized
                   />
                   <div className="img-card-overlay">
                     {prompt.aiModels.map((model) => {
@@ -239,16 +242,14 @@ export default function AIPromptsClient() {
                     className="font-serif"
                     style={{ fontSize: 17, fontWeight: 600, color: "var(--text-primary)", margin: 0, lineHeight: 1.3 }}
                   >
-                    <Link href={`/ai-prompts/${prompt.slug}`} style={{ color: "inherit", textDecoration: "none" }}>
-                      {prompt.title}
-                    </Link>
+                    {prompt.title}
                   </h3>
 
                   <p className="prompt-text-preview">{truncated}</p>
 
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: "auto" }}>
                     <button
-                      onClick={() => handleCopy(prompt)}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleCopy(prompt); }}
                       className={`btn-ghost ${copied ? "copy-success" : ""}`}
                       style={{
                         display: "inline-flex",
@@ -277,15 +278,13 @@ export default function AIPromptsClient() {
                         </>
                       )}
                     </button>
-                    <Link
-                      href={`/ai-prompts/${prompt.slug}`}
+                    <span
                       className="btn-ghost"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
                         gap: 5,
                         padding: "7px 14px",
-                        textDecoration: "none",
                         fontSize: 12,
                         fontWeight: 500,
                       }}
@@ -294,10 +293,10 @@ export default function AIPromptsClient() {
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M9 18l6-6-6-6" />
                       </svg>
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

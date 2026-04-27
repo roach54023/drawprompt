@@ -2,24 +2,30 @@ import type { Metadata } from "next";
 import HomeClient from "@/components/HomeClient";
 
 export const metadata: Metadata = {
-  title: "AI Image Prompts — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
+  title: "Drawing Prompt Generator & AI Image Prompts — ChatGPT, GPT-4o, Midjourney | DrawPrompt",
   description:
-    "Copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney, and DALL-E. Curated prompt library with breakdowns, tips, and examples across photography, character design, UI/UX, and more.",
+    "Free drawing prompt generator with 150B+ combinations for artists, plus copy-paste AI image prompts for ChatGPT image generator, GPT-4o, GPT Image 2, Midjourney & DALL-E. Tested prompts with breakdowns and tips.",
   keywords: [
+    "drawing prompt generator",
+    "ai image prompt generator",
+    "chatgpt image generator prompts",
+    "gpt-4o image generation prompts",
     "gpt image 2 prompts",
-    "chatgpt photo prompt",
+    "chatgpt image prompts",
+    "midjourney prompts",
+    "ai art prompts",
+    "drawing prompts for artists",
+    "dall-e prompts",
     "ai image prompt",
     "chatgpt photo editing prompts",
-    "midjourney prompts",
-    "dall-e prompts",
-    "ai art prompts",
-    "drawing prompt generator",
+    "art prompt generator",
+    "creative drawing ideas",
   ],
   alternates: { canonical: "https://drawprompt.org/" },
   openGraph: {
-    title: "AI Image Prompts — GPT Image 2, ChatGPT & Midjourney",
+    title: "Drawing Prompt Generator & AI Image Prompts — ChatGPT, GPT-4o, Midjourney",
     description:
-      "Curated AI image prompts ready to copy & paste. GPT Image 2, ChatGPT, Midjourney, DALL-E — photography, characters, UI design, posters, and more.",
+      "Free drawing prompt generator for artists + curated AI image prompts for ChatGPT, GPT-4o, Midjourney & DALL-E. Copy, paste, create.",
     type: "website",
     url: "https://drawprompt.org/",
   },

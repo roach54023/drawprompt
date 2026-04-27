@@ -2,16 +2,28 @@ import type { Metadata } from "next";
 import DrawingGeneratorClient from "@/components/DrawingGeneratorClient";
 
 export const metadata: Metadata = {
-  title: "Drawing Prompt Generator — Free Random Art Ideas for Artists",
+  title: "Drawing Prompt Generator — Free Art Prompt Ideas for Artists & Beginners",
   description:
-    "Generate unlimited drawing prompts instantly. Free drawing prompt generator for artists, beginners, and daily sketching practice. 150B+ combinations.",
+    "Free drawing prompt generator with 150 billion+ unique combinations. Get random art prompts with mood, subject, palette, style & creative challenges. Perfect for daily sketching, art practice, and creative blocks.",
   keywords: [
     "drawing prompt generator",
-    "drawing prompts",
     "art prompt generator",
+    "drawing prompts",
     "random drawing ideas",
+    "drawing prompts for artists",
+    "sketch prompt generator",
+    "creative drawing prompts",
+    "daily drawing challenge",
+    "art ideas generator",
   ],
   alternates: { canonical: "https://drawprompt.org/generator/" },
+  openGraph: {
+    title: "Drawing Prompt Generator — 150B+ Free Art Prompt Combinations",
+    description:
+      "Generate unlimited drawing prompts with mood, subject, palette, and style. Free for artists, beginners, and daily sketching practice.",
+    type: "website",
+    url: "https://drawprompt.org/generator/",
+  },
 };
 
 export default function GeneratorPage() {

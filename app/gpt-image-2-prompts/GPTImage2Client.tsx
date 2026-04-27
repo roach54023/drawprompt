@@ -467,7 +467,7 @@ function PromptGalleryCard({
       : prompt.prompt;
 
   return (
-    <div className="img-card">
+    <Link href={`/ai-prompts/${prompt.slug}`} className="img-card" style={{ textDecoration: "none", color: "inherit" }}>
       <div className="img-card-image-wrap">
         <Image
           src={prompt.imageUrl}
@@ -475,7 +475,6 @@ function PromptGalleryCard({
           width={800}
           height={600}
           className="img-card-image"
-          unoptimized
         />
         <div className="img-card-overlay">
           {prompt.aiModels.map((model) => {
@@ -531,16 +530,14 @@ function PromptGalleryCard({
           className="font-serif"
           style={{ fontSize: 17, fontWeight: 600, color: "var(--text-primary)", margin: 0, lineHeight: 1.3 }}
         >
-          <Link href={`/ai-prompts/${prompt.slug}`} style={{ color: "inherit", textDecoration: "none" }}>
-            {prompt.title}
-          </Link>
+          {prompt.title}
         </h3>
 
         <p className="prompt-text-preview">{truncatedPrompt}</p>
 
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: "auto" }}>
           <button
-            onClick={onCopy}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
             className={`btn-ghost ${copied ? "copy-success" : ""}`}
             style={{
               display: "inline-flex",
@@ -569,15 +566,13 @@ function PromptGalleryCard({
               </>
             )}
           </button>
-          <Link
-            href={`/ai-prompts/${prompt.slug}`}
+          <span
             className="btn-ghost"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: 5,
               padding: "7px 14px",
-              textDecoration: "none",
               fontSize: 12,
               fontWeight: 500,
             }}
@@ -586,9 +581,9 @@ function PromptGalleryCard({
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 18l6-6-6-6" />
             </svg>
-          </Link>
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

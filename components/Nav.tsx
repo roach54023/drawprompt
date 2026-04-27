@@ -5,21 +5,28 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 
 const mainLinks = [
+  { href: "/ai-prompts",          label: "AI Prompts" },
   { href: "/gpt-image-2-prompts", label: "GPT Image 2", hot: true },
-  { href: "/ai-prompts",          label: "All Prompts" },
-  { href: "/chatgpt-photo-prompts", label: "Photo Prompts" },
+  { href: "/generator",           label: "Drawing Generator" },
 ];
 
-const moreLinks = [
-  { href: "/generator",       label: "Drawing Generator" },
-  { href: "/random",          label: "Random Prompt" },
-  { href: "/daily-challenge", label: "Daily Challenge" },
-  { href: "/character",       label: "Character Prompts" },
-  { href: "/anime",           label: "Anime Prompts" },
-  { href: "/for-kids",        label: "For Kids" },
-  { href: "/gallery",         label: "Gallery" },
-  { href: "/saved",           label: "Saved" },
-];
+const moreLinks = {
+  tools: [
+    { href: "/random",          label: "Random Prompt" },
+    { href: "/daily-challenge",  label: "Daily Challenge" },
+  ],
+  styles: [
+    { href: "/character",       label: "Character Prompts" },
+    { href: "/anime",           label: "Anime Prompts" },
+    { href: "/for-kids",        label: "For Kids" },
+  ],
+  other: [
+    { href: "/gallery",         label: "Gallery" },
+    { href: "/saved",           label: "Saved" },
+  ],
+};
+
+const allMoreLinks = [...moreLinks.tools, ...moreLinks.styles, ...moreLinks.other];
 
 export default function Nav() {
   const pathname = usePathname();
@@ -44,7 +51,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const inMore = moreLinks.some((l) => pathname === l.href);
+  const inMore = allMoreLinks.some((l) => pathname === l.href);
 
   const linkStyle = (active: boolean) => ({
     padding: "6px 14px",
@@ -61,6 +68,27 @@ export default function Nav() {
     letterSpacing: "0.01em",
     background: active ? "var(--bg-warm)" : "transparent",
   });
+
+  const dropdownLinkStyle = (active: boolean) => ({
+    display: "block" as const,
+    padding: "8px 12px",
+    borderRadius: 8,
+    fontSize: 13,
+    fontWeight: active ? 600 : 400,
+    color: active ? "var(--text-primary)" : "var(--text-secondary)",
+    background: active ? "var(--bg-warm)" : "transparent",
+    textDecoration: "none" as const,
+    transition: "background 0.1s",
+  });
+
+  const sectionLabel = {
+    fontSize: 10,
+    fontWeight: 600,
+    color: "var(--text-muted)",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase" as const,
+    padding: "8px 12px 6px",
+  };
 
   return (
     <header
@@ -132,7 +160,7 @@ export default function Nav() {
                       textTransform: "uppercase",
                     }}
                   >
-                    New
+                    Hot
                   </span>
                 )}
               </Link>
@@ -188,90 +216,52 @@ export default function Nav() {
                   zIndex: 100,
                 }}
               >
-                <div
-                  style={{
-                    fontSize: 10,
-                    fontWeight: 600,
-                    color: "var(--text-muted)",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    padding: "8px 12px 6px",
-                  }}
-                >
-                  Tools
-                </div>
-                {moreLinks.slice(0, 3).map((link) => {
-                  const active = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setDropdownOpen(false)}
-                      style={{
-                        display: "block",
-                        padding: "8px 12px",
-                        borderRadius: 8,
-                        fontSize: 13,
-                        fontWeight: active ? 600 : 400,
-                        color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                        background: active ? "var(--bg-warm)" : "transparent",
-                        textDecoration: "none",
-                        transition: "background 0.1s",
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-                <div
-                  style={{
-                    height: 1,
-                    background: "var(--border)",
-                    margin: "4px 8px",
-                  }}
-                />
-                <div
-                  style={{
-                    fontSize: 10,
-                    fontWeight: 600,
-                    color: "var(--text-muted)",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    padding: "8px 12px 6px",
-                  }}
-                >
-                  Styles
-                </div>
-                {moreLinks.slice(3).map((link) => {
-                  const active = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setDropdownOpen(false)}
-                      style={{
-                        display: "block",
-                        padding: "8px 12px",
-                        borderRadius: 8,
-                        fontSize: 13,
-                        fontWeight: active ? 600 : 400,
-                        color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                        background: active ? "var(--bg-warm)" : "transparent",
-                        textDecoration: "none",
-                        transition: "background 0.1s",
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
+                <div style={sectionLabel}>Tools</div>
+                {moreLinks.tools.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setDropdownOpen(false)}
+                    style={dropdownLinkStyle(pathname === link.href)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 8px" }} />
+
+                <div style={sectionLabel}>Styles</div>
+                {moreLinks.styles.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setDropdownOpen(false)}
+                    style={dropdownLinkStyle(pathname === link.href)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 8px" }} />
+
+                <div style={sectionLabel}>Other</div>
+                {moreLinks.other.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setDropdownOpen(false)}
+                    style={dropdownLinkStyle(pathname === link.href)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             )}
           </div>
 
           {/* CTA */}
           <Link
-            href="/gpt-image-2-prompts"
+            href="/ai-prompts"
             style={{
               marginLeft: 12,
               padding: "7px 18px",
@@ -285,7 +275,7 @@ export default function Nav() {
               letterSpacing: "0.01em",
             }}
           >
-            Get Started
+            Explore Prompts
           </Link>
         </nav>
 
@@ -341,7 +331,7 @@ export default function Nav() {
               padding: "8px 8px 6px",
             }}
           >
-            AI Prompts
+            Prompts
           </div>
           {mainLinks.map((link) => {
             const active = pathname === link.href;
@@ -377,20 +367,14 @@ export default function Nav() {
                       lineHeight: "13px",
                     }}
                   >
-                    New
+                    Hot
                   </span>
                 )}
               </Link>
             );
           })}
 
-          <div
-            style={{
-              height: 1,
-              background: "var(--border)",
-              margin: "8px 0",
-            }}
-          />
+          <div style={{ height: 1, background: "var(--border)", margin: "8px 0" }} />
 
           <div
             style={{
@@ -402,9 +386,9 @@ export default function Nav() {
               padding: "8px 8px 6px",
             }}
           >
-            More Tools
+            Tools & Styles
           </div>
-          {moreLinks.map((link) => {
+          {allMoreLinks.map((link) => {
             const active = pathname === link.href;
             return (
               <Link

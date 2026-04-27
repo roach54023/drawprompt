@@ -70,40 +70,24 @@ export default function PromptDetailClient({
       {/* Full-width hero image */}
       <section
         style={{
-          position: "relative",
           width: "100%",
-          maxHeight: 520,
-          overflow: "hidden",
           background: "var(--bg-deep)",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <Image
           src={prompt.imageUrl}
           alt={prompt.imageAlt}
           width={1400}
-          height={520}
+          height={900}
           style={{
             width: "100%",
+            maxWidth: 1200,
             height: "auto",
-            maxHeight: 520,
-            objectFit: "cover",
             display: "block",
-            opacity: 0.85,
           }}
-          unoptimized
           priority
-        />
-        {/* Gradient overlay */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "50%",
-            background: "linear-gradient(transparent, rgba(26, 23, 20, 0.7))",
-            pointerEvents: "none",
-          }}
         />
       </section>
 
@@ -447,7 +431,6 @@ export default function PromptDetailClient({
                         width={400}
                         height={300}
                         className="img-card-image"
-                        unoptimized
                       />
                     </div>
 
