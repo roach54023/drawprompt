@@ -1,6 +1,11 @@
-import { getDailyChallenge, dimensions } from "./promptData";
+import { dimensions } from "./promptData";
+import { blogArticles, type BlogArticle } from "./blogPosts";
 
+// ── Types ───────────────────────────────────────────────────
+
+/** A daily-prompt post (algorithmically generated) */
 export interface BlogPost {
+  kind: "daily";
   date: string;       // YYYY-MM-DD
   slug: string;       // same as date
   title: string;
@@ -10,6 +15,16 @@ export interface BlogPost {
   mood: string;
   moodColor: string;
 }
+
+/** A hand-written article */
+export interface BlogArticlePost extends BlogArticle {
+  kind: "article";
+}
+
+/** Union type for the mixed feed */
+export type FeedItem = BlogPost | BlogArticlePost;
+
+// ── Mood colors ─────────────────────────────────────────────
 
 const MOOD_COLORS: Record<string, string> = {
   melancholic: "#60a5fa",
@@ -22,7 +37,8 @@ const MOOD_COLORS: Record<string, string> = {
   dark_romantic: "#e879f9",
 };
 
-/** Generate a deterministic daily prompt for any given date string */
+// ── Daily prompt generation (deterministic by date) ─────────
+
 function getDailyForDate(dateStr: string): { prompt: string; mood: string; theme: string; subject: string } {
   const [year, month, day] = dateStr.split("-").map(Number);
   const seed = year * 10000 + month * 100 + day;
@@ -65,7 +81,9 @@ function capitalize(s: string) {
   return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 }
 
-/** Generate the last N days of blog posts */
+// ── Public API ──────────────────────────────────────────────
+
+/** Get recent daily-prompt posts (backward-compatible) */
 export function getRecentBlogPosts(count = 30): BlogPost[] {
   const posts: BlogPost[] = [];
   const today = new Date();
@@ -83,6 +101,7 @@ export function getRecentBlogPosts(count = 30): BlogPost[] {
     });
 
     posts.push({
+      kind: "daily",
       date: dateStr,
       slug: dateStr,
       title: `Drawing Prompt: ${displayDate}`,
@@ -97,6 +116,7 @@ export function getRecentBlogPosts(count = 30): BlogPost[] {
   return posts;
 }
 
+/** Get a single daily-prompt post by date slug */
 export function getBlogPost(slug: string): BlogPost | null {
   const { prompt, mood, theme, subject } = getDailyForDate(slug);
   const d = new Date(slug + "T12:00:00");
@@ -109,6 +129,7 @@ export function getBlogPost(slug: string): BlogPost | null {
   });
 
   return {
+    kind: "daily",
     date: slug,
     slug,
     title: `Drawing Prompt: ${displayDate}`,
@@ -118,4 +139,23 @@ export function getBlogPost(slug: string): BlogPost | null {
     mood,
     moodColor: MOOD_COLORS[mood.toLowerCase().replace(" ", "_")] ?? "#7c6af7",
   };
+}
+
+/**
+ * Get a mixed feed of articles + daily prompts, sorted by date descending.
+ * Articles are interleaved with daily prompts based on their publish date.
+ */
+export function getMixedFeed(dailyCount = 30): FeedItem[] {
+  const dailyPosts = getRecentBlogPosts(dailyCount);
+  const articles: BlogArticlePost[] = blogArticles.map((a) => ({ ...a, kind: "article" as const }));
+
+  const feed: FeedItem[] = [...dailyPosts, ...articles];
+  feed.sort((a, b) => b.date.localeCompare(a.date));
+
+  return feed;
+}
+
+/** Get all article slugs (for sitemap / static generation) */
+export function getAllArticleSlugs(): string[] {
+  return blogArticles.map((a) => a.slug);
 }

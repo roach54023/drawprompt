@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllArticleSlugs } from "@/lib/blogData";
 
 const BASE = "https://drawprompt.org";
 
@@ -133,6 +134,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // ── Hand-written article pages ──────────────────────────────────
+  const articlePages: MetadataRoute.Sitemap = getAllArticleSlugs().map((slug) => ({
+    url: `${BASE}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // ── Dynamic blog/[date] pages ────────────────────────────────────
   const blogPages: MetadataRoute.Sitemap = getRecentDates(14).map((date, i) => ({
     url: `${BASE}/blog/${date}`,
@@ -141,5 +150,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: i === 0 ? 0.6 : 0.4,
   }));
 
-  return [...aiPages, ...toolPages, ...blogPages];
+  return [...aiPages, ...toolPages, ...articlePages, ...blogPages];
 }
