@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomeClient from "@/components/HomeClient";
+import { getFeaturedAIPrompts, categories } from "@/lib/aiPromptData";
 
 export const metadata: Metadata = {
   title: "Drawing Prompt Generator & AI Image Prompts — ChatGPT, GPT-4o, Midjourney | DrawPrompt",
@@ -32,5 +33,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomeClient />;
+  // Fetch data on the server — only 6 prompts sent to client, not all 167
+  const featured = getFeaturedAIPrompts(6);
+  return <HomeClient featured={featured} categories={categories} />;
 }

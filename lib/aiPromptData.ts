@@ -183,7 +183,7 @@ export const aiPrompts: AIPrompt[] = [
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -227,7 +227,7 @@ export const aiPrompts: AIPrompt[] = [
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -249,7 +249,7 @@ export const aiPrompts: AIPrompt[] = [
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -272,7 +272,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @Shinning1010"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -294,7 +294,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -316,7 +316,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @patrickassale"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -339,7 +339,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @Zoulinshen"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -362,7 +362,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @Tz_2022"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -384,7 +384,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @Malek1173989"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -406,7 +406,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -428,7 +428,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -450,7 +450,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -472,7 +472,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -494,7 +494,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -516,7 +516,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -538,7 +538,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @BubbleBrain"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -561,7 +561,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
       details: "",
     },
     tips: ["By @80vul"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -600,7 +600,7 @@ High-detail, ultra-realistic hybrid of editorial photography and print design.`,
       details: "",
     },
     tips: ["By @Naiknelofar788"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -622,7 +622,7 @@ High-detail, ultra-realistic hybrid of editorial photography and print design.`,
       details: "",
     },
     tips: ["By @andis13"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -660,7 +660,7 @@ the #1 tell on AI photos is flat colors and a grainy look. this method removes b
       details: "",
     },
     tips: ["By @pavellaslov"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -682,7 +682,7 @@ the #1 tell on AI photos is flat colors and a grainy look. this method removes b
       details: "",
     },
     tips: ["By @ZaraIrahh"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -714,7 +714,7 @@ Mood: fresh, premium, modern, and inviting — aligned with upscale U.S. dessert
       details: "",
     },
     tips: ["By @ZaraIrahh"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -736,7 +736,7 @@ Mood: fresh, premium, modern, and inviting — aligned with upscale U.S. dessert
       details: "",
     },
     tips: ["By @ZaraIrahh"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -961,7 +961,7 @@ good drawing, nice lines, clear shapes, neat, pretty, smooth, realistic, talente
       details: "",
     },
     tips: ["By @WolfRiccardo"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -1165,7 +1165,7 @@ Once you think of it, you can play it. AI × browser game creation is seriously 
       details: "",
     },
     tips: ["By @liyue_ai"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -2650,7 +2650,7 @@ Style should feel premium, modern, cinematic, clean composition, sharp focus, ul
       details: "",
     },
     tips: ["By @dotey"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -3347,7 +3347,7 @@ Real mobile phone screen recording screenshot feeling, the live broadcast UI is 
       details: "",
     },
     tips: ["By @AZLnfvp"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -3648,7 +3648,7 @@ Render Quality: Hyperrealistic, clean ad aesthetic,
       details: "",
     },
     tips: ["By @ChiefMonkeyMike"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {

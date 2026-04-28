@@ -4,8 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  getFeaturedAIPrompts,
-  categories,
   type AIPrompt,
   type AIModel,
   type CategoryInfo,
@@ -83,9 +81,13 @@ const HUMAN_TOOLS = [
   },
 ];
 
-export default function HomeClient() {
-  const featured = getFeaturedAIPrompts(6);
-
+export default function HomeClient({
+  featured,
+  categories,
+}: {
+  featured: AIPrompt[];
+  categories: CategoryInfo[];
+}) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
@@ -232,7 +234,7 @@ export default function HomeClient() {
 
         <div className="featured-grid">
           {featured.map((prompt) => (
-            <PromptImageCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} onSelect={() => setSelectedPrompt(prompt)} />
+            <PromptImageCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} onSelect={() => setSelectedPrompt(prompt)} categories={categories} />
           ))}
         </div>
 
@@ -359,7 +361,7 @@ export default function HomeClient() {
 }
 
 // ─── PromptImageCard ─────────────────────────────────────────────────────────
-function PromptImageCard({ prompt, copied, onCopy, onSelect }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; onSelect: () => void }) {
+function PromptImageCard({ prompt, copied, onCopy, onSelect, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; onSelect: () => void; categories: CategoryInfo[] }) {
   const catInfo = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt = prompt.prompt.length > 110 ? prompt.prompt.slice(0, 110).trimEnd() + "\u2026" : prompt.prompt;
 
