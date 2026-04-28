@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     "drawing prompt of the day",
     "daily art prompt",
   ],
-  alternates: { canonical: "/daily-challenge" },
+  alternates: { canonical: "https://drawprompt.org/daily-challenge/" },
   openGraph: {
     title: "Daily Drawing Prompt Generator — New Challenge Every Day",
     description:
       "A new drawing prompt every day. Free, no sign-up. Build your drawing habit one prompt at a time.",
     type: "website",
-    url: "/daily-challenge",
+    url: "https://drawprompt.org/daily-challenge/",
   },
 };
 

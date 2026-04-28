@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     "drawing ideas for kids",
     "children drawing prompt",
   ],
-  alternates: { canonical: "/for-kids" },
+  alternates: { canonical: "https://drawprompt.org/for-kids/" },
   openGraph: {
     title: "Drawing Prompt Generator for Kids — Fun & Age-Appropriate",
     description:
       "Simple, fun drawing prompts for young artists. Cozy, nature, and whimsical themes. Free, no sign-up.",
     type: "website",
-    url: "/for-kids",
+    url: "https://drawprompt.org/for-kids/",
   },
 };
 

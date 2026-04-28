@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — DrawingPrompt",
+  title: "About DrawPrompt — Free Drawing Prompt Generator & AI Image Prompts",
   description:
-    "DrawingPrompt is a free drawing prompt generator for artists, illustrators, and sketchers. Learn about our mission and how it works.",
+    "DrawPrompt is a free drawing prompt generator with 150B+ combinations and 167+ AI image prompts for GPT Image 2, ChatGPT & Midjourney. Learn about our mission and how it works.",
+  alternates: { canonical: "https://drawprompt.org/about/" },
+  openGraph: {
+    title: "About DrawPrompt — Free Drawing Prompt Generator & AI Image Prompts",
+    description:
+      "DrawPrompt: free drawing prompt generator + 167+ AI image prompts for GPT Image 2 & ChatGPT.",
+    type: "website",
+    url: "https://drawprompt.org/about/",
+  },
 };
 
 const HOW_IT_WORKS = [

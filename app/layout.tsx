@@ -6,18 +6,22 @@ import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Image Prompts — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
+    default: "AI Image Prompts & Drawing Prompt Generator — GPT Image 2, ChatGPT | DrawPrompt",
     template: "%s | DrawPrompt",
   },
   description:
-    "Copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney, and DALL-E. Also includes a free drawing prompt generator for human artists.",
+    "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT image generator, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations for artists.",
   keywords: [
     "ai image prompts",
     "gpt image 2 prompts",
-    "chatgpt photo prompt",
+    "gpt image 2 prompt",
+    "chatgpt image generator prompts",
+    "chatgpt image 2",
+    "drawing prompt generator",
+    "drawing prompts",
     "midjourney prompts",
     "dall-e prompts",
-    "drawing prompt generator",
+    "ai art prompts",
     "art prompt generator",
   ],
   metadataBase: new URL("https://drawprompt.org"),
@@ -36,6 +40,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "DrawPrompt",
     url: "https://drawprompt.org",
+    title: "AI Image Prompts & Drawing Prompt Generator — GPT Image 2, ChatGPT | DrawPrompt",
+    description:
+      "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Image Prompts & Drawing Prompt Generator | DrawPrompt",
+    description:
+      "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Free drawing prompt generator for artists.",
   },
 };
 

@@ -7,18 +7,20 @@ export const metadata: Metadata = {
     "Generate OC drawing prompts with built-in backstory, personality, and narrative moment. Perfect for fandom artists, comic creators, and writers building original characters with real depth. Free, no sign-up.",
   keywords: [
     "oc drawing prompt generator",
+    "oc drawing prompts",
+    "oc drawing prompt",
     "original character prompt generator",
     "oc art prompt",
     "oc design prompt",
     "oc prompt ideas",
   ],
-  alternates: { canonical: "/oc" },
+  alternates: { canonical: "https://drawprompt.org/oc/" },
   openGraph: {
     title: "OC Drawing Prompt Generator — Fandom & Original Character Ideas",
     description:
       "OC prompts with backstory and narrative moment built in. For fandom artists, comic creators, and writers — not just a look, but a story.",
     type: "website",
-    url: "/oc",
+    url: "https://drawprompt.org/oc/",
   },
 };
 

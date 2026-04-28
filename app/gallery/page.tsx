@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     "art prompt inspiration",
     "drawing prompt community",
   ],
-  alternates: { canonical: "/gallery" },
+  alternates: { canonical: "https://drawprompt.org/gallery/" },
   openGraph: {
     title: "Drawing Prompt Gallery — Artist Submissions & Inspiration",
     description:
       "Browse artwork from artists who drew from our prompts. Get inspired and submit your own.",
     type: "website",
-    url: "/gallery",
+    url: "https://drawprompt.org/gallery/",
   },
 };
 

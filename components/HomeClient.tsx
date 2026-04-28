@@ -189,7 +189,7 @@ export default function HomeClient({
 
           <div className="animate-fade-up" style={{ display: "inline-flex", gap: 48, paddingTop: 24, borderTop: "1px solid var(--border-dark)", opacity: 0, animationDelay: "0.5s", animationFillMode: "forwards" }}>
             {[
-              { value: "23+", label: "AI Prompts" },
+              { value: "167+", label: "AI Prompts" },
               { value: "150B+", label: "Drawing Combos" },
               { value: "4", label: "AI Models" },
               { value: "Free", label: "No Sign-up" },

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     "anime character prompt generator",
     "manga prompt generator",
   ],
-  alternates: { canonical: "/anime" },
+  alternates: { canonical: "https://drawprompt.org/anime/" },
   openGraph: {
     title: "Anime Drawing Prompt Generator — Manga & Anime Art Ideas",
     description:
       "Drawing prompts built for anime and manga artists. Characters, scenes, moods — all in an anime aesthetic. Free.",
     type: "website",
-    url: "/anime",
+    url: "https://drawprompt.org/anime/",
   },
 };
 
