@@ -30,10 +30,17 @@ export default function AIPromptsClient() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
+  // Sort by category order when showing all, keep id order within each category
+  const categoryOrder = categories.map((c) => c.id);
+  const sorted = [...aiPrompts].sort((a, b) => {
+    const catDiff = categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+    return catDiff !== 0 ? catDiff : a.id.localeCompare(b.id);
+  });
+
   const filtered =
     activeCategory === "all"
-      ? aiPrompts
-      : aiPrompts.filter((p) => p.category === activeCategory);
+      ? sorted
+      : sorted.filter((p) => p.category === activeCategory);
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {

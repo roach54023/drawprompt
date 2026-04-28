@@ -205,7 +205,7 @@ export const aiPrompts: AIPrompt[] = [
       details: "",
     },
     tips: ["By @iam_miharbi"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -961,7 +961,7 @@ good drawing, nice lines, clear shapes, neat, pretty, smooth, realistic, talente
       details: "",
     },
     tips: ["By @WolfRiccardo"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -1165,7 +1165,7 @@ Once you think of it, you can play it. AI × browser game creation is seriously 
       details: "",
     },
     tips: ["By @liyue_ai"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -2628,7 +2628,7 @@ Style should feel premium, modern, cinematic, clean composition, sharp focus, ul
       details: "",
     },
     tips: ["By @Sheldon056"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -2650,7 +2650,7 @@ Style should feel premium, modern, cinematic, clean composition, sharp focus, ul
       details: "",
     },
     tips: ["By @dotey"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -3301,7 +3301,7 @@ Real mobile phone screen recording screenshot feeling, the live broadcast UI is 
       details: "",
     },
     tips: ["By @Shinning1010"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -3347,7 +3347,7 @@ Real mobile phone screen recording screenshot feeling, the live broadcast UI is 
       details: "",
     },
     tips: ["By @AZLnfvp"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -3626,7 +3626,7 @@ Render Quality: Hyperrealistic, clean ad aesthetic,
       details: "",
     },
     tips: ["By @AIwithSarah_"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -3648,7 +3648,7 @@ Render Quality: Hyperrealistic, clean ad aesthetic,
       details: "",
     },
     tips: ["By @ChiefMonkeyMike"],
-    featured: true,
+    featured: false,
     createdAt: "2025-04-01",
   },
   {
@@ -3764,7 +3764,7 @@ Panel 4: Eyes with crystalline ice-blue tones, lashes frosted with delicate snow
       details: "",
     },
     tips: ["By @MrLarus"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -3906,7 +3906,7 @@ Panel 4: Eyes with crystalline ice-blue tones, lashes frosted with delicate snow
       details: "",
     },
     tips: ["By @FixlationAI"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -3930,7 +3930,7 @@ Edit prompt: Remove the background make it transparent`,
       details: "",
     },
     tips: ["By @JustinGorya"],
-    featured: false,
+    featured: true,
     createdAt: "2025-04-01",
   },
   {
@@ -4765,6 +4765,23 @@ export function getRelatedPrompts(
     .slice(0, limit);
 }
 
+// Display order for featured prompts on homepage
+const FEATURED_ORDER = [
+  "prompt-130", // Silhouette Universe Narrative Poster
+  "prompt-137", // Sam Altman Bear Selfie
+  "prompt-136", // Rust In-Game Screenshot
+  "prompt-125", // Beauty Product Commercial Marketing Photograph
+  "prompt-115", // Elon Musk Douyin Livestream Screenshot
+  "prompt-090", // Surrealist Rolex Luxury Watch Fashion Poster
+];
+
 export function getFeaturedAIPrompts(limit: number = 6): AIPrompt[] {
-  return aiPrompts.filter((p) => p.featured).slice(0, limit);
+  const featured = aiPrompts.filter((p) => p.featured);
+  // Sort by explicit display order, then append any extras
+  featured.sort((a, b) => {
+    const ai = FEATURED_ORDER.indexOf(a.id);
+    const bi = FEATURED_ORDER.indexOf(b.id);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  });
+  return featured.slice(0, limit);
 }
