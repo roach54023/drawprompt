@@ -2,9 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // All prompt images are now local (public/prompts/), no remote patterns needed
-    // Use unoptimized for static export / Cloudflare Pages
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./image-loader.ts",
+    // Define the widths Next.js <Image> can request — must match our pre-generated sizes
+    deviceSizes: [800, 1200],
+    imageSizes: [400],
   },
 };
 

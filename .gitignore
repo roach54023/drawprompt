@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# build-time optimized images (regenerated on each build)
+/public/prompts/optimized/
+
 # production
 /build
 

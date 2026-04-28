@@ -366,7 +366,7 @@ function PromptImageCard({ prompt, copied, onCopy, onSelect }: { prompt: AIPromp
   return (
     <div className="img-card" style={{ display: "block", cursor: "pointer" }} onClick={onSelect}>
       <div className="img-card-image-wrap">
-        <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={800} height={600} className="img-card-image" />
+                <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={800} height={600} className="img-card-image" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" />
         <div className="img-card-overlay">
           {prompt.aiModels.map((model) => {
             const m = MODEL_DISPLAY[model];

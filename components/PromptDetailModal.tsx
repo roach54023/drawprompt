@@ -110,8 +110,9 @@ export default function PromptDetailModal({
           <Image
             src={prompt.imageUrl}
             alt={prompt.imageAlt}
-            width={1400}
-            height={900}
+            width={1200}
+            height={800}
+            sizes="(max-width: 720px) 100vw, 720px"
             style={{
               width: "100%",
               height: "auto",
