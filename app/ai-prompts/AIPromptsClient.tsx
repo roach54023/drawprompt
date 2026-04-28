@@ -30,17 +30,34 @@ export default function AIPromptsClient() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
-  // Sort by category order when showing all, keep id order within each category
+  // Interleave categories so the grid shows variety (round-robin by category)
   const categoryOrder = categories.map((c) => c.id);
-  const sorted = [...aiPrompts].sort((a, b) => {
-    const catDiff = categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
-    return catDiff !== 0 ? catDiff : a.id.localeCompare(b.id);
-  });
+  const interleaved = (() => {
+    const buckets: Record<string, AIPrompt[]> = {};
+    for (const cat of categoryOrder) buckets[cat] = [];
+    for (const p of aiPrompts) {
+      if (buckets[p.category]) buckets[p.category].push(p);
+    }
+    const result: AIPrompt[] = [];
+    let added = true;
+    let round = 0;
+    while (added) {
+      added = false;
+      for (const cat of categoryOrder) {
+        if (round < buckets[cat].length) {
+          result.push(buckets[cat][round]);
+          added = true;
+        }
+      }
+      round++;
+    }
+    return result;
+  })();
 
   const filtered =
     activeCategory === "all"
-      ? sorted
-      : sorted.filter((p) => p.category === activeCategory);
+      ? interleaved
+      : aiPrompts.filter((p) => p.category === activeCategory);
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {

@@ -232,11 +232,11 @@ export default function HomeClient({
           </p>
         </div>
 
-        <div className="featured-grid">
-          {featured.map((prompt) => (
-            <PromptImageCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} onSelect={() => setSelectedPrompt(prompt)} categories={categories} />
-          ))}
-        </div>
+<div className="featured-grid">
+{featured.map((prompt) => (
+<FeaturedPromptCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} categories={categories} />
+))}
+</div>
 
         <div style={{ textAlign: "center", marginTop: 48 }}>
           <Link href="/ai-prompts/" className="btn-secondary" style={{ textDecoration: "none" }}>
@@ -392,13 +392,13 @@ export default function HomeClient({
   );
 }
 
-// ─── PromptImageCard ─────────────────────────────────────────────────────────
-function PromptImageCard({ prompt, copied, onCopy, onSelect, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; onSelect: () => void; categories: CategoryInfo[] }) {
+// ─── FeaturedPromptCard (links to detail page) ──────────────────────────────
+function FeaturedPromptCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; categories: CategoryInfo[] }) {
   const catInfo = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt = prompt.prompt.length > 110 ? prompt.prompt.slice(0, 110).trimEnd() + "\u2026" : prompt.prompt;
 
   return (
-    <div className="img-card" style={{ display: "block", cursor: "pointer" }} onClick={onSelect}>
+    <Link href={`/prompts/${prompt.slug}`} className="img-card" style={{ display: "block", cursor: "pointer", textDecoration: "none" }}>
       <div className="img-card-image-wrap">
                 <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={800} height={600} className="img-card-image" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" />
         <div className="img-card-overlay">
@@ -458,7 +458,7 @@ function PromptImageCard({ prompt, copied, onCopy, onSelect, categories }: { pro
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
