@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticleSlugs } from "@/lib/blogData";
+import { getFeaturedAIPrompts } from "@/lib/aiPromptData";
 
 const BASE = "https://drawprompt.org";
 
@@ -134,6 +135,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // ── Featured prompt detail pages ────────────────────────────────
+  const promptPages: MetadataRoute.Sitemap = getFeaturedAIPrompts(6).map((p) => ({
+    url: `${BASE}/prompts/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
   // ── Hand-written article pages ──────────────────────────────────
   const articlePages: MetadataRoute.Sitemap = getAllArticleSlugs().map((slug) => ({
     url: `${BASE}/blog/${slug}`,
@@ -150,5 +159,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: i === 0 ? 0.6 : 0.4,
   }));
 
-  return [...aiPages, ...toolPages, ...articlePages, ...blogPages];
+  return [...aiPages, ...toolPages, ...promptPages, ...articlePages, ...blogPages];
 }
