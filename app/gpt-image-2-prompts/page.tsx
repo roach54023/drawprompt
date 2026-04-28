@@ -1,5 +1,65 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import GPTImage2Client from "./GPTImage2Client";
+
+/* ── FAQ JSON-LD for rich snippets ──────────────────────────── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is GPT Image 2?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "GPT Image 2 is OpenAI's latest image generation model integrated into ChatGPT. It produces photorealistic images, typography, and complex compositions from text prompts with significantly improved quality over DALL-E 3.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I write good prompts for GPT Image 2?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Good GPT Image 2 prompts are specific and descriptive. Include the subject, style, lighting, camera angle, color palette, and mood. For example: 'A surrealist luxury watch poster with melting clock elements, shot in studio lighting with a dark moody background.' Browse our 167+ tested prompts for inspiration.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I copy and paste these prompts directly into ChatGPT?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes! All 167+ prompts on DrawPrompt are designed to be copy-pasted directly into ChatGPT's image generator. Each prompt has been tested with GPT Image 2 and includes the actual generated result so you can see what to expect.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What categories of GPT Image 2 prompts are available?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "DrawPrompt offers 9 categories: Photography & Portrait, Character Design, Poster & Graphic Design, UI/UX & Product Design, Game Art & Concept, Infographic & Data Visualization, Cultural & Historical, Food & Lifestyle, and Creative & Experimental.",
+      },
+    },
+  ],
+};
+
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "GPT Image 2 Prompts",
+  description: "167+ tested prompts for ChatGPT image generator",
+  numberOfItems: 167,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Photography & Portrait Prompts" },
+    { "@type": "ListItem", position: 2, name: "Character Design Prompts" },
+    { "@type": "ListItem", position: 3, name: "Poster & Graphic Design Prompts" },
+    { "@type": "ListItem", position: 4, name: "UI/UX & Product Design Prompts" },
+    { "@type": "ListItem", position: 5, name: "Game Art & Concept Prompts" },
+    { "@type": "ListItem", position: 6, name: "Infographic & Data Visualization Prompts" },
+    { "@type": "ListItem", position: 7, name: "Cultural & Historical Prompts" },
+    { "@type": "ListItem", position: 8, name: "Food & Lifestyle Prompts" },
+    { "@type": "ListItem", position: 9, name: "Creative & Experimental Prompts" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "GPT Image 2 Prompts — 167+ Copy-Paste Prompts for ChatGPT Image Generator (2025)",
@@ -33,5 +93,17 @@ export const metadata: Metadata = {
 };
 
 export default function GPTImage2PromptsPage() {
-  return <GPTImage2Client />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <GPTImage2Client />
+    </>
+  );
 }

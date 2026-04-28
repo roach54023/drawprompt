@@ -2,6 +2,20 @@ import type { Metadata } from "next";
 import HomeClient from "@/components/HomeClient";
 import { getFeaturedAIPrompts, categories } from "@/lib/aiPromptData";
 
+/* ── BreadcrumbList JSON-LD for homepage ─────────────────────── */
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://drawprompt.org",
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "Drawing Prompt Generator & AI Image Prompts — GPT Image 2, ChatGPT | DrawPrompt",
   description:
@@ -36,5 +50,13 @@ export const metadata: Metadata = {
 export default function HomePage() {
   // Fetch data on the server — only 6 prompts sent to client, not all 167
   const featured = getFeaturedAIPrompts(6);
-  return <HomeClient featured={featured} categories={categories} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <HomeClient featured={featured} categories={categories} />
+    </>
+  );
 }

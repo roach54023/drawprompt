@@ -4,6 +4,21 @@ import Link from "next/link";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
+/* ── Global JSON-LD: WebSite + SearchAction ─────────────────── */
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "DrawPrompt",
+  url: "https://drawprompt.org",
+  description:
+    "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations for artists.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://drawprompt.org/ai-prompts?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export const metadata: Metadata = {
   title: {
     default: "AI Image Prompts & Drawing Prompt Generator — GPT Image 2, ChatGPT | DrawPrompt",
@@ -43,12 +58,21 @@ export const metadata: Metadata = {
     title: "AI Image Prompts & Drawing Prompt Generator — GPT Image 2, ChatGPT | DrawPrompt",
     description:
       "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations.",
+    images: [
+      {
+        url: "https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DrawPrompt — AI Image Prompts & Drawing Prompt Generator",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Image Prompts & Drawing Prompt Generator | DrawPrompt",
     description:
       "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Free drawing prompt generator for artists.",
+    images: ["https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg"],
   },
 };
 
@@ -56,6 +80,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" style={{ backgroundColor: "#f8f6f1", colorScheme: "light" }}>
       <body style={{ backgroundColor: "#f8f6f1", color: "#1a1714", margin: 0 }}>
+        {/* Global JSON-LD structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <Nav />
         <main>{children}</main>
 

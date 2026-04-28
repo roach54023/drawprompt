@@ -26,6 +26,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Drawing Prompt: ${date} — Daily Art Challenge`,
     description: `Today's drawing prompt: ${post.prompt.slice(0, 120)}. Join the daily drawing challenge. Free, no sign-up needed.`,
+    alternates: { canonical: `https://drawprompt.org/blog/${date}/` },
+    openGraph: {
+      title: `Drawing Prompt: ${date} — Daily Art Challenge`,
+      description: `Today's drawing prompt: ${post.prompt.slice(0, 120)}.`,
+      type: "article",
+      url: `https://drawprompt.org/blog/${date}/`,
+    },
   };
 }
 
