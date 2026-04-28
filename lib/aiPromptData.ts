@@ -323,7 +323,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
     id: "prompt-008",
     slug: "916-cosplayer-portrait-screenshot",
     title: "9:16 Cosplayer Portrait Screenshot",
-    prompt: `Generate a vertical phone screenshot-style image with an approximate 9:16 aspect ratio. Slightly above center is a real-life cosplayer portraying a 2D anime character. The figure is rendered in a realistic style but with slightly anime-influenced features — delicate skin, slightly larger eyes, and a gentle expression looking at the camera. She is seated in a casual indoor setting such as a café or bar counter, with scene-appropriate props in the background. At the very top of the image, add a phone status bar (time, signal, battery). Below the main image, include a social media-style caption area with the character's name, a brief description, and interaction buttons (like, comment, share). The overall feel should resemble a real phone screenshot of a social media post, blending 2D character charm with photorealistic rendering.`,
+    prompt: `Generate a vertical phone screenshot-style image with an approximate 9:16 aspect ratio. Slightly above center is a real-life cosplayer portraying a 2D anime character (character name). The figure is rendered in a realistic style but with slightly anime-influenced features — delicate skin, slightly larger eyes, and a gentle expression looking at the camera. She is seated in a casual indoor setting such as a café or bar counter, with scene-appropriate props in the background. At the very top of the image, add a phone system status bar UI including time, battery, signal, network icons, making the entire image look like a phone screenshot. At the bottom of the image, overlay a large semi-transparent galgame-style dialogue box. On the left side of the dialogue box, place an anime or chibi avatar corresponding to the character in the image. On the right side of the dialogue box, lay out text: the first line displays the same character name in a larger font, and below it one to two lines showing a gentle, healing-style line of dialogue in Simplified Chinese that fits the character's persona, automatically created by you. Below the dialogue box, add an action bar mimicking galgame UI. The overall style is high-definition, rich in detail, with soft lighting, naturally blending 2D anime aesthetics with real-life photography.`,
     originalPrompt: `生成一张竖版手机截图风格的图片，整体比例接近 9:16。画面中心偏上是一位真人 coser，扮演（角色名称）的二次元角色。人物为写实风格，但五官略带动漫感，皮肤细腻，眼睛稍大，表情温柔地看向镜头，坐在室内的休闲场景中，例如咖啡厅或酒吧吧台前，背景有符合场景的道具。画面最上方加入手机系统状态栏 UI，包括时间、电量、信号、网络等图标，让整张图看起来像手机截图。画面底部叠加一块宽大的半透明 galgame 风格对话框，对话框左侧放一个与画面人物对应的动漫或 Q 版头像；对话框右侧排版文字：第一行用较大字体显示与前面相同的角色名字，下面一到两行显示一段适合这个角色人设的、温柔治愈风格的简体中文台词，由你自动创作。再在对话框下方加一条操作栏，仿照 galgame UI。整体风格高清、细节丰富、光线柔和、二次元与真人写真自然融合。`,
     category: "game",
     tags: ["portrait", "photography", "realistic", "gaming"],
@@ -346,7 +346,7 @@ Negative Prompts: no extra limbs, no deformed hands, no blur, no noise, no water
     id: "prompt-009",
     slug: "urban-turn-back-street-portrait",
     title: "Urban Turn-Back Street Portrait",
-    prompt: `A medium close-up shot at eye level, focusing on a young woman. She is shown in a seven-eighths body frame, seated with a slight lean, hips tilted back, legs naturally crossed with the left leg in front and right behind, knees slightly bent. Her upper body twists to the right rear while her head turns toward the camera, creating a classic "looking back over the shoulder" pose. Her gaze meets the camera directly, eyes clear with a hint of playfulness. Her hairstyle is a voluminous brown shoulder-length bob with soft waves. She wears a fitted cream-colored knit top and a dark pleated skirt. The background is a blurred urban street scene with warm afternoon light casting soft shadows.`,
+    prompt: `The scene is a medium close-up shot using an eye-level camera, focusing on a young woman. She is presented in a seven-eighths body frame, seated with a slight lean, hips tilted backward, legs naturally crossed with the left leg in front and the right leg behind, knees slightly bent. Her upper body twists to the right rear while her head turns toward the camera, forming a classic "looking back over the shoulder" pose, gazing directly at the camera with clear eyes and a hint of playfulness. Her hairstyle is a voluminous brown shoulder-length bob with bangs falling naturally and slightly curled ends. Her makeup is light and natural, with only subtle eyeliner on the eyes and a natural nude-pink lip color. The overall image uses a natural daylight filter, with light streaming in diagonally from the upper left, creating a soft backlit silhouette. The right side of her face and body is illuminated by warm golden light, while the left side transitions into natural shadow, enhancing the three-dimensionality. The lighting effect is bright natural light with a slight lens flare, creating an afternoon sunlight atmosphere. The shooting angle is eye level. In terms of composition, the main subject is positioned slightly right of center, and the zebra crossing and road lines in the background form natural leading lines directing the viewer's gaze toward the subject. The background is an urban street containing roads, a zebra crossing, green belts, and distant vehicles. The background is moderately blurred but still recognizable with trees, guardrails, and parked electric scooters. The composition utilizes the rule of thirds, with the subject placed at the right third, enhancing the balance of the image. The subject wears an army-green camouflage-patterned hooded sweatshirt, paired with black shorts on the bottom, white high-top sneakers with white mid-calf socks. Her backpack is black with orange-yellow decorative stripes and an orange plush pendant, made of canvas and leather patchwork. The overall style is street casual, with relaxed and natural body language, an expression of slight curiosity and playfulness, presenting an easygoing, youthful, and vibrant urban girl image.`,
     originalPrompt: `该画面为中近景，采用平视镜头，聚焦于一位年轻女性。她以七分身镜头呈现，身体坐姿略带倾斜，臀部向后撅起，双腿自然交叠，左腿在前，右腿在后，膝盖微屈。她将上半身向右后方扭转，头部则转向镜头方向，形成一个经典的“回眸”姿态，目光直视镜头，眼神清澈而略带一丝俏皮。她的发型是蓬松的棕色齐肩短发，刘海自然垂落，发尾微卷，妆容清淡自然，仅在眼部有轻微眼线勾勒，唇色为自然裸粉。画面整体采用自然日光滤镜，光线从画面左上方斜射入，形成柔和的逆光轮廓，面部和身体右侧被温暖的金色光线照亮，左侧则形成自然的阴影过渡，增强了立体感。灯光效果是明亮的自然光，带有轻微的镜头眩光，营造出午后阳光的氛围。拍摄角度为平视，构图上，人物主体位于画面中偏右位置，背景中的斑马线与道路线条形成自然的引导线，将视线引向人物。背景为城市街道，包含道路、斑马线、绿化带和远处的车辆，背景被适度虚化，但依然可辨识出树木、护栏和停放的电动车等元素，构图上利用了三分法，人物位于右侧三分之一处，增强了画面的平衡感。主体穿着一件军绿色迷彩图案的连帽卫衣，下身搭配黑色短裤，脚穿白色高帮运动鞋配白色中筒袜。背包为黑色，带有橙黄色装饰条纹和一个橙色毛绒挂件，材质为帆布和皮革拼接。整体风格为街头休闲风，肢体语言放松自然，表情略带好奇与俏皮，整体呈现出一种随性、青春、充满活力的都市少女形象。`,
     category: "photography",
     tags: ["portrait", "photography", "realistic"],
@@ -1051,7 +1051,7 @@ good drawing, nice lines, clear shapes, neat, pretty, smooth, realistic, talente
     id: "prompt-037",
     slug: "doodle-sketch-ai-builder",
     title: "Doodle Sketch AI Builder",
-    prompt: `Depict [a brilliant AI builder] in a doodle sketch style, with an overall look of quick outlines, free-form distortion, improvisational hand-drawing, and draft-like visual effects. Lines are casual, exaggerated, varying in thickness, slightly messy but rhythmic and expressive, emphasizing generalization, exaggeration, fun, and spontaneity rather than rigorous realism or fine detail. Colors use rough, dry-brush-style blocks with visible uneven smearing marks, retaining the raw texture of hand-applied pigment. The character should appear energetic and creative, surrounded by floating code snippets, circuit patterns, and lightbulb symbols, all rendered in the same loose sketch style.`,
+    prompt: `Depict [a brilliant AI builder] in a doodle sketch style, with an overall look of quick outlines, free-form distortion, improvisational hand-drawing, and draft-like visual effects. Lines are casual, exaggerated, varying in thickness, slightly messy but rhythmic and expressive, emphasizing generalization, exaggeration, fun, and spontaneity rather than rigorous realism or fine detail. Colors use rough, dry-brush-style blocks with visible uneven smearing marks, brush strokes, flying white effects, and a sense of layered coverage. Colors automatically adapt to the [theme/subject], but the overall expression remains doodle-style, sketch-style, and generalized. No transparent watercolor bleeding effects, no delicate watercolor transitions, no paper texture, no soft hazing, no dreamy quality. The background is primarily white space, keeping it clean, relaxed, with a sense of incompleteness and design sensibility. A small number of auxiliary symbols, arrows, marks, circled annotations, repeated lines, casually written text, or other doodle elements may be added to enhance the sketchbook or journal-style visual language, but it must not be too crowded and must not disrupt the subject or the white space quality. The image content does not need to be pre-specified — [a brilliant AI builder] will automatically derive and generate the most fitting subject image, pose, related elements, symbols, or simplified scene, maintaining a unified doodle sketch style and exaggerated generalized expression throughout, avoiding complex realistic backgrounds and excessive elaboration. The image must naturally include the exclusive signature "BlanPlan" as part of the composition, positioned subtly but clearly, placed in the lower-left corner, lower-right corner, or near the title. The style must be unified with the overall layout, resembling an artwork signature or design credit. The signature font should be refined, restrained, and sophisticated — not too large, not disrupting the main composition, and not appearing abrupt or cheap.`,
     originalPrompt: `以涂鸦速写风表现【一个厉害的AI builder】，整体呈现快速勾勒、自由变形、即兴手绘与草稿式的视觉效果。线条随手、夸张、可粗细不一，略显凌乱但具有节奏和表现力，强调概括、夸张、趣味和随性，而不是严谨写实或精细刻画。  颜色采用粗糙、干刷感明显的块面表现，可保留不均匀的涂抹痕迹、刷痕、飞白与覆盖感，色彩根据【主题/主体】自动适配，但整体保持涂鸦式、速写式、概括式的表达。不要透明水彩晕染效果，不要细腻水彩过渡，不要纸纹理，不要柔和雾化，不要梦幻质感。  背景以留白为主，保持简洁、轻松、未完成感和设计感，可加入少量辅助性符号、箭头、记号、圈画、重复线、随手写的文字或其他涂鸦元素，以增强速写本或随笔式视觉语言，但不可过于拥挤，不可破坏主体和留白气质。  画面内容不需要预先写清楚，由【一个厉害的AI builder】自动推演并生成最适合的主体形象、动作、相关元素、符号或简化场景，整体保持统一的涂鸦速写风和夸张概括的表现方式，避免复杂写实背景和过度铺陈。 画面中需自然加入专属签名“BlanPlan”，作为画面的一部分，位置低调但清晰，可放在左下角、右下角或标题附近，风格需与整体版式统一，像作品署名或设计落款；签名字体精致、克制、高级，不可过大，不可破坏主体构图，不可显得突兀或廉价。`,
     category: "poster",
     tags: ["poster", "design", "illustration"],
@@ -1696,7 +1696,83 @@ The only variable to input is:
 Everything else beyond [TOPIC] is automatically adapted by AI, including but not limited to:
 - Core subject (auto-determine whether a person, guardian, warrior, product, artifact, statue, abstract symbol, or other main visual object is more appropriate)
 - Central support structure (auto-determine whether a throne, stone pedestal, altar, mechanical base, ruins, elevated platform, or other support is more fitting)
-- Environmental space (auto-determine whether a cave, temple, ruins, abyss, underground palace, secret chamber, or other enclosed epic space works best)`,
+- Environmental space (auto-determine whether a cave, temple, ruins, abyss, underground palace, secret chamber, or other enclosed epic space works best)
+- Upper opening and light source form (auto-determine whether moonlight, divine light, energy beam, judgment light, holy light, or other single intense light is more fitting)
+- Symbolic elements (auto-determine whether skulls, emblems, broken steles, heraldic crests, runes, energy rings, divine symbols, etc. are more appropriate)
+- Color system
+- Material combinations
+- Title, subtitle, supporting copy
+- Typography and overall narrative temperament
+
+[Overall Style]
+High-budget 1990s Hollywood epic blockbuster poster aesthetic, blending cinematic matte painting, hyper-realistic photographic texture, extreme chiaroscuro contrast, weighty spatial narrative, dark heroism, and ritualistic composition. The overall result must look like an actual movie key art poster, not a generic illustration or e-commerce graphic.
+
+[Core Structure Lock]
+The entire poster must retain the following structural DNA:
+1. A massive, overwhelmingly oppressive dark enclosed space
+2. A powerful beam of volumetric light cutting diagonally from above, serving as the primary visual hierarchy
+3. The core subject and its support structure positioned center-right or at the terminus of the light beam
+4. The bottom-left corner serving as a high-density title and information anchor
+5. Generous pure-black or near-black negative space around all edges, creating a cinematic breathing zone
+
+[Auto-Adaptation Rules]
+AI must automatically derive the most suitable visual system based on [TOPIC]:
+- If [TOPIC] leans toward dark hero, vengeance, justice, solitude, or fate, auto-bias toward stone throne, solitary lofty figure, cool-toned divine light, ruins or cave-like space
+- If [TOPIC] leans toward mystery, specters, stealth, phantoms, or nocturnal themes, auto-bias toward moonlight, mist, cool-blue volumetric light, abyss-style dark space
+- If [TOPIC] leans toward power, dominion, kingship, or order, auto-enhance the expression of throne / altar / crown-like symbol / ritual space
+- If [TOPIC] leans toward technology, AI, future, or machinery, auto-replace the throne and space with mechanical divine seat, energy pedestal, metal cavern, industrial temple, and other futuristic forms
+- If [TOPIC] leans toward product, brand, or artifact, auto-replace the core subject with the most fitting hero object while preserving the epic composition where it is dramatically spotlit as if under divine judgment
+
+[Canvas and Color System]
+- The background base layer must be an extremely deep, all-consuming dark space
+- The primary environmental color is auto-determined by AI based on [TOPIC], but the overall palette must be restrained and predominantly dark
+- Colors in the highlight zone must be highly concentrated, serving only the volumetric light and subject highlights
+- Theme color / accent color may only be concentrated on the main visual core; it must not flood the entire image
+- A clear hierarchical order of "dark base tone + single main light + minimal theme accent color" must be established
+
+[Composition and Visual Gravity]
+- Employ strong diagonal tension and visual guidance converging toward the center
+- Visual gravity falls forcefully from the upper light source, ultimately pressing down upon the core subject
+- The subject must be positioned as if illuminated by fate, judgment, divinity, or power
+- Edges must naturally dissolve into darkness; no meaningless background filler is allowed
+- All elements must serve the single primary narrative core
+
+[Materials and Lighting]
+- No outlines, no flat strokes
+- Rely entirely on volumetric light, shadow carving, reflections, highlights, fog, dust, wet rock, or other realistic materials to construct the image
+- Materials must form clear contrasts, for example:
+  Rough stone / cold hard metal / supple fabric / ancient stone carvings / wet surfaces / dust-fog light columns
+- The light beam must exhibit a strong Tyndall effect—realistic, weighty, with perceptible volumetric density
+
+[Typography System]
+- Overall 80% visual, 20% text
+- AI auto-generates the main title, subtitle, and bottom information block based on [TOPIC]
+- The main title should be as concise, powerful, and cinematic-poster-feeling as possible
+- If the topic is better suited to Chinese, prioritize Chinese; if better suited to English, auto-use English; bilingual is also acceptable, but must be unified
+- The main title may be arranged vertically along the light beam, as if formed by the light itself
+- Set up a high-density information module in the bottom-left corner, including subtitle, small-print information, movie credits-style placeholder text, or brand description
+- Text must be sharp, clean, and genuinely embedded in the environment; it must not float cheaply
+
+[Module Structure — Must Strictly Maintain 3 Blocks]
+[MOD 1: TOP-TO-CENTER BEAM]
+A massive volumetric light column cutting diagonally down from the top opening, serving as the primary visual channel and carrying the main title or main visual text.
+
+[MOD 2: CENTER-RIGHT CORE]
+The core subject and support structure at the terminus of the light beam, forming the power center / destiny center / narrative center of the entire poster.
+
+[MOD 3: BOTTOM-LEFT TEXT]
+A high-density typography zone in the bottom-left negative space, containing subtitle, descriptive text, credits-style information block, brand information, or event information.
+
+[Author Signature]
+Naturally include the author signature in the bottom corner:
+@a9quant
+The signature should be small yet clear, refined, restrained, and premium—never stealing the spotlight—like the signature on an official movie concept poster or fine art piece.
+
+[Output Requirements]
+Output as a single unified-composition poster.
+All visual systems must be internally consistent with no style contamination.
+The image must possess: a sense of darkness, epic grandeur, oppression, ritual, fate, and cinematic completeness.
+Maximum detail density, ultra-high definition, cinematic grade, print grade, high-end finished quality.`,
     originalPrompt: `围绕【主题】自动生成一张顶级暗黑史诗概念海报 / 电影感信息图海报。
 
 唯一需要输入的变量只有:
@@ -1969,7 +2045,76 @@ Visual: light clean background, soft colors, subtle shadows, refined icons, roun
 The only input variable is:
 [TOPIC]: __Ranking of Emperors in Chinese History_
 
-Require AI to automatically determine the most suitable visual approach based on the topic...`,
+Require AI to automatically derive and uniformly design the following complete visual system based on this topic, without any additional specification from me:
+- Core subject (automatically determine whether a figure, product, architecture, artifact, symbol, scene, or abstract imagery is most suitable)
+- Bottom support structure
+- Upper floating symbols or spiritual emblems
+- Scene-wrapping elements
+- Metaphor system
+- Color hierarchy
+- Material contrast
+- Lighting logic
+- Title, subtitle, supporting copy
+- Brand feel and premium expression approach
+
+The final image must be:
+A stunning, precise, unified, cinematic-grade, ultra-high-detail concept key visual poster suitable for high-end printing.
+
+[Overall Style]
+Hyper-realistic 3D commercial CGI rendering, blending cinematic lighting, luxury visual language, futuristic concept design, and epic-level composition. The image must have a "single primary visual core" — it must not be cluttered, must not look like a collage, and must not resemble a generic e-commerce poster.
+
+[Automatic Derivation Rules]
+AI must automatically determine the most suitable options based on [TOPIC]:
+1. Core visual metaphor
+2. Subject type and pose
+3. Support structure form
+4. Floating element form
+5. Scene shell and spatial atmosphere
+6. Primary color, secondary color, accent color
+7. Material combination
+8. Typographic character and layout style
+
+For example:
+- If the topic leans toward power, order, capital, or dominion, automatically lean toward thrones, crowns, machinery, temples, red curtains, metal, power structures
+- If the topic leans toward technology, AI, chips, or the future, automatically lean toward mechanical structures, energy cores, light beams, dark metals, holographic feel
+- If the topic leans toward luxury goods, haute couture, scarcity, or collectibles, automatically lean toward jewelry, mirror-finish materials, black-and-gold palette, display pedestals, museum-style lighting
+- If the topic leans toward characters, IPs, or personas, automatically use the figure as the primary visual core and automatically match the corresponding worldview and symbolic system
+- If the topic leans toward cities, civilizations, epics, or destiny, automatically transform into grand narrative spatial structures and ceremonial scenes
+
+[Composition Rules]
+- Absolute premium feel
+- Strong central order, overall unity
+- Allow central-axis symmetry or near-central-axis epic-level composition
+- Clear visual gravity, forming a distinct hierarchical cascade from top to bottom
+- Clean, restrained, breathing negative space at the edges
+- No meaningless decoration, no style contamination, no multiple systems clashing with each other
+
+[Visual Quality]
+- Ultra-high detail
+- Clear volumetric lighting
+- Realistic materials
+- Natural reflections, refractions, shadows, fog, and depth of field
+- Every element appears as if controlled by an industrial-grade visual director's aesthetic standards
+- Overall quality reaching the level of a high-end brand campaign key visual / luxury invitation poster / conceptual editorial poster
+
+[Typography System]
+- Overall 90% visual, 10% text
+- AI automatically generates the most fitting main title and subtitle based on [TOPIC]
+- Title must be concise, sharp, and powerful
+- Copy distributed within safe negative space, not overlapping the main subject
+- If the topic suits Chinese, prioritize generating Chinese titles; if the topic better suits English, automatically generate English titles; a Chinese-English combination is also acceptable, but must maintain a unified premium feel
+- Text must be as minimal and precise as possible, avoid piling up words
+
+[Signature Requirement]
+Naturally include the author's signature in the bottom corner of the image:
+@a9quant
+The signature should be small but clear, refined, and premium — not overpowering, like a formal author credit in a top-tier visual work.
+
+[Output Requirements]
+Output as a single unified-composition poster.
+Automatically complete all visual decisions based on [TOPIC].
+The image must possess a sense of epic grandeur, order, control, ceremony, and commercial completeness.
+Maximum detail density, ultra-clear, cinematic-grade, print-grade, high-end finished quality.`,
     originalPrompt: `请围绕【主题】自动生成一张顶级概念海报 / 信息图式电影海报。
 
 唯一输入变量只有:
@@ -2728,12 +2873,11 @@ Camera: 85mm lens, shallow depth of field, 8K, ultra-detailed, photorealistic.`,
     id: "prompt-095",
     slug: "persona5-character-reference-card",
     title: "Persona5 Character Reference Card",
-    prompt: `Based on this character and background, create an official-style character reference sheet.
+    prompt: `Based on this character and background, please create a character reference card similar to official design materials.
 • Include three-view drawings: front, side, and back
-• Add character facial expression variations
-• Break down and display detailed parts of clothing and equipment
-• Add a color palette reference
-• Include character profile information (name, age, height, abilities, etc.)`,
+• Add variations of the character's facial expressions • Break down and display detailed parts of clothing and equipment
+• Add a color palette • Include a brief description of the world-building settings
+• Overall, use an organized layout (white background, illustration style) high resolution, professional concept art style`,
     originalPrompt: `基于此角色和背景，请制作一份类似官方设定资料的角色资料卡。
 ・包含三视图：正面、侧面和背面
 ・添加角色面部表情的变化・分解并展示服装和装备的详细部分
@@ -2760,7 +2904,16 @@ Camera: 85mm lens, shallow depth of field, 8K, ultra-detailed, photorealistic.`,
     id: "prompt-096",
     slug: "gal-game-character-introduction-page",
     title: "Gal Game Character Introduction Page",
-    prompt: `Using the latest image generation model, take this chibi character illustration and standing pose art to create a character introduction page illustration that looks like a real website page. (The introduction page should include character name, profile, stats, and other typical character page elements.)`,
+    prompt: `Using the latest model's image generation tool, please use this chibi character illustration and standing pose art to create a character introduction page-style illustration that looks like a real website page. (Something that would not look out of place as an actual introduction page.)
+A high-quality piece inspired by a gal game character introduction page. It includes facial expression variations, CG illustrations exist, and a chibi character is present.
+
+"[Self-introduction goes here]"
+
+Name: [Name goes here]
+Image Color: [Color goes here]
+Height: [Height goes here] cm
+Weight: [Weight goes here] kg
+Catchphrase: "[Quote goes here]"`,
     originalPrompt: `最新モデルの画像生成ツールを使用して、
 このちびキャライラストと立ち絵を使って本物のサイトページのようにキャラクター紹介ページ風イラストを作ってください。 （紹介ページとして使ってもおかしくないもの）
 ギャルゲーのキャラクター紹介ページをイメージした高品質なもの。 顔の差分なども乗っている、CGイラストが存在する。ちびキャラが存在する。
@@ -2876,9 +3029,38 @@ Camera: 85mm lens, shallow depth of field, 8K, ultra-detailed, photorealistic.`,
     prompt: `# Art where a character's face emerges from a chaotic collection of handwritten notes and symbols
 
 --- Style
-- Masses of handwritten notes, mathematical formulas, and symbols drawn in black ink on white paper
-- The character's face gradually emerges from within the dense collection of writing and marks
-- A blend of order and chaos, where meaning surfaces from apparent randomness`,
+- Masses of handwritten notes, mathematical formulas, symbols, and random lines drawn in black ink on white paper.
+- Scrawled chaos scattered across the entire page.
+- Red ink accents in places (lines, filled areas, marker-like blobs).
+- A texture resembling analog notebook doodles.
+
+--- Composition
+- Random notes and symbols cover the entire surface.
+- The density of black ink lines and characters concentrates at the position of the "character's face."
+- As a result, the "silhouette and expression of the given character's face" faintly emerges from within the chaos.
+- The face is not photorealistic; rather, fragments of chaos gather to form the shape.
+
+--- Color
+- Composed primarily of monochrome (black and white).
+- Red ink placed sporadically as an accent.
+- Saturation is subdued, emphasizing the analog feel of paper and ink.
+
+--- Expressive Elements
+- Strings of text that seem readable yet are not, mixing Japanese and alphanumeric characters.
+- Mathematical symbols, arrows, dots, slashes, crosses, drips (ink splatters).
+- The eyes and hair outlines of the character's face emerge through the "negative space" and "tonal density" of the notes and symbols arrangement.
+
+--- Prohibited
+- Photorealistic portraits with the face directly drawn in.
+- Digitally processed, orderly geometric patterns.
+- Colorful coloring or oversaturated expressions.
+- Logos, watermarks, or an artificial CG feel.
+
+--- Definition of Done (DoD)
+- The whole piece stands as a "chaotic collection of notes and symbols."
+- The given character's face naturally emerges from the tonal density and arrangement of the chaos.
+- Colors are monochrome + red accent only.
+- The hand-drawn texture of paper and ink is maintained.`,
     originalPrompt: `# 混沌としたメモ書き・記号の集合体からキャラクターの顔を浮かび上がらせるアート
 
 --- スタイル
@@ -3002,7 +3184,7 @@ Camera: 85mm lens, shallow depth of field, 8K, ultra-detailed, photorealistic.`,
     id: "prompt-104",
     slug: "song-dynasty-social-media-feed",
     title: "Song Dynasty Social Media Feed",
-    prompt: `"Song Dynasty Social Media Feed" / "SONG DYNASTY SOCIAL MEDIA FEED" — A humorous time-travel fusion of ancient and modern in interface design style. The image simulates a phone social media interface, but all content is from Song Dynasty scenes and characters, creating a comedic contrast between ancient life and modern social media formats.`,
+    prompt: `"Song Dynasty People's Moments Feed" / "SONG DYNASTY SOCIAL MEDIA FEED" — A humorous time-travel fusion of ancient and modern in interface design style. The image simulates a phone social media interface, but all content is from Song Dynasty scenes. The profile picture is a Song Dynasty literati painting portrait, username "苏东坡SuShi_Official", post content "Just arrived in Huangzhou, got demoted but feeling okay. Made Dongpo pork myself today, tasted amazing, recipe attached:", with an accompanying image of a close-up of Dongpo pork in gongbi (fine brushwork) painting style. The likes list shows "Huang Tingjian, Qin Guan, Monk Foyin, and 126 others." The comment section reads "Wang Anshi: Heh heh" "Sima Guang: Still that same taste." Interface elements such as the like icon are replaced with Song Dynasty floral patterns. The status bar displays "Great Song Mobile 5G" and "3rd Year of Yuanfeng." The color scheme is phone dark mode paired with Song Dynasty elegant tones — a masterpiece of the amusing collision between history and social media.`,
     originalPrompt: `"宋朝人的朋友圈"/"SONG DYNASTY SOCIAL MEDIA FEED"，古今穿越幽默融合界面设计风格，画面模拟手机社交媒体界面，但内容全部是宋朝场景头像是宋代文人画像，用户名"苏东坡SuShi_Official"，发布内容"刚到黄州，被贬了但心情还行。今天自己做了东坡肉，味道绝了，附菜谱："，配图为工笔画风格的东坡肉特写，点赞列表"黄庭坚、秦观、佛印等126人"，评论区"王安石：呵呵""司马光：还是那个味道"，界面元素如点赞图标用宋代花纹替代，状态栏显示"大宋移动 5G"和"元丰三年"，配色为手机深色模式搭配宋代雅致色调，历史与社交媒体的趣味碰撞杰作`,
     category: "ui-design",
     tags: ["ui", "mockup", "interface"],
@@ -3025,9 +3207,10 @@ Camera: 85mm lens, shallow depth of field, 8K, ultra-detailed, photorealistic.`,
     id: "prompt-105",
     slug: "multi-platform-content-screenshots",
     title: "Multi-Platform Content Screenshots",
-    prompt: `1. Generate a WeChat Channels content screenshot, topic: "Elderly shouldn't blindly pressure children to marry," iPhone dimensions
-2. Generate a Douyin (TikTok) content screenshot, topic: "Keep up with the AI wave, 9.9 yuan teaches you everything," iPhone dimensions
-3. Generate a Xiaohongshu (Little Red Book) content screenshot, topic: "AI-generated images are this beautiful," iPhone dimensions`,
+    prompt: `1. Generate a WeChat Channels (视频号) content screenshot, topic: Middle-aged and elderly people should not blindly pressure marriage, iPhone dimensions
+2. Generate a Douyin (抖音) content screenshot, topic: Keep up with the AI wave — 9.9 yuan all-inclusive tutorial, iPhone dimensions
+3. Generate a Xiaohongshu (小红书) content screenshot, topic: Behind every refined girl there are online loans, iPhone dimensions
+4. Generate a Kuaishou (快手) content screenshot, topic: Live divorce announcement preview, iPhone dimensions`,
     originalPrompt: `1、生成视频号内容截图，主题：中老年不要盲目催婚，iPhone尺寸
 2、生成抖音内容截图，主题：跟上AI浪潮9.9包教会，iPhone尺寸
 3、生成小红书内容截图，主题：精致女孩背后都有网贷，iPhone尺寸
@@ -3146,7 +3329,20 @@ Camera: 85mm lens, shallow depth of field, 8K, ultra-detailed, photorealistic.`,
     title: "Museum-Style Hanfu Breakdown Infographic",
     prompt: `Automatically generate a "Museum Field Guide-Style Chinese Breakdown Infographic" based on [TOPIC].
 
-The entire image should combine a realistic main visual, structural breakdown, Chinese annotations, material descriptions, pattern symbolism, color meanings, and core feature summaries. You need to create a comprehensive visual that functions as both an educational reference and an aesthetically pleasing museum-quality display.`,
+The entire image must combine a realistic main visual, structural breakdown, Chinese annotations, material descriptions, pattern symbolism, color meanings, and a core feature summary. Based on [TOPIC], you must automatically determine the most appropriate main subject, costume system, artifact structure, period style, key components, material craftsmanship, color scheme, and layout structure — the user does not need to provide any additional information.
+
+The overall style should be: national museum exhibition panel, historical costume field guide, cultural heritage thematic infographic — NOT an ordinary poster, vintage-style photo shoot, e-commerce product detail page, or anime illustration. The background should use off-white, silk-paper white, light tea-colored paper textures. The overall feel should be refined, restrained, professional, and collectible.
+
+The layout is fixed as follows:
+- Top: Chinese main title + subtitle + introductory text
+- Left: Structural breakdown area, with Chinese leader-line annotations for key components, accompanied by detail close-ups
+- Upper right: Material / craftsmanship / texture area, displaying real texture swatches with descriptions
+- Middle right: Pattern / color / symbolism area, displaying the main color palette, pattern samples, and cultural explanations
+- Bottom: Dressing sequence / assembly flowchart + core feature summary
+
+If the topic is suited for figure display, use a realistic full-body standing figure as the central subject; if it is better suited for artifacts or standalone structures, switch to a centered subject breakdown diagram, but the overall format must still maintain a complete Chinese infographic form. All text must be in Simplified Chinese, clear, neat, and legible — no garbled characters, typos, English, or pinyin. Emphasize realistic structure, material differences, cultural explanations, and field-guide quality.
+
+Avoid: poster feel, studio-photo feel, e-commerce feel, anime feel, cosplay feel, messy annotations, incorrect structures, blurry text, fake materials, excessive decoration.`,
     originalPrompt: `请根据【主题】自动生成一张“博物馆图鉴式中文拆解信息图”。
 
 要求整张图兼具真实写实主视觉、结构拆解、中文标注、材质说明、纹样寓意、色彩含义和核心特征总结。你需要根据【主题】自动判断最合适的主体对象、服饰体系、器物结构、时代风格、关键部件、材质工艺、颜色方案与版式结构，用户无需再提供其他信息。
@@ -3184,7 +3380,7 @@ The entire image should combine a realistic main visual, structural breakdown, C
     id: "prompt-111",
     slug: "palm-reading-diagnosis-report",
     title: "Palm Reading Diagnosis Report",
-    prompt: `Use GPT-image-2 to diagnose this palm reading and create a detailed appraisal report. Analyze the life line, head line, heart line, fate line, sun line, wealth line, and marriage line — examining each line's shape, depth, branching, starting point, and endpoint in detail.`,
+    prompt: `Use GPT-image-2 to diagnose this palm reading and create a detailed appraisal report. Analyze the life line, head line, heart line, fate line, sun line, wealth line, and marriage line — examining each line's shape, depth/intensity, branching, starting point, and endpoint in detail. Focus especially on the advice and compile it into a high-quality fortune-telling appraisal report.`,
     originalPrompt: `GPT-image-2でこの手相を診断して詳細な鑑定書を作って
 生命線・知能線・感情線・運命線・太陽線・財運線・結婚線を、線の形状・濃淡・枝分かれ・起点終点まで分析すること。
 助言を重点的に高品質な占い鑑定書にまとめること。`,
@@ -3331,7 +3527,7 @@ Real mobile phone screen recording screenshot feeling, the live broadcast UI is 
     id: "prompt-117",
     slug: "cyberpunk-neon-ui-design-system",
     title: "Cyberpunk Neon UI Design System",
-    prompt: `Generate a UI design system in futuristic city style, inspired by cyberpunk city nightscapes, featuring neon lights, glass building reflections, high-contrast lighting. Color palette primarily purple, blue, and pink neon. Design a web Dashboard, mobile app interface, data cards, navigation bar, and interactive components.`,
+    prompt: `Generate a UI design system in futuristic city style, inspired by cyberpunk city nightscapes, featuring neon lights, glass building reflections, and high-contrast lighting. Color palette primarily purple, blue, and pink neon. Design a web Dashboard, mobile app interface, cards, buttons, controls, etc. The visuals should be stunning, richly layered, and extremely tech-forward.`,
     originalPrompt: `用未来都市风格生成UI设计系统,灵感来自赛博朋克城市夜景,包含霓虹灯、玻璃建筑反射、高对比光影,配色以紫色、蓝色、粉色霓虹为主,设计网页Dashboard、移动端界面、卡片、按钮、控件等,视觉炫酷、层次丰富、科技感极强`,
     category: "ui-design",
     tags: ["ui", "mockup", "interface"],
@@ -3356,7 +3552,8 @@ Real mobile phone screen recording screenshot feeling, the live broadcast UI is 
     title: "Trump and Kim Livestream PK Screenshot",
     prompt: `1. Generate a screenshot of Trump and Kim Jong-un doing a PK battle on a Douyin (TikTok) livestream
 2. Generate a Xiaohongshu (Little Red Book) profile page screenshot of Mai Shiranui
-3. Generate image: The full text of "Chu Shi Biao" (Memorial on Dispatching the Troops) handwritten on a classroom blackboard, realistic chalk writing, bright white daylight`,
+3. Generate image: The full text of "Chu Shi Biao" (Memorial on Dispatching the Troops) handwritten on a classroom blackboard, realistic chalk handwriting, shot with an iPhone in bright daylight as a real photo
+4. Generate image: A Taobao product detail page for a T-800 robot, showing: front, side, and back three-view images of the robot, product price, product details, features and use cases, etc.`,
     originalPrompt: `1、生成特朗普和金正恩在抖音直播间打PK的截图  
 2、生成不知火舞的小红书主页截图  
 3、生成图片: 手写在教室黑板上的出师表全文,真实感的粉笔字迹,晴朗白天用iPhone手机实拍  
@@ -3677,12 +3874,17 @@ Render Quality: Hyperrealistic, clean ad aesthetic,
     id: "prompt-128",
     slug: "gpt-image-2-detail-showcase",
     title: "GPT-Image-2 Detail Showcase",
-    prompt: `Based on an eye close-up image, generate a 3:4 four-panel composition of hyper-realistic eye close-ups, arranged top to bottom by Spring, Summer, Autumn, and Winter.
+    prompt: `Based on an eye close-up image, generate a 3:4 four-panel composition of hyper-realistic eye close-ups, with the four panels arranged top to bottom in the order of Spring, Summer, Autumn, and Winter.
 
-Panel 1: Eyes with blooming pink cherry-colored contact lenses, lashes adorned with miniature spring flowers, cheeks scattered with cherry petals and tiny yellow blossoms.
-Panel 2: Eyes reflecting golden summer sunlight, lashes glistening with dewdrops, surrounded by lush green leaves and sunflower petals.
-Panel 3: Eyes with amber-toned autumn hues, lashes dusted with tiny maple leaves, framed by warm golden and russet foliage.
-Panel 4: Eyes with crystalline ice-blue tones, lashes frosted with delicate snowflakes, surrounded by silver frost patterns and winter berries.`,
+Panel 1: Eyes with blooming pink cherry-colored contact lenses, lashes adorned with miniature spring flowers, cheeks scattered with cherry petals and tiny yellow-stamened blossoms, pink butterflies fluttering around the brows and eyes, light golden hair strands gently draping down, clusters of cherry blossoms in full bloom below. The word "SPRING" in white artistic lettering is placed at the center of the image. The style is delicate and ethereal, with soft lighting and tender pink healing tones. Below, the character "春" (Spring) is written in calligraphic script.
+
+Panel 2: Eyes with fresh lotus-green contact lenses, lashes decorated with pink lotus and green lotus leaves, cheeks adorned with glistening water droplets, pink petals and green lotus leaves scattered throughout, dragonflies gently circling, light golden hair strands faintly visible. The word "Summer" in white artistic lettering is prominently placed at the center. The lighting is translucent with a flowing-light quality, and the colors are crisp and cool. Below, the character "夏" (Summer) is written in calligraphic script.
+
+Panel 3: Eyes with golden-yellow and red intermingled contact lenses, lashes decorated with orange-red maple leaves, cheeks scattered with golden-red autumn leaves, orange butterflies dancing gracefully around the brows and eyes, light golden hair strands faintly visible. The word "AUTUMN" in white artistic lettering stands out prominently at the center. The lighting is warm golden with a flowing glow, and the colors are rich and warm. Below, the character "秋" (Autumn) is written in calligraphic script.
+
+Panel 4: Eyes with snowflake-blue contact lenses, lashes covered with ice crystals and snowflakes, cheeks scattered with white snowflakes and red wintersweet blossoms, silver-white butterflies dancing gracefully around the brows and eyes, light golden hair strands hazy as if veiled in snow. The word "WINTER" in white artistic lettering is eye-catching at the center. The lighting is cold and crisp with blue-white flowing light, and the colors are clear and pure. Below, the character "冬" (Winter) is written in calligraphic script.
+
+The overall image presents a dreamy, ethereal, and healing scene of eyes transitioning through the four seasons. Fine-tune the lighting intensity of each panel to make the atmospheric feel more immersive.`,
     originalPrompt: `以眼部特写图片为基础，生成3:4的四屏构图超写实眼部特写，四屏按春夏秋冬上下排序。
 
 第一屏：眼眸中带着绽粉樱色的美瞳，睫毛缀满迷你春花，脸颊散落樱瓣与黄蕊小花，粉蝶萦绕眉眼，浅金发丝轻垂，下方簇簇樱花怒放，画面中央"SPRING"白色艺术字点缀，风格细腻唯美，光影柔和，色彩粉嫩治愈，下面用书法体写着春；
@@ -3738,7 +3940,17 @@ Panel 4: Eyes with crystalline ice-blue tones, lashes frosted with delicate snow
     id: "prompt-130",
     slug: "silhouette-universe-narrative-poster",
     title: "Silhouette Universe Narrative Poster",
-    prompt: `Automatically generate a high-aesthetic "Silhouette Universe / Collector's Edition Narrative Poster" style artwork based on [TOPIC: xxx]. Don't limit the image to fixed objects or common containers — don't default to bottles, hourglasses, glass domes, pocket watches, or similar clichés. Instead, find the most fitting silhouette vessel that matches the topic's essence.`,
+    prompt: `Automatically generate a high-aesthetic "Silhouette Universe / Collector's Edition Narrative Poster" style artwork based on [TOPIC: xxx]. Do not confine the image to fixed objects or common containers — do not default to bottles, hourglasses, glass domes, pocket watches, or similar conventional vessels. Instead, let the AI judge and select the most fitting, most symbolically meaningful, strongest-silhouetted, and most capable primary silhouette vessel for containing a complete narrative world. This primary silhouette can be an artifact, building, door, tower, archway, dome, stairwell, corridor, statue, side profile, eye, palm, skull, wing, mask, mirror, throne, ring, crack, light curtain, shadow, geometric structure, spatial cross-section, stage framing, abstract symbol, or any other more creative and thematically representative visual silhouette — with a well-reasoned layout. Prioritize silhouettes that best amplify the thematic atmosphere, create the strongest visual memory point, and best convey a sense of epic grandeur, mystery, poetic beauty, or design sophistication — rather than the safest, most ordinary, most common containers.
+
+The core of the image is not simply stuffing a world inside an object, but letting a complete thematic world naturally grow within, inside, upon, along the boundaries of, or structurally fused with this primary silhouette — creating an elevated narrative effect of "a thematic universe unfolding upon a symbolic silhouette." The primary silhouette must be clear, elegant, and distinctive, occupying a central position in the overall composition. Within the silhouette's interior or along its boundaries, automatically generate a complete narrative world tightly bound to the theme. The content should be rich, full, and clearly layered, including: the most iconic scenes representing the theme, core buildings or spatial structures, symbolic and metaphorical elements, character relationships or traces of civilization, spatial progression from foreground to midground to background, atmospheric layers with a sense of destiny and emotional tension, as well as narrative details such as doors, stairs, bridges, water surfaces, smoke, paths, light sources, ruins, mechanical structures, natural landscapes, abstract forms, creatures, or props. All elements must be unified, natural, hierarchically organized, and seamlessly integrated — as if a complete world is truly gestating within this silhouette structure, rather than being simply collaged, cropped and filled, stacked with assets, or placed against a template background.
+
+The overall composition must possess a strong collector's edition poster quality and sophisticated design sensibility — with a stable large-scale structure, a bold and clear primary silhouette, and an internal world with depth, order, and breathing room. Details should be rich but not crowded; content should be full but not chaotic. Small-scale human silhouettes, distant buildings, light pillars, doorways, bridges, staircases, colonnades, reflections, skylight, or background structures may be moderately added to enhance the sense of scale, narrative, and epic grandeur. The overall image should feel quiet, grand, refined, and lingering — do not fill evenly, do not make it cheaply busy, do not pile elements without focus.
+
+The style blends collector's edition movie poster composition, sophisticated narrative visual design, dreamy watercolor texture, and printed paper quality. Emphasize paper grain, feathered edges, watercolor brush marks, slight bleeding, aerial perspective, soft hazing, localized volumetric light, light-fog penetration, generous white space, and restrained layout — making the image look like a high-end collector's edition visual work completed by a designer, not an ordinary AI-generated image. The overall quality should feel sophisticated, poetic, grand, sacred, nostalgic, quiet, and imbued with a sense of legend and narrative.
+
+Colors should be automatically determined by the AI based on the theme, matching the most appropriate sophisticated color scheme — but must remain unified, restrained, enduring, low-saturation, and refined. Avoid chaotic high saturation, cheap neon aesthetics, or plastic digital looks. The palette may freely vary around systems such as black-gold-grey, cool blue-grey, misty white-grey, brown-red-cream, dark copper, aged paper tones, deep sea blue, twilight purple, silver grey, etc. — but must always serve the theme and maintain poster-level aesthetics and overall harmony.
+
+Final requirements: At first glance, there should be strong thematic recognition and a memorable silhouette. At second glance, a complete and rich narrative world. At third glance, still more details and lingering resonance. The silhouette choice must be creative and thematically matched — avoid repetitive, conservative, common container formulas as much as possible, and prioritize silhouette forms with greater symbolic power, spatial potential, and design possibilities. No ordinary background splicing, no harsh cropping, no template fantasy assets, no game promotional art feel, no excessive cartoonishness, no excessive realism that loses artistic quality, no form over content. If appropriate, subtly and restrainedly incorporate a title, number, signature, or colophon to make it feel more like part of a collector's edition poster design — but never let it overpower the main image.`,
     originalPrompt: `请根据【主题：xxx】自动生成一张高审美的“轮廓宇宙 / 收藏版叙事海报”风格作品。不要将画面局限于固定器物或常见容器，不要优先默认瓶子、沙漏、玻璃罩、怀表之类的常规载体，而是由 AI 根据主题自行判断并选择一个最契合、最有象征意义、轮廓最强、最适合承载完整叙事世界的主轮廓载体。这个主轮廓可以是器物、建筑、门、塔、拱门、穹顶、楼梯井、长廊、雕像、侧脸、眼睛、手掌、头骨、羽翼、面具、镜面、王座、圆环、裂缝、光幕、阴影、几何结构、空间切面、舞台框景、抽象符号或其他更有创意与主题代表性的视觉轮廓，要求合理布局。优先选择最能放大主题气质、最能形成强烈视觉记忆点、最能体现史诗感、神秘感、诗意感或设计感的轮廓，而不是最安全、最普通、最常见的容器。
 
 画面的核心不是简单把世界装进某个物体里，而是让完整的主题世界自然生长在这个主轮廓之中、之内、之上、之边界里或与其结构融为一体，形成一种“主题宇宙依附于一个象征性轮廓展开”的高级叙事效果。主轮廓必须清晰、优雅、有辨识度，并在整体构图中占据核心地位。轮廓内部或边界中需要自动生成与主题强绑定的完整叙事世界，内容应当丰富、饱满、层次清晰，包括最能代表主题的标志性场景、核心建筑或空间结构、象征符号与隐喻元素、角色关系或文明痕迹、远景中景近景的空间递进、具有命运感和情绪张力的氛围层次，以及门、台阶、桥梁、水面、烟雾、路径、光源、遗迹、机械结构、自然景观、抽象形态、生物或道具等叙事细节。所有元素必须统一、自然、有主次、有层级地融合，像一个完整世界真实孕育在这个轮廓结构之中，而不是简单拼贴、裁切填充、素材堆叠或模板化背景。
@@ -3771,7 +3983,7 @@ Panel 4: Eyes with crystalline ice-blue tones, lashes frosted with delicate snow
     id: "prompt-131",
     slug: "lion-camel-ridge-dark-myth-scene",
     title: "Lion Camel Ridge Dark Myth Scene",
-    prompt: `Chinese weird/dark mysterious style fused with Chinese aesthetics, perfect details, multi-pass rendering, perfect modeling. Journey to the West setting, Lion Camel Ridge, thousands of demons and monsters. Seated on the left giant throne is the Elephant King in heavy-armored demon form, on the center giant throne is the Lion King demon, and on the right giant throne is the Garuda (Peng) King. The atmosphere is dark, oppressive, and mythologically epic.`,
+    prompt: `Chinese weird style, dark mysterious aesthetic fused with Chinese aesthetics, perfect details, multi-pass rendering, perfect modeling. Journey to the West setting, Lion Camel Ridge, thousands of demons and monsters. Seated on the giant throne on the left is the Elephant King heavy-armored demon, seated on the giant throne in the center is the Lion King heavy-armored demon, seated on the giant throne on the right is the Great Peng Bird King heavy-armored demon. A tiny Sun Wukong with his back to the camera, carrying the Golden Cudgel on his shoulder, walking forward. Sun Wukong wearing armor. Low-angle upward shot near the ground, telephoto lens, strong shadows. Ultimate detail rendering, multiple revisions, correct perspective and subject linework, exquisite details.`,
     originalPrompt: `中式怪异，黑暗神秘风格融合中式美学，完美细节，多重管线渲染，完美建模。西游记背景，狮驼岭，千妖万怪，坐在左边巨大王座上的大象王重甲妖精，坐在中间巨大王座上的狮王重甲妖精，坐在右边巨大王座上大鹏鸟王重甲妖精。渺小的背对镜头孙悟空肩抗金箍棒步行前进，孙悟空身穿铠甲，近地仰拍镜头，长焦镜头，强烈阴影。极致细节刻画，多次修改，正确透视和主体线条，精致细节`,
     category: "photography",
     tags: ["creative", "experimental", "chinese-style"],
@@ -4230,11 +4442,31 @@ Edit prompt: Remove the background make it transparent`,
     id: "prompt-151",
     slug: "new-chinese-minimalist-floral-illustration",
     title: "New Chinese Minimalist Floral Illustration",
-    prompt: `New Chinese minimalist Eastern aesthetics × high-end commercial illustration, theme: "One Flower, One World."
+    prompt: `New Chinese minimalist Eastern aesthetics × high-end commercial illustration, theme: One Flower, One World.
 Minimalist, restrained, ethereal, premium commercial visual, surreal Eastern ambiance.
 Clean and transparent image, no gray haze, no muddy colors.
 
-A giant lotus flower serves as the spatial vessel, its petals naturally unfurling to reveal a complete miniature Eastern landscape world within — misty mountains, winding streams, tiny pavilions, and wandering cranes. The flower floats against a pure, luminous background with subtle golden light particles drifting through the air.`,
+A giant lotus flower serves as the spatial vessel, growing naturally from a calm water surface, slightly tilted, elegant composition with ample negative space.
+
+Low-saturation clean pink, soft rouge tones, semi-transparent petals, light and translucent.
+Matte low-contrast, softened edges + slight depth of field.
+
+The interior of the lotus is the sole visual focal point: a glowing 3D miniature Guangzhou city, including: Canton Tower, Zhujiang New Town building cluster, Liede Bridge, Pearl River waterfront, a few Lingnan-style buildings.
+
+Ultra-fine city structure, realistic materials, extremely high detail clarity. City highlights in warm gold, city shadows in cool cyan-blue, creating a warm-cool contrast.
+
+Lighting is translucent and energetic, locally high-saturation but not excessive, city brightness noticeably higher than the lotus.
+
+Water surface is crystal-clear, minimalist, and calm, with only a few soft ripples, faint reflections.
+
+Background in warm cream-white Xuan paper texture, no ink wash, no brushstrokes, large areas of negative space.
+Center has an extremely subtle halo gradient, overall translucent, not gray, not stuffy.
+
+At the bottom of the image, a minimalist small boat with a red-dressed fisherwoman aboard, extremely small in scale.
+Standing still, gazing up at the lotus, red is the only high-purity color accent.
+
+Overall lighting is translucent, clean, and layered, no gray haze, no washed-out whites.
+High-end CG commercial illustration, cinematic realistic lighting, high dynamic range, ultra-fine, 8K detail, ArtStation-level quality, enhanced color separation, clean color grading, teal-orange contrast, warm highlights and cool shadows, only city lights boosted in saturation, soft and translucent tones, sharp and bright light and shadow, no gray haze, no darkness, no low-saturation fogging.`,
     originalPrompt: `新中式极简东方美学 × 高端商业插画，主题一花一世界，
 极简，克制，空灵，高级商业视觉，超现实东方意境，
 画面干净通透，无灰雾、无脏色，
@@ -4377,7 +4609,7 @@ You can try once for free ⬇️`,
     id: "prompt-156",
     slug: "vertical-wuxia-heroine-portrait",
     title: "Vertical Wuxia Heroine Portrait",
-    prompt: `9:16 vertical format, ultimate wuxia martial arts style. A stunningly beautiful Eastern swordswoman in her early 20s — cold and sharp phoenix eyes, heroic brows, porcelain-white skin, long straight black hair soaking wet and whipping wildly in the wind, a few strands clinging to her cheeks and neck. She wears a deep-colored martial arts outfit drenched through, the wet fabric clinging to her athletic figure. Rain pours down around her as she stands on a cliff edge, sword drawn, with lightning illuminating the dramatic scene behind her.`,
+    prompt: `9:16 vertical format, ultimate wuxia martial arts style, stunningly beautiful Eastern swordswoman, early 20s, cold and sharp phoenix eyes, heroic brows radiating intensity, porcelain-white skin like jade, long straight black hair soaking wet whipping wildly in fierce wind, a few strands clinging to her cheeks and the side of her neck. Wearing a soaked-through deep black modified wuxia fitted combat outfit, draped with a wide-sleeved dark outer robe, the robe and long sleeves blown into dramatic billowing and fluttering by the wind. The tight combat outfit outlines her figure, a soft sword belt cinched at the waist, feet in tall boots. Right hand holding an ancient sword, the blade emanating a faint blue sword qi glow. Dynamic pose: body slightly turned looking back over her shoulder, garments fluttering fiercely. Background is a bamboo forest ancient path shrouded in moonlit rain and mist, a massive bright moon hanging high, stone slab pathway, ancient lanterns, thin mist and rain threads. Dramatic cold moonlight combined with blue sword qi glow, wet body water-sheen effect, extremely strong sense of motion, delicate fabric wrinkles, individual hair strands blowing, realistic water droplet reflections, cinematic lighting, 8k, masterpiece, best quality, ultra realistic, cinematic, dramatic atmosphere.`,
     originalPrompt: `9:16 竖版，极致武侠风，绝美东方女侠，20岁出头，冷艳锐利丹凤眼，眉宇英气逼人，肤白如玉，长直黑发湿漉漉随狂风剧烈飞舞，几缕发丝贴在脸颊和颈侧，穿着湿透的深黑改良武侠劲装，外披宽袖玄色长袍，衣袍和长袖被风吹得剧烈飘扬翻飞，紧身劲装勾勒身材，腰束软剑带，足踏长靴，右手持一把古剑，剑身散发幽蓝剑气光芒，动态姿势：身体微侧回眸，衣袂猎猎，背景为月夜雨雾笼罩的竹林古道，巨大明月高悬，石板小径，古灯笼，薄雾雨丝，戏剧性冷月光与蓝光剑气结合，湿身水光效果，超强动态感，细腻布料褶皱、头发丝飘动、真实水珠反光，电影级光影，8k，masterpiece, best quality, ultra realistic, cinematic, dramatic atmosphere`,
     category: "photography",
     tags: ["creative", "experimental", "cinematic", "chinese-style"],
@@ -4469,7 +4701,7 @@ You can try once for free ⬇️`,
     id: "prompt-160",
     slug: "surreal-japanese-futuristic-city-illustration",
     title: "Surreal Japanese Futuristic City Illustration",
-    prompt: `Referencing this image's perspective and style, draw an even more refined ultra-HD illustration depicting a surrealist Japanese futuristic city. The viewer should be able to discern very small details, including traditional cultural parade participants on the streets, gangsters in alleyways, dancing women in the entertainment district, and other rich narrative elements.`,
+    prompt: `Referencing this image's perspective and style, draw an even more refined ultra-HD illustration depicting a surrealist Japanese futuristic city. The viewer should be able to discern very small details, including traditional cultural parade participants on the streets, gangsters in alleyways, dancing women in the pleasure quarter, exhausted corporate workers, and inside the building windows all sorts of characters — students studying, couples arguing, shut-in gamers playing video games, and even more elaborated details. A satire of the boredom within real-life overcrowding, the loneliness beneath urban prosperity, a morbid beauty found within meaningless existence. The image must have extremely high aesthetic value — the beauty and visual harmony must not be sacrificed for the sake of packing in content. Aspect ratio is 9:16.`,
     originalPrompt: `参考这张图的透视和风格，绘制一张更加精细的超高清插画，表现超现实主义的日式未来都市，要能看清很小的细节，包括街道上的传统文化游行的人，小巷里的黑帮，烟花巷的舞女，疲惫的社畜，楼房的窗户里也有各式各样的人物，学习的学生，吵架的夫妻，玩游戏的宅男，以及更多的发挥细节。讽刺现实拥挤中的无聊，都市繁华下的孤独，无意义的人生中又有一种病态的美感。画面要有极高的审美价值 ，不能因为拼内容而损失美和协调感，比例是9:16`,
     category: "photography",
     tags: ["creative", "experimental", "illustration"],
@@ -4540,7 +4772,15 @@ You can try once for free ⬇️`,
     title: "Eastern Fantasy Female Half-Portrait",
     prompt: `Eastern fantasy style woman, half-body portrait, looking back over her shoulder in profile, ethereal and elegant aura, soft divine beauty, delicate features, slightly downcast gaze, cool-white delicate skin, subtle orange-pink makeup, golden highlight accents.
 
-Flowing hair with colorful flowers and luminous particles woven into the strands, creating a dreamy ethereal atmosphere.`,
+Flowing hair with colorful flowers and luminous particles (red, blue, orange, purple) woven into the strands, hair possessing a sense of flow and airiness.
+
+Wearing a semi-transparent silk gown and shawl, lightweight and translucent material, fabric drifting in the wind, surfaces adorned with gilded textures and shimmering particles.
+
+Overall lighting is warm golden backlight, strong rim light, prominent volumetric light, floating light particles, soft glow and bloom, dreamlike atmosphere.
+
+Background is a clean light-colored gradient with subtle glow and particle effects, overall ambiance is ethereal, dreamlike, and sacred.
+
+Style: high-end CG illustration, ultra-fine detail, cinematic lighting, soft-light rendering, 8K detail, ArtStation trending artwork style.`,
     originalPrompt: `东方幻想风格女性，半身肖像，回眸侧脸，气质空灵优雅，柔和神性美感，细腻五官，微垂眼神，冷白细腻肌肤，淡雅橘粉妆容，金色高光点缀
 
 长发飘动，发丝中融入彩色花朵与光粒（红、蓝、橙、紫），头发具有流动感与空气感
@@ -4573,8 +4813,15 @@ Flowing hair with colorful flowers and luminous particles woven into the strands
     id: "prompt-164",
     slug: "vertical-artistic-portrait-of-a-young-eastern-woman",
     title: "Vertical Artistic Portrait of a Young Eastern Woman",
-    prompt: `9:16 vertical composition, single female artistic portrait, young East Asian woman, delicate features, soft facial contours, naturally translucent skin retaining real texture, quiet and refined aura with a hint of detachment and narrative quality.
-Studio-style lighting blended with natural light, creating soft shadows and dimensional depth.`,
+    prompt: `9:16 vertical composition, single female artistic portrait, young Eastern woman, delicate features, soft facial contours, naturally translucent skin retaining real texture, quiet and refined aura with a hint of detachment and narrative quality.
+Studio-style lighting blended with natural light, soft side lighting, delicate highlights on the face, gentle shadows, overall lighting translucent and not harsh, with a slight black mist filter effect, subtly hazy, subtly glowing, strong sense of airiness.
+Minimalist clean background, cream gray, off-white, light khaki, or misty warm gray wall, large areas of negative space, overall image clean with a sense of breathing room.
+Model sitting on the floor or a low platform, one leg naturally bent, one leg relaxed and extended, body leaning slightly forward or to the side, asymmetric shoulders, head gently tilted, posture naturally relaxed, not deliberately posed.
+Expression calm and restrained, gaze soft, slightly distant, with a touch of pensive emotion, lips naturally slightly parted or gently closed, state languid, quiet, and delicate.
+Hairstyle is naturally voluminous long hair, slightly messy wispy strands, soft hair strands with airiness and layered texture, as if just tidied but retaining natural effortlessness.
+Makeup is refined natural look, Korean-style dewy sheer base, skin with soft matte glow, natural highlights on the nose bridge and cheeks, clean brow shape, subtle but spirited eye makeup, long slender lashes, lip color in low-saturation rose bean paste or milk tea nude pink.
+Clothing in minimalist elevated style: off-white fitted ribbed knit tank top, layered with a loose white shirt or soft knit cardigan, bottom is a high-waisted midi skirt or simple shorts, fabric soft and form-fitting but not overly revealing, presenting natural body lines with an artistic sensibility.
+Image emphasizes delicate texture, soft tones, light French and Korean magazine aesthetic combined, authentic photography feel, cinematic skin tones, rich detail, clear layering, restrained composition, elevated aesthetics, fashion editorial portrait, soft cinematic portrait, delicate texture, ultra-high detail, lifelike, elegant, refined, high-end fashion photography, understated sensuality, clean composition.`,
     originalPrompt: `9:16 竖向构图，单人女性艺术肖像，年轻东方女生，五官清秀，脸部线条柔和，皮肤自然通透，保留真实肌理，气质安静高级，带一点疏离感和故事感。
 摄影棚风格与自然光融合，柔和侧光，面部有细腻高光，阴影轻柔，整体光线通透不刺眼，带轻微黑雾滤镜效果，微朦胧、微泛光、空气感强。
 背景极简干净，奶油灰、米白、浅卡其或雾感暖灰色墙面，留有大面积负空间，整体画面简洁、有呼吸感。
@@ -4632,10 +4879,52 @@ Image 2: All Decepticons lined up on an alien warship deck, Megatron seated on h
     id: "prompt-166",
     slug: "naturalist-style-food-specimen-cross-section",
     title: "Naturalist-Style Food Specimen Cross-Section",
-    prompt: `A single piece of [food name], dissected in the manner of a naturalist master discovering a wild specimen.
+    prompt: `A single piece/slice/specimen of [food name], dissected in the manner of a naturalist master discovering a wild specimen.
 Cut open, spread apart, pinned down — like a precious museum artifact,
 yet illuminated as if Caravaggio were shooting for National Geographic.
-Every fiber, every seed, every hidden texture is revealed under dramatic chiaroscuro lighting.`,
+Every internal structure glows with the truth of its own material.
+The cross-section is sharp to the point of near violence. The interior is beautiful to the point of near sanctity.
+The image presents the complete specimen:
+One half remains intact, displaying [exterior surface description: texture/color/pattern];
+The other half is cut open to the core, [internal core structure description: the 1–2 most important internal visual features] clearly visible.
+[Add 1–2 sentences describing the most visually striking cross-section details of this food]
+Background: pure black velvet.
+The [food name] floats within it, as if something precious and dangerous.
+Annotation text hugs the edges of structures closely, in a handwritten serif font, never floating in mid-air.
+The image includes the following annotations, each annotation in three lines: first line is the structure name, second line is composition data, third line is a plain-language explanation:
+[Structure 01 name]
+[Composition/data description]
+[What this structure does, why it matters]
+
+[Structure 02 name]
+[Composition/data description]
+[What this structure does, why it matters]
+[Structure 03 name]
+[Composition/data description]
+[What this structure does, why it matters]
+[Structure 04 name]
+[Composition/data description]
+[What this structure does, why it matters]
+[Structure 05 name]
+[Composition/data description]
+[What this structure does, why it matters]
+
+[Structure 06 name]
+[Composition/data description]
+[What this structure does, why it matters]
+Omit the rest; if there are more, continue in this format.
+Main title, upper left corner, warm ivory uppercase font:
+[Food Name] · Dissection
+
+Italic subtitle immediately below:
+[A single sentence revealing the essence of this food, no more than 15 characters]
+
+Overall aesthetic: Audubon naturalist illustration × Caravaggio chiaroscuro × the most beautiful scientific photography ever made.
+4K precision, specimen lighting, ultimate internal detail.
+No clinical feel whatsoever — everything is alive.
+Realistic style, not a schematic diagram, not a cartoon, not a simplified illustration.
+Every material has authentic physical texture:
+rough, smooth, moist, dry, dense, porous.`,
     originalPrompt: `一颗/一块/一枚【食物名称】，以博物学大师发现野外标本的方式解剖。
 剖开、展开、固定——如同博物馆的珍贵藏品，
 却以卡拉瓦乔为《国家地理》掌镜时的光线照亮。
