@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CopyButton from "@/components/CopyButton";
 import {
   getPromptBySlug,
   getFeaturedAIPrompts,
@@ -155,31 +156,7 @@ export default async function PromptDetailPage({ params }: Props) {
         }}>
           &ldquo;{prompt.prompt}&rdquo;
         </p>
-        <button
-          id="copy-btn"
-          data-text={prompt.prompt}
-          style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            padding: "10px 24px", borderRadius: "var(--radius-md)",
-            fontSize: 13, fontWeight: 600,
-            color: "var(--bg-deep)", background: "var(--text-on-dark)",
-            border: "none", cursor: "pointer",
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
-          </svg>
-          Copy Prompt
-        </button>
-        <script dangerouslySetInnerHTML={{ __html: `
-          document.getElementById('copy-btn').addEventListener('click',function(){
-            navigator.clipboard.writeText(this.dataset.text).then(()=>{
-              this.textContent='Copied!';
-              setTimeout(()=>{this.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Prompt';},2000);
-            });
-          });
-        `}} />
+        <CopyButton text={prompt.prompt} />
       </div>
 
       {/* Original prompt (if translated) */}
