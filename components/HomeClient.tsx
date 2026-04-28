@@ -321,6 +321,38 @@ export default function HomeClient({
         </div>
       </section>
 
+      {/* ══════════ KEYWORD HUB — SEO internal link module ══════════ */}
+      <section style={{ background: "var(--bg-warm)", padding: "64px 32px" }}>
+        <div style={{ maxWidth: "var(--max-w-narrow)", margin: "0 auto" }}>
+          <h2 className="font-serif" style={{ fontSize: "clamp(22px, 3vw, 30px)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 12, textAlign: "center" }}>
+            Explore Drawing & AI Prompt Resources
+          </h2>
+          <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, textAlign: "center", maxWidth: 520, margin: "0 auto 36px" }}>
+            Whether you draw by hand or generate with AI, we have the right prompts and guides for you.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))", gap: 14 }}>
+            {[
+              { href: "/drawing-prompts", title: "Drawing Prompts", desc: "Curated ideas for sketching, painting, and illustration across every skill level.", color: "#5a9e7a", bg: "#eef6f2", border: "#b8dcc8" },
+              { href: "/how-to-use-gpt-image-2", title: "How to Use GPT Image 2", desc: "Step-by-step guide to writing effective prompts for OpenAI\u2019s latest image model.", color: "#c06a3e", bg: "#fdf0e8", border: "#f0c4a8" },
+              { href: "/gpt-image-2-prompts", title: "GPT Image 2 Prompts", desc: "167+ tested, copy-paste prompts optimized for GPT Image 2 with example images.", color: "#8b7ab8", bg: "#f2f0f8", border: "#d0c8e8" },
+              { href: "/generator", title: "Drawing Prompt Generator", desc: "150 billion+ unique combinations. Choose difficulty, mood, and style.", color: "#b8924a", bg: "#fdf8e8", border: "#e8d8a8" },
+              { href: "/daily-challenge", title: "Daily Drawing Challenge", desc: "A new prompt every day. Same for everyone. Compare your interpretation.", color: "#c47ab8", bg: "#faf0f8", border: "#e8c0e0" },
+              { href: "/random", title: "Random Drawing Prompt", desc: "No decisions needed. Hit the button and start drawing immediately.", color: "#7b9eb8", bg: "#eef4f8", border: "#c8dce8" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="card"
+                style={{ display: "block", padding: "20px", textDecoration: "none", borderLeft: `3px solid ${item.color}`, transition: "box-shadow 0.2s, transform 0.15s" }}
+              >
+                <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", marginBottom: 6 }}>{item.title}</div>
+                <div style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6 }}>{item.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══════════ FAQ ══════════ */}
       <section style={{ borderTop: "1px solid var(--border)", padding: "80px 32px" }}>
         <div style={{ maxWidth: "var(--max-w-narrow)", margin: "0 auto" }}>

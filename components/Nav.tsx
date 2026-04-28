@@ -5,15 +5,17 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 
 const mainLinks = [
-  { href: "/ai-prompts",          label: "AI Prompts" },
-  { href: "/gpt-image-2-prompts", label: "GPT Image 2", hot: true },
-  { href: "/generator",           label: "Drawing Generator" },
+  { href: "/ai-prompts",              label: "AI Prompts" },
+  { href: "/gpt-image-2-prompts",     label: "GPT Image 2", hot: true },
+  { href: "/drawing-prompts",         label: "Drawing Prompts" },
+  { href: "/generator",               label: "Generator" },
 ];
 
 const moreLinks = {
   tools: [
-    { href: "/random",          label: "Random Prompt" },
-    { href: "/daily-challenge",  label: "Daily Challenge" },
+    { href: "/random",                    label: "Random Prompt" },
+    { href: "/daily-challenge",            label: "Daily Challenge" },
+    { href: "/how-to-use-gpt-image-2",    label: "How to Use GPT Image 2" },
   ],
   styles: [
     { href: "/character",       label: "Character Prompts" },

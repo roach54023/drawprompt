@@ -43,6 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${BASE}/drawing-prompts`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/how-to-use-gpt-image-2`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
   ];
 
   // ── Drawing generator & tools ────────────────────────────────────

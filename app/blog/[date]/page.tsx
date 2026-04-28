@@ -23,13 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { date } = await params;
   const post = getBlogPost(date);
   if (!post) return {};
+  const seoTitle = `${post.mood} ${post.subject} Drawing Prompt \u2014 ${date}`;
+  const seoDesc = `Daily drawing prompt for ${date}: ${post.prompt.slice(0, 120)}. A ${post.mood.toLowerCase()} ${post.theme.toLowerCase()} scene. Free daily art challenge.`;
   return {
-    title: `Drawing Prompt: ${date} — Daily Art Challenge`,
-    description: `Today's drawing prompt: ${post.prompt.slice(0, 120)}. Join the daily drawing challenge. Free, no sign-up needed.`,
+    title: seoTitle,
+    description: seoDesc,
     alternates: { canonical: `https://drawprompt.org/blog/${date}/` },
     openGraph: {
-      title: `Drawing Prompt: ${date} — Daily Art Challenge`,
-      description: `Today's drawing prompt: ${post.prompt.slice(0, 120)}.`,
+      title: seoTitle,
+      description: `Daily drawing prompt: ${post.prompt.slice(0, 120)}.`,
       type: "article",
       url: `https://drawprompt.org/blog/${date}/`,
     },
@@ -80,9 +82,9 @@ export default async function BlogPostPage({ params }: Props) {
           className="font-serif"
           style={{ fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 6 }}
         >
-          Daily Drawing Prompt
+          Daily Drawing Prompt for {displayDate}
         </h1>
-        <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>{displayDate}</p>
+        <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>A {post.mood.toLowerCase()} {post.theme.toLowerCase()} scene featuring {post.subject.toLowerCase()}</p>
       </div>
 
       {/* Prompt card */}
@@ -157,6 +159,14 @@ export default async function BlogPostPage({ params }: Props) {
         >
           Submit your artwork →
         </Link>
+      </div>
+
+      {/* Internal links */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 36 }}>
+        <Link href="/drawing-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Drawing Prompts</Link>
+        <Link href="/daily-challenge" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Today&apos;s Challenge</Link>
+        <Link href="/generator" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Prompt Generator</Link>
+        <Link href="/gpt-image-2-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>AI Prompts</Link>
       </div>
 
       {/* Related */}
