@@ -10,6 +10,7 @@ import {
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
+import PromptDetailModal from "@/components/PromptDetailModal";
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -86,6 +87,7 @@ export default function HomeClient() {
   const featured = getFeaturedAIPrompts(6);
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {
@@ -230,7 +232,7 @@ export default function HomeClient() {
 
         <div className="featured-grid">
           {featured.map((prompt) => (
-            <PromptImageCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} />
+            <PromptImageCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} onSelect={() => setSelectedPrompt(prompt)} />
           ))}
         </div>
 
@@ -343,17 +345,26 @@ export default function HomeClient() {
           <img src="https://www.dexigner.com/images/logo/dexigner-logo.svg" alt="Design Directory" style={{ height: 12, width: "auto", border: "none", padding: "6px" }} />
         </a>
       </div>
+
+      {/* Modal */}
+      {selectedPrompt && (
+        <PromptDetailModal
+          prompt={selectedPrompt}
+          catInfo={categories.find((c) => c.id === selectedPrompt.category)}
+          onClose={() => setSelectedPrompt(null)}
+        />
+      )}
     </div>
   );
 }
 
 // ─── PromptImageCard ─────────────────────────────────────────────────────────
-function PromptImageCard({ prompt, copied, onCopy }: { prompt: AIPrompt; copied: boolean; onCopy: () => void }) {
+function PromptImageCard({ prompt, copied, onCopy, onSelect }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; onSelect: () => void }) {
   const catInfo = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt = prompt.prompt.length > 110 ? prompt.prompt.slice(0, 110).trimEnd() + "\u2026" : prompt.prompt;
 
   return (
-    <Link href={`/ai-prompts/${prompt.slug}`} className="img-card" style={{ textDecoration: "none", color: "inherit", display: "block" }}>
+    <div className="img-card" style={{ display: "block", cursor: "pointer" }} onClick={onSelect}>
       <div className="img-card-image-wrap">
         <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={800} height={600} className="img-card-image" />
         <div className="img-card-overlay">
@@ -386,7 +397,7 @@ function PromptImageCard({ prompt, copied, onCopy }: { prompt: AIPrompt; copied:
 
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
           <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
+            onClick={(e) => { e.stopPropagation(); onCopy(); }}
             className={`btn-ghost ${copied ? "copy-success" : ""}`}
             style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500, minWidth: 80 }}
           >
@@ -404,13 +415,16 @@ function PromptImageCard({ prompt, copied, onCopy }: { prompt: AIPrompt; copied:
               </>
             )}
           </button>
-          <span className="btn-ghost" style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500 }}>
+          <span
+            className="btn-ghost"
+            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500 }}
+          >
             Details
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

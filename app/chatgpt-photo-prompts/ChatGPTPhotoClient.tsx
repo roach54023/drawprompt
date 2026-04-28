@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+// Note: Link is still used for the "Browse All AI Prompts" CTA below
 import {
   aiPrompts,
   categories,
@@ -498,21 +499,6 @@ function PhotoPromptCard({
             </>
           )}
         </button>
-        <Link
-          href={`/ai-prompts/${prompt.slug}`}
-          className="btn-ghost"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 5,
-            padding: "7px 14px",
-            textDecoration: "none",
-            fontSize: 12,
-            fontWeight: 500,
-          }}
-        >
-          View Details &rarr;
-        </Link>
       </div>
     </div>
   );

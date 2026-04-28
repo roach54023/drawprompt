@@ -11,6 +11,7 @@ import {
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
+import PromptDetailModal from "@/components/PromptDetailModal";
 
 const gptImage2Prompts = aiPrompts.filter((p) =>
   p.aiModels.includes("gpt-image-2")
@@ -86,6 +87,7 @@ const TIPS = [
 export default function GPTImage2Client() {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
   const availableCategories = useMemo(() => {
     const catIds = new Set(gptImage2Prompts.map((p) => p.category));
@@ -253,7 +255,7 @@ export default function GPTImage2Client() {
             </h2>
             <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
               {gptImage2Prompts.length} prompts across {availableCategories.length} categories.
-              Filter by type, copy any prompt, or view the full breakdown.
+              Filter by type, copy any prompt, or click for the full breakdown.
             </p>
           </div>
 
@@ -308,6 +310,7 @@ export default function GPTImage2Client() {
                 prompt={prompt}
                 copied={copiedId === prompt.id}
                 onCopy={() => handleCopy(prompt)}
+                onSelect={() => setSelectedPrompt(prompt)}
               />
             ))}
           </div>
@@ -447,6 +450,15 @@ export default function GPTImage2Client() {
           </svg>
         </Link>
       </div>
+
+      {/* Modal */}
+      {selectedPrompt && (
+        <PromptDetailModal
+          prompt={selectedPrompt}
+          catInfo={categories.find((c) => c.id === selectedPrompt.category)}
+          onClose={() => setSelectedPrompt(null)}
+        />
+      )}
     </div>
   );
 }
@@ -455,10 +467,12 @@ function PromptGalleryCard({
   prompt,
   copied,
   onCopy,
+  onSelect,
 }: {
   prompt: AIPrompt;
   copied: boolean;
   onCopy: () => void;
+  onSelect: () => void;
 }) {
   const catInfo: CategoryInfo | undefined = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt =
@@ -467,7 +481,11 @@ function PromptGalleryCard({
       : prompt.prompt;
 
   return (
-    <Link href={`/ai-prompts/${prompt.slug}`} className="img-card" style={{ textDecoration: "none", color: "inherit" }}>
+    <div
+      className="img-card"
+      style={{ display: "block", cursor: "pointer" }}
+      onClick={onSelect}
+    >
       <div className="img-card-image-wrap">
         <Image
           src={prompt.imageUrl}
@@ -537,7 +555,7 @@ function PromptGalleryCard({
 
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: "auto" }}>
           <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
+            onClick={(e) => { e.stopPropagation(); onCopy(); }}
             className={`btn-ghost ${copied ? "copy-success" : ""}`}
             style={{
               display: "inline-flex",
@@ -584,6 +602,6 @@ function PromptGalleryCard({
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

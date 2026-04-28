@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { aiPrompts } from "@/lib/aiPromptData";
 
 const BASE = "https://drawprompt.org";
 
@@ -45,14 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
   ];
-
-  // ── Individual AI prompt detail pages ────────────────────────────
-  const promptPages: MetadataRoute.Sitemap = aiPrompts.map((p) => ({
-    url: `${BASE}/ai-prompts/${p.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
 
   // ── Drawing generator & tools ────────────────────────────────────
   const toolPages: MetadataRoute.Sitemap = [
@@ -138,5 +129,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: i === 0 ? 0.6 : 0.4,
   }));
 
-  return [...aiPages, ...promptPages, ...toolPages, ...blogPages];
+  return [...aiPages, ...toolPages, ...blogPages];
 }
