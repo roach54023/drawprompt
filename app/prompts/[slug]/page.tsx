@@ -3,11 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
+import RelatedPrompts from "@/components/RelatedPrompts";
 import {
   aiPrompts,
   getPromptBySlug,
   getFeaturedAIPrompts,
   getRelatedPrompts,
+  hasDetailPage,
   categories,
   CATEGORY_META,
   type AIModel,
@@ -30,9 +32,9 @@ const DIFFICULTY_CONFIG: Record<string, { label: string; color: string; bg: stri
   advanced:     { label: "Advanced",     color: "#b85a5a", bg: "#fdf0f0" },
 };
 
-// Generate detail pages for ALL prompts
+// Only generate static pages for prompts that have full detail content
 export function generateStaticParams() {
-  return aiPrompts.map((p) => ({ slug: p.slug }));
+  return aiPrompts.filter((p) => hasDetailPage(p)).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -225,44 +227,7 @@ export default async function PromptDetailPage({ params }: Props) {
       </div>
 
       {/* Related prompts */}
-      {related.length > 0 && (
-        <div>
-          <h2 className="font-serif" style={{ fontSize: 18, fontWeight: 600, color: "var(--text-primary)", marginBottom: 16 }}>
-            More {cat?.label ?? "Prompts"}
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
-            {related.map((r) => {
-              const rCat = CATEGORY_META[r.category];
-              return (
-                <Link
-                  key={r.id}
-                  href={`/prompts/${r.slug}`}
-                  className="card"
-                  style={{ display: "block", textDecoration: "none", overflow: "hidden" }}
-                >
-                  <Image
-                    src={r.imageUrl}
-                    alt={r.imageAlt}
-                    width={400}
-                    height={300}
-                    sizes="200px"
-                    style={{ width: "100%", height: 120, objectFit: "cover", display: "block" }}
-                    loading="lazy"
-                  />
-                  <div style={{ padding: "12px 14px" }}>
-                    <span style={{ fontSize: 10, fontWeight: 600, color: rCat?.color ?? "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                      {rCat?.label}
-                    </span>
-                    <p className="font-serif" style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.3, margin: "4px 0 0" }}>
-                      {r.title}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <RelatedPrompts prompts={related} categoryLabel={cat?.label} />
     </div>
   );
 }

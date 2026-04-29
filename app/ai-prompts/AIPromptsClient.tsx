@@ -7,10 +7,12 @@ import {
   aiPrompts,
   categories,
   CATEGORY_META,
+  hasDetailPage,
   type AIPrompt,
   type AIPromptCategory,
   type AIModel,
 } from "@/lib/aiPromptData";
+import PromptDetailModal from "@/components/PromptDetailModal";
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -28,6 +30,7 @@ const DIFFICULTY_COLOR: Record<string, string> = {
 export default function AIPromptsClient() {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
 
   // Interleave categories so the grid shows variety (round-robin by category)
   const categoryOrder = categories.map((c) => c.id);
@@ -191,10 +194,16 @@ export default function AIPromptsClient() {
                 : prompt.prompt;
             const copied = copiedId === prompt.id;
 
+            const detail = hasDetailPage(prompt);
+            const Wrapper = detail ? Link : "div";
+            const wrapperExtra = detail
+              ? { href: `/prompts/${prompt.slug}` }
+              : { onClick: () => setModalPrompt(prompt) };
+
             return (
-              <Link
+              <Wrapper
                 key={prompt.id}
-                href={`/prompts/${prompt.slug}`}
+                {...(wrapperExtra as Record<string, unknown>)}
                 className="img-card animate-fade-up"
                 style={{
                   animationDelay: `${Math.min(i * 0.03, 0.3)}s`,
@@ -323,7 +332,7 @@ export default function AIPromptsClient() {
                     </span>
                   </div>
                 </div>
-              </Link>
+              </Wrapper>
             );
           })}
         </div>
@@ -344,6 +353,14 @@ export default function AIPromptsClient() {
         )}
       </section>
 
+      {/* Modal for prompts without detail page */}
+      {modalPrompt && (
+        <PromptDetailModal
+          prompt={modalPrompt}
+          catInfo={categories.find((c) => c.id === modalPrompt.category)}
+          onClose={() => setModalPrompt(null)}
+        />
+      )}
     </div>
   );
 }

@@ -6,11 +6,13 @@ import Link from "next/link";
 import {
   aiPrompts,
   categories,
+  hasDetailPage,
   type AIPrompt,
   type AIPromptCategory,
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
+import PromptDetailModal from "@/components/PromptDetailModal";
 
 /**
  * Interleave prompts so different categories appear alternately
@@ -135,6 +137,7 @@ const TIPS = [
 export default function GPTImage2Client() {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
 
   const availableCategories = useMemo(() => {
     const catIds = new Set(gptImage2Prompts.map((p) => p.category));
@@ -357,6 +360,7 @@ export default function GPTImage2Client() {
                 prompt={prompt}
                 copied={copiedId === prompt.id}
                 onCopy={() => handleCopy(prompt)}
+                onSelect={hasDetailPage(prompt) ? undefined : () => setModalPrompt(prompt)}
               />
             ))}
           </div>
@@ -497,6 +501,14 @@ export default function GPTImage2Client() {
         </Link>
       </div>
 
+      {/* Modal for prompts without detail page */}
+      {modalPrompt && (
+        <PromptDetailModal
+          prompt={modalPrompt}
+          catInfo={categories.find((c) => c.id === modalPrompt.category)}
+          onClose={() => setModalPrompt(null)}
+        />
+      )}
     </div>
   );
 }
@@ -505,10 +517,12 @@ function PromptGalleryCard({
   prompt,
   copied,
   onCopy,
+  onSelect,
 }: {
   prompt: AIPrompt;
   copied: boolean;
   onCopy: () => void;
+  onSelect?: () => void;
 }) {
   const catInfo: CategoryInfo | undefined = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt =
@@ -516,9 +530,15 @@ function PromptGalleryCard({
       ? prompt.prompt.slice(0, 110).trimEnd() + "\u2026"
       : prompt.prompt;
 
+  const detail = hasDetailPage(prompt);
+  const Wrapper = detail ? Link : "div";
+  const wrapperProps = detail
+    ? { href: `/prompts/${prompt.slug}` }
+    : { onClick: onSelect };
+
   return (
-    <Link
-      href={`/prompts/${prompt.slug}`}
+    <Wrapper
+      {...(wrapperProps as Record<string, unknown>)}
       className="img-card"
       style={{ display: "block", cursor: "pointer", textDecoration: "none", color: "inherit" }}
     >
@@ -638,6 +658,6 @@ function PromptGalleryCard({
           </span>
         </div>
       </div>
-    </Link>
+    </Wrapper>
   );
 }
