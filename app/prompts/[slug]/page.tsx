@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
 import {
+  aiPrompts,
   getPromptBySlug,
   getFeaturedAIPrompts,
   getRelatedPrompts,
@@ -29,9 +30,9 @@ const DIFFICULTY_CONFIG: Record<string, { label: string; color: string; bg: stri
   advanced:     { label: "Advanced",     color: "#b85a5a", bg: "#fdf0f0" },
 };
 
-// Only generate pages for featured prompts
+// Generate detail pages for ALL prompts
 export function generateStaticParams() {
-  return getFeaturedAIPrompts(6).map((p) => ({ slug: p.slug }));
+  return aiPrompts.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -235,7 +236,7 @@ export default async function PromptDetailPage({ params }: Props) {
               return (
                 <Link
                   key={r.id}
-                  href={`/ai-prompts`}
+                  href={`/prompts/${r.slug}`}
                   className="card"
                   style={{ display: "block", textDecoration: "none", overflow: "hidden" }}
                 >

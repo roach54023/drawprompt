@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   aiPrompts,
   categories,
@@ -10,7 +11,6 @@ import {
   type AIPromptCategory,
   type AIModel,
 } from "@/lib/aiPromptData";
-import PromptDetailModal from "@/components/PromptDetailModal";
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -28,7 +28,6 @@ const DIFFICULTY_COLOR: Record<string, string> = {
 export default function AIPromptsClient() {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
   // Interleave categories so the grid shows variety (round-robin by category)
   const categoryOrder = categories.map((c) => c.id);
@@ -193,16 +192,18 @@ export default function AIPromptsClient() {
             const copied = copiedId === prompt.id;
 
             return (
-              <div
+              <Link
                 key={prompt.id}
+                href={`/prompts/${prompt.slug}`}
                 className="img-card animate-fade-up"
                 style={{
                   animationDelay: `${Math.min(i * 0.03, 0.3)}s`,
                   opacity: 0,
                   display: "block",
                   cursor: "pointer",
+                  textDecoration: "none",
+                  color: "inherit",
                 }}
-                onClick={() => setSelectedPrompt(prompt)}
               >
                 <div className="img-card-image-wrap">
                   <Image
@@ -322,7 +323,7 @@ export default function AIPromptsClient() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -343,14 +344,6 @@ export default function AIPromptsClient() {
         )}
       </section>
 
-      {/* Modal */}
-      {selectedPrompt && (
-        <PromptDetailModal
-          prompt={selectedPrompt}
-          catInfo={categories.find((c) => c.id === selectedPrompt.category)}
-          onClose={() => setSelectedPrompt(null)}
-        />
-      )}
     </div>
   );
 }

@@ -11,7 +11,6 @@ import {
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
-import PromptDetailModal from "@/components/PromptDetailModal";
 
 /**
  * Interleave prompts so different categories appear alternately
@@ -136,7 +135,6 @@ const TIPS = [
 export default function GPTImage2Client() {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
   const availableCategories = useMemo(() => {
     const catIds = new Set(gptImage2Prompts.map((p) => p.category));
@@ -359,7 +357,6 @@ export default function GPTImage2Client() {
                 prompt={prompt}
                 copied={copiedId === prompt.id}
                 onCopy={() => handleCopy(prompt)}
-                onSelect={() => setSelectedPrompt(prompt)}
               />
             ))}
           </div>
@@ -500,14 +497,6 @@ export default function GPTImage2Client() {
         </Link>
       </div>
 
-      {/* Modal */}
-      {selectedPrompt && (
-        <PromptDetailModal
-          prompt={selectedPrompt}
-          catInfo={categories.find((c) => c.id === selectedPrompt.category)}
-          onClose={() => setSelectedPrompt(null)}
-        />
-      )}
     </div>
   );
 }
@@ -516,12 +505,10 @@ function PromptGalleryCard({
   prompt,
   copied,
   onCopy,
-  onSelect,
 }: {
   prompt: AIPrompt;
   copied: boolean;
   onCopy: () => void;
-  onSelect: () => void;
 }) {
   const catInfo: CategoryInfo | undefined = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt =
@@ -530,10 +517,10 @@ function PromptGalleryCard({
       : prompt.prompt;
 
   return (
-    <div
+    <Link
+      href={`/prompts/${prompt.slug}`}
       className="img-card"
-      style={{ display: "block", cursor: "pointer" }}
-      onClick={onSelect}
+      style={{ display: "block", cursor: "pointer", textDecoration: "none", color: "inherit" }}
     >
       <div className="img-card-image-wrap">
         <Image
@@ -651,6 +638,6 @@ function PromptGalleryCard({
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
