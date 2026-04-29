@@ -3472,23 +3472,21 @@ Avoid: poster feel, studio-photo feel, e-commerce feel, anime feel, cosplay feel
   },
   {
     id: "prompt-115",
-    slug: "elon-musk-douyin-livestream-screenshot",
-    title: "Elon Musk Douyin Livestream Screenshot",
-    prompt: `A 9:16 vertical version, high-detail realistic style Chinese TikTok live screenshot, Elon Musk is talking to the mobile phone camera in the live broadcast room, excited, smiling, and the live atmosphere is warm and real. He held a white handwritten sign in one hand, which clearly said: "Thank you Shinning". There are obvious Chinese TikTok interface elements in the live broadcast screen, including likes, comments and share icons arranged vertically on the right, scrolling Chinese bullet screens and interactive comments below, and the "live broadcast" logo at the top, which looks like a real mobile phone screenshot. There is an eye-catching gift prompt special effect in the screen: "Shinning sent TikTok No. 1", with gift animation light effect and platform-style prompt box. Musk is in a professional live broadcast environment, with a mobile phone holder, a ring fill light and a desktop microphone in front of him. The background is a modern technology live broadcast room with bright lights and a slight neon atmosphere. The composition is real and natural, like the ongoing live screenshot of the Chinese short video platform. The interface information is rich but not messy, the characters are clear, the expression is vivid, the details are rich, the sense of real photography, the depth of field, high definition, cinematic, photorealistic, realistic livestream screenshot, social media UI, Chinese Douyin live room, detailed lighting, natural skin texture.
+    slug: "elon-musk-tiktok-livestream-screenshot",
+    title: "Elon Musk TikTok Livestream Screenshot",
+    prompt: `Create a 9:16 vertical, high-detail, photorealistic smartphone screenshot of a TikTok livestream. Elon Musk is speaking directly to the front-facing phone camera in a live broadcast room, looking excited, smiling, and warm, with a natural and authentic livestream atmosphere. He is holding a white handwritten sign in one hand that clearly says: "Thank you Shinning".
 
-Negative prompts:
+Show a realistic TikTok livestream interface in English, including a clear LIVE badge at the top, visible time, battery and signal bar, viewer count, vertically stacked like, comment, and share icons on the right, and an active English live comment section with scrolling comments and audience interaction near the bottom. Add a prominent gift notification styled like a real TikTok livestream effect that says: "Shinning sent TikTok No. 1", with bright animated glow and platform-style gift pop-up UI.
 
-Low definition, blur, cartoon, illustration, too strong CG sense, two-dimensional, deformed fingers, wrong text, scrambled code, multiple mobile phones, multiple brands, character repetition, face collapse, facial features distortion, excessive skin polishing, overexposure, too dark, messy background, wrong UI, non-Chinese short video interface, too many English bullet screens, gift special effects are not obvious, cropping error, proportional error
+Elon Musk is in a professional livestream setup with a phone holder, ring light, and desktop microphone visible in front of him. The background is a modern tech livestream studio with bright lighting and a subtle neon atmosphere. Make the composition look like a real ongoing mobile screen recording or livestream screenshot, natural and believable, with rich interface details but not cluttered. Keep the face sharp, expression vivid, skin texture natural, lighting cinematic, depth of field realistic, high definition, realistic photography style.
 
-Supplementary reinforcement words:
-
-Real mobile phone screen recording screenshot feeling, the live broadcast UI is complete, the gift prompt box conforms to the style of the Chinese short video platform, the Chinese comment area is active, the number of people online in the live broadcast room is clearly displayed, and the time, power and signal bar are visible.`,
+Avoid: blurry image, cartoon style, illustration look, heavy CGI feeling, distorted face, broken hands, extra fingers, duplicated person, multiple phones, wrong text, garbled UI text, messy background, incorrect social media interface, too many non-English comments, weak gift effect, bad crop, wrong proportions, overexposure, overly dark lighting, over-smoothed skin.`,
     category: "ui-design",
-    tags: ["ui", "mockup", "interface", "cinematic", "chinese-style", "sci-fi"],
+    tags: ["ui", "mockup", "interface", "cinematic", "tiktok", "livestream"],
     aiModels: ["gpt-image-2"],
     difficulty: "advanced",
-    imageAlt: "Elon Musk Douyin Livestream Screenshot",
-    imageUrl: "/prompts/elon-musk-douyin-livestream-screenshot.jpg",
+    imageAlt: "Elon Musk TikTok Livestream Screenshot",
+    imageUrl: "/prompts/elon-musk-tiktok-livestream-screenshot.jpg",
     breakdown: {
       subject: "",
       style: "",
@@ -5060,7 +5058,7 @@ const FEATURED_ORDER = [
   "prompt-137", // Sam Altman Bear Selfie
   "prompt-136", // Rust In-Game Screenshot
   "prompt-125", // Beauty Product Commercial Marketing Photograph
-  "prompt-115", // Elon Musk Douyin Livestream Screenshot
+  "prompt-115", // Elon Musk TikTok Livestream Screenshot
   "prompt-090", // Surrealist Rolex Luxury Watch Fashion Poster
 ];
 
