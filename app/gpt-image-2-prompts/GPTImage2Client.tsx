@@ -13,8 +13,57 @@ import {
 } from "@/lib/aiPromptData";
 import PromptDetailModal from "@/components/PromptDetailModal";
 
-const gptImage2Prompts = aiPrompts.filter((p) =>
-  p.aiModels.includes("gpt-image-2")
+/**
+ * Interleave prompts so different categories appear alternately
+ * instead of all photography/portrait prompts clustering at the top.
+ */
+function interleaveByCategory(prompts: AIPrompt[]): AIPrompt[] {
+  // Group by category, preserving original order within each group
+  const buckets = new Map<string, AIPrompt[]>();
+  // Define a preferred category rotation order (most variety first)
+  const categoryOrder = [
+    "poster",
+    "photography",
+    "ui-design",
+    "character",
+    "game",
+    "infographic",
+    "product",
+    "photo-editing",
+    "film",
+  ];
+
+  for (const p of prompts) {
+    const list = buckets.get(p.category) ?? [];
+    list.push(p);
+    buckets.set(p.category, list);
+  }
+
+  // Sort bucket keys by the defined order (unknown categories go last)
+  const sortedKeys = [...buckets.keys()].sort(
+    (a, b) =>
+      (categoryOrder.indexOf(a) === -1 ? 99 : categoryOrder.indexOf(a)) -
+      (categoryOrder.indexOf(b) === -1 ? 99 : categoryOrder.indexOf(b))
+  );
+
+  // Round-robin pick from each bucket
+  const result: AIPrompt[] = [];
+  let remaining = true;
+  while (remaining) {
+    remaining = false;
+    for (const key of sortedKeys) {
+      const bucket = buckets.get(key)!;
+      if (bucket.length > 0) {
+        result.push(bucket.shift()!);
+        remaining = remaining || bucket.length > 0;
+      }
+    }
+  }
+  return result;
+}
+
+const gptImage2Prompts = interleaveByCategory(
+  aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"))
 );
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
