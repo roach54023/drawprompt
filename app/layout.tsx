@@ -85,8 +85,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-          <Nav />
-          <main>{children}</main>
+        <Nav />
+        <main>{children}</main>
 
         <footer
           style={{
