@@ -195,25 +195,32 @@ export default function AIPromptsClient() {
             const copied = copiedId === prompt.id;
 
             const detail = hasDetailPage(prompt);
-            const Wrapper = detail ? Link : "div";
-            const wrapperExtra = detail
-              ? { href: `/prompts/${prompt.slug}` }
-              : { onClick: () => setModalPrompt(prompt) };
 
-            return (
-              <Wrapper
-                key={prompt.id}
-                {...(wrapperExtra as Record<string, unknown>)}
-                className="img-card animate-fade-up"
-                style={{
-                  animationDelay: `${Math.min(i * 0.03, 0.3)}s`,
-                  opacity: 0,
-                  display: "block",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
+            const sharedProps = {
+              key: prompt.id,
+              className: "img-card animate-fade-up",
+              style: {
+                animationDelay: `${Math.min(i * 0.03, 0.3)}s` as const,
+                opacity: 0,
+                display: "block" as const,
+                cursor: "pointer",
+                textDecoration: "none",
+                color: "inherit",
+              },
+            };
+
+            const wrapper = (children: React.ReactNode) =>
+              detail ? (
+                <Link href={`/prompts/${prompt.slug}`} {...sharedProps}>
+                  {children}
+                </Link>
+              ) : (
+                <div onClick={() => setModalPrompt(prompt)} {...sharedProps}>
+                  {children}
+                </div>
+              );
+
+            return wrapper(
                 <div className="img-card-image-wrap">
                   <Image
                     src={prompt.imageUrl}
@@ -332,7 +339,6 @@ export default function AIPromptsClient() {
                     </span>
                   </div>
                 </div>
-              </Wrapper>
             );
           })}
         </div>

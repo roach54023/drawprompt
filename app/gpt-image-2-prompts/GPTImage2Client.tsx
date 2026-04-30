@@ -531,17 +531,13 @@ function PromptGalleryCard({
       : prompt.prompt;
 
   const detail = hasDetailPage(prompt);
-  const Wrapper = detail ? Link : "div";
-  const wrapperProps = detail
-    ? { href: `/prompts/${prompt.slug}` }
-    : { onClick: onSelect };
 
-  return (
-    <Wrapper
-      {...(wrapperProps as Record<string, unknown>)}
-      className="img-card"
-      style={{ display: "block", cursor: "pointer", textDecoration: "none", color: "inherit" }}
-    >
+  const sharedProps = {
+    className: "img-card",
+    style: { display: "block" as const, cursor: "pointer", textDecoration: "none", color: "inherit" },
+  };
+
+  const content = (
       <div className="img-card-image-wrap">
         <Image
           src={prompt.imageUrl}
@@ -658,6 +654,15 @@ function PromptGalleryCard({
           </span>
         </div>
       </div>
-    </Wrapper>
+  );
+
+  return detail ? (
+    <Link href={`/prompts/${prompt.slug}`} {...sharedProps}>
+      {content}
+    </Link>
+  ) : (
+    <div onClick={onSelect} {...sharedProps}>
+      {content}
+    </div>
   );
 }
