@@ -3,6 +3,7 @@ import Script from "next/script";
 import Link from "next/link";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Providers from "@/components/Providers";
 
 /* ── Global JSON-LD: WebSite + SearchAction ─────────────────── */
 const websiteJsonLd = {
@@ -85,8 +86,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        <Nav />
-        <main>{children}</main>
+        <Providers>
+          <Nav />
+          <main>{children}</main>
+        </Providers>
 
         <footer
           style={{
@@ -228,19 +231,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p style={{ fontSize: 12, color: "var(--text-on-dark-2)", margin: 0, opacity: 0.7 }}>
               &copy; 2026 DrawPrompt. All rights reserved.
             </p>
-            <a
-              href="https://www.dexigner.com/directory/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "inline-block", opacity: 0.3 }}
-              title="Design Directory"
-            >
-              <img
-                src="https://www.dexigner.com/images/logo/dexigner-logo.svg"
-                alt="Design Directory"
-                style={{ height: 11, width: "auto", border: "none", filter: "invert(1)" }}
-              />
-            </a>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <a
+                href="https://www.dexigner.com/directory/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "inline-block", opacity: 0.3 }}
+                title="Design Directory"
+              >
+                <img
+                  src="https://www.dexigner.com/images/logo/dexigner-logo.svg"
+                  alt="Design Directory"
+                  style={{ height: 11, width: "auto", border: "none", filter: "invert(1)" }}
+                />
+              </a>
+              <a
+                href="https://cal.com/roach54023"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 10, color: "var(--text-on-dark-2)", textDecoration: "none", opacity: 0.3 }}
+              >
+                Schedule
+              </a>
+              <a
+                href="https://sites.google.com/view/roach54023/%E9%A6%96%E9%A1%B5"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 10, color: "var(--text-on-dark-2)", textDecoration: "none", opacity: 0.3 }}
+              >
+                Portfolio
+              </a>
+            </div>
           </div>
         </footer>
 
