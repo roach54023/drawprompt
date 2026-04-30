@@ -261,6 +261,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 Portfolio
               </a>
+              <a
+                href="https://www.provenexpert.com/en-us/howie3/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 10, color: "var(--text-on-dark-2)", textDecoration: "none", opacity: 0.3 }}
+              >
+                Reviews
+              </a>
             </div>
           </div>
         </footer>
