@@ -3,7 +3,6 @@ import Script from "next/script";
 import Link from "next/link";
 import "./globals.css";
 import Nav from "@/components/Nav";
-import Providers from "@/components/Providers";
 
 /* ── Global JSON-LD: WebSite + SearchAction ─────────────────── */
 const websiteJsonLd = {
@@ -86,10 +85,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        <Providers>
           <Nav />
           <main>{children}</main>
-        </Providers>
 
         <footer
           style={{
