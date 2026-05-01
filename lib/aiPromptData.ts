@@ -5044,7 +5044,7 @@ export function getPromptBySlug(slug: string): AIPrompt | undefined {
 
 /** Whether a prompt has a full detail page (i.e. has filled-in breakdown content) */
 export function hasDetailPage(prompt: AIPrompt): boolean {
-  return prompt.breakdown.subject.length > 0;
+  return true; // All prompts have detail pages
 }
 
 export function searchPrompts(query: string): AIPrompt[] {
