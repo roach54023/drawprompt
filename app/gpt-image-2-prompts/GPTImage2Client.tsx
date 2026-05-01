@@ -538,6 +538,7 @@ function PromptGalleryCard({
   };
 
   const content = (
+    <>
       <div className="img-card-image-wrap">
         <Image
           src={prompt.imageUrl}
@@ -654,6 +655,7 @@ function PromptGalleryCard({
           </span>
         </div>
       </div>
+    </>
   );
 
   return detail ? (

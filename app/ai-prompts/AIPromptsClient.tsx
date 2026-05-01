@@ -221,6 +221,7 @@ export default function AIPromptsClient() {
               );
 
             return wrapper(
+              <>
                 <div className="img-card-image-wrap">
                   <Image
                     src={prompt.imageUrl}
@@ -339,6 +340,7 @@ export default function AIPromptsClient() {
                     </span>
                   </div>
                 </div>
+              </>
             );
           })}
         </div>
