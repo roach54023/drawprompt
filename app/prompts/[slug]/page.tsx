@@ -9,7 +9,6 @@ import {
   getPromptBySlug,
   getFeaturedAIPrompts,
   getRelatedPrompts,
-  hasDetailPage,
   categories,
   CATEGORY_META,
   type AIModel,
@@ -32,9 +31,9 @@ const DIFFICULTY_CONFIG: Record<string, { label: string; color: string; bg: stri
   advanced:     { label: "Advanced",     color: "#b85a5a", bg: "#fdf0f0" },
 };
 
-// Only generate static pages for prompts that have full detail content
+// Generate detail pages for ALL prompts
 export function generateStaticParams() {
-  return aiPrompts.filter((p) => hasDetailPage(p)).map((p) => ({ slug: p.slug }));
+  return aiPrompts.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

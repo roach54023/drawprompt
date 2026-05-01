@@ -279,6 +279,7 @@ export default function Nav() {
           >
             Explore Prompts
           </Link>
+
         </nav>
 
         {/* Mobile hamburger */}
