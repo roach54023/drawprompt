@@ -266,6 +266,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 Reviews
               </a>
+              <a
+                href="https://egolinks.online/@roach50423"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 10, color: "var(--text-on-dark-2)", textDecoration: "none", opacity: 0.3 }}
+              >
+                Links
+              </a>
             </div>
           </div>
         </footer>
