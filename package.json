@@ -7,10 +7,7 @@
     "optimize-images": "node scripts/optimize-images.mjs",
     "build": "npm run optimize-images && next build",
     "start": "next start",
-    "lint": "eslint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy"
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.2.3",
@@ -18,7 +15,6 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.16",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
