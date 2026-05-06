@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Drawing Prompts \u2014 150B+ Free Ideas for Artists & Beginners (2025)",
+  title: "Drawing Prompts \u2014 150B+ Free Ideas for Artists & Beginners (2026)",
   description:
     "Get drawing prompts for every skill level. Our free generator creates 150 billion+ unique creative briefs \u2014 subject, mood, palette, style & challenge. Perfect for daily sketching, art class, or beating creative block.",
   keywords: [

@@ -15,7 +15,7 @@ export async function createGeneration(params: {
   quality: QualityTier;
   creditsCost: number;
   apiModel: string;
-  apiQuality: string;
+  apiSize: string;
 }): Promise<void> {
   const db = getDb();
   await db
@@ -31,7 +31,7 @@ export async function createGeneration(params: {
       params.quality,
       params.creditsCost,
       params.apiModel,
-      params.apiQuality
+      params.apiSize
     )
     .run();
 }

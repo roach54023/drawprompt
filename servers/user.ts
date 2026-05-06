@@ -45,7 +45,7 @@ export async function checkAndSaveUser(
           `INSERT INTO credit_transactions(user_id, type, amount, balance_before, balance_after, description)
            VALUES(?, 'gift', ?, 0, ?, ?)`
         )
-        .bind(userId, freeCredits, freeCredits, `Welcome gift: +${freeCredits} credits`),
+        .bind(userId, freeCredits, freeCredits, `Welcome gift: +${freeCredits} free credit`),
     ]);
 
     return { user_id: userId, name, email, image };

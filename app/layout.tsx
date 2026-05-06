@@ -80,6 +80,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" style={{ backgroundColor: "#f8f6f1", colorScheme: "light" }}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body style={{ backgroundColor: "#f8f6f1", color: "#1a1714", margin: 0 }}>
         {/* Global JSON-LD structured data */}
         <script
@@ -87,8 +91,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <Providers>
-          <Nav />
-          <main>{children}</main>
+        <Nav />
+        <main>{children}</main>
 
         <footer
           style={{
@@ -279,6 +283,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        </Providers>
 
         {/* Google Analytics 4 */}
         <Script
@@ -293,7 +298,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-3ZL3HCMN6B');
           `}
         </Script>
-        </Providers>
       </body>
     </html>
   );

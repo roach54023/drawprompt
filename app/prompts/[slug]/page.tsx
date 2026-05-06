@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
+import GenerateOrSignIn from "@/components/GenerateOrSignIn";
 import RelatedPrompts from "@/components/RelatedPrompts";
 import {
   aiPrompts,
@@ -158,7 +159,10 @@ export default async function PromptDetailPage({ params }: Props) {
         }}>
           &ldquo;{prompt.prompt}&rdquo;
         </p>
-        <CopyButton text={prompt.prompt} />
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <CopyButton text={prompt.prompt} />
+          <GenerateOrSignIn promptText={prompt.prompt} />
+        </div>
       </div>
 
       {/* Original prompt (if translated) */}

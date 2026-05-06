@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/saved"], // client-side only, no indexable content
+        disallow: ["/saved", "/dashboard", "/api/"],
       },
     ],
     sitemap: "https://drawprompt.org/sitemap.xml",

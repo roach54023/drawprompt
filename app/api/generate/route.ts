@@ -2,9 +2,16 @@
  * DrawPrompts — POST /api/generate
  * 核心接口：图片生成
  * 流程：验证 → 检查权限 → 扣积分 → 调 API → 上传 R2 → 返回结果
+ *
+ * 关键：图片生成通过 execSync 调用外部 Node.js 脚本完成，
+ * 完全绕开 Turbopack 对 TLS 的 polyfill 问题。
  */
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { execSync } from "node:child_process";
+import { writeFileSync, unlinkSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { getUserByEmail } from "@/servers/user";
 import { getUserCredits, consumeCredits, refundCredits, getDailyRemaining } from "@/servers/credits";
 import { createGeneration, markGenerationSuccess, markGenerationFailed } from "@/servers/generations";
@@ -19,15 +26,16 @@ import {
 } from "@/lib/qualityConfig";
 
 /**
- * 直接调用 OpenAI 兼容 API 生成图片（使用 fetch）
+ * 通过子进程调用外部脚本生成图片
+ * 完全独立于 Turbopack 运行时
  */
-async function callImageAPI(params: {
+function callImageAPI(params: {
   prompt: string;
   model: string;
   size?: string;
   quality?: string;
-  referenceImageBase64?: string;
-}): Promise<GenerateImageResult> {
+  referenceImageBase64?: string; // 参考图 base64（不含 data:... 前缀）
+}): GenerateImageResult {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY environment variable is not set");
@@ -39,69 +47,62 @@ async function callImageAPI(params: {
     ? `${baseUrl}/v1/images/edits`
     : `${baseUrl}/v1/images/generations`;
 
-  console.log(`[Generate] API call: mode=${isEdit ? "edit" : "generate"}, model="${params.model}", size="${params.size}", quality="${params.quality}"`);
+  const body = JSON.stringify({
+    model: params.model,
+    prompt: params.prompt,
+    n: 1,
+    response_format: "b64_json",
+    ...(params.size ? { size: params.size } : {}),
+    ...(params.quality ? { quality: params.quality } : {}),
+  });
 
-  let response: Response;
-
+  // 写入临时 JSON 文件
+  const inputFile = join(tmpdir(), `dp-gen-${Date.now()}-${Math.random().toString(36).slice(2)}.json`);
+  const inputPayload: Record<string, unknown> = { url, body, apiKey };
   if (isEdit) {
-    // 图生图：使用 multipart/form-data
-    const formData = new FormData();
-    formData.append("model", params.model);
-    formData.append("prompt", params.prompt);
-    formData.append("n", "1");
-    formData.append("response_format", "b64_json");
-    if (params.size) formData.append("size", params.size);
-    if (params.quality) formData.append("quality", params.quality);
+    inputPayload.mode = "edit";
+    inputPayload.imageBase64 = params.referenceImageBase64;
+  }
+  writeFileSync(inputFile, JSON.stringify(inputPayload), "utf-8");
 
-    // 将 base64 转为 Blob 作为 image 字段（使用 Web API，兼容 Edge Runtime）
-    const binaryStr = atob(params.referenceImageBase64!);
-    const imageBytes = new Uint8Array(binaryStr.length);
-    for (let i = 0; i < binaryStr.length; i++) {
-      imageBytes[i] = binaryStr.charCodeAt(i);
-    }
-    const imageBlob = new Blob([imageBytes], { type: "image/png" });
-    formData.append("image", imageBlob, "reference.png");
+  const scriptPath = join(process.cwd(), "scripts", "generate-image.cjs");
 
-    response = await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: formData,
+  console.log(`[Generate] Calling subprocess: mode=${isEdit ? "edit" : "generate"}, model="${params.model}", size="${params.size}", quality="${params.quality}"`);
+  console.log(`[Generate] Script: ${scriptPath}`);
+  console.log(`[Generate] Input: ${inputFile}`);
+
+  let output: string;
+  try {
+    output = execSync(`node "${scriptPath}" "${inputFile}"`, {
+      encoding: "utf-8",
+      timeout: 370000,
+      maxBuffer: 50 * 1024 * 1024,
+      // 确保子进程继承环境变量
+      env: process.env as Record<string, string>,
     });
-  } else {
-    // 文生图：使用 JSON body
-    const body = {
-      model: params.model,
-      prompt: params.prompt,
-      n: 1,
-      response_format: "b64_json",
-      ...(params.size ? { size: params.size } : {}),
-      ...(params.quality ? { quality: params.quality } : {}),
-    };
-
-    response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(body),
-    });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Child process failed";
+    console.error(`[Generate] execSync error:`, message);
+    throw new Error(`Subprocess failed: ${message}`);
+  } finally {
+    try { unlinkSync(inputFile); } catch {}
   }
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    let errorMessage = `API returned status ${response.status}`;
+  console.log(`[Generate] Got output (${output.length} bytes)`);
+
+  const res = JSON.parse(output) as { status: number; data: string };
+
+  if (res.status !== 200) {
+    let errorMessage = `API returned status ${res.status}`;
     try {
-      const error = JSON.parse(errorText);
+      const error = JSON.parse(res.data);
       errorMessage = error.error?.message || errorMessage;
     } catch {}
     console.error(`[Generate] API Error: ${errorMessage}`);
     throw new Error(errorMessage);
   }
 
-  const data = await response.json();
+  const data = JSON.parse(res.data);
   let b64 = "";
 
   if (data.data && data.data[0]) {
@@ -243,7 +244,7 @@ export async function POST(request: NextRequest) {
       quality: qualityTier,
       creditsCost: qualityConfig.credits,
       apiModel: qualityConfig.apiModel,
-      apiQuality: qualityConfig.apiQuality,
+      apiSize: qualityConfig.apiSize,
     });
 
     // 6. 调用 GPT Image API
@@ -268,7 +269,7 @@ export async function POST(request: NextRequest) {
           model_used: "mock",
         };
       } else {
-        result = await callImageAPI({
+        result = callImageAPI({
           prompt: prompt_text,
           model: qualityConfig.apiModel,
           size: qualityConfig.apiSize,

@@ -4,16 +4,40 @@
  * 参考 StickerShow 实现，适配 Next.js 16
  */
 import NextAuth, { type NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { checkAndSaveUser, getUserByEmail } from "@/servers/user";
 
 const authOptions: NextAuthOptions = {
   providers: [
-    GoogleProvider({
+    {
+      // 完全手动配置 Google OAuth，跳过 OIDC 自动发现（避免 Node.js 后端连 Google 超时）
+      id: "google",
+      name: "Google",
+      type: "oauth",
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_SECRET_ID!,
-    }),
+      authorization: {
+        url: "https://accounts.google.com/o/oauth2/v2/auth",
+        params: {
+          scope: "openid email profile",
+          response_type: "code",
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+      token: "https://oauth2.googleapis.com/token",
+      userinfo: "https://openidconnect.googleapis.com/v1/userinfo",
+      issuer: "https://accounts.google.com",
+      jwks_endpoint: "https://www.googleapis.com/oauth2/v3/certs",
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+        };
+      },
+    },
     // Google One Tap 登录（通过 Credentials Provider 验证 idToken）
     CredentialsProvider({
       id: "googleonetap",

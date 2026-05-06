@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "How to Use GPT Image 2 \u2014 Complete Guide to ChatGPT Image Generator (2025)",
+  title: "How to Use GPT Image 2 \u2014 Complete Guide to ChatGPT Image Generator (2026)",
   description:
     "Learn how to use GPT Image 2 in ChatGPT to create stunning AI images. Step-by-step guide with prompt writing tips, best practices, examples, and 167+ tested prompts you can copy-paste.",
   keywords: [

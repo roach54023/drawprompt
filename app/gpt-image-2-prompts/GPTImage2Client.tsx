@@ -487,17 +487,36 @@ export default function GPTImage2Client() {
         </div>
       </section>
 
-      {/* Back */}
-      <div style={{ textAlign: "center", paddingBottom: 48 }}>
+      {/* CTA to Generate */}
+      <div style={{ textAlign: "center", paddingBottom: 48, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+        <Link
+          href="/generate"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "14px 32px",
+            borderRadius: 12,
+            fontSize: 15,
+            fontWeight: 600,
+            color: "#fff",
+            background: "linear-gradient(135deg, #c06a3e, #a0522d)",
+            textDecoration: "none",
+            boxShadow: "0 4px 16px rgba(192,106,62,0.25)",
+            transition: "transform 0.15s, box-shadow 0.15s",
+          }}
+        >
+          Generate Images with GPT Image 2
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
         <Link
           href="/"
           className="btn-secondary"
           style={{ textDecoration: "none" }}
         >
           Browse All AI Prompts
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
         </Link>
       </div>
 

@@ -62,7 +62,7 @@ const itemListJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "GPT Image 2 Prompts — 167+ Copy-Paste Prompts for ChatGPT Image Generator (2025)",
+  title: "GPT Image 2 Prompts — 167+ Copy-Paste Prompts for ChatGPT Image Generator (2026)",
   description:
     "The best GPT Image 2 prompts library with 167+ tested prompts. Copy-paste prompts for ChatGPT image generator — photography, character design, poster, UI mockups, game art & more. Free, with breakdowns and tips.",
   keywords: [
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://drawprompt.org/gpt-image-2-prompts/" },
   openGraph: {
-    title: "GPT Image 2 Prompts — 167+ Copy-Paste Prompt Library for ChatGPT (2025)",
+    title: "GPT Image 2 Prompts — 167+ Copy-Paste Prompt Library for ChatGPT (2026)",
     description:
       "167+ curated prompts optimized for GPT Image 2 and ChatGPT image generator. Photography, character design, poster, UI design, game art, and more.",
     type: "website",

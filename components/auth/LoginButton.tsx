@@ -2,10 +2,24 @@
 
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useUser } from "@/context/UserContext";
+import { useState, useRef, useEffect } from "react";
 
 export default function LoginButton() {
   const { data: session, status } = useSession();
   const { userData } = useUser();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // 点击外部关闭菜单
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   if (status === "loading") {
     return (
@@ -54,92 +68,245 @@ export default function LoginButton() {
     );
   }
 
+  const planLabel = userData?.membership?.plan && userData.membership.plan !== "free"
+    ? userData.membership.plan.charAt(0).toUpperCase() + userData.membership.plan.slice(1)
+    : null;
+
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-      {/* 会员徽章 */}
-      {userData && userData.membership.is_active && userData.membership.plan !== "free" && (
-        <a
-          href="/pricing"
+    <div ref={menuRef} style={{ position: "relative" }}>
+      {/* 头像按钮 */}
+      <button
+        onClick={() => setMenuOpen((v) => !v)}
+        style={{
+          border: "none",
+          background: "none",
+          cursor: "pointer",
+          padding: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+        }}
+        aria-haspopup="true"
+        aria-expanded={menuOpen}
+      >
+        {session.user?.image ? (
+          <img
+            src={session.user.image}
+            alt={session.user.name || "User"}
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: "50%",
+              border: "2px solid #e0ddd8",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: "50%",
+              background: "#c8a77a",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 14,
+              color: "#fff",
+              fontWeight: 600,
+            }}
+          >
+            {(session.user?.name || "U")[0].toUpperCase()}
+          </div>
+        )}
+        {/* 小箭头 */}
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          fill="none"
           style={{
-            background: "linear-gradient(135deg, #c8a77a, #a08050)",
-            padding: "4px 10px",
+            transition: "transform 0.2s",
+            transform: menuOpen ? "rotate(180deg)" : "rotate(0deg)",
+            opacity: 0.5,
+          }}
+        >
+          <path
+            d="M2 3.5L5 6.5L8 3.5"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {/* 下拉菜单 */}
+      {menuOpen && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 8px)",
+            right: 0,
+            background: "#fff",
+            border: "1px solid #e8e5e0",
             borderRadius: 12,
-            fontSize: 11,
-            fontWeight: 600,
-            color: "#fff",
-            textDecoration: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: 4,
-            letterSpacing: "0.02em",
+            padding: 8,
+            minWidth: 220,
+            boxShadow: "0 12px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)",
+            zIndex: 200,
           }}
         >
-          ★ {userData.membership.plan.charAt(0).toUpperCase() + userData.membership.plan.slice(1)}
-        </a>
-      )}
-      {/* 积分徽章 */}
-      {userData && (
-        <a
-          href="/dashboard"
-          style={{
-            background: "#f0ede8",
-            padding: "4px 10px",
-            borderRadius: 12,
-            fontSize: 12,
-            fontWeight: 600,
-            color: "#6b5b4e",
-            textDecoration: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: 4,
-          }}
-        >
-          ⚡ {userData.credits.balance}
-        </a>
-      )}
-      {/* 用户头像 */}
-      <div style={{ position: "relative" }}>
-        <button
-          onClick={() => signOut()}
-          style={{
-            border: "none",
-            background: "none",
-            cursor: "pointer",
-            padding: 0,
-          }}
-          title="Sign Out"
-        >
-          {session.user?.image ? (
-            <img
-              src={session.user.image}
-              alt={session.user.name || "User"}
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: "50%",
-                border: "2px solid #e0ddd8",
-              }}
-            />
-          ) : (
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: "50%",
-                background: "#c8a77a",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 14,
-                color: "#fff",
-                fontWeight: 600,
-              }}
-            >
-              {(session.user?.name || "U")[0].toUpperCase()}
+          {/* 用户信息 */}
+          <div style={{ padding: "8px 12px 12px", borderBottom: "1px solid #f0ede8" }}>
+            <div style={{ fontSize: 14, fontWeight: 600, color: "#1a1714" }}>
+              {session.user?.name || "User"}
+            </div>
+            <div style={{ fontSize: 12, color: "#8a7e72", marginTop: 2 }}>
+              {session.user?.email}
+            </div>
+          </div>
+
+          {/* 积分和会员 */}
+          {userData && (
+            <div style={{ padding: "8px 4px", borderBottom: "1px solid #f0ede8" }}>
+              <a
+                href="/dashboard"
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "8px 8px",
+                  borderRadius: 8,
+                  textDecoration: "none",
+                  color: "#1a1714",
+                  fontSize: 13,
+                  transition: "background 0.1s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#f8f6f1")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                <span>⚡</span>
+                <span style={{ fontWeight: 500 }}>Credits</span>
+                <span style={{ marginLeft: "auto", fontWeight: 600, color: "#6b5b4e" }}>
+                  {userData.credits.balance}
+                </span>
+              </a>
+
+              {planLabel && (
+                <a
+                  href="/pricing"
+                  onClick={() => setMenuOpen(false)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "8px 8px",
+                    borderRadius: 8,
+                    textDecoration: "none",
+                    color: "#1a1714",
+                    fontSize: 13,
+                    transition: "background 0.1s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f8f6f1")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  <span>★</span>
+                  <span style={{ fontWeight: 500 }}>{planLabel} Plan</span>
+                  <span
+                    style={{
+                      marginLeft: "auto",
+                      fontSize: 10,
+                      fontWeight: 600,
+                      color: "#fff",
+                      background: "linear-gradient(135deg, #c8a77a, #a08050)",
+                      padding: "2px 8px",
+                      borderRadius: 8,
+                    }}
+                  >
+                    Active
+                  </span>
+                </a>
+              )}
+
+              {!planLabel && (
+                <a
+                  href="/pricing"
+                  onClick={() => setMenuOpen(false)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "8px 8px",
+                    borderRadius: 8,
+                    textDecoration: "none",
+                    color: "#1a1714",
+                    fontSize: 13,
+                    transition: "background 0.1s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f8f6f1")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  <span>✨</span>
+                  <span style={{ fontWeight: 500 }}>Upgrade Plan</span>
+                </a>
+              )}
             </div>
           )}
-        </button>
-      </div>
+
+          {/* 菜单项 */}
+          <div style={{ padding: "8px 4px" }}>
+            <a
+              href="/dashboard"
+              onClick={() => setMenuOpen(false)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 8px",
+                borderRadius: 8,
+                textDecoration: "none",
+                color: "#1a1714",
+                fontSize: 13,
+                transition: "background 0.1s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#f8f6f1")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              <span style={{ opacity: 0.7 }}>📊</span>
+              <span>Dashboard</span>
+            </a>
+
+            <button
+              onClick={() => {
+                if (window.confirm("Are you sure you want to sign out?")) {
+                  signOut();
+                }
+              }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 8px",
+                borderRadius: 8,
+                border: "none",
+                background: "none",
+                color: "#c0392b",
+                fontSize: 13,
+                cursor: "pointer",
+                width: "100%",
+                textAlign: "left",
+                transition: "background 0.1s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#fdf2f2")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              <span style={{ opacity: 0.7 }}>🚪</span>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

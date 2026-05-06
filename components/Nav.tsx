@@ -3,32 +3,33 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
+import AuthNavWrapper from "@/components/auth/AuthNavWrapper";
 
 const mainLinks = [
+  { href: "/generate",                label: "Generate", hot: true },
   { href: "/ai-prompts",              label: "AI Prompts" },
   { href: "/gpt-image-2-prompts",     label: "GPT Image 2", hot: true },
-  { href: "/drawing-prompts",         label: "Drawing Prompts" },
-  { href: "/generator",               label: "Generator" },
+  { href: "/how-to-use-gpt-image-2",  label: "Guide" },
+  { href: "/gallery",                 label: "Gallery" },
+];
+
+const humanLinks = [
+  { href: "/drawing-prompts",   label: "Drawing Prompts" },
+  { href: "/generator",         label: "Generator" },
+  { href: "/random",            label: "Random Prompt" },
+  { href: "/daily-challenge",   label: "Daily Challenge" },
+  { href: "/character",         label: "Character Prompts" },
+  { href: "/anime",             label: "Anime Prompts" },
+  { href: "/for-kids",          label: "For Kids" },
 ];
 
 const moreLinks = {
-  tools: [
-    { href: "/random",                    label: "Random Prompt" },
-    { href: "/daily-challenge",            label: "Daily Challenge" },
-    { href: "/how-to-use-gpt-image-2",    label: "How to Use GPT Image 2" },
-  ],
-  styles: [
-    { href: "/character",       label: "Character Prompts" },
-    { href: "/anime",           label: "Anime Prompts" },
-    { href: "/for-kids",        label: "For Kids" },
-  ],
   other: [
-    { href: "/gallery",         label: "Gallery" },
     { href: "/saved",           label: "Saved" },
   ],
 };
 
-const allMoreLinks = [...moreLinks.tools, ...moreLinks.styles, ...moreLinks.other];
+const allMoreLinks = [...humanLinks, ...moreLinks.other];
 
 export default function Nav() {
   const pathname = usePathname();
@@ -169,7 +170,7 @@ export default function Nav() {
             );
           })}
 
-          {/* More dropdown */}
+          {/* Prompts for Humans dropdown */}
           <div ref={dropdownRef} style={{ position: "relative" }}>
             <button
               onClick={() => setDropdownOpen((v) => !v)}
@@ -181,7 +182,7 @@ export default function Nav() {
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
-              More
+              For Humans
               <svg
                 width="10"
                 height="10"
@@ -218,22 +219,8 @@ export default function Nav() {
                   zIndex: 100,
                 }}
               >
-                <div style={sectionLabel}>Tools</div>
-                {moreLinks.tools.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setDropdownOpen(false)}
-                    style={dropdownLinkStyle(pathname === link.href)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-
-                <div style={{ height: 1, background: "var(--border)", margin: "4px 8px" }} />
-
-                <div style={sectionLabel}>Styles</div>
-                {moreLinks.styles.map((link) => (
+                <div style={sectionLabel}>Drawing Prompts</div>
+                {humanLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -263,7 +250,7 @@ export default function Nav() {
 
           {/* CTA */}
           <Link
-            href="/ai-prompts"
+            href="/pricing"
             style={{
               marginLeft: 12,
               padding: "7px 18px",
@@ -277,8 +264,13 @@ export default function Nav() {
               letterSpacing: "0.01em",
             }}
           >
-            Explore Prompts
+            Pricing
           </Link>
+
+          {/* Auth */}
+          <div style={{ marginLeft: 12 }}>
+            <AuthNavWrapper />
+          </div>
 
         </nav>
 
@@ -334,7 +326,7 @@ export default function Nav() {
               padding: "8px 8px 6px",
             }}
           >
-            Prompts
+            AI Image Generation
           </div>
           {mainLinks.map((link) => {
             const active = pathname === link.href;
@@ -389,9 +381,9 @@ export default function Nav() {
               padding: "8px 8px 6px",
             }}
           >
-            Tools & Styles
+            Prompts for Humans
           </div>
-          {allMoreLinks.map((link) => {
+          {humanLinks.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
@@ -414,6 +406,41 @@ export default function Nav() {
               </Link>
             );
           })}
+
+          <div style={{ height: 1, background: "var(--border)", margin: "8px 0" }} />
+
+          <div style={{ display: "flex", gap: 8, padding: "8px 8px 0" }}>
+            <Link
+              href="/saved"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                padding: "8px 16px",
+                borderRadius: 8,
+                fontSize: 13,
+                fontWeight: 500,
+                color: "var(--text-secondary)",
+                background: "var(--bg-warm)",
+                textDecoration: "none",
+              }}
+            >
+              Saved
+            </Link>
+            <Link
+              href="/pricing"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                padding: "8px 16px",
+                borderRadius: 8,
+                fontSize: 13,
+                fontWeight: 600,
+                color: "var(--bg)",
+                background: "var(--text-primary)",
+                textDecoration: "none",
+              }}
+            >
+              Pricing
+            </Link>
+          </div>
         </div>
       )}
     </header>

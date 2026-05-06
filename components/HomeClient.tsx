@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -24,61 +25,11 @@ const HERO_MODELS = [
   { label: "DALL-E", color: "#7b9eb8" },
 ];
 
-const HUMAN_TOOLS = [
-  {
-    id: "generator",
-    title: "Drawing Prompt Generator",
-    description: "150 billion+ unique combinations across 6 creative dimensions. Choose your difficulty and let inspiration find you.",
-    href: "/generator/",
-    iconPath: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
-    accent: "#c06a3e",
-    bg: "#fdf0e8",
-  },
-  {
-    id: "daily",
-    title: "Daily Challenge",
-    description: "A new prompt every day, same for everyone. Compare your interpretation with artists worldwide.",
-    href: "/daily-challenge/",
-    iconPath: "M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z",
-    accent: "#5a9e7a",
-    bg: "#eef6f2",
-  },
-  {
-    id: "character",
-    title: "Character Design",
-    description: "Focused prompts for figure drawing, character concepts, poses, and personality-driven designs.",
-    href: "/character/",
-    iconPath: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 100 8 4 4 0 000-8z",
-    accent: "#c4714a",
-    bg: "#fdf0e8",
-  },
-  {
-    id: "anime",
-    title: "Anime & Manga",
-    description: "Anime-styled prompts with dynamic poses, expressive emotions, and manga panel compositions.",
-    href: "/anime/",
-    iconPath: "M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z",
-    accent: "#8b7ab8",
-    bg: "#f2f0f8",
-  },
-  {
-    id: "kids",
-    title: "For Kids",
-    description: "Safe, fun, and imaginative prompts perfect for young artists. Cozy themes and magical worlds.",
-    href: "/for-kids/",
-    iconPath: "M12 2a10 10 0 100 20 10 10 0 000-20zM8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01",
-    accent: "#c47ab8",
-    bg: "#faf0f8",
-  },
-  {
-    id: "random",
-    title: "Quick Random",
-    description: "No decisions needed. Hit the button, get a prompt, start drawing. Pure creative spontaneity.",
-    href: "/random/",
-    iconPath: "M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5",
-    accent: "#b8924a",
-    bg: "#fdf8e8",
-  },
+const HERO_SUGGESTIONS = [
+  "A vintage jazz poster with bold typography",
+  "Product photo of a luxury perfume bottle",
+  "Cozy Japanese ramen shop at night, watercolor style",
+  "Mobile app UI mockup for a meditation app",
 ];
 
 export default function HomeClient({
@@ -88,8 +39,15 @@ export default function HomeClient({
   featured: AIPrompt[];
   categories: CategoryInfo[];
 }) {
+  const router = useRouter();
+  const [heroInput, setHeroInput] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
+
+  const handleHeroGenerate = () => {
+    if (!heroInput.trim()) return;
+    router.push(`/generate?prompt=${encodeURIComponent(heroInput.trim())}`);
+  };
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {
@@ -103,7 +61,7 @@ export default function HomeClient({
 
   return (
     <div>
-      {/* ══════════ HERO ══════════ */}
+      {/* ══════════ HERO — AI-focused with prompt input ══════════ */}
       <section className="section-dark" style={{ position: "relative", overflow: "hidden" }}>
         <div
           style={{
@@ -122,7 +80,7 @@ export default function HomeClient({
         <div style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "88px 32px 64px", textAlign: "center" }}>
           <div className="animate-fade-up" style={{ opacity: 0, animationDelay: "0.1s", animationFillMode: "forwards", marginBottom: 20 }}>
             <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--accent)" }}>
-              For AI & Human Artists
+              Powered by GPT Image 2
             </span>
           </div>
 
@@ -135,24 +93,89 @@ export default function HomeClient({
               opacity: 0, animationDelay: "0.2s", animationFillMode: "forwards",
             }}
           >
-            The prompt library
+            Describe it.
             <br />
-            for <span style={{ color: "var(--accent)" }}>every</span> artist
+            <span style={{ color: "var(--accent)" }}>Generate</span> it.
           </h1>
 
           <p
             className="animate-fade-up"
             style={{
               fontSize: "clamp(15px, 1.6vw, 17px)", color: "var(--text-on-dark-2)",
-              maxWidth: 560, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7, marginBottom: 24,
+              maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7, marginBottom: 32,
               opacity: 0, animationDelay: "0.3s", animationFillMode: "forwards",
             }}
           >
-            Copy-ready AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E —
-            plus a drawing prompt generator with 150 billion+ combinations for your sketchbook.
+            Type a prompt and create stunning AI images instantly. Browse 167+ curated prompts
+            for GPT Image 2, ChatGPT, Midjourney & DALL-E.
           </p>
 
-          <div className="animate-fade-up" style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginBottom: 28, opacity: 0, animationDelay: "0.35s", animationFillMode: "forwards" }}>
+          {/* ── Prompt Input Box ── */}
+          <div
+            className="animate-fade-up"
+            style={{
+              maxWidth: 600, margin: "0 auto 28px",
+              opacity: 0, animationDelay: "0.35s", animationFillMode: "forwards",
+            }}
+          >
+            <div style={{
+              display: "flex", alignItems: "center", gap: 0,
+              background: "rgba(255,255,255,0.08)", borderRadius: 14,
+              border: "1.5px solid rgba(255,255,255,0.12)",
+              backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+              overflow: "hidden", transition: "border-color 0.2s",
+            }}>
+              <input
+                type="text"
+                value={heroInput}
+                onChange={(e) => setHeroInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") handleHeroGenerate(); }}
+                placeholder="Describe the image you want to create..."
+                style={{
+                  flex: 1, padding: "15px 20px", border: "none", background: "transparent",
+                  color: "var(--text-on-dark)", fontSize: 14, fontFamily: "inherit",
+                  outline: "none", letterSpacing: "0.01em",
+                }}
+              />
+              <button
+                onClick={handleHeroGenerate}
+                style={{
+                  padding: "12px 24px", margin: 4, borderRadius: 10,
+                  border: "none", background: "var(--accent)", color: "#fff",
+                  fontSize: 13, fontWeight: 600, cursor: "pointer",
+                  display: "flex", alignItems: "center", gap: 6,
+                  transition: "opacity 0.15s", whiteSpace: "nowrap",
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+                Generate
+              </button>
+            </div>
+
+            {/* Quick suggestion chips */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", marginTop: 14 }}>
+              {HERO_SUGGESTIONS.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => { setHeroInput(s); }}
+                  style={{
+                    padding: "5px 14px", borderRadius: 100, fontSize: 11, fontWeight: 500,
+                    color: "var(--text-on-dark-2)", background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer",
+                    transition: "background 0.15s, border-color 0.15s",
+                    letterSpacing: "0.01em",
+                  }}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Model badges */}
+          <div className="animate-fade-up" style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginBottom: 28, opacity: 0, animationDelay: "0.45s", animationFillMode: "forwards" }}>
             {HERO_MODELS.map((m) => (
               <span key={m.label} style={{ padding: "5px 14px", borderRadius: 100, fontSize: 12, fontWeight: 500, color: m.color, border: `1px solid ${m.color}33`, background: `${m.color}0d`, letterSpacing: "0.01em" }}>
                 {m.label}
@@ -160,39 +183,13 @@ export default function HomeClient({
             ))}
           </div>
 
-          <div className="animate-fade-up" style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: 40, opacity: 0, animationDelay: "0.4s", animationFillMode: "forwards" }}>
-            <Link
-              href="/ai-prompts/"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 28px",
-                borderRadius: "var(--radius-md)", fontSize: 14, fontWeight: 600,
-                color: "var(--bg-deep)", background: "var(--text-on-dark)",
-                textDecoration: "none", transition: "transform 0.15s, box-shadow 0.2s", letterSpacing: "0.01em",
-              }}
-            >
-              AI Prompts
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-            </Link>
-            <Link
-              href="/generator/"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 24px",
-                borderRadius: "var(--radius-md)", fontSize: 14, fontWeight: 500,
-                color: "var(--text-on-dark-2)", background: "transparent",
-                border: "1.5px solid var(--border-dark)", textDecoration: "none",
-                transition: "border-color 0.15s, color 0.15s", letterSpacing: "0.01em",
-              }}
-            >
-              Drawing Prompts
-            </Link>
-          </div>
-
-          <div className="animate-fade-up" style={{ display: "inline-flex", gap: 48, paddingTop: 24, borderTop: "1px solid var(--border-dark)", opacity: 0, animationDelay: "0.5s", animationFillMode: "forwards" }}>
+          {/* Stats */}
+          <div className="animate-fade-up" style={{ display: "inline-flex", gap: 48, paddingTop: 24, borderTop: "1px solid var(--border-dark)", opacity: 0, animationDelay: "0.55s", animationFillMode: "forwards" }}>
             {[
               { value: "167+", label: "AI Prompts" },
-              { value: "150B+", label: "Drawing Combos" },
+              { value: "GPT Image 2", label: "Latest Model" },
               { value: "4", label: "AI Models" },
-              { value: "Free", label: "No Sign-up" },
+              { value: "Free", label: "To Browse" },
             ].map((stat) => (
               <div key={stat.label} style={{ textAlign: "center" }}>
                 <div className="font-serif" style={{ fontSize: 24, fontWeight: 700, color: "var(--text-on-dark)", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: 4 }}>
@@ -246,62 +243,6 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* ══════════ FOR HUMANS — Drawing prompt tools ══════════ */}
-      <section style={{ background: "var(--bg-warm)", padding: "80px 32px" }}>
-        <div style={{ maxWidth: "var(--max-w)", margin: "0 auto" }}>
-          <div style={{ marginBottom: 48, maxWidth: 560 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                padding: "4px 12px", borderRadius: 100, fontSize: 11, fontWeight: 600,
-                letterSpacing: "0.08em", textTransform: "uppercase",
-                color: "#5a9e7a", background: "#eef6f2", border: "1px solid #b8dcc8",
-              }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-                </svg>
-                For Humans
-              </span>
-            </div>
-            <h2 className="font-serif" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", fontWeight: 700, marginBottom: 12, letterSpacing: "-0.02em" }}>
-              No AI needed. Just your sketchbook.
-            </h2>
-            <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
-              Our drawing prompt generator creates complete creative briefs with mood, subject,
-              palette, and style. Over 150 billion unique combinations to spark your next piece.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))", gap: 16 }}>
-            {HUMAN_TOOLS.map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.href}
-                className="card"
-                style={{ display: "flex", gap: 16, padding: "24px", textDecoration: "none", color: "inherit", transition: "box-shadow 0.2s, border-color 0.2s, transform 0.2s" }}
-              >
-                <div style={{ width: 48, height: 48, borderRadius: "var(--radius-md)", background: tool.bg, color: tool.accent, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d={tool.iconPath} />
-                  </svg>
-                </div>
-                <div style={{ minWidth: 0, flex: 1 }}>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: "var(--text-primary)", marginBottom: 4, lineHeight: 1.3 }}>
-                    {tool.title}
-                  </div>
-                  <div style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6 }}>
-                    {tool.description}
-                  </div>
-                </div>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 4 }}>
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══════════ CATEGORIES — AI prompt categories ══════════ */}
       <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "80px 32px" }}>
         <div style={{ marginBottom: 48, maxWidth: 560 }}>
@@ -318,6 +259,67 @@ export default function HomeClient({
           {categories.map((cat) => (
             <CategoryCard key={cat.id} category={cat} />
           ))}
+        </div>
+      </section>
+
+      {/* ══════════ PRICING CTA — Upgrade section ══════════ */}
+      <section style={{ background: "var(--bg-deep)", padding: "80px 32px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, opacity: 0.04, pointerEvents: "none", backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 14px", borderRadius: 100, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", background: "rgba(200,167,122,0.12)", border: "1px solid rgba(200,167,122,0.2)", marginBottom: 20 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+            Start Generating
+          </div>
+          <h2 className="font-serif" style={{ fontSize: "clamp(24px, 4vw, 38px)", fontWeight: 700, color: "var(--text-on-dark)", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 16 }}>
+            Turn prompts into images<br />in seconds
+          </h2>
+          <p style={{ fontSize: 15, color: "var(--text-on-dark-2)", lineHeight: 1.7, maxWidth: 520, margin: "0 auto 32px" }}>
+            Sign up and get 1 free credit to try GPT Image 2 instantly. Want more? Upgrade for bulk credits, higher quality, and HD/Ultra outputs.
+          </p>
+
+          {/* Plan highlights */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14, marginBottom: 32, textAlign: "left" }}>
+            {[
+              { plan: "Free", price: "$0", highlight: "1 free generation", desc: "Sign up & try GPT Image 2 — no card needed" },
+              { plan: "Starter", price: "$5.90/mo", highlight: "100 credits", desc: "Standard quality + 30 images/day" },
+              { plan: "Pro", price: "$14.90/mo", highlight: "300 credits", desc: "HD & Ultra quality, 50 images/day" },
+            ].map((p) => (
+              <div key={p.plan} style={{ padding: "20px", borderRadius: 12, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", marginBottom: 4 }}>{p.plan}</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "var(--text-on-dark)", marginBottom: 6 }}>{p.price}</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-on-dark)", marginBottom: 4 }}>{p.highlight}</div>
+                <div style={{ fontSize: 12, color: "var(--text-on-dark-2)", lineHeight: 1.5 }}>{p.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA buttons */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
+            <Link
+              href="/generate"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px",
+                borderRadius: 10, fontSize: 14, fontWeight: 600,
+                color: "#fff", background: "var(--accent)",
+                textDecoration: "none", transition: "opacity 0.15s",
+              }}
+            >
+              Try Free — No Card Needed
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </Link>
+            <Link
+              href="/pricing"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 24px",
+                borderRadius: 10, fontSize: 14, fontWeight: 500,
+                color: "var(--text-on-dark-2)", background: "transparent",
+                border: "1.5px solid rgba(255,255,255,0.15)", textDecoration: "none",
+                transition: "border-color 0.15s",
+              }}
+            >
+              View All Plans
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -449,6 +451,17 @@ function FeaturedPromptCard({ prompt, copied, onCopy, categories }: { prompt: AI
               </>
             )}
           </button>
+          <Link
+            href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
+            onClick={(e) => { e.stopPropagation(); }}
+            className="btn-ghost"
+            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500, textDecoration: "none", color: "#c06a3e" }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+            Generate
+          </Link>
           <span
             className="btn-ghost"
             style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500 }}
