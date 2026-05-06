@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { QUALITY_CONFIG, type QualityTier } from "@/lib/qualityConfig";
+import TurnstileWidget from "@/components/common/TurnstileWidget";
 
 // ─── Types ───
 interface GenerationRecord {
@@ -91,6 +92,9 @@ function GeneratePageContent() {
   const [referenceFileName, setReferenceFileName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Turnstile state
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+
   // History state
   const [history, setHistory] = useState<GenerationRecord[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
@@ -172,6 +176,7 @@ function GeneratePageContent() {
         body: JSON.stringify({
           prompt_text: prompt.trim(),
           quality,
+          turnstile_token: turnstileToken,
           ...(referenceImage ? { reference_image: referenceImage } : {}),
         }),
       });
@@ -460,10 +465,16 @@ function GeneratePageContent() {
             </div>
           </div>
 
+          {/* Turnstile Verification */}
+          <TurnstileWidget
+            onVerify={(token) => setTurnstileToken(token)}
+            onExpire={() => setTurnstileToken(null)}
+          />
+
           {/* Generate Button */}
           <button
             onClick={handleGenerate}
-            disabled={!canGenerate}
+            disabled={!canGenerate || !turnstileToken}
             style={{
               width: "100%",
               padding: "13px 24px",
