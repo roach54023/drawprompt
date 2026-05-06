@@ -53,9 +53,13 @@ async function callImageAPI(params: {
     if (params.size) formData.append("size", params.size);
     if (params.quality) formData.append("quality", params.quality);
 
-    // 将 base64 转为 Blob 作为 image 字段
-    const imageBuffer = Buffer.from(params.referenceImageBase64!, "base64");
-    const imageBlob = new Blob([imageBuffer], { type: "image/png" });
+    // 将 base64 转为 Blob 作为 image 字段（使用 Web API，兼容 Edge Runtime）
+    const binaryStr = atob(params.referenceImageBase64!);
+    const imageBytes = new Uint8Array(binaryStr.length);
+    for (let i = 0; i < binaryStr.length; i++) {
+      imageBytes[i] = binaryStr.charCodeAt(i);
+    }
+    const imageBlob = new Blob([imageBytes], { type: "image/png" });
     formData.append("image", imageBlob, "reference.png");
 
     response = await fetch(url, {

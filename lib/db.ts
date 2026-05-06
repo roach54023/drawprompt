@@ -237,10 +237,12 @@ function createLocalStatement(sqlite: unknown, query: string): LocalPreparedStat
 // ─── 统一入口 ───
 
 let localDbInstance: D1Database | null = null;
+let tursoDbInstance: D1Database | null = null;
 
 /**
  * 获取数据库实例
  * 开发环境使用本地 SQLite（local.db），生产环境使用 Turso
+ * 两种环境都缓存实例，避免重复创建连接
  */
 export function getDb(): D1Database {
   if (process.env.NODE_ENV === "development") {
@@ -249,6 +251,9 @@ export function getDb(): D1Database {
     }
     return localDbInstance;
   }
-  // 生产环境使用 Turso（libsql client 内部有连接池）
-  return createTursoDb();
+  // 生产环境缓存 Turso client 实例（Serverless 同一实例内复用）
+  if (!tursoDbInstance) {
+    tursoDbInstance = createTursoDb();
+  }
+  return tursoDbInstance;
 }
