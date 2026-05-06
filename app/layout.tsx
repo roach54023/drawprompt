@@ -3,6 +3,7 @@ import Script from "next/script";
 import Link from "next/link";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Providers from "@/components/Providers";
 
 /* ── Global JSON-LD: WebSite + SearchAction ─────────────────── */
 const websiteJsonLd = {
@@ -85,8 +86,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        <Nav />
-        <main>{children}</main>
+        <Providers>
+          <Nav />
+          <main>{children}</main>
 
         <footer
           style={{
@@ -291,6 +293,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-3ZL3HCMN6B');
           `}
         </Script>
+        </Providers>
       </body>
     </html>
   );

@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     deviceSizes: [800, 1200],
     imageSizes: [400],
   },
+  // Exclude better-sqlite3 from server bundle (only used in local dev via require())
+  serverExternalPackages: ["better-sqlite3"],
 };
 
 export default nextConfig;
