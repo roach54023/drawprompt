@@ -78,7 +78,7 @@ function callImageAPI(params: {
       timeout: 370000,
       maxBuffer: 50 * 1024 * 1024,
       // 确保子进程继承环境变量
-      env: process.env as Record<string, string>,
+      env: { ...process.env } as NodeJS.ProcessEnv,
     });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Child process failed";
