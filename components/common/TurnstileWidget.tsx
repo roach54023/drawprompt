@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 
 interface TurnstileWidgetProps {
   onVerify: (token: string) => void;
@@ -21,30 +21,34 @@ declare global {
 export default function TurnstileWidget({ onVerify, onExpire }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
+  const onVerifyRef = useRef(onVerify);
+  const onExpireRef = useRef(onExpire);
 
-  const renderWidget = useCallback(() => {
-    if (!containerRef.current || !window.turnstile) return;
-    if (widgetIdRef.current) {
-      window.turnstile.remove(widgetIdRef.current);
-    }
+  // Keep refs up to date without triggering re-renders
+  onVerifyRef.current = onVerify;
+  onExpireRef.current = onExpire;
 
+  useEffect(() => {
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
     if (!siteKey) {
       // Dev mode: auto-pass
-      onVerify("dev-mode-token");
+      onVerifyRef.current("dev-mode-token");
       return;
     }
 
-    widgetIdRef.current = window.turnstile.render(containerRef.current, {
-      sitekey: siteKey,
-      callback: onVerify,
-      "expired-callback": onExpire,
-      theme: "light",
-      size: "normal",
-    });
-  }, [onVerify, onExpire]);
+    const renderWidget = () => {
+      if (!containerRef.current || !window.turnstile) return;
+      if (widgetIdRef.current) return; // Already rendered, don't re-render
 
-  useEffect(() => {
+      widgetIdRef.current = window.turnstile.render(containerRef.current, {
+        sitekey: siteKey,
+        callback: (token: string) => onVerifyRef.current(token),
+        "expired-callback": () => onExpireRef.current?.(),
+        theme: "light",
+        size: "normal",
+      });
+    };
+
     // Load Turnstile script if not already loaded
     if (window.turnstile) {
       renderWidget();
@@ -60,9 +64,10 @@ export default function TurnstileWidget({ onVerify, onExpire }: TurnstileWidgetP
     return () => {
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
       }
     };
-  }, [renderWidget]);
+  }, []); // Only run once on mount
 
   return <div ref={containerRef} />;
 }
