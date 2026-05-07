@@ -7,7 +7,7 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { checkAndSaveUser, getUserByEmail } from "@/servers/user";
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     {
       // 完全手动配置 Google OAuth，跳过 OIDC 自动发现（避免 Node.js 后端连 Google 超时）
