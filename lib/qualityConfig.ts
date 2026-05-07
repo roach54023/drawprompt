@@ -54,10 +54,10 @@ export const MEMBERSHIP_LEVEL = {
 export type MembershipType = keyof typeof MEMBERSHIP_LEVEL;
 
 export const DAILY_LIMITS = {
-  free: 1,
-  starter: 30,
-  pro: 50,
-  premium: 100,
+free: 5,
+starter: 30,
+pro: 50,
+premium: 100,
 } as const;
 
 export const PLANS = {
