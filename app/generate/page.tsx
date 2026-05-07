@@ -181,6 +181,14 @@ function GeneratePageContent() {
         }),
       });
 
+      // 先检查响应是否为 JSON
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        const text = await res.text();
+        setError(`Server error (${res.status}): ${text.slice(0, 100)}`);
+        return;
+      }
+
       const data = await res.json();
 
       if (!res.ok) {
