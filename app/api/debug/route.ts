@@ -15,6 +15,10 @@ export async function GET(req: NextRequest) {
     return testImageAPI();
   }
 
+  if (testType === "r2") {
+    return testR2Upload();
+  }
+
   // 默认：环境检查
   const checks: Record<string, string> = {};
   checks.TURSO_DATABASE_URL = process.env.TURSO_DATABASE_URL ? "SET" : "MISSING";
@@ -53,6 +57,59 @@ export async function GET(req: NextRequest) {
     db: dbStatus,
     timestamp: new Date().toISOString(),
   });
+}
+
+/**
+ * 测试 R2 上传
+ */
+async function testR2Upload() {
+  try {
+    const { S3Client, PutObjectCommand } = await import("@aws-sdk/client-s3");
+
+    const endpoint = process.env.R2_ENDPOINT;
+    const accessKeyId = process.env.R2_ACCESS_KEY_ID;
+    const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+    const bucket = process.env.R2_BUCKET;
+
+    if (!endpoint || !accessKeyId || !secretAccessKey || !bucket) {
+      return NextResponse.json({
+        error: "Missing R2 config",
+        endpoint: endpoint ? "SET" : "MISSING",
+        accessKeyId: accessKeyId ? `${accessKeyId.substring(0, 8)}...` : "MISSING",
+        secretAccessKey: secretAccessKey ? "SET" : "MISSING",
+        bucket: bucket || "MISSING",
+      });
+    }
+
+    const client = new S3Client({
+      region: "auto",
+      endpoint,
+      credentials: { accessKeyId, secretAccessKey },
+    });
+
+    const testKey = `test/debug-${Date.now()}.txt`;
+    await client.send(new PutObjectCommand({
+      Bucket: bucket,
+      Key: testKey,
+      Body: new TextEncoder().encode("debug test"),
+      ContentType: "text/plain",
+    }));
+
+    return NextResponse.json({
+      success: true,
+      message: "R2 upload succeeded",
+      bucket,
+      endpoint: endpoint.substring(0, 40) + "...",
+      test_key: testKey,
+    });
+  } catch (err) {
+    return NextResponse.json({
+      error: "R2 upload failed",
+      details: err instanceof Error ? err.message : String(err),
+      endpoint: process.env.R2_ENDPOINT?.substring(0, 40) + "...",
+      bucket: process.env.R2_BUCKET,
+    });
+  }
 }
 
 /**
