@@ -93,9 +93,10 @@ export default function HomeClient({
               opacity: 0, animationDelay: "0.2s", animationFillMode: "forwards",
             }}
           >
-            Describe it.
+            The best{" "}
+            <span style={{ color: "var(--accent)" }}>AI image prompts</span>
             <br />
-            <span style={{ color: "var(--accent)" }}>Generate</span> it.
+            — tested &amp; ready to use
           </h1>
 
           <p
@@ -327,19 +328,19 @@ export default function HomeClient({
       <section style={{ background: "var(--bg-warm)", padding: "64px 32px" }}>
         <div style={{ maxWidth: "var(--max-w-narrow)", margin: "0 auto" }}>
           <h2 className="font-serif" style={{ fontSize: "clamp(22px, 3vw, 30px)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 12, textAlign: "center" }}>
-            Explore Drawing & AI Prompt Resources
+            Explore AI Image Prompt Resources
           </h2>
           <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, textAlign: "center", maxWidth: 520, margin: "0 auto 36px" }}>
-            Whether you draw by hand or generate with AI, we have the right prompts and guides for you.
+            From model-specific guides to curated prompt libraries — everything you need to generate better AI images.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))", gap: 14 }}>
             {[
-              { href: "/drawing-prompts", title: "Drawing Prompts", desc: "Curated ideas for sketching, painting, and illustration across every skill level.", color: "#5a9e7a", bg: "#eef6f2", border: "#b8dcc8" },
-              { href: "/how-to-use-gpt-image-2", title: "How to Use GPT Image 2", desc: "Step-by-step guide to writing effective prompts for OpenAI\u2019s latest image model.", color: "#c06a3e", bg: "#fdf0e8", border: "#f0c4a8" },
-              { href: "/gpt-image-2-prompts", title: "GPT Image 2 Prompts", desc: "167+ tested, copy-paste prompts optimized for GPT Image 2 with example images.", color: "#8b7ab8", bg: "#f2f0f8", border: "#d0c8e8" },
-              { href: "/generator", title: "Drawing Prompt Generator", desc: "150 billion+ unique combinations. Choose difficulty, mood, and style.", color: "#b8924a", bg: "#fdf8e8", border: "#e8d8a8" },
-              { href: "/daily-challenge", title: "Daily Drawing Challenge", desc: "A new prompt every day. Same for everyone. Compare your interpretation.", color: "#c47ab8", bg: "#faf0f8", border: "#e8c0e0" },
-              { href: "/random", title: "Random Drawing Prompt", desc: "No decisions needed. Hit the button and start drawing immediately.", color: "#7b9eb8", bg: "#eef4f8", border: "#c8dce8" },
+              { href: "/ai-prompts", title: "AI Image Prompt Library", desc: "167+ curated AI image prompts across 9 categories — copy, paste, and generate instantly.", color: "#c06a3e", bg: "#fdf0e8", border: "#f0c4a8" },
+              { href: "/gpt-image-2-prompts", title: "GPT Image 2 Prompts", desc: "Tested, copy-paste prompts optimized for GPT Image 2 with example images.", color: "#8b7ab8", bg: "#f2f0f8", border: "#d0c8e8" },
+              { href: "/how-to-use-gpt-image-2", title: "How to Use GPT Image 2", desc: "Step-by-step guide to writing effective prompts for OpenAI\u2019s latest image model.", color: "#5a9e7a", bg: "#eef6f2", border: "#b8dcc8" },
+              { href: "/chatgpt-photo-prompts", title: "ChatGPT Photo Prompts", desc: "Photorealistic prompts crafted for ChatGPT\u2019s image generation — portraits, products, and more.", color: "#7b9eb8", bg: "#eef4f8", border: "#c8dce8" },
+              { href: "/generate", title: "Generate AI Images", desc: "Type a prompt and create images instantly with GPT Image 2 — 1 free credit, no card needed.", color: "#b8924a", bg: "#fdf8e8", border: "#e8d8a8" },
+              { href: "/drawing-prompts", title: "Drawing Prompts", desc: "Traditional art inspiration for sketching, painting, and illustration at every skill level.", color: "#c47ab8", bg: "#faf0f8", border: "#e8c0e0" },
             ].map((item) => (
               <Link
                 key={item.href}
@@ -508,8 +509,8 @@ const FAQ_ITEMS = [
     a: "Yes. While each prompt is optimized for GPT Image 2, most work great across all major AI image generators. Each prompt page shows which models it\u2019s compatible with. You may need to adjust some model-specific parameters (like Midjourney\u2019s --ar flag), but the core description transfers seamlessly.",
   },
   {
-    q: "What is the Drawing Prompt Generator?",
-    a: "Our Drawing Prompt Generator creates complete creative briefs for human artists \u2014 mood, subject, palette, style, and optional challenges. With over 150 billion unique combinations across 6 dimensions, it\u2019s designed for traditional artists, illustrators, and anyone who wants to sketch without AI. Choose beginner, intermediate, or challenge difficulty.",
+    q: "How do I find the best AI image prompts for my use case?",
+    a: "Browse by category \u2014 we have 9 categories covering Realistic Photography, Character Design, UI/UX, Poster Design, Film & Cinematic, Game Art, Product Photography, Infographic, and Photo Editing. Each prompt shows which AI model it works best with and includes a sample output image, so you can find the right style before you generate.",
   },
   {
     q: "Are these prompts free?",

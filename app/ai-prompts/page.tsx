@@ -27,6 +27,72 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://drawprompt.org/" },
+        { "@type": "ListItem", "position": 2, "name": "AI Image Prompts", "item": "https://drawprompt.org/ai-prompts/" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are AI image prompts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI image prompts are text descriptions you give to AI image generators like GPT Image 2, ChatGPT, Midjourney, or DALL-E to create specific images. A good prompt specifies subject, style, lighting, composition, and technical parameters. DrawPrompt's library provides 167+ tested prompts with example outputs.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI models work with these prompts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our prompts are tested and tagged for GPT Image 2, ChatGPT image generator, Midjourney, and DALL-E. Each prompt page shows which models it's compatible with. Most prompts transfer well across all major AI image generators with minor adjustments.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Are the AI image prompts free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — browsing and copying all 167+ AI image prompts is completely free, no account required. Generating images directly on DrawPrompt uses GPT Image 2 and requires a free account (1 free credit included).",
+          },
+        },
+      ],
+    },
+  ],
+};
+
 export default function AIPromptsPage() {
-  return <AIPromptsClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* Visually hidden H1 for crawlers — client component renders its own visible heading */}
+      <h1
+        style={{
+          position: "absolute",
+          width: 1,
+          height: 1,
+          padding: 0,
+          margin: -1,
+          overflow: "hidden",
+          clip: "rect(0,0,0,0)",
+          whiteSpace: "nowrap",
+          borderWidth: 0,
+        }}
+      >
+        AI Image Prompts — 167+ Tested Prompts for GPT Image 2, ChatGPT & Midjourney
+      </h1>
+      <AIPromptsClient />
+    </>
+  );
 }

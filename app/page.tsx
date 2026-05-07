@@ -38,8 +38,8 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "How do I write a good AI image prompt?",
-      acceptedAnswer: { "@type": "Answer", text: "A great AI image prompt has five key elements: a clear subject, a specific style or art direction, lighting and mood, composition details, and technical specifications (resolution, aspect ratio). Our prompts include all of these, and each comes with a breakdown explaining why each element works." },
+      name: "How do I find the best AI image prompts for my use case?",
+      acceptedAnswer: { "@type": "Answer", text: "Browse by category — we have 9 categories covering Realistic Photography, Character Design, UI/UX, Poster Design, Film & Cinematic, Game Art, Product Photography, Infographic, and Photo Editing. Each prompt shows which AI model it works best with and includes a sample output image, so you can find the right style before you generate." },
     },
     {
       "@type": "Question",
@@ -55,31 +55,29 @@ const faqJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Drawing Prompt Generator & AI Image Prompts — GPT Image 2, ChatGPT",
+  title: "AI Image Prompts — 167+ Curated Prompts for GPT Image 2 & ChatGPT | DrawPrompt",
   description:
-    "Free drawing prompt generator with 150B+ combinations for artists. 167+ copy-paste AI image prompts for GPT Image 2, ChatGPT image generator, Midjourney & DALL-E. Tested prompts with breakdowns and tips.",
+    "Browse 167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Covers photography, poster design, character art, product photography and more. Copy any prompt and generate the same result on site.",
   keywords: [
-    "drawing prompt generator",
-    "drawing prompts",
     "ai image prompts",
+    "ai image prompt library",
     "gpt image 2 prompts",
     "gpt image 2 prompt",
+    "chatgpt image prompts",
     "chatgpt image generator prompts",
-    "chatgpt image 2",
-    "chat gpt image 2",
-    "ai image prompt",
+    "ai image generation prompts",
     "midjourney prompts",
-    "drawing prompts for artists",
-    "random drawing prompt",
-    "art prompt generator",
-    "creative drawing prompts",
     "dall-e prompts",
+    "copy paste ai prompts",
+    "ai photo prompts",
+    "ai portrait prompt",
+    "ai product photography prompt",
   ],
   alternates: { canonical: "https://drawprompt.org/" },
   openGraph: {
-    title: "Drawing Prompt Generator & 167+ AI Image Prompts — GPT Image 2, ChatGPT",
+    title: "AI Image Prompts — 167+ Curated Prompts for GPT Image 2 & ChatGPT | DrawPrompt",
     description:
-      "Free drawing prompt generator for artists + 167+ curated AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Copy, paste, create.",
+      "167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Copy any prompt and generate the same result directly on DrawPrompt.",
     type: "website",
     url: "https://drawprompt.org/",
   },

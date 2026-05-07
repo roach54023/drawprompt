@@ -81,10 +81,15 @@ export async function DELETE(request: NextRequest) {
     }
 
     // 调用 PayPal 取消订阅
-    await cancelSubscription(
-      subscription.paypal_subscription_id,
-      "User requested cancellation"
-    );
+    try {
+      await cancelSubscription(
+        subscription.paypal_subscription_id,
+        "User requested cancellation"
+      );
+    } catch (paypalError) {
+      // PayPal 取消失败时仍然允许本地取消（例如 sandbox 订阅在 live 环境不存在）
+      console.warn("[Cancel] PayPal cancel failed, proceeding with local cancel:", paypalError instanceof Error ? paypalError.message : paypalError);
+    }
 
     // 更新本地记录
     await cancelSubscriptionRecord(subscription.paypal_subscription_id);

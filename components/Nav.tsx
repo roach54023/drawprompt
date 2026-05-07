@@ -170,7 +170,7 @@ export default function Nav() {
             );
           })}
 
-          {/* Prompts for Humans dropdown */}
+          {/* More Tools dropdown */}
           <div ref={dropdownRef} style={{ position: "relative" }}>
             <button
               onClick={() => setDropdownOpen((v) => !v)}
@@ -381,7 +381,7 @@ export default function Nav() {
               padding: "8px 8px 6px",
             }}
           >
-            Prompts for Humans
+            More Tools
           </div>
           {humanLinks.map((link) => {
             const active = pathname === link.href;

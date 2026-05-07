@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${BASE}/generate/`,
+      url: `${BASE}/ai-prompts/`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.95,
@@ -37,13 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/gpt-image-2-prompts/`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.95,
+      priority: 0.9,
     },
     {
-      url: `${BASE}/ai-prompts/`,
+      url: `${BASE}/generate/`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.85,
     },
     {
       url: `${BASE}/chatgpt-photo-prompts/`,

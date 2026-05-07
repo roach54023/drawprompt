@@ -22,23 +22,22 @@ const websiteJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Image Prompts & Drawing Prompt Generator — GPT Image 2, ChatGPT | DrawPrompt",
+    default: "AI Image Prompt Library — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
     template: "%s | DrawPrompt",
   },
   description:
-    "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT image generator, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations for artists.",
+    "DrawPrompt is a curated AI image prompt library. Browse 167+ tested prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E — copy, paste, and generate the same result directly on site.",
   keywords: [
     "ai image prompts",
+    "ai image prompt library",
     "gpt image 2 prompts",
     "gpt image 2 prompt",
+    "chatgpt image prompts",
     "chatgpt image generator prompts",
-    "chatgpt image 2",
-    "drawing prompt generator",
-    "drawing prompts",
     "midjourney prompts",
     "dall-e prompts",
     "ai art prompts",
-    "art prompt generator",
+    "best ai image prompts",
   ],
   metadataBase: new URL("https://drawprompt.org"),
   alternates: {
@@ -56,23 +55,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "DrawPrompt",
     url: "https://drawprompt.org",
-    title: "AI Image Prompts & Drawing Prompt Generator — GPT Image 2, ChatGPT | DrawPrompt",
+    title: "AI Image Prompt Library — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
     description:
-      "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations.",
+      "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Copy, paste, and generate the same result on site.",
     images: [
       {
         url: "https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg",
         width: 1200,
         height: 630,
-        alt: "DrawPrompt — AI Image Prompts & Drawing Prompt Generator",
+        alt: "DrawPrompt — AI Image Prompt Library for GPT Image 2 & ChatGPT",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Image Prompts & Drawing Prompt Generator | DrawPrompt",
+    title: "AI Image Prompt Library | DrawPrompt",
     description:
-      "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Free drawing prompt generator for artists.",
+      "167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Browse, copy, and generate the same result on site.",
     images: ["https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg"],
   },
 };
@@ -135,8 +134,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   margin: 0,
                 }}
               >
-                Curated AI image prompts and a drawing prompt generator
-                for artists of every kind.
+                A curated AI image prompt library with 167+ tested prompts
+                for GPT Image 2, ChatGPT, Midjourney &amp; DALL-E.
               </p>
             </div>
 

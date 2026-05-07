@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About DrawPrompt — Free Drawing Prompt Generator & AI Image Prompts",
+  title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & ChatGPT",
   description:
-    "DrawPrompt is a free drawing prompt generator with 150B+ combinations and 167+ AI image prompts for GPT Image 2, ChatGPT & Midjourney. Learn about our mission and how it works.",
+    "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2, ChatGPT & Midjourney. Browse, copy, and generate stunning AI images directly on site.",
   alternates: { canonical: "https://drawprompt.org/about/" },
   openGraph: {
-    title: "About DrawPrompt — Free Drawing Prompt Generator & AI Image Prompts",
+    title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & ChatGPT",
     description:
-      "DrawPrompt: free drawing prompt generator + 167+ AI image prompts for GPT Image 2 & ChatGPT.",
+      "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2, ChatGPT & Midjourney.",
     type: "website",
     url: "https://drawprompt.org/about/",
   },
@@ -18,32 +18,32 @@ export const metadata: Metadata = {
 const HOW_IT_WORKS = [
   {
     step: "01",
-    title: "Six creative dimensions",
-    desc: "Every prompt is built from Theme, Subject, Mood, Color Palette, Style, and Challenge — six independent dimensions that combine into a complete creative brief.",
+    title: "Browse the AI image prompt library",
+    desc: "Explore 167+ curated AI image prompts across 9 categories. Each prompt is tagged by model compatibility (GPT Image 2, ChatGPT, Midjourney, DALL-E) and difficulty.",
     color: "#c4714a",
     bg: "#fdf0e8",
     border: "#f0c4a8",
   },
   {
     step: "02",
-    title: "150 billion combinations",
-    desc: "With 480+ carefully crafted words across all dimensions, the theoretical combination space is over 150 billion. You'll never see the same prompt twice.",
+    title: "Read the breakdown",
+    desc: "Every prompt comes with a real example image and a detailed explanation of why each element works — subject, style, lighting, composition, and technical specs.",
     color: "#7b9eb8",
     bg: "#eef4f8",
     border: "#c8dce8",
   },
   {
     step: "03",
-    title: "Three difficulty levels",
-    desc: "Beginner uses just 2 dimensions for a simple starting point. Intermediate adds mood and color. Challenge includes style and technique constraints.",
+    title: "Copy or generate in one click",
+    desc: "Copy the prompt to use in any AI tool, or hit Generate to create the image directly on DrawPrompt using GPT Image 2 — no leaving the page required.",
     color: "#5a9e7a",
     bg: "#eef6f2",
     border: "#b8dcc8",
   },
   {
     step: "04",
-    title: "Daily challenge",
-    desc: "Every day at midnight UTC, a new challenge goes live. The same prompt for every artist worldwide — a shared creative moment.",
+    title: "Customize for your needs",
+    desc: "Each prompt breakdown explains which elements to swap out. Change the subject, adjust the style, or combine prompts to create something entirely your own.",
     color: "#8b7ab8",
     bg: "#f2f0f8",
     border: "#d0c8e8",
@@ -61,10 +61,10 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="font-serif" style={{ fontSize: "clamp(30px, 5vw, 44px)", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 14 }}>
-            Built for artists who want to draw more, worry less.
+            The AI image prompt library that lets you generate the same result.
           </h1>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--text-secondary)" }}>
-            DrawingPrompt is a free, open tool that turns the blank-page problem into a one-click creative brief.
+            DrawPrompt is a curated library of 167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney &amp; DALL-E. Every prompt comes with an example image, a breakdown of why it works, and a one-click generate button.
           </p>
         </div>
 
@@ -78,18 +78,19 @@ export default function AboutPage() {
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 14, fontSize: 15, lineHeight: 1.75, color: "var(--text-secondary)" }}>
             <p>
-              The blank page is the enemy of every artist. You sit down to draw, full of
-              energy — and then spend 20 minutes trying to decide what to draw. By the time
-              you&apos;ve decided, the momentum is gone.
+              Most AI image prompt libraries are just text lists. You copy a prompt, paste it
+              into ChatGPT or Midjourney, and hope for the best — with no idea what the output
+              will actually look like.
             </p>
             <p>
-              DrawingPrompt solves that. One click gives you a complete creative brief: a
-              scene with atmosphere, a character with depth, a color palette to guide your
-              choices, and an optional technique challenge to push your skills.
+              DrawPrompt is different. Every prompt in our library comes with a real example
+              image generated from that exact prompt, a breakdown of why each element works, and
+              a direct generate button so you can reproduce the result in one click.
             </p>
             <p>
-              We believe constraints unlock creativity. The best art often comes from working
-              within limits — and a well-crafted prompt is the most liberating constraint there is.
+              We focus on quality over quantity. 167+ hand-picked, tested prompts across 9
+              categories — each one vetted to work reliably with GPT Image 2, ChatGPT, Midjourney,
+              and DALL-E.
             </p>
           </div>
         </section>
@@ -136,9 +137,9 @@ export default function AboutPage() {
             Privacy &amp; data
           </h2>
           <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--text-secondary)" }}>
-            DrawingPrompt stores nothing on our servers. Your saved prompts and streak data
-            live entirely in your browser&apos;s localStorage. No account, no tracking, no
-            data collection. The tool works completely offline once loaded.
+            DrawPrompt stores no personal data by default. Your saved prompts live in your
+            browser&apos;s localStorage. Generating images requires a free account; we store
+            only what&apos;s needed to manage your credits. No tracking, no selling data.
           </p>
         </section>
 
@@ -149,13 +150,13 @@ export default function AboutPage() {
           border: "1px solid var(--accent-border)",
         }}>
           <h2 className="font-serif" style={{ fontSize: 22, fontWeight: 600, color: "var(--text-primary)", marginBottom: 8 }}>
-            Ready to draw?
+            Ready to create?
           </h2>
           <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 24 }}>
-            Generate your first prompt in one click. No sign-up required.
+            Browse 167+ AI image prompts for free — no sign-up required to copy.
           </p>
-          <Link href="/" className="btn-primary" style={{ display: "inline-flex", textDecoration: "none" }}>
-            Start generating
+          <Link href="/ai-prompts" className="btn-primary" style={{ display: "inline-flex", textDecoration: "none" }}>
+            Browse AI image prompts
           </Link>
         </div>
 
