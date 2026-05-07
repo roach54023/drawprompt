@@ -52,7 +52,7 @@ export async function getTodayGenerationCount(userId: string): Promise<number> {
   const row = await db
     .prepare(
       `SELECT COUNT(*) as count FROM generations
-       WHERE user_id = ? AND created_at >= date('now')`
+       WHERE user_id = ? AND created_at >= date('now') AND status = 'success'`
     )
     .bind(userId)
     .first<{ count: number }>();
