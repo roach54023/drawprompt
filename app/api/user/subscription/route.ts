@@ -87,8 +87,15 @@ export async function DELETE(request: NextRequest) {
         "User requested cancellation"
       );
     } catch (paypalError) {
-      // PayPal 取消失败时仍然允许本地取消（例如 sandbox 订阅在 live 环境不存在）
-      console.warn("[Cancel] PayPal cancel failed, proceeding with local cancel:", paypalError instanceof Error ? paypalError.message : paypalError);
+      const errMsg = paypalError instanceof Error ? paypalError.message : String(paypalError);
+      // 只有当订阅在 PayPal 侧不存在（404）或已经被取消时，才允许跳过
+      // 这种情况通常发生在 sandbox->live 迁移，或用户已在 PayPal 侧手动取消
+      if (errMsg.includes("RESOURCE_NOT_FOUND") || errMsg.includes("status 404") || errMsg.includes("SUBSCRIPTION_STATUS_INVALID")) {
+        console.warn("[Cancel] PayPal subscription not found or already cancelled, proceeding with local cancel:", errMsg);
+      } else {
+        // 其他错误（网络问题、认证失败等）不应跳过，要告知用户
+        throw paypalError;
+      }
     }
 
     // 更新本地记录
