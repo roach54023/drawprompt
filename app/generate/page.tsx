@@ -192,7 +192,8 @@ function GeneratePageContent() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Generation failed");
+        const detail = data.details ? ` (${data.details})` : "";
+        setError((data.error || "Generation failed") + detail);
         return;
       }
 
