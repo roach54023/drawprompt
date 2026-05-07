@@ -3,23 +3,23 @@ import Link from "next/link";
 import { getMixedFeed, type FeedItem } from "@/lib/blogData";
 
 export const metadata: Metadata = {
-  title: "Drawing Prompt Blog \u2014 Tips, Experiments & Daily Art Challenges",
+  title: "AI Image Prompt Blog \u2014 Tips, Experiments & Prompt Guides",
   description:
-    "Drawing tips, prompt experiments, GPT Image 2 insights, and a fresh daily art challenge every day. Explore hundreds of creative briefs and level up your art practice.",
+    "AI image prompt guides, GPT Image 2 experiments, ChatGPT photo tips, and a fresh daily creative brief every day. Level up your AI image generation skills.",
   keywords: [
-    "drawing prompt blog",
-    "drawing prompts",
-    "daily drawing challenge",
-    "art prompt ideas",
-    "drawing inspiration",
+    "ai image prompt blog",
+    "ai image prompts",
     "gpt image 2 tips",
+    "chatgpt image prompts guide",
     "ai art prompts",
+    "midjourney prompt tips",
+    "daily ai image challenge",
   ],
   alternates: { canonical: "https://drawprompt.org/blog/" },
   openGraph: {
-    title: "Drawing Prompt Blog \u2014 Tips, Experiments & Daily Art Challenges",
+    title: "AI Image Prompt Blog \u2014 Tips, Experiments & Prompt Guides",
     description:
-      "Drawing tips, prompt experiments, and a fresh daily art challenge every day.",
+      "AI image prompt guides, GPT Image 2 experiments, and a fresh daily creative brief every day.",
     type: "website",
     url: "https://drawprompt.org/blog/",
   },
@@ -49,10 +49,10 @@ export default function BlogPage() {
           Blog & Archive
         </p>
         <h1 className="font-serif" style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 600, color: "#2c2416", letterSpacing: "-0.02em", marginBottom: 10 }}>
-          Drawing Prompt Blog
+          AI Image Prompt Blog
         </h1>
         <p style={{ fontSize: 15, color: "#6b5d4a", maxWidth: 480, margin: "0 auto" }}>
-          Tips, experiments, and a fresh creative brief every day. Explore prompts, learn about AI art, and find your next inspiration.
+          Prompt guides, GPT Image 2 experiments, and a fresh creative brief every day. Learn to write better AI image prompts and find your next inspiration.
         </p>
       </div>
 
@@ -120,7 +120,7 @@ function ArticleCard({ item, featured }: { item: Extract<FeedItem, { kind: "arti
       {/* Footer */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <span style={{ fontSize: 12, color: "var(--text-muted)" }}>{item.readingTime} min read</span>
-        <span style={{ fontSize: 11, color: item.heroColor, fontWeight: 600 }}>Read more \u2192</span>
+        <span style={{ fontSize: 11, color: item.heroColor, fontWeight: 600 }}>Read more &#8594;</span>
       </div>
     </Link>
   );
@@ -169,7 +169,7 @@ function DailyCard({ item, isFirst }: { item: Extract<FeedItem, { kind: "daily" 
       <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
         {item.theme && <span style={{ padding: "2px 8px", borderRadius: 6, background: "#eef4f8", color: "#7b9eb8", fontSize: 11, fontWeight: 500 }}>{item.theme}</span>}
         {item.subject && <span style={{ padding: "2px 8px", borderRadius: 6, background: "#eef6f2", color: "#5a9e7a", fontSize: 11, fontWeight: 500 }}>{item.subject}</span>}
-        <span style={{ marginLeft: "auto", fontSize: 11, color: "#c4b49a" }}>View \u2192</span>
+        <span style={{ marginLeft: "auto", fontSize: 11, color: "#c4b49a" }}>View &#8594;</span>
       </div>
     </Link>
   );
