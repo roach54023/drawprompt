@@ -278,18 +278,13 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      // 7. 上传到 R2（失败时 fallback 到 data URL）
+      // 7. 上传到 R2
       let imageUrl: string;
       if (process.env.NODE_ENV === "development") {
         imageUrl = `data:image/png;base64,${result.b64_json}`;
       } else {
-        try {
-          const fileName = `${generationId}.png`;
-          imageUrl = await uploadToR2(result.b64_json, fileName);
-        } catch (r2Error) {
-          console.error("[Generate] R2 upload failed, using data URL fallback:", r2Error instanceof Error ? r2Error.message : r2Error);
-          imageUrl = `data:image/png;base64,${result.b64_json}`;
-        }
+        const fileName = `${generationId}.png`;
+        imageUrl = await uploadToR2(result.b64_json, fileName);
       }
 
       // 8. 标记成功
