@@ -429,33 +429,21 @@ export default function PricingSection() {
                   </div>
                 ) : (
                   <button
-                    onClick={() => handleSubscribe(plan)}
-                    disabled={isSubscribing || subscribingPlan !== null}
+                    disabled={true}
                     style={{
                       width: "100%",
                       padding: "14px 24px",
                       borderRadius: 8,
                       border: "none",
-                      background: isSubscribing
-                        ? "#ccc"
-                        : isPopular
-                        ? "linear-gradient(135deg, #c8a77a, #a08050)"
-                        : "#2d2926",
+                      background: "#ccc",
                       color: "#fff",
                       fontSize: 15,
                       fontWeight: 600,
-                      cursor:
-                        isSubscribing || subscribingPlan !== null
-                          ? "not-allowed"
-                          : "pointer",
+                      cursor: "not-allowed",
                       transition: "all 0.2s",
                     }}
                   >
-                    {isSubscribing ? (
-                      <span>Redirecting to PayPal...</span>
-                    ) : (
-                      <span>Subscribe — ${config.price}/mo</span>
-                    )}
+                    <span>Coming Soon — ${config.price}/mo</span>
                   </button>
                 )
               ) : (
