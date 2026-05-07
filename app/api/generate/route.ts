@@ -5,6 +5,8 @@
  *
  * 使用 fetch 直接调用 OpenAI 兼容 API
  */
+export const maxDuration = 120; // 允许最长 120 秒（图片生成需要较长时间）
+
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
