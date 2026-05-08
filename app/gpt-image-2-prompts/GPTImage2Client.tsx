@@ -63,9 +63,14 @@ function interleaveByCategory(prompts: AIPrompt[]): AIPrompt[] {
   return result;
 }
 
-const gptImage2Prompts = interleaveByCategory(
-  aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"))
-);
+// Pinned Mother's Day prompts at top
+const PINNED_IDS = ["prompt-169", "prompt-171", "prompt-170", "prompt-168"];
+const gptImage2Prompts = (() => {
+  const all = aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"));
+  const pinned = PINNED_IDS.map((id) => all.find((p) => p.id === id)).filter(Boolean) as AIPrompt[];
+  const rest = all.filter((p) => !PINNED_IDS.includes(p.id));
+  return [...pinned, ...interleaveByCategory(rest)];
+})();
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },

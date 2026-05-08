@@ -32,12 +32,17 @@ export default function AIPromptsClient() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
 
+  // Pinned Mother's Day prompts (shown first in order: 2, 4, 3, 1)
+  const PINNED_IDS = ["prompt-169", "prompt-171", "prompt-170", "prompt-168"];
+
   // Interleave categories so the grid shows variety (round-robin by category)
   const categoryOrder = categories.map((c) => c.id);
   const interleaved = (() => {
+    const pinned = PINNED_IDS.map((id) => aiPrompts.find((p) => p.id === id)).filter(Boolean) as AIPrompt[];
+    const rest = aiPrompts.filter((p) => !PINNED_IDS.includes(p.id));
     const buckets: Record<string, AIPrompt[]> = {};
     for (const cat of categoryOrder) buckets[cat] = [];
-    for (const p of aiPrompts) {
+    for (const p of rest) {
       if (buckets[p.category]) buckets[p.category].push(p);
     }
     const result: AIPrompt[] = [];
@@ -53,13 +58,17 @@ export default function AIPromptsClient() {
       }
       round++;
     }
-    return result;
+    return [...pinned, ...result];
   })();
 
   const filtered =
     activeCategory === "all"
       ? interleaved
-      : aiPrompts.filter((p) => p.category === activeCategory);
+      : (() => {
+          const pinned = PINNED_IDS.map((id) => aiPrompts.find((p) => p.id === id && p.category === activeCategory)).filter(Boolean) as AIPrompt[];
+          const rest = aiPrompts.filter((p) => p.category === activeCategory && !PINNED_IDS.includes(p.id));
+          return [...pinned, ...rest];
+        })();
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {

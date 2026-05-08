@@ -205,6 +205,33 @@ export default function HomeClient({
         </div>
       </section>
 
+      {/* ══════════ MOTHER'S DAY BANNER ══════════ */}
+      <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "48px 32px 0" }}>
+        <Link
+          href="/mothers-day"
+          style={{
+            display: "flex", alignItems: "center", gap: 24,
+            padding: "20px 28px", borderRadius: 14,
+            background: "#fefaf6", border: "1px solid #f0e4d8",
+            textDecoration: "none", transition: "box-shadow 0.2s, transform 0.15s",
+          }}
+          className="card"
+        >
+          <div style={{ width: 56, height: 56, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
+            <Image src="/prompts/mothers-day-mom-silhouette-poster.jpg" alt="Mother's Day poster" fill style={{ objectFit: "cover" }} sizes="56px" />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#1c1917", marginBottom: 3 }}>
+              Mother&apos;s Day Poster Templates
+            </div>
+            <div style={{ fontSize: 12, color: "#78716c", lineHeight: 1.5 }}>
+              4 curated poster designs — pick a template, upload your photo, generate a gallery-quality art print for Mom.
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </Link>
+      </section>
+
       {/* ══════════ FOR AI — Curated AI image prompts ══════════ */}
       <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "80px 32px" }}>
         <div style={{ marginBottom: 48, maxWidth: 560 }}>

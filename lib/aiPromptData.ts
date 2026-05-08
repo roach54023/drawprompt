@@ -5026,6 +5026,265 @@ GPT Image-2で生成したやつ→`,
     featured: false,
     createdAt: "2025-04-01",
   },
+  // ─── Mother's Day Collection ─────────────────────────────────────────────
+  {
+    id: "prompt-168",
+    slug: "mothers-day-photo-card-growing-together",
+    title: "Mother's Day Tribute Poster — Thank You for Growing with Me",
+    prompt: `Create a warm, high-end flat graphic Mother's Day tribute poster based on one uploaded photo of the user and their mother, aspect ratio 3:4.
+Use only one uploaded photo. Do not create a multi-photo collage.
+Use case:
+This poster should feel like something the user would want to send directly to their mother on Mother's Day, or share on social media as a personal tribute. It must feel sincere, warm, personal, and memorable, not like a generic holiday template.
+Use GPT Image 2's strengths: preserve real identities accurately, maintain the relationship between people, render clear readable typography, and transform a real photo into a refined flat graphic poster.
+Photo handling:
+Preserve the real identities, facial features, age difference, relationship, and natural emotion in the photo.
+Do not swap faces, do not change the relationship, and do not turn the people into strangers.
+You may transform the photo into a flat poster style with paper grain, screen-print texture, subtle ink edges, and warm colors.
+Theme:
+"Thank you for growing with me."
+The image should express companionship, protection, growth, and gratitude between mother and child.
+Composition:
+Use the uploaded photo as the emotional center.
+The giant main visual text can be "MOM" or "MOTHER'S DAY".
+The typography must be huge, clear, flat, and integrated into the composition as a paper wall, memory frame, doorway, protective space, or warm supporting structure.
+The people may stand in front of the text, inside the letters, partially framed by the typography, or layered with it.
+There must be a clear horizontal supporting surface at the bottom.
+Color palette:
+Warm ivory, soft cream, muted coral, dusty rose, warm brown, pale gold.
+Avoid blood red, dominant black, harsh horror contrast, tacky pink, cheap gradients.
+Text:
+Main visual text: "MOM" or "MOTHER'S DAY".
+Optional small line: "Thank you for growing with me." or "Happy Mother's Day."
+No random slogans, fake signatures, fake numbers, fake magazine text, or meaningless small type.
+Avoid:
+generic Mother's Day template, commercial greeting card, excessive flowers, hearts, gift boxes, teddy bears, 3D typography, plastic skin, changing identities, fake family look, random text, horror palette, heavy black platform, crowded collage.
+
+← Upload a photo of you and your mom`,
+    category: "poster",
+    tags: ["mothers-day", "tribute-poster", "photo-card", "family", "love", "holiday", "personalized", "flat-graphic"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Mother's Day tribute poster with MOM typography, mother-daughter photo transformed into flat graphic art style",
+    imageUrl: "/prompts/mothers-day-photo-card-growing-together.jpg",
+    breakdown: {
+      subject: "Real mother-daughter photo transformed into flat graphic tribute poster",
+      style: "High-end flat graphic poster with screen-print texture and paper grain",
+      lighting: "Warm spring-like warmth, soft paper texture, quiet daylight",
+      composition: "Giant MOM/MOTHER'S DAY text as structural element, photo as emotional center",
+      details: "Warm ivory background, muted coral typography, dusty rose accents, lithograph grain",
+    },
+    tips: [
+      "Upload a clear photo of you and your mom — the AI preserves real identities",
+      "The poster transforms your photo into a refined flat graphic art style",
+      "Works beautifully as a social media tribute or printed gift",
+      "The AI integrates typography as a structural element, not just a title overlay",
+    ],
+    featured: true,
+    createdAt: "2025-05-08",
+  },
+  {
+    id: "prompt-169",
+    slug: "mothers-day-mom-silhouette-poster",
+    title: "Mother's Day MOM Silhouette Art Poster",
+    prompt: `Create a warm high-end flat graphic Mother's Day concept poster, aspect ratio 3:4.
+Core text: MOM
+Theme: Mother's Day
+Visual direction:
+Create a bold contemporary flat graphic poster with strong typography and screen-print texture, but the mood must be gentle, warm, safe, and intimate.
+It should feel like a refined Mother's Day art print, not a horror poster, not a war poster, not a dramatic political poster, not a dark monument.
+Main concept:
+Visually translate "MOM" into shelter, protection, support, home, and quiet love.
+The word "MOM" must become the main structural element of the poster, like huge flat printed blocks, a soft wall, a protective gate, or a symbolic home.
+Composition:
+Use a minimal scene with a clear horizontal platform across the lower part of the poster.
+The platform should be light, warm, and calm, not black, not heavy, not like a cliff or stage of danger.
+Place the giant "MOM" text across the center and lower half of the image. The letters must be huge, bold, flat, readable, and integrated into the scene.
+The "O" should become a warm doorway, soft circular opening, or protective home-like space.
+The two "M" letters should feel like sheltering walls or gentle arms around the mother and child.
+Main subjects:
+Use only small simple silhouette figures with softened dark brown or warm umber color, not pure black.
+Show a mother and child as tiny figures against the monumental "MOM" structure.
+The mother may kneel to adjust the child's scarf, hold the child's hand, carry the child, or gently touch the child's cheek.
+Their relationship must be readable through simple posture and spacing.
+Do not show detailed facial features. Avoid photorealistic people.
+Color palette:
+Use a soft Mother's Day print palette, 3 to 4 colors maximum:
+warm ivory paper background,
+soft coral, dusty rose, muted peach, or warm terracotta for the "MOM" letters,
+warm umber or soft brown for the silhouettes,
+pale gold, butter yellow, or light apricot for a small sun or glow.
+The red must be soft, warm, and low-saturation, never dark blood red, never aggressive crimson.
+Avoid dominant black. Avoid heavy dark blocks. Avoid harsh red-black contrast.
+Lighting and mood:
+Use gentle spring-like warmth, soft paper texture, quiet daylight, and a calm emotional atmosphere.
+If using a sun or circle, make it pale gold or soft apricot, subtle and comforting, not ominous.
+The image should feel tender and collectible, like a warm art book cover or handmade Mother's Day print.
+Style:
+Flat graphic poster, strong typography, minimal narrative, refined art-print quality.
+Use screen-print texture, lithograph grain, handmade paper fibers, slight ink imperfections, and soft edges.
+No glossy 3D lighting, no realistic interior render, no AI plastic smoothness.
+Text integration:
+The giant "MOM" must be physically part of the composition.
+The mother and child should stand on the platform in front of the letters, inside the "O", or partially framed by the letters.
+The typography, figures, platform, and negative space must form one complete visual sentence.
+The text must not look like a digital overlay.
+Supporting text:
+A very small "MOTHER'S DAY" may appear at the bottom, clean and restrained.
+No other text.
+Avoid:
+horror mood, blood red, aggressive crimson, dominant black, heavy black platform, dark monument, war-poster feeling, political propaganda feeling, ominous sun, dramatic threat, harsh shadows, pure black silhouettes, 3D render, realistic home interior, glossy AI lighting, cute greeting card style, excessive flowers, hearts, gift boxes, teddy bears, decorative branches, random small text, fake signatures, fake numbers, commercial holiday template, crowded composition, photorealistic faces.`,
+    category: "poster",
+    tags: ["mothers-day", "silhouette", "flat-graphic", "art-print", "typography", "poster", "holiday", "warm-tones"],
+    aiModels: ["gpt-image-2", "chatgpt", "midjourney"],
+    difficulty: "advanced",
+    imageAlt: "High-end flat graphic Mother's Day poster with monumental MOM letters, mother-child silhouette, warm coral and ivory palette",
+    imageUrl: "/prompts/mothers-day-mom-silhouette-poster.jpg",
+    breakdown: {
+      subject: "Monumental MOM typography as shelter with mother-child silhouette figures",
+      style: "High-end flat graphic poster with screen-print texture and lithograph grain",
+      lighting: "Gentle spring warmth, soft paper texture, pale gold sun glow",
+      composition: "Giant MOM letters as structural scene, O as doorway, figures on platform",
+      details: "3-4 color palette: warm ivory, soft coral, warm umber silhouettes, pale gold accent",
+    },
+    tips: [
+      "No photo upload needed — this is pure AI art generation",
+      "The prompt is highly detailed to avoid common AI poster pitfalls (horror mood, dark tones)",
+      "Perfect as printable wall art, social media post, or digital greeting",
+      "The flat graphic style with screen-print texture gives it a collectible art-print quality",
+    ],
+    featured: true,
+    createdAt: "2025-05-08",
+  },
+  {
+    id: "prompt-170",
+    slug: "mothers-day-elegant-portrait-reading",
+    title: "Mother's Day Portrait Tribute — Today Mom Is the Main Character",
+    prompt: `Create a high-end flat graphic Mother's Day tribute poster based on one uploaded portrait photo of the user's mother, aspect ratio 3:4.
+Main title: MOTHER'S DAY
+Use only one uploaded photo.
+Use case:
+This poster should make the mother feel seen, valued, and celebrated. It should feel like a personal tribute poster the user can send to their mother, not a generic holiday greeting image.
+Use GPT Image 2's strengths: preserve the real portrait identity, render clear large typography, and reconstruct the photo into a refined flat graphic design poster.
+Photo handling:
+Preserve her real identity, face shape, hairstyle, age, expression, temperament, and clothing silhouette.
+Do not make her unrealistically younger, do not over-beautify, do not make her look like a celebrity, and do not swap her face.
+Transform the photo into a flat art-poster style while keeping her real presence, with paper texture and print grain.
+Theme:
+"Today, Mom is the main character."
+The image should express that she is not only a mother; she is also herself.
+Composition:
+Place the mother as the central figure, calm, warm, and dignified.
+The giant main visual text must be "MOTHER'S DAY".
+The typography should become a background structure, paper frame, warm aura, or protective visual field, not a normal title.
+Keep the layout clean with a clear supporting surface at the bottom.
+Visual style:
+High-end flat poster, art book cover, screen-print texture, lithograph grain, warm paper feel.
+Gentle, elegant, intimate, and respectful.
+No 3D render, no studio portrait template, no commercial promotion style.
+Color palette:
+Warm ivory, soft cream, dusty rose, muted coral, pale gold, warm brown.
+Avoid dark red, heavy black, cold gray, neon pink, and dramatic hard lighting.
+Text:
+The main visual text must be "MOTHER'S DAY" only, large, clear, correctly spelled, and integrated into the image.
+Do not use MOM, FOR MOM, or HER DAY as the main title.
+Optional small line: "Happy Mother's Day, Mom." or "Today is your day."
+No fake magazine cover text, random numbers, fake coordinates, or decorative small type.
+Avoid:
+misspelling MOTHER'S DAY, using MOM as the main title, AI beauty filter, plastic skin, changing identity, unrealistic youthfulness, generic portrait poster, commercial holiday template, excessive flowers, hearts, gift boxes, random typography, fake branding, 3D render, horror colors.
+
+← Upload a portrait photo of your mom`,
+    category: "poster",
+    tags: ["mothers-day", "portrait", "tribute", "flat-graphic", "typography", "holiday", "personalized"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "High-end Mother's Day portrait tribute poster with MOTHER'S DAY typography, mom as central dignified figure",
+    imageUrl: "/prompts/mothers-day-elegant-portrait-reading.jpg",
+    breakdown: {
+      subject: "Mother's real portrait as central figure with MOTHER'S DAY typography",
+      style: "High-end flat poster with art book cover quality, screen-print texture",
+      lighting: "Gentle, elegant, warm paper feel with soft natural presence",
+      composition: "Mother centered and dignified, MOTHER'S DAY as background structure",
+      details: "Warm ivory, dusty rose, muted coral palette, lithograph grain, paper texture",
+    },
+    tips: [
+      "Upload a portrait photo of your mom — the AI preserves her real identity and temperament",
+      "The poster celebrates her as a person, not just as 'mom'",
+      "Works best with photos showing her natural expression and personality",
+      "The flat graphic style transforms any photo into gallery-worthy art",
+    ],
+    featured: true,
+    createdAt: "2025-05-08",
+  },
+  {
+    id: "prompt-171",
+    slug: "mothers-day-text-overlay-love",
+    title: "Mother's Day Memory Poster — I Grew Up Inside Your Love",
+    prompt: `Create a warm, high-end flat graphic Mother's Day memory poster based on the single uploaded photo, aspect ratio 3:4.
+Main title: MOTHER'S DAY
+Use only one uploaded photo.
+Critical image-reference rule:
+The uploaded photo must be visibly used as the main image in the final poster.
+Do not merely use the uploaded photo as inspiration.
+Do not generate a new imagined mother-child scene.
+Do not replace the uploaded photo with a different family, different people, or a newly invented composition.
+The people, relationship, pose, clothing, facial features, and emotional moment from the uploaded photo must remain recognizable.
+The final poster should clearly look like a designed poster version of the uploaded photo.
+Use case:
+This poster should be suitable for sharing a memory on Mother's Day, either sent directly to the mother or posted on social media. It should feel like a visual message: "I grew up, but this moment stayed."
+Photo handling:
+Use the uploaded photo as the central visible photograph or central visible image area.
+Preserve identities, relationship, age feeling, clothing, posture, facial features, and real memory atmosphere.
+Do not swap faces, do not change relationships, do not invent fake family members, and do not create a different scene.
+You may gently restore, crop, simplify, color-grade, and apply subtle poster-print treatment, but the original uploaded photo must remain visibly recognizable.
+Keep the photo's core composition unless a slight crop is needed for poster framing.
+Theme:
+"I grew up inside your love."
+Express time, memory, companionship, growth, and gratitude.
+Composition:
+Place the uploaded photo as the emotional core of the poster.
+The photo should appear as a treasured printed photograph, a large central paper image, or a visible framed image integrated with the typography.
+The main visual text must be "MOTHER'S DAY".
+The typography may frame the uploaded photo, sit behind it, partially overlap its edges, or form a paper structure around it.
+Do not embed the photo so deeply into the letters that the original image becomes unrecognizable.
+Keep the layout simple: one visible uploaded photo, one large typographic structure, one clear horizontal base.
+Visual style:
+High-end flat art poster, archival paper texture, warm print grain, slight misregistration, soft lithograph feel.
+Nostalgic but not sad, warm but not sentimental.
+The poster may have a refined printed texture, but it must not erase the uploaded photo's identity.
+Color palette:
+Aged ivory paper, faded coral, dusty rose, warm brown, muted peach, pale gold.
+Avoid dirty sepia, heavy black, dark blood red, horror contrast, and excessive distressing.
+Text:
+The main visual text must be "MOTHER'S DAY" only, large, clear, correctly spelled, and integrated into the image.
+Do not use MOM, FOR MOM, HER DAY, or STILL HOME as the main title.
+Optional small line: "I grew up inside your love." or "Happy Mother's Day."
+No fake dates, fake archive numbers, fake exhibition labels, or meaningless text.
+Avoid:
+ignoring the uploaded photo, using the uploaded photo only as style inspiration, generating a new family scene, changing identities, AI face replacement, unrecognizable people, embedding the photo too abstractly, cheap vintage filter, messy scrapbook collage, too many frames, fake old-photo damage, random typography, commercial greeting card style, 3D render, horror palette.
+
+← Upload a photo of you and your mom`,
+    category: "poster",
+    tags: ["mothers-day", "memory-poster", "text-overlay", "typography", "photo-card", "holiday", "personalized", "flat-graphic"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Mother's Day memory poster with photo visible through MOTHER'S DAY typography, warm archival paper texture",
+    imageUrl: "/prompts/mothers-day-text-overlay-love.jpg",
+    breakdown: {
+      subject: "Real mother-child photo as emotional core with MOTHER'S DAY typographic structure",
+      style: "High-end flat art poster with archival paper texture and lithograph feel",
+      lighting: "Warm nostalgic atmosphere, aged ivory paper, soft print grain",
+      composition: "Uploaded photo as central image, MOTHER'S DAY text framing or overlapping",
+      details: "Aged ivory, faded coral, dusty rose palette, slight misregistration, warm print grain",
+    },
+    tips: [
+      "Upload a meaningful photo — the AI keeps it recognizable as the poster's emotional core",
+      "The photo won't be replaced or reimagined; it stays visibly yours",
+      "Works beautifully with childhood photos or recent moments together",
+      "The typography frames your memory like a treasured printed photograph",
+    ],
+    featured: true,
+    createdAt: "2025-05-08",
+  },
 ];
 
 // ─── Helper Functions ───────────────────────────────────────────────────────
@@ -5070,6 +5329,10 @@ export function getRelatedPrompts(
 
 // Display order for featured prompts on homepage
 const FEATURED_ORDER = [
+  "prompt-169", // Mother's Day MOM Silhouette Poster (prompt 2 — first)
+  "prompt-171", // Mother's Day Text Overlay — I Grew Up Inside Your Love (prompt 4 — second)
+  "prompt-170", // Mother's Day Elegant Portrait — Reading Mom (prompt 3 — third)
+  "prompt-168", // Mother's Day Photo Card — Growing Together (prompt 1 — fourth)
   "prompt-130", // Silhouette Universe Narrative Poster
   "prompt-137", // Sam Altman Bear Selfie
   "prompt-136", // Rust In-Game Screenshot
