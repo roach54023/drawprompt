@@ -31,7 +31,7 @@ export async function createGeneration(params: {
       params.quality,
       params.creditsCost,
       params.apiModel,
-      params.apiSize
+      params.apiSize ?? null
     )
     .run();
 }
