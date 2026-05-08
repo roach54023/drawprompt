@@ -30,25 +30,65 @@ async function testEndpoint(url: string, timeout = 10000) {
 
 export async function GET() {
   const baseUrl = process.env.OPENAI_API_BASE_URL || "https://api.apiyi.com";
+  const apiKey = process.env.OPENAI_API_KEY || "";
 
-  const results = await Promise.all([
-    // 1. Google OAuth token endpoint
-    testEndpoint("https://oauth2.googleapis.com/token"),
-    // 2. Google OIDC discovery
-    testEndpoint("https://accounts.google.com/.well-known/openid-configuration"),
-    // 3. Turso database connectivity
-    testEndpoint(process.env.TURSO_DATABASE_URL?.replace("libsql://", "https://") || "https://example.com"),
-    // 4. APIYi base URL (图片生成中转)
-    testEndpoint(baseUrl),
-    // 5. APIYi models endpoint (测试 API key 是否有效)
-    testEndpointWithAuth(`${baseUrl}/v1/models`, process.env.OPENAI_API_KEY || ""),
-  ]);
+  // 实际调用图片生成 API（用一个最小 prompt）
+  let generateResult: Record<string, unknown>;
+  const genStart = Date.now();
+  try {
+    const res = await fetch(`${baseUrl}/v1/images/generations`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-image-1",
+        prompt: "a white dot on black background",
+        n: 1,
+        size: "1024x1024",
+        quality: "low",
+      }),
+      signal: AbortSignal.timeout(30000),
+    });
+
+    const contentType = res.headers.get("content-type") || "";
+    if (contentType.includes("json")) {
+      const body = await res.json();
+      generateResult = {
+        status: res.status,
+        ok: res.ok,
+        contentType,
+        timeMs: Date.now() - genStart,
+        body: JSON.stringify(body).substring(0, 500),
+      };
+    } else {
+      const text = await res.text();
+      generateResult = {
+        status: res.status,
+        ok: res.ok,
+        contentType,
+        timeMs: Date.now() - genStart,
+        bodyPreview: text.substring(0, 300),
+      };
+    }
+  } catch (err: unknown) {
+    generateResult = {
+      error: err instanceof Error ? err.message : String(err),
+      timeMs: Date.now() - genStart,
+    };
+  }
+
+  // 也测试 models 列表
+  const modelsResult = await testEndpointWithAuth(`${baseUrl}/v1/models`, apiKey);
 
   return NextResponse.json({
     timestamp: new Date().toISOString(),
     region: process.env.VERCEL_REGION || "unknown",
     apiBaseUrl: baseUrl,
-    results,
+    apiKeyPrefix: apiKey.substring(0, 8) + "...",
+    generateTest: generateResult,
+    modelsTest: modelsResult,
   });
 }
 
