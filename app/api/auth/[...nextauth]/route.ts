@@ -7,6 +7,8 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { checkAndSaveUser, getUserByEmail } from "@/servers/user";
 
+export const maxDuration = 60;
+
 export const authOptions: NextAuthOptions = {
   providers: [
     {
@@ -21,8 +23,6 @@ export const authOptions: NextAuthOptions = {
         params: {
           scope: "openid email profile",
           response_type: "code",
-          access_type: "offline",
-          prompt: "consent",
         },
       },
       token: "https://oauth2.googleapis.com/token",
@@ -79,7 +79,7 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  debug: false,
+  debug: true,
   callbacks: {
     async signIn({ user }) {
       if (user?.email) {
