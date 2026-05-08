@@ -15,7 +15,7 @@ export async function createGeneration(params: {
   quality: QualityTier;
   creditsCost: number;
   apiModel: string;
-  apiSize: string;
+  apiSize: string | undefined;
 }): Promise<void> {
   const db = getDb();
   await db
