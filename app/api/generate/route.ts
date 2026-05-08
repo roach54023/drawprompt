@@ -54,7 +54,6 @@ async function callImageAPI(params: {
     formData.append("model", params.model);
     formData.append("prompt", params.prompt);
     formData.append("n", "1");
-    formData.append("response_format", "b64_json");
     if (params.size) formData.append("size", params.size);
     if (params.quality) formData.append("quality", params.quality);
 
@@ -88,7 +87,6 @@ async function callImageAPI(params: {
         model: params.model,
         prompt: params.prompt,
         n: 1,
-        response_format: "b64_json",
         ...(params.size ? { size: params.size } : {}),
         ...(params.quality ? { quality: params.quality } : {}),
       }),
