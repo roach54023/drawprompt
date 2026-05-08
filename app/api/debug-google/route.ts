@@ -5,7 +5,7 @@
  */
 import { NextResponse } from "next/server";
 
-export const maxDuration = 30;
+export const maxDuration = 300;
 
 async function testEndpoint(url: string, timeout = 10000) {
   const start = Date.now();
@@ -43,13 +43,13 @@ export async function GET() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-image-1",
+        model: "gpt-image-2",
         prompt: "a white dot on black background",
         n: 1,
         size: "1024x1024",
         quality: "low",
       }),
-      signal: AbortSignal.timeout(30000),
+      signal: AbortSignal.timeout(180000),
     });
 
     const contentType = res.headers.get("content-type") || "";
