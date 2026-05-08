@@ -125,22 +125,29 @@ async function callImageAPI(params: {
 export async function POST(request: NextRequest) {
   try {
     // 1. 验证 session（dev 模式下支持 X-Dev-Bypass header 跳过）
-    let userEmail: string;
+    let userId: string;
     const devBypass = process.env.NODE_ENV === "development" && request.headers.get("x-dev-bypass");
     
     if (devBypass) {
-      userEmail = devBypass;
+      const user = await getUserByEmail(devBypass);
+      if (user.status === 0) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 });
+      }
+      userId = user.user_id;
     } else {
       const session = await getServerSession(authOptions);
       if (!session?.user?.email) {
         return NextResponse.json({ error: "Please sign in to generate images" }, { status: 401 });
       }
-      userEmail = session.user.email;
-    }
-
-    const user = await getUserByEmail(userEmail);
-    if (user.status === 0) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      // 优先从 session token 中获取 user_id
+      userId = (session.user as { user_id?: string }).user_id || "";
+      if (!userId) {
+        const user = await getUserByEmail(session.user.email);
+        if (user.status === 0) {
+          return NextResponse.json({ error: "User not found" }, { status: 404 });
+        }
+        userId = user.user_id;
+      }
     }
 
     // 解析请求
@@ -180,7 +187,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. 检查用户权限
-    const credits = await getUserCredits(user.user_id);
+    const credits = await getUserCredits(userId);
     if (!credits) {
       return NextResponse.json({ error: "Credits not found" }, { status: 404 });
     }
@@ -217,7 +224,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 3c. 今日生成次数是否超限
-    const dailyRemaining = await getDailyRemaining(user.user_id);
+    const dailyRemaining = await getDailyRemaining(userId);
     if (dailyRemaining <= 0) {
       return NextResponse.json(
         { error: "Daily generation limit reached. Please try again tomorrow." },
@@ -230,7 +237,7 @@ export async function POST(request: NextRequest) {
 
     // 5. 先扣积分（乐观扣减）+ 创建 generation 记录
     await consumeCredits({
-      userId: user.user_id,
+      userId,
       creditsCost: qualityConfig.credits,
       generationId,
       description: `Generate image (${qualityConfig.label}) -${qualityConfig.credits} credits`,
@@ -238,7 +245,7 @@ export async function POST(request: NextRequest) {
 
     await createGeneration({
       generationId,
-      userId: user.user_id,
+      userId,
       promptSlug: prompt_slug || null,
       promptText: prompt_text,
       quality: qualityTier,
@@ -302,7 +309,7 @@ export async function POST(request: NextRequest) {
       const errorMessage = apiError instanceof Error ? apiError.message : "Unknown error";
 
       await refundCredits({
-        userId: user.user_id,
+        userId,
         creditsCost: qualityConfig.credits,
         generationId,
         description: `Refund: generation failed -${qualityConfig.label}`,

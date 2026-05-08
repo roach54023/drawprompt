@@ -11,7 +11,6 @@ import {
   getEffectiveMembership,
   getAllowedQualities,
   DAILY_LIMITS,
-  type MembershipType,
 } from "@/lib/qualityConfig";
 
 
@@ -22,12 +21,25 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const user = await getUserByEmail(session.user.email);
-    if (user.status === 0) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    // 优先从 session token 中获取 user_id，减少数据库查询
+    let userId = (session.user as { user_id?: string }).user_id;
+    let userName = session.user.name || "";
+    let userEmail = session.user.email;
+    let userImage = session.user.image || "";
+
+    if (!userId) {
+      // fallback：从数据库查询
+      const user = await getUserByEmail(session.user.email);
+      if (user.status === 0) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 });
+      }
+      userId = user.user_id;
+      userName = user.name;
+      userEmail = user.email;
+      userImage = user.image;
     }
 
-    const credits = await getUserCredits(user.user_id);
+    const credits = await getUserCredits(userId);
     if (!credits) {
       return NextResponse.json({ error: "Credits not found" }, { status: 404 });
     }
@@ -37,13 +49,13 @@ export async function GET() {
       credits.membership_expires_at
     );
     const dailyLimit = DAILY_LIMITS[effectiveMembership];
-    const todayCount = await getTodayGenerationCount(user.user_id);
+    const todayCount = await getTodayGenerationCount(userId);
 
     return NextResponse.json({
-      user_id: user.user_id,
-      name: user.name,
-      email: user.email,
-      image: user.image,
+      user_id: userId,
+      name: userName,
+      email: userEmail,
+      image: userImage,
       credits: {
         balance: credits.balance,
         total_purchased: credits.total_purchased,
