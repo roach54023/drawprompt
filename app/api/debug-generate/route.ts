@@ -41,7 +41,6 @@ export async function GET() {
         n: 1,
         size: "1024x1024",
         quality: "low",
-        output_format: "b64_json",
       }),
       signal: AbortSignal.timeout(180000),
     });
@@ -69,7 +68,10 @@ export async function GET() {
       return NextResponse.json({ steps, totalMs: Date.now() - totalStart });
     }
 
-    b64 = data.data?.[0]?.b64_json || "";
+    const item = data.data?.[0] || {};
+    b64 = item.b64_json || "";
+    const imageUrl = item.url || "";
+
     if (b64.startsWith("data:")) {
       b64 = b64.split(",", 2)[1];
     }
@@ -78,6 +80,9 @@ export async function GET() {
       status: 200,
       timeMs: Date.now() - genStart,
       b64Length: b64.length,
+      hasUrl: !!imageUrl,
+      urlPreview: imageUrl ? imageUrl.substring(0, 100) : null,
+      responseKeys: Object.keys(item),
       success: true,
     };
   } catch (err: unknown) {
