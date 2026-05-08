@@ -7,7 +7,7 @@ export const QUALITY_CONFIG = {
   fast: {
     credits: 1,
     apiModel: "gpt-image-2",
-    apiSize: "1024x1024",
+    apiSize: undefined,
     apiQuality: "low",
     minMembership: "free" as const,
     label: "Fast",
@@ -16,7 +16,7 @@ export const QUALITY_CONFIG = {
   standard: {
     credits: 3,
     apiModel: "gpt-image-2",
-    apiSize: "1024x1024",
+    apiSize: undefined,
     apiQuality: "medium",
     minMembership: "starter" as const,
     label: "Standard",
@@ -25,7 +25,7 @@ export const QUALITY_CONFIG = {
   hd: {
     credits: 8,
     apiModel: "gpt-image-2",
-    apiSize: "1024x1024",
+    apiSize: undefined,
     apiQuality: "high",
     minMembership: "pro" as const,
     label: "HD",
@@ -34,7 +34,7 @@ export const QUALITY_CONFIG = {
   ultra: {
     credits: 12,
     apiModel: "gpt-image-2",
-    apiSize: "1536x1024",
+    apiSize: undefined,
     apiQuality: "high",
     minMembership: "pro" as const,
     label: "Ultra",
