@@ -41,7 +41,7 @@ export async function GET() {
         n: 1,
         size: "1024x1024",
         quality: "low",
-        response_format: "b64_json",
+        output_format: "b64_json",
       }),
       signal: AbortSignal.timeout(180000),
     });
