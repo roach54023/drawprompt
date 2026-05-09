@@ -108,7 +108,7 @@ export default function HomeClient({
             }}
           >
             Type a prompt and create stunning AI images instantly. Browse 167+ curated prompts
-            for GPT Image 2, ChatGPT, Midjourney & DALL-E.
+            for GPT Image 2 & Nano Banana 2.
           </p>
 
           {/* ── Prompt Input Box ── */}
@@ -525,14 +525,14 @@ function CategoryCard({ category }: { category: CategoryInfo }) {
 const FAQ_ITEMS = [
   {
     q: "What are AI image prompts?",
-    a: "AI image prompts are text descriptions you feed into image generation models like GPT Image 2, Midjourney, or DALL-E to create specific visuals. A well-crafted prompt includes subject, style, lighting, composition, and technical details \u2014 the difference between a generic result and a stunning one. Every prompt in our library is tested and ready to copy-paste.",
+    a: "AI image prompts are text descriptions you feed into image generation models like GPT Image 2 or Nano Banana 2 to create specific visuals. A well-crafted prompt includes subject, style, lighting, composition, and technical details \u2014 the difference between a generic result and a stunning one. Every prompt in our library is tested and ready to copy-paste.",
   },
   {
     q: "What is GPT Image 2 and why is it special?",
-    a: "GPT Image 2 is OpenAI\u2019s latest image generation model built into ChatGPT. It excels at following precise text instructions, rendering accurate typography, and maintaining consistency across edits. It\u2019s particularly strong at photorealistic images, UI mockups, and designs requiring text \u2014 areas where earlier models struggled.",
+    a: "GPT Image 2 is OpenAI\u2019s latest image generation model. Nano Banana 2 (powered by Google Gemini) is equally powerful, with exceptional natural language understanding and high visual fidelity. Both excel at photorealistic images, UI mockups, and precise text rendering.",
   },
   {
-    q: "Can I use these prompts in ChatGPT, Midjourney, and DALL-E?",
+    q: "Can I use these prompts in Nano Banana 2?",
     a: "Yes. While each prompt is optimized for GPT Image 2, most work great across all major AI image generators. Each prompt page shows which models it\u2019s compatible with. You may need to adjust some model-specific parameters (like Midjourney\u2019s --ar flag), but the core description transfers seamlessly.",
   },
   {

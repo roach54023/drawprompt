@@ -12,7 +12,7 @@ const websiteJsonLd = {
   name: "DrawPrompt",
   url: "https://drawprompt.org",
   description:
-    "167+ copy-paste AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Plus a free drawing prompt generator with 150B+ combinations for artists.",
+    "167+ copy-paste AI image prompts for GPT Image 2 & Nano Banana 2. Plus a free drawing prompt generator with 150B+ combinations for artists.",
   potentialAction: {
     "@type": "SearchAction",
     target: "https://drawprompt.org/ai-prompts?q={search_term_string}",
@@ -22,20 +22,18 @@ const websiteJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Image Prompt Library — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
+    default: "AI Image Prompt Library — GPT Image 2 & Nano Banana 2 | DrawPrompt",
     template: "%s | DrawPrompt",
   },
   description:
-    "DrawPrompt is a curated AI image prompt library. Browse 167+ tested prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E — copy, paste, and generate the same result directly on site.",
+    "DrawPrompt is a curated AI image prompt library. Browse 167+ tested prompts for GPT Image 2 & Nano Banana 2 — copy, paste, and generate the same result directly on site.",
   keywords: [
     "ai image prompts",
     "ai image prompt library",
     "gpt image 2 prompts",
     "gpt image 2 prompt",
-    "chatgpt image prompts",
-    "chatgpt image generator prompts",
-    "midjourney prompts",
-    "dall-e prompts",
+    "nano banana 2 prompts",
+    "nano banana prompts",
     "ai art prompts",
     "best ai image prompts",
   ],
@@ -55,15 +53,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "DrawPrompt",
     url: "https://drawprompt.org",
-    title: "AI Image Prompt Library — GPT Image 2, ChatGPT & Midjourney | DrawPrompt",
+    title: "AI Image Prompt Library — GPT Image 2 & Nano Banana 2 | DrawPrompt",
     description:
-      "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Copy, paste, and generate the same result on site.",
+      "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2 & Nano Banana 2. Copy, paste, and generate the same result on site.",
     images: [
       {
         url: "https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg",
         width: 1200,
         height: 630,
-        alt: "DrawPrompt — AI Image Prompt Library for GPT Image 2 & ChatGPT",
+        alt: "DrawPrompt — AI Image Prompt Library for GPT Image 2 & Nano Banana 2",
       },
     ],
   },
@@ -71,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Image Prompt Library | DrawPrompt",
     description:
-      "167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Browse, copy, and generate the same result on site.",
+      "167+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Browse, copy, and generate the same result on site.",
     images: ["https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg"],
   },
 };
@@ -135,7 +133,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 }}
               >
                 A curated AI image prompt library with 167+ tested prompts
-                for GPT Image 2, ChatGPT, Midjourney &amp; DALL-E.
+                for GPT Image 2 &amp; Nano Banana 2.
               </p>
             </div>
 

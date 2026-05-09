@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & ChatGPT",
+  title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & Nano Banana 2",
   description:
-    "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2, ChatGPT & Midjourney. Browse, copy, and generate stunning AI images directly on site.",
+    "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2 & Nano Banana 2. Browse, copy, and generate stunning AI images directly on site.",
   alternates: { canonical: "https://drawprompt.org/about/" },
   openGraph: {
-    title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & ChatGPT",
+    title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & Nano Banana 2",
     description:
-      "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2, ChatGPT & Midjourney.",
+      "DrawPrompt is a curated AI image prompt library with 167+ tested prompts for GPT Image 2 & Nano Banana 2.",
     type: "website",
     url: "https://drawprompt.org/about/",
   },
@@ -64,7 +64,7 @@ export default function AboutPage() {
             The AI image prompt library that lets you generate the same result.
           </h1>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--text-secondary)" }}>
-            DrawPrompt is a curated library of 167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney &amp; DALL-E. Every prompt comes with an example image, a breakdown of why it works, and a one-click generate button.
+            DrawPrompt is a curated library of 167+ tested AI image prompts for GPT Image 2 &amp; Nano Banana 2. Every prompt comes with an example image, a breakdown of why it works, and a one-click generate button.
           </p>
         </div>
 
@@ -89,8 +89,7 @@ export default function AboutPage() {
             </p>
             <p>
               We focus on quality over quantity. 167+ hand-picked, tested prompts across 9
-              categories — each one vetted to work reliably with GPT Image 2, ChatGPT, Midjourney,
-              and DALL-E.
+              categories — each one vetted to work reliably with GPT Image 2 and Nano Banana 2.
             </p>
           </div>
         </section>

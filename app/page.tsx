@@ -24,17 +24,17 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "What are AI image prompts?",
-      acceptedAnswer: { "@type": "Answer", text: "AI image prompts are text descriptions you feed into image generation models like GPT Image 2, Midjourney, or DALL-E to create specific visuals. A well-crafted prompt includes subject, style, lighting, composition, and technical details — the difference between a generic result and a stunning one." },
+      acceptedAnswer: { "@type": "Answer", text: "AI image prompts are text descriptions you feed into image generation models like GPT Image 2 or Nano Banana 2 to create specific visuals. A well-crafted prompt includes subject, style, lighting, composition, and technical details — the difference between a generic result and a stunning one." },
     },
     {
       "@type": "Question",
       name: "What is GPT Image 2 and why is it special?",
-      acceptedAnswer: { "@type": "Answer", text: "GPT Image 2 is OpenAI's latest image generation model built into ChatGPT. It excels at following precise text instructions, rendering accurate typography, and maintaining consistency across edits. It's particularly strong at photorealistic images, UI mockups, and designs requiring text." },
+      acceptedAnswer: { "@type": "Answer", text: "GPT Image 2 is OpenAI's latest image generation model built into ChatGPT. It excels at following precise text instructions, rendering accurate typography, and maintaining consistency across edits. It's particularly strong at photorealistic images, UI mockups, and designs requiring text. Nano Banana 2, powered by Google Gemini, is another top model with excellent natural language understanding and high visual fidelity." },
     },
     {
       "@type": "Question",
       name: "Can I use these prompts in ChatGPT, Midjourney, and DALL-E?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. While each prompt is optimized for GPT Image 2, most work great across all major AI image generators. Each prompt page shows which models it's compatible with. You may need to adjust some model-specific parameters, but the core description transfers seamlessly." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Our prompts are optimized for GPT Image 2 and Nano Banana 2, and most transfer well across other generators too. Each prompt page shows model compatibility. Minor parameter adjustments may be needed depending on the model." },
     },
     {
       "@type": "Question",
@@ -55,19 +55,17 @@ const faqJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "AI Image Prompts — 167+ Curated Prompts for GPT Image 2 & ChatGPT | DrawPrompt",
+  title: "AI Image Prompts — 167+ Curated Prompts for GPT Image 2 & Nano Banana 2 | DrawPrompt",
   description:
-    "Browse 167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Covers photography, poster design, character art, product photography and more. Copy any prompt and generate the same result on site.",
+    "Browse 167+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Covers photography, poster design, character art, product photography and more. Copy any prompt and generate the same result on site.",
   keywords: [
     "ai image prompts",
     "ai image prompt library",
     "gpt image 2 prompts",
     "gpt image 2 prompt",
-    "chatgpt image prompts",
-    "chatgpt image generator prompts",
+    "nano banana 2 prompts",
+    "nano banana prompts",
     "ai image generation prompts",
-    "midjourney prompts",
-    "dall-e prompts",
     "copy paste ai prompts",
     "ai photo prompts",
     "ai portrait prompt",
@@ -75,9 +73,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://drawprompt.org/" },
   openGraph: {
-    title: "AI Image Prompts — 167+ Curated Prompts for GPT Image 2 & ChatGPT | DrawPrompt",
+    title: "AI Image Prompts — 167+ Curated Prompts for GPT Image 2 & Nano Banana 2 | DrawPrompt",
     description:
-      "167+ tested AI image prompts for GPT Image 2, ChatGPT, Midjourney & DALL-E. Copy any prompt and generate the same result directly on DrawPrompt.",
+      "167+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Copy any prompt and generate the same result directly on DrawPrompt.",
     type: "website",
     url: "https://drawprompt.org/",
   },
