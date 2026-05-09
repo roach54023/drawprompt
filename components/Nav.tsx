@@ -183,7 +183,7 @@ export default function Nav() {
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
-              For Humans
+              More Tools
               <svg
                 width="10"
                 height="10"
