@@ -38,6 +38,14 @@ export default function Nav() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -151,8 +159,7 @@ export default function Nav() {
 
         {/* Desktop nav */}
         <nav
-          style={{ display: "flex", alignItems: "center", gap: 2 }}
-          className="hidden md:flex"
+          style={{ display: isMobile ? "none" : "flex", alignItems: "center", gap: 2 }}
         >
           {mainLinks.map((link) => {
             const active = pathname === link.href;
@@ -286,9 +293,9 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{
+            display: isMobile ? "block" : "none",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -317,9 +324,8 @@ export default function Nav() {
       </div>
 
       {/* Mobile drawer — full-screen overlay */}
-      {mobileOpen && (
+      {mobileOpen && isMobile && (
         <div
-          className="md:hidden"
           style={{
             position: "fixed",
             inset: 0,
