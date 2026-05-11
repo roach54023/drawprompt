@@ -5413,8 +5413,8 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
   },
   {
     id: "prompt-175",
-    slug: "learn-english-educational-infographic",
-    title: "Learn English from Photos — Vocabulary Annotation Style",
+    slug: "photo-to-vocabulary-card",
+    title: "Turn Any Photo Into a Vocabulary Card — Hand-Drawn Annotation Style",
     prompt: `[Task Goal] Identify 5 objects in the photo and add for each: 1. English word 2. Simple English definition 3. Optional short example sentence
 
 [Annotation Count] Only label 5 objects, no more than 5. Prioritize common, easy-to-learn everyday items. If there are many objects in the frame, pick only the 5 most typical ones.
@@ -5450,7 +5450,7 @@ bread — soft food made from flour. Example: I had bread for breakfast.
     aiModels: ["gpt-image-2"],
     difficulty: "beginner",
     imageAlt: "Photo with hand-drawn white line annotations labeling 5 everyday objects with English vocabulary words and simple definitions",
-    imageUrl: "/prompts/learn-english-educational-infographic.jpg",
+    imageUrl: "/prompts/photo-to-vocabulary-card.jpg",
     breakdown: {
       subject: "Upload any photo — the AI identifies 5 objects and labels them with English vocabulary",
       style: "White hand-drawn line annotations over the photo, casual one-stroke sketch feel",
