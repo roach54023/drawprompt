@@ -55,6 +55,11 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", mobileOpen);
+    return () => document.body.classList.remove("menu-open");
+  }, [mobileOpen]);
+
   const inMore = allMoreLinks.some((l) => pathname === l.href);
 
   const linkStyle = (active: boolean) => ({
@@ -311,140 +316,151 @@ export default function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile drawer — full-screen overlay */}
       {mobileOpen && (
         <div
-          style={{
-            borderTop: "1px solid var(--border)",
-            padding: "12px 20px 16px",
-            background: "var(--surface)",
-          }}
           className="md:hidden"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 49,
+            display: "flex",
+            flexDirection: "column",
+          }}
         >
+          {/* Backdrop */}
+          <div
+            onClick={() => setMobileOpen(false)}
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "rgba(26,23,20,0.45)",
+              backdropFilter: "blur(2px)",
+            }}
+          />
+
+          {/* Drawer panel */}
           <div
             style={{
-              fontSize: 10,
-              fontWeight: 600,
-              color: "var(--text-muted)",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              padding: "8px 8px 6px",
+              position: "relative",
+              background: "var(--surface)",
+              width: "100%",
+              maxHeight: "90dvh",
+              overflowY: "auto",
+              paddingBottom: 24,
+              boxShadow: "0 8px 40px rgba(26,23,20,0.18)",
+              animation: "mobileDrawerIn 0.22s cubic-bezier(0.22,1,0.36,1) both",
             }}
           >
-            AI Image Generation
-          </div>
-          {mainLinks.map((link) => {
-            const active = pathname === link.href;
-            return (
+            {/* Drawer header — mirrors the nav bar */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "0 16px",
+                height: 56,
+                borderBottom: "1px solid var(--border)",
+              }}
+            >
               <Link
-                key={link.href}
-                href={link.href}
+                href="/"
                 onClick={() => setMobileOpen(false)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  padding: "10px 8px",
-                  borderRadius: 8,
-                  fontSize: 15,
-                  fontWeight: active ? 600 : 400,
-                  color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                  background: active ? "var(--bg-warm)" : "transparent",
-                  textDecoration: "none",
-                  marginBottom: 2,
-                }}
+                style={{ textDecoration: "none" }}
               >
-                {link.label}
-                {"hot" in link && link.hot && (
-                  <span
+                <span
+                  className="font-serif"
+                  style={{ fontSize: 20, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em" }}
+                >
+                  Draw<span style={{ color: "var(--accent)" }}>Prompt</span>
+                </span>
+              </Link>
+              <button
+                onClick={() => setMobileOpen(false)}
+                style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "var(--text-primary)" }}
+                aria-label="Close menu"
+              >
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M6 6L16 16M16 6L6 16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Links */}
+            <div style={{ padding: "8px 12px" }}>
+              <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", padding: "12px 8px 6px" }}>
+                AI Image Generation
+              </div>
+              {mainLinks.map((link) => {
+                const active = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
                     style={{
-                      fontSize: 9,
-                      fontWeight: 700,
-                      color: "#fff",
-                      background: "var(--accent)",
-                      padding: "2px 6px",
-                      borderRadius: 4,
-                      lineHeight: "13px",
+                      display: "flex", alignItems: "center", gap: 8,
+                      padding: "11px 10px", borderRadius: 10, fontSize: 15,
+                      fontWeight: active ? 600 : 400,
+                      color: active ? "var(--text-primary)" : "var(--text-secondary)",
+                      background: active ? "var(--bg-warm)" : "transparent",
+                      textDecoration: "none", marginBottom: 2,
                     }}
                   >
-                    Hot
-                  </span>
-                )}
-              </Link>
-            );
-          })}
+                    {link.label}
+                    {"hot" in link && link.hot && (
+                      <span style={{ fontSize: 9, fontWeight: 700, color: "#fff", background: "var(--accent)", padding: "2px 6px", borderRadius: 4, lineHeight: "13px", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                        Hot
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
 
-          <div style={{ height: 1, background: "var(--border)", margin: "8px 0" }} />
+              <div style={{ height: 1, background: "var(--border)", margin: "8px 4px" }} />
 
-          <div
-            style={{
-              fontSize: 10,
-              fontWeight: 600,
-              color: "var(--text-muted)",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              padding: "8px 8px 6px",
-            }}
-          >
-            More Tools
-          </div>
-          {humanLinks.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                style={{
-                  display: "block",
-                  padding: "10px 8px",
-                  borderRadius: 8,
-                  fontSize: 15,
-                  fontWeight: active ? 600 : 400,
-                  color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                  background: active ? "var(--bg-warm)" : "transparent",
-                  textDecoration: "none",
-                  marginBottom: 2,
-                }}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+              <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", padding: "8px 8px 6px" }}>
+                More Tools
+              </div>
+              {humanLinks.map((link) => {
+                const active = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: "block", padding: "11px 10px", borderRadius: 10, fontSize: 15,
+                      fontWeight: active ? 600 : 400,
+                      color: active ? "var(--text-primary)" : "var(--text-secondary)",
+                      background: active ? "var(--bg-warm)" : "transparent",
+                      textDecoration: "none", marginBottom: 2,
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
 
-          <div style={{ height: 1, background: "var(--border)", margin: "8px 0" }} />
+              <div style={{ height: 1, background: "var(--border)", margin: "8px 4px" }} />
 
-          <div style={{ display: "flex", gap: 8, padding: "8px 8px 0" }}>
-            <Link
-              href="/saved"
-              onClick={() => setMobileOpen(false)}
-              style={{
-                padding: "8px 16px",
-                borderRadius: 8,
-                fontSize: 13,
-                fontWeight: 500,
-                color: "var(--text-secondary)",
-                background: "var(--bg-warm)",
-                textDecoration: "none",
-              }}
-            >
-              Saved
-            </Link>
-            <Link
-              href="/pricing"
-              onClick={() => setMobileOpen(false)}
-              style={{
-                padding: "8px 16px",
-                borderRadius: 8,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "var(--bg)",
-                background: "var(--text-primary)",
-                textDecoration: "none",
-              }}
-            >
-              Pricing
-            </Link>
+              <div style={{ display: "flex", gap: 8, padding: "10px 8px 0" }}>
+                <Link
+                  href="/saved"
+                  onClick={() => setMobileOpen(false)}
+                  style={{ flex: 1, textAlign: "center", padding: "10px 16px", borderRadius: 10, fontSize: 14, fontWeight: 500, color: "var(--text-secondary)", background: "var(--bg-warm)", textDecoration: "none" }}
+                >
+                  Saved
+                </Link>
+                <Link
+                  href="/pricing"
+                  onClick={() => setMobileOpen(false)}
+                  style={{ flex: 1, textAlign: "center", padding: "10px 16px", borderRadius: 10, fontSize: 14, fontWeight: 600, color: "var(--bg)", background: "var(--text-primary)", textDecoration: "none" }}
+                >
+                  Pricing
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       )}
