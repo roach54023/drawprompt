@@ -291,6 +291,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="https://dayslaunch.com" target="_blank" rel="noopener noreferrer">
               <img src="https://dayslaunch.com/badages-awards.svg" alt="Featured on Days Launch" style={{ height: 54, width: "auto" }} />
             </a>
+            <a href="https://starterbest.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://starterbest.com/badages-awards.svg" alt="Starter Best 精选" style={{ height: 54, width: "auto" }} />
+            </a>
           </div>
         </footer>
         </Providers>
