@@ -43,11 +43,9 @@ const specials: Special[] = [
 
 // 核心导航链接（稳定，不随专题变动）
 const mainLinks = [
-  { href: "/generate",               label: "Generate",   hot: true  },
-  { href: "/ai-prompts",             label: "AI Prompts"             },
-  { href: "/gpt-image-2-prompts",    label: "GPT Image 2", hot: true },
-  { href: "/how-to-use-gpt-image-2", label: "Guide"                  },
-  { href: "/gallery",                label: "Gallery"                },
+  { href: "/generate",            label: "Generate",    hot: true },
+  { href: "/gpt-image-2-prompts", label: "GPT Image 2", hot: true },
+  { href: "/blog",                label: "Blog"                   },
 ];
 
 // More Tools 下拉
@@ -176,7 +174,7 @@ export default function Nav() {
       backdropFilter: scrolled ? "blur(20px) saturate(1.2)" : "none",
       borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
       position: "sticky", top: 0, zIndex: 50,
-      transition: "all 0.3s ease", width: "100%", maxWidth: "100vw", overflow: "hidden",
+      transition: "all 0.3s ease", width: "100%", maxWidth: "100vw",
     }}>
       <div style={{
         maxWidth: "var(--max-w)", margin: "0 auto",
