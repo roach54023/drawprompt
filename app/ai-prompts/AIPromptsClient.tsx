@@ -32,8 +32,8 @@ export default function AIPromptsClient() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
 
-  // Pinned Mother's Day prompts (shown first in order: 2, 4, 3, 1)
-  const PINNED_IDS = ["prompt-169", "prompt-171", "prompt-170", "prompt-168"];
+  // Pinned prompts (shown first — newest batch first)
+  const PINNED_IDS = ["prompt-172", "prompt-173", "prompt-176", "prompt-174", "prompt-175", "prompt-169", "prompt-171", "prompt-170", "prompt-168"];
 
   // Interleave categories so the grid shows variety (round-robin by category)
   const categoryOrder = categories.map((c) => c.id);

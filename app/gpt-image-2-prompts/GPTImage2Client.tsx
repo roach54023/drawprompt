@@ -63,8 +63,8 @@ function interleaveByCategory(prompts: AIPrompt[]): AIPrompt[] {
   return result;
 }
 
-// Pinned Mother's Day prompts at top
-const PINNED_IDS = ["prompt-169", "prompt-171", "prompt-170", "prompt-168"];
+// Pinned prompts at top (newest batch first)
+const PINNED_IDS = ["prompt-172", "prompt-173", "prompt-176", "prompt-174", "prompt-175", "prompt-169", "prompt-171", "prompt-170", "prompt-168"];
 const gptImage2Prompts = (() => {
   const all = aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"));
   const pinned = PINNED_IDS.map((id) => all.find((p) => p.id === id)).filter(Boolean) as AIPrompt[];

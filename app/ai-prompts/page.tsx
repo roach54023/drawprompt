@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import AIPromptsClient from "./AIPromptsClient";
 
 export const metadata: Metadata = {
-  title: "AI Image Prompts — 167+ Prompts for GPT Image 2 & Nano Banana 2",
+  title: "AI Image Prompts — 180+ Prompts for GPT Image 2 & Nano Banana 2",
   description:
-    "Browse 167+ curated AI image prompts for GPT Image 2 & Nano Banana 2. 9 categories — photography, character design, poster, UI/UX, game art & more. Copy-paste ready with breakdowns.",
+    "Browse 180+ curated AI image prompts for GPT Image 2 & Nano Banana 2. 9 categories — photography, character design, poster, UI/UX, game art & more. Copy-paste ready with breakdowns.",
   keywords: [
     "ai image prompts",
     "ai image prompt",
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://drawprompt.org/ai-prompts/" },
   openGraph: {
-    title: "AI Image Prompts — 167+ Prompts for GPT Image 2 & Nano Banana 2",
+    title: "AI Image Prompts — 180+ Prompts for GPT Image 2 & Nano Banana 2",
     description:
-      "167+ curated AI image prompts organized by 9 categories. Copy-paste prompts for GPT Image 2 & Nano Banana 2.",
+      "180+ curated AI image prompts organized by 9 categories. Copy-paste prompts for GPT Image 2 & Nano Banana 2.",
     type: "website",
     url: "https://drawprompt.org/ai-prompts/",
   },
@@ -44,7 +44,7 @@ const jsonLd = {
           "name": "What are AI image prompts?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AI image prompts are text descriptions you give to AI image generators like GPT Image 2 or Nano Banana 2 to create specific images. A good prompt specifies subject, style, lighting, composition, and technical parameters. DrawPrompt's library provides 167+ tested prompts with example outputs.",
+            "text": "AI image prompts are text descriptions you give to AI image generators like GPT Image 2 or Nano Banana 2 to create specific images. A good prompt specifies subject, style, lighting, composition, and technical parameters. DrawPrompt's library provides 180+ tested prompts with example outputs.",
           },
         },
         {
@@ -60,7 +60,7 @@ const jsonLd = {
           "name": "Are the AI image prompts free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — browsing and copying all 167+ AI image prompts is completely free, no account required. Generating images directly on DrawPrompt uses GPT Image 2 and requires a free account (1 free credit included).",
+            "text": "Yes — browsing and copying all 180+ AI image prompts is completely free, no account required. Generating images directly on DrawPrompt uses GPT Image 2 and requires a free account (1 free credit included).",
           },
         },
       ],
@@ -89,7 +89,7 @@ export default function AIPromptsPage() {
           borderWidth: 0,
         }}
       >
-        AI Image Prompts — 167+ Tested Prompts for GPT Image 2 & Nano Banana 2
+        AI Image Prompts — 180+ Tested Prompts for GPT Image 2 & Nano Banana 2
       </h1>
       <AIPromptsClient />
     </>
