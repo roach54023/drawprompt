@@ -121,6 +121,9 @@ h1, h2, h3, h4 {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
+/* Hide scrollbar for badge strip */
+.badges-strip::-webkit-scrollbar { display: none; }
+
 /* ─── Selection ─── */
 ::selection { background: rgba(192, 106, 62, 0.18); color: var(--text-primary); }
 

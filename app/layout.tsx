@@ -280,20 +280,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
 
-          {/* Badges */}
-          <div style={{ textAlign: "center", marginTop: 32, display: "flex", justifyContent: "center", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-            <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer">
-              <img src="https://twelve.tools/badge3-white.svg" alt="Featured on Twelve Tools" width={200} height={54} />
-            </a>
-            <a href="https://wired.business" target="_blank" rel="noopener noreferrer">
-              <img src="https://wired.business/badge1-white.svg" alt="Featured on Wired Business" width={200} height={54} />
-            </a>
-            <a href="https://dayslaunch.com" target="_blank" rel="noopener noreferrer">
-              <img src="https://dayslaunch.com/badages-awards.svg" alt="Featured on Days Launch" style={{ height: 54, width: "auto" }} />
-            </a>
-            <a href="https://starterbest.com" target="_blank" rel="noopener noreferrer">
-              <img src="https://starterbest.com/badages-awards.svg" alt="Starter Best 精选" style={{ height: 54, width: "auto" }} />
-            </a>
+          {/* Badges — horizontal scroll on mobile */}
+          <div style={{
+            marginTop: 28,
+            overflowX: "auto",
+            overflowY: "hidden",
+            WebkitOverflowScrolling: "touch" as any,
+            scrollbarWidth: "none" as any,
+            msOverflowStyle: "none" as any,
+          }}>
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 12,
+              padding: "0 16px",
+              minWidth: "max-content",
+              margin: "0 auto",
+            }}>
+              <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.7, transition: "opacity 0.15s", flexShrink: 0 }}>
+                <img src="https://twelve.tools/badge3-white.svg" alt="Featured on Twelve Tools" style={{ height: 36, width: "auto", display: "block" }} />
+              </a>
+              <a href="https://wired.business" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.7, transition: "opacity 0.15s", flexShrink: 0 }}>
+                <img src="https://wired.business/badge1-white.svg" alt="Featured on Wired Business" style={{ height: 36, width: "auto", display: "block" }} />
+              </a>
+              <a href="https://dayslaunch.com" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.7, transition: "opacity 0.15s", flexShrink: 0 }}>
+                <img src="https://dayslaunch.com/badages-awards.svg" alt="Featured on Days Launch" style={{ height: 36, width: "auto", display: "block" }} />
+              </a>
+              <a href="https://starterbest.com" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.7, transition: "opacity 0.15s", flexShrink: 0 }}>
+                <img src="https://starterbest.com/badages-awards.svg" alt="Starter Best 精选" style={{ height: 36, width: "auto", display: "block" }} />
+              </a>
+            </div>
           </div>
         </footer>
         </Providers>
