@@ -5,8 +5,21 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import AuthNavWrapper from "@/components/auth/AuthNavWrapper";
 
+// ── Seasonal / holiday spotlight ────────────────────────────────────────────
+// Change only this object for each new campaign.
+// Set activeUntil to the last day you want it shown (YYYY-MM-DD).
+// Past that date it disappears from Nav automatically — no other code changes needed.
+// The page itself stays live forever for SEO.
+const seasonalLink: { href: string; label: string; emoji?: string; hot?: boolean; activeUntil: string } | null = {
+  href: "/mothers-day",
+  label: "Mother's Day",
+  emoji: "💐",
+  hot: false,          // set true to show HOT badge during active period
+  activeUntil: "2026-05-11",  // hide after this date
+};
+// ────────────────────────────────────────────────────────────────────────────
+
 const mainLinks = [
-  { href: "/mothers-day",             label: "Mother's Day" },
   { href: "/generate",                label: "Generate", hot: true },
   { href: "/ai-prompts",              label: "AI Prompts" },
   { href: "/gpt-image-2-prompts",     label: "GPT Image 2", hot: true },
@@ -69,6 +82,13 @@ export default function Nav() {
   }, [mobileOpen]);
 
   const inMore = allMoreLinks.some((l) => pathname === l.href);
+
+  // Seasonal link: show only if today <= activeUntil
+  const activeSeasonal = (() => {
+    if (!seasonalLink) return null;
+    const today = new Date().toISOString().slice(0, 10);
+    return today <= seasonalLink.activeUntil ? seasonalLink : null;
+  })();
 
   const linkStyle = (active: boolean) => ({
     padding: "6px 14px",
@@ -161,6 +181,18 @@ export default function Nav() {
         <nav
           style={{ display: isMobile ? "none" : "flex", alignItems: "center", gap: 2 }}
         >
+          {/* Seasonal spotlight — auto-hides after activeUntil */}
+          {activeSeasonal && (
+            <Link href={activeSeasonal.href} style={{ ...linkStyle(pathname === activeSeasonal.href), opacity: 0.6, fontSize: 12 }}>
+              {activeSeasonal.emoji && <span>{activeSeasonal.emoji}</span>}
+              {activeSeasonal.label}
+              {activeSeasonal.hot && (
+                <span style={{ fontSize: 9, fontWeight: 700, color: "#fff", background: "var(--accent)", padding: "2px 6px", borderRadius: 4, lineHeight: "13px", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                  Hot
+                </span>
+              )}
+            </Link>
+          )}
           {mainLinks.map((link) => {
             const active = pathname === link.href;
             return (
@@ -394,6 +426,33 @@ export default function Nav() {
 
             {/* Links */}
             <div style={{ padding: "8px 12px" }}>
+              {/* Seasonal spotlight */}
+              {activeSeasonal && (
+                <>
+                  <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", padding: "12px 8px 6px" }}>
+                    Seasonal
+                  </div>
+                  <Link
+                    href={activeSeasonal.href}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 8,
+                      padding: "11px 10px", borderRadius: 10, fontSize: 14,
+                      fontWeight: pathname === activeSeasonal.href ? 600 : 400,
+                      color: "var(--text-secondary)",
+                      background: pathname === activeSeasonal.href ? "var(--bg-warm)" : "transparent",
+                      textDecoration: "none", marginBottom: 2, opacity: 0.7,
+                    }}
+                  >
+                    {activeSeasonal.emoji && <span>{activeSeasonal.emoji}</span>}
+                    {activeSeasonal.label}
+                    {activeSeasonal.hot && (
+                      <span style={{ fontSize: 9, fontWeight: 700, color: "#fff", background: "var(--accent)", padding: "2px 6px", borderRadius: 4, lineHeight: "13px" }}>Hot</span>
+                    )}
+                  </Link>
+                  <div style={{ height: 1, background: "var(--border)", margin: "4px 4px 0" }} />
+                </>
+              )}
               <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", padding: "12px 8px 6px" }}>
                 AI Image Generation
               </div>
