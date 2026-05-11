@@ -104,18 +104,22 @@ export default function Nav() {
         top: 0,
         zIndex: 50,
         transition: "all 0.3s ease",
+        width: "100%",
+        maxWidth: "100vw",
+        overflow: "hidden",
       }}
     >
       <div
         style={{
           maxWidth: "var(--max-w)",
           margin: "0 auto",
-          padding: "0 32px",
-          height: 64,
+          padding: "0 16px",
+          height: 56,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
+        className="sm:px-8"
       >
         {/* Logo */}
         <Link
