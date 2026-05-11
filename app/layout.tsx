@@ -288,6 +288,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="https://wired.business" target="_blank" rel="noopener noreferrer">
               <img src="https://wired.business/badge1-white.svg" alt="Featured on Wired Business" width={200} height={54} />
             </a>
+            <a href="https://dayslaunch.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://dayslaunch.com/badages-awards.svg" alt="Featured on Days Launch" style={{ height: 54, width: "auto" }} />
+            </a>
           </div>
         </footer>
         </Providers>
