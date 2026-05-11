@@ -5285,6 +5285,144 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
     featured: true,
     createdAt: "2025-05-08",
   },
+
+  // ─── May 11, 2025 Batch ────────────────────────────────────────────────────
+
+  {
+    id: "prompt-172",
+    slug: "isometric-city-block-illustration",
+    title: "Isometric City Block — Vibrant Vector Illustration",
+    prompt: `Create an isometric illustration of a vibrant city block with detailed buildings, tiny people walking on sidewalks, trees lining the streets, and small shops with colorful awnings. The style should be clean vector art with a warm color palette. Include subtle details like a cat sitting in a window, a street musician, and steam rising from a manhole cover.`,
+    category: "infographic",
+    tags: ["isometric", "city", "vector-art", "illustration", "architecture", "detailed", "warm-palette", "urban"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "intermediate",
+    imageAlt: "Vibrant isometric city block illustration with colorful buildings, tiny people, trees, and shops in clean vector art style",
+    imageUrl: "/prompts/isometric-city-block-illustration.jpg",
+    breakdown: {
+      subject: "A lively city block rendered in isometric perspective with buildings, people, and street-level details",
+      style: "Clean vector art with flat shading, warm and inviting color palette",
+      lighting: "Bright daylight with subtle warm tones, soft ambient shadows from buildings",
+      composition: "Isometric grid layout showing a full city block from an elevated angle",
+      details: "Cat in window, street musician, steam from manhole, colorful awnings, trees lining sidewalks",
+    },
+    tips: [
+      "Isometric prompts work best when you specify exact small details — it forces the AI to fill the scene",
+      "Mentioning 'clean vector art' prevents the AI from going photorealistic",
+      "Great for website hero sections, app illustrations, or social media graphics",
+      "Try swapping the city theme for a campus, village, or space station for different vibes",
+    ],
+    featured: true,
+    createdAt: "2025-05-11",
+  },
+  {
+    id: "prompt-173",
+    slug: "pathetic-art-emotional-creature",
+    title: "Pathetic Art — Raw Emotional Creature Drawing",
+    prompt: `Create an image in the "pathetic art" style — a deliberately crude, emotionally expressive illustration that looks like it was drawn by someone pouring their feelings onto paper without caring about technical skill. Use wobbly lines, mismatched proportions, and raw emotional energy. The subject should be a small creature (like a blob or simple animal) experiencing a mundane life moment with overwhelming emotion.`,
+    category: "character",
+    tags: ["pathetic-art", "emotional", "crude-style", "expressive", "creature", "illustration", "raw", "internet-art"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "beginner",
+    imageAlt: "Deliberately crude emotional creature illustration in pathetic art style with wobbly lines and raw expression",
+    imageUrl: "/prompts/pathetic-art-emotional-creature.jpg",
+    breakdown: {
+      subject: "A small blob-like creature experiencing mundane life with overwhelming emotion",
+      style: "Pathetic art — deliberately crude, childlike, emotionally raw illustration",
+      lighting: "Flat, no complex lighting — the style is intentionally simple",
+      composition: "Single character centered, minimal background, focus on emotional expression",
+      details: "Wobbly lines, mismatched proportions, visible imperfections as a feature, not a bug",
+    },
+    tips: [
+      "This is one of the hottest art trends online — 'pathetic art' celebrates imperfection",
+      "The prompt's power is in explicitly asking for crude, raw quality — AI usually tries to be polished",
+      "Perfect for memes, stickers, social media reactions, or personal expression",
+      "Try adding specific emotions: 'overwhelmed by having to choose a lunch spot' for relatable humor",
+    ],
+    featured: true,
+    createdAt: "2025-05-11",
+  },
+  {
+    id: "prompt-174",
+    slug: "vr-headset-exploded-view-technical",
+    title: "VR Headset Exploded View — Technical Illustration",
+    prompt: `Create a technical exploded-view illustration of a VR headset, showing all internal components separated and floating in space with clean connecting lines. Include lenses, display panels, circuit boards, sensors, and the head strap mechanism. Style: clean white background, subtle shadows, precise engineering illustration with a modern Apple-product-photography aesthetic.`,
+    category: "product",
+    tags: ["exploded-view", "technical", "vr-headset", "product-design", "engineering", "apple-aesthetic", "clean", "illustration"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "intermediate",
+    imageAlt: "Technical exploded-view illustration of VR headset showing internal components floating in space with clean white background",
+    imageUrl: "/prompts/vr-headset-exploded-view-technical.jpg",
+    breakdown: {
+      subject: "VR headset with all internal components separated and floating in an exploded-view arrangement",
+      style: "Precise technical illustration with Apple product photography aesthetic, minimal and modern",
+      lighting: "Clean studio lighting on white background with subtle soft shadows",
+      composition: "Components floating in vertical arrangement with implied connecting lines showing assembly order",
+      details: "Lenses, display panels, circuit boards, sensors, head strap mechanism, all individually detailed",
+    },
+    tips: [
+      "Exploded-view prompts are fantastic for product presentations and tech blogs",
+      "The 'Apple-product-photography aesthetic' cue tells the AI to go clean and premium",
+      "Works great for any product: headphones, cameras, watches, mechanical keyboards",
+      "Add 'with subtle labels and part numbers' for an even more technical look",
+    ],
+    featured: true,
+    createdAt: "2025-05-11",
+  },
+  {
+    id: "prompt-175",
+    slug: "learn-english-educational-infographic",
+    title: "Learn English — Cheerful Educational Infographic",
+    prompt: `Design an educational infographic-style illustration for "Learn English" — showing a cheerful student surrounded by floating vocabulary words, grammar structures, speech bubbles in different languages, books, and cultural icons from English-speaking countries. Use a bright, friendly color palette with a flat design style that appeals to young adult learners.`,
+    category: "infographic",
+    tags: ["education", "english", "infographic", "flat-design", "colorful", "student", "language-learning", "illustration"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "beginner",
+    imageAlt: "Cheerful educational infographic illustration showing a student surrounded by floating English vocabulary, books, and cultural icons",
+    imageUrl: "/prompts/learn-english-educational-infographic.jpg",
+    breakdown: {
+      subject: "A cheerful student character as the focal point surrounded by educational elements",
+      style: "Flat design infographic with bright, friendly color palette appealing to young adults",
+      lighting: "Flat and even — characteristic of infographic illustration style",
+      composition: "Central character with floating elements radiating outward: words, books, speech bubbles, icons",
+      details: "Vocabulary words, grammar structures, multilingual speech bubbles, cultural icons from English-speaking countries",
+    },
+    tips: [
+      "This style is perfect for educational apps, course thumbnails, or social media posts",
+      "Swap 'English' for any subject — coding, math, music — and the layout adapts beautifully",
+      "The flat design cue prevents the AI from over-rendering with gradients and 3D effects",
+      "Great for teachers and content creators who need quick, professional educational visuals",
+    ],
+    featured: true,
+    createdAt: "2025-05-11",
+  },
+  {
+    id: "prompt-176",
+    slug: "2008-family-photo-recreation",
+    title: "2008 Family Photo — Early Digital Camera Recreation",
+    prompt: `Generate an image that looks like a candid family photo taken in 2008 with a point-and-shoot digital camera. Slightly overexposed flash, red-eye effect on one person, someone blinking, a messy living room in the background with a CRT TV showing a news channel. The family of four is posing awkwardly on a floral-print couch. The image should have that characteristic early digital camera quality — slightly warm white balance, mild noise, and 4:3 aspect ratio.`,
+    category: "photography",
+    tags: ["retro", "family-photo", "2008", "digital-camera", "nostalgia", "candid", "flash-photography", "realistic"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "advanced",
+    imageAlt: "Nostalgic 2008-style family photo with overexposed flash, red-eye, CRT TV, and early digital camera aesthetic",
+    imageUrl: "/prompts/2008-family-photo-recreation.jpg",
+    breakdown: {
+      subject: "A family of four posing awkwardly on a floral-print couch in a messy living room",
+      style: "Faux-authentic early 2000s digital photography with deliberate imperfections",
+      lighting: "Overexposed direct flash with harsh shadows, warm white balance cast",
+      composition: "4:3 aspect ratio, centered group shot, cluttered background with CRT TV visible",
+      details: "Red-eye on one person, someone blinking, mild sensor noise, warm color cast, CRT showing news",
+    },
+    tips: [
+      "This prompt is a masterclass in 'controlled imperfection' — every flaw is intentional",
+      "The specific year (2008) and camera type anchor the AI to a very precise aesthetic",
+      "Try different decades: 1995 disposable camera, 2003 flip phone, 2012 Instagram-era",
+      "Mentioning CRT TV and floral couch adds era-authentic environmental storytelling",
+    ],
+    featured: true,
+    createdAt: "2025-05-11",
+  },
 ];
 
 // ─── Helper Functions ───────────────────────────────────────────────────────
@@ -5329,16 +5467,16 @@ export function getRelatedPrompts(
 
 // Display order for featured prompts on homepage
 const FEATURED_ORDER = [
-  "prompt-169", // Mother's Day MOM Silhouette Poster (prompt 2 — first)
-  "prompt-171", // Mother's Day Text Overlay — I Grew Up Inside Your Love (prompt 4 — second)
-  "prompt-170", // Mother's Day Elegant Portrait — Reading Mom (prompt 3 — third)
-  "prompt-168", // Mother's Day Photo Card — Growing Together (prompt 1 — fourth)
+  "prompt-172", // Isometric City Block (May 11 batch)
+  "prompt-173", // Pathetic Art Emotional Creature
+  "prompt-176", // 2008 Family Photo Recreation
+  "prompt-174", // VR Headset Exploded View
+  "prompt-175", // Learn English Educational Infographic
+  "prompt-169", // Mother's Day MOM Silhouette Poster
+  "prompt-171", // Mother's Day Text Overlay — I Grew Up Inside Your Love
+  "prompt-170", // Mother's Day Elegant Portrait — Reading Mom
+  "prompt-168", // Mother's Day Photo Card — Growing Together
   "prompt-130", // Silhouette Universe Narrative Poster
-  "prompt-137", // Sam Altman Bear Selfie
-  "prompt-136", // Rust In-Game Screenshot
-  "prompt-125", // Beauty Product Commercial Marketing Photograph
-  "prompt-115", // Elon Musk TikTok Livestream Screenshot
-  "prompt-090", // Surrealist Rolex Luxury Watch Fashion Poster
 ];
 
 export function getFeaturedAIPrompts(limit: number = 6): AIPrompt[] {

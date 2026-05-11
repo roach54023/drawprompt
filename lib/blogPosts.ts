@@ -605,6 +605,55 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
 
+  {
+    slug: "5-fresh-ai-image-prompts-may-2025",
+    title: "5 Fresh AI Image Prompts You Should Try This Week (May 2025)",
+    description: "From pathetic art creatures to 2008 family photos \u2014 5 wildly different GPT Image 2 prompts we found this week that push AI art in unexpected directions.",
+    date: "2025-05-11",
+    category: "cool-prompts",
+    categoryLabel: "Cool Prompts",
+    readingTime: 6,
+    heroColor: "#6366f1",
+    heroBg: "#eef2ff",
+    body: [
+      { type: "paragraph", text: "Every week we hunt for the most interesting AI image prompts floating around the internet \u2014 GitHub repos, Twitter threads, Reddit posts, Chinese creator communities. This week\u2019s batch is one of our favorites: five prompts that each push GPT Image 2 in a completely different direction, from crude emotional art to pixel-perfect technical illustration." },
+
+      { type: "heading", text: "1. Isometric City Block" },
+      { type: "image-placeholder", alt: "Vibrant isometric city block illustration with colorful buildings and tiny people", caption: "A single prompt builds an entire living city." },
+      { type: "paragraph", text: "Isometric illustrations are having a moment \u2014 and for good reason. This prompt packs an absurd amount of detail into one scene: buildings with colorful awnings, tiny people on sidewalks, a cat in a window, a street musician, even steam rising from a manhole. The trick is being specific about small details. When you give the AI concrete things to place, it builds a much richer world than if you just say \u2018isometric city.\u2019 The \u2018clean vector art\u2019 cue also prevents it from going photorealistic, which is a common trap with detailed scene prompts." },
+      { type: "prompt-example", prompt: "Create an isometric illustration of a vibrant city block with detailed buildings, tiny people walking on sidewalks, trees lining the streets, and small shops with colorful awnings. The style should be clean vector art with a warm color palette. Include subtle details like a cat sitting in a window, a street musician, and steam rising from a manhole cover.", note: "The hidden details (cat, musician, steam) are what make this prompt special." },
+      { type: "callout", text: "See the full prompt with breakdown and tips.", href: "/prompts/isometric-city-block-illustration", linkText: "View prompt \u2192" },
+
+      { type: "heading", text: "2. Pathetic Art \u2014 The Anti-Aesthetic" },
+      { type: "image-placeholder", alt: "Deliberately crude emotional creature in pathetic art style", caption: "When ugly is the whole point." },
+      { type: "paragraph", text: "If you\u2019ve been on Twitter or Tumblr lately, you\u2019ve seen \u2018pathetic art\u2019 \u2014 those deliberately crude, emotionally devastating little drawings that look like someone poured their feelings onto paper at 3am. This prompt is fascinating because it asks the AI to do the opposite of what it\u2019s trained to do: be bad on purpose. Wobbly lines, mismatched proportions, raw emotional energy. The result is surprisingly effective. AI usually fights you on imperfection, but when you frame it as a specific style with clear intent, it gets it right." },
+      { type: "prompt-example", prompt: "Create an image in the \u201Cpathetic art\u201D style \u2014 a deliberately crude, emotionally expressive illustration that looks like it was drawn by someone pouring their feelings onto paper without caring about technical skill. Use wobbly lines, mismatched proportions, and raw emotional energy.", note: "Try adding specific mundane scenarios: \u2018overwhelmed by choosing a lunch spot\u2019 works great." },
+      { type: "callout", text: "See the full prompt with all variations.", href: "/prompts/pathetic-art-emotional-creature", linkText: "View prompt \u2192" },
+
+      { type: "heading", text: "3. VR Headset Exploded View" },
+      { type: "image-placeholder", alt: "Technical exploded-view illustration of VR headset components", caption: "Product photography meets engineering diagram." },
+      { type: "paragraph", text: "This is one of those prompts that makes you realize AI image generation isn\u2019t just for art \u2014 it\u2019s a legitimate tool for product design and tech content. The exploded-view format shows every internal component of a VR headset floating in space: lenses, display panels, circuit boards, sensors. The \u2018Apple product photography aesthetic\u2019 cue is doing a lot of heavy lifting here, pushing the result toward that clean, premium look. If you run a tech blog, make YouTube thumbnails, or need product visuals for a pitch deck, this prompt pattern is gold." },
+      { type: "prompt-example", prompt: "Create a technical exploded-view illustration of a VR headset, showing all internal components separated and floating in space with clean connecting lines. Include lenses, display panels, circuit boards, sensors, and the head strap mechanism. Style: clean white background, subtle shadows, precise engineering illustration with a modern Apple-product-photography aesthetic.", note: "Swap \u2018VR headset\u2019 for any product \u2014 headphones, mechanical keyboards, cameras." },
+      { type: "callout", text: "Full breakdown with product photography tips.", href: "/prompts/vr-headset-exploded-view-technical", linkText: "View prompt \u2192" },
+
+      { type: "heading", text: "4. Learn English \u2014 Educational Flat Design" },
+      { type: "image-placeholder", alt: "Cheerful educational infographic illustration for language learning", caption: "One prompt, one course thumbnail." },
+      { type: "paragraph", text: "Not every prompt needs to be artistic. This one is purely practical: a cheerful educational infographic for language learning. Floating vocabulary words, grammar structures, speech bubbles, books, cultural icons \u2014 all in a bright flat design style. If you\u2019re a teacher, course creator, or edu-content maker, this saves you hours compared to Canva or stock photos. The flat design cue is important because without it, the AI tends to over-render everything with gradients and 3D effects that look dated for educational content." },
+      { type: "prompt-example", prompt: "Design an educational infographic-style illustration for \u201CLearn English\u201D \u2014 showing a cheerful student surrounded by floating vocabulary words, grammar structures, speech bubbles in different languages, books, and cultural icons from English-speaking countries. Use a bright, friendly color palette with a flat design style that appeals to young adult learners.", note: "Replace \u2018English\u2019 with any subject and it still works beautifully." },
+      { type: "callout", text: "See how to adapt this for any subject.", href: "/prompts/learn-english-educational-infographic", linkText: "View prompt \u2192" },
+
+      { type: "heading", text: "5. 2008 Family Photo \u2014 Controlled Imperfection" },
+      { type: "image-placeholder", alt: "Nostalgic 2008-style family photo with early digital camera aesthetic", caption: "Every flaw is intentional. That\u2019s what makes it genius." },
+      { type: "paragraph", text: "This might be the most impressive prompt in the batch \u2014 not because of what it creates, but because of what it asks the AI to get wrong. Overexposed flash. Red-eye. Someone blinking. A CRT TV in the background. Warm white balance. Mild sensor noise. 4:3 aspect ratio. Every single \u2018flaw\u2019 is a deliberate choice that anchors the image to a very specific moment in time: a family photo taken with a point-and-shoot digital camera in 2008. The AI handles this beautifully because the prompt is so specific about which imperfections to include. It\u2019s a masterclass in \u2018controlled imperfection\u2019 \u2014 and it\u2019s endlessly adaptable to other decades." },
+      { type: "prompt-example", prompt: "Generate an image that looks like a candid family photo taken in 2008 with a point-and-shoot digital camera. Slightly overexposed flash, red-eye effect on one person, someone blinking, a messy living room in the background with a CRT TV showing a news channel. The family of four is posing awkwardly on a floral-print couch.", note: "Try \u20181995 disposable camera\u2019 or \u20182003 flip phone camera\u2019 for different era vibes." },
+      { type: "callout", text: "Full prompt with decade-swapping tips.", href: "/prompts/2008-family-photo-recreation", linkText: "View prompt \u2192" },
+
+      { type: "heading", text: "What Makes These Prompts Work" },
+      { type: "paragraph", text: "Looking at all five together, there\u2019s a pattern: the best prompts are specific about intent, not just content. \u2018Pathetic art\u2019 works because it names the style explicitly. The 2008 photo works because it lists exact imperfections. The VR headset works because \u2018Apple aesthetic\u2019 is a clear creative direction. Vague prompts get vague results. The more precisely you describe the feeling, era, or visual language you want, the better the AI delivers." },
+      { type: "callout", text: "Explore 180+ free AI image prompts \u2014 all copy-paste ready with example images.", href: "/ai-prompts", linkText: "Browse all prompts \u2192" },
+    ],
+  },
+
 ];
 
 // ── Helper functions ────────────────────────────────────────
