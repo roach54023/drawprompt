@@ -205,8 +205,8 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* ══════════ MOTHER'S DAY BANNER ══════════ */}
-      <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "48px 32px 0" }}>
+      {/* ══════════ MOTHER'S DAY BANNER — hidden after May, re-enable next year ══════════ */}
+      {/* <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "48px 32px 0" }}>
         <Link
           href="/mothers-day"
           style={{
@@ -230,7 +230,7 @@ export default function HomeClient({
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </Link>
-      </section>
+      </section> */}
 
       {/* ══════════ FOR AI — Curated AI image prompts ══════════ */}
       <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "80px 32px" }}>

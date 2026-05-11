@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import AuthNavWrapper from "@/components/auth/AuthNavWrapper";
 
 const mainLinks = [
-  { href: "/mothers-day",             label: "Mother's Day 💐", hot: true },
+  { href: "/mothers-day",             label: "Mother's Day" },
   { href: "/generate",                label: "Generate", hot: true },
   { href: "/ai-prompts",              label: "AI Prompts" },
   { href: "/gpt-image-2-prompts",     label: "GPT Image 2", hot: true },
