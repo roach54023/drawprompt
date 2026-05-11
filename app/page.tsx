@@ -55,9 +55,9 @@ const faqJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "AI Image Prompts — 180+ Curated Prompts for GPT Image 2 & Nano Banana 2 | DrawPrompt",
+  title: "AI Image Prompts — 175+ Curated Prompts for GPT Image 2 & Nano Banana 2 | DrawPrompt",
   description:
-    "Browse 180+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Covers photography, poster design, character art, product photography and more. Copy any prompt and generate the same result on site.",
+    "Browse 175+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Covers photography, poster design, character art, product photography and more. Copy any prompt and generate the same result on site.",
   keywords: [
     "ai image prompts",
     "ai image prompt library",
@@ -73,9 +73,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://drawprompt.org/" },
   openGraph: {
-    title: "AI Image Prompts — 180+ Curated Prompts for GPT Image 2 & Nano Banana 2 | DrawPrompt",
+    title: "AI Image Prompts — 175+ Curated Prompts for GPT Image 2 & Nano Banana 2 | DrawPrompt",
     description:
-      "180+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Copy any prompt and generate the same result directly on DrawPrompt.",
+      "175+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Copy any prompt and generate the same result directly on DrawPrompt.",
     type: "website",
     url: "https://drawprompt.org/",
   },

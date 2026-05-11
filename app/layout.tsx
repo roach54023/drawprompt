@@ -12,7 +12,7 @@ const websiteJsonLd = {
   name: "DrawPrompt",
   url: "https://drawprompt.org",
   description:
-    "180+ copy-paste AI image prompts for GPT Image 2 & Nano Banana 2. Plus a free drawing prompt generator with 150B+ combinations for artists.",
+    "175+ copy-paste AI image prompts for GPT Image 2 & Nano Banana 2. Plus a free drawing prompt generator with 150B+ combinations for artists.",
   potentialAction: {
     "@type": "SearchAction",
     target: "https://drawprompt.org/ai-prompts?q={search_term_string}",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | DrawPrompt",
   },
   description:
-    "DrawPrompt is a curated AI image prompt library. Browse 180+ tested prompts for GPT Image 2 & Nano Banana 2 — copy, paste, and generate the same result directly on site.",
+    "DrawPrompt is a curated AI image prompt library. Browse 175+ tested prompts for GPT Image 2 & Nano Banana 2 — copy, paste, and generate the same result directly on site.",
   keywords: [
     "ai image prompts",
     "ai image prompt library",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     url: "https://drawprompt.org",
     title: "AI Image Prompt Library — GPT Image 2 & Nano Banana 2 | DrawPrompt",
     description:
-      "DrawPrompt is a curated AI image prompt library with 180+ tested prompts for GPT Image 2 & Nano Banana 2. Copy, paste, and generate the same result on site.",
+      "DrawPrompt is a curated AI image prompt library with 175+ tested prompts for GPT Image 2 & Nano Banana 2. Copy, paste, and generate the same result on site.",
     images: [
       {
         url: "https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Image Prompt Library | DrawPrompt",
     description:
-      "180+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Browse, copy, and generate the same result on site.",
+      "175+ tested AI image prompts for GPT Image 2 & Nano Banana 2. Browse, copy, and generate the same result on site.",
     images: ["https://drawprompt.org/prompts/silhouette-universe-narrative-poster.jpg"],
   },
 };
@@ -132,7 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   margin: 0,
                 }}
               >
-                A curated AI image prompt library with 180+ tested prompts
+                A curated AI image prompt library with 175+ tested prompts
                 for GPT Image 2 &amp; Nano Banana 2.
               </p>
             </div>

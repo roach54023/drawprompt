@@ -20,7 +20,7 @@ const faqJsonLd = {
       name: "How do I write good prompts for GPT Image 2?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Good GPT Image 2 prompts are specific and descriptive. Include the subject, style, lighting, camera angle, color palette, and mood. For example: 'A surrealist luxury watch poster with melting clock elements, shot in studio lighting with a dark moody background.' Browse our 180+ tested prompts for inspiration.",
+        text: "Good GPT Image 2 prompts are specific and descriptive. Include the subject, style, lighting, camera angle, color palette, and mood. For example: 'A surrealist luxury watch poster with melting clock elements, shot in studio lighting with a dark moody background.' Browse our 175+ tested prompts for inspiration.",
       },
     },
     {
@@ -28,7 +28,7 @@ const faqJsonLd = {
       name: "Can I copy and paste these prompts directly into ChatGPT?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes! All 180+ prompts on DrawPrompt are designed to be copy-pasted directly into ChatGPT's image generator. Each prompt has been tested with GPT Image 2 and includes the actual generated result so you can see what to expect.",
+        text: "Yes! All 175+ prompts on DrawPrompt are designed to be copy-pasted directly into ChatGPT's image generator. Each prompt has been tested with GPT Image 2 and includes the actual generated result so you can see what to expect.",
       },
     },
     {
@@ -46,7 +46,7 @@ const itemListJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "GPT Image 2 Prompts",
-  description: "180+ tested prompts for ChatGPT image generator",
+  description: "175+ tested prompts for ChatGPT image generator",
   numberOfItems: 180,
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Photography & Portrait Prompts" },
@@ -62,9 +62,9 @@ const itemListJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "GPT Image 2 Prompts — 180+ Copy-Paste Prompts for ChatGPT Image Generator (2026)",
+  title: "GPT Image 2 Prompts — 175+ Copy-Paste Prompts for ChatGPT Image Generator (2026)",
   description:
-    "The best GPT Image 2 prompts library with 180+ tested prompts. Copy-paste prompts for ChatGPT image generator — photography, character design, poster, UI mockups, game art & more. Free, with breakdowns and tips.",
+    "The best GPT Image 2 prompts library with 175+ tested prompts. Copy-paste prompts for ChatGPT image generator — photography, character design, poster, UI mockups, game art & more. Free, with breakdowns and tips.",
   keywords: [
     "gpt image 2 prompts",
     "gpt image 2 prompt",
@@ -84,9 +84,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://drawprompt.org/gpt-image-2-prompts/" },
   openGraph: {
-    title: "GPT Image 2 Prompts — 180+ Copy-Paste Prompt Library for ChatGPT (2026)",
+    title: "GPT Image 2 Prompts — 175+ Copy-Paste Prompt Library for ChatGPT (2026)",
     description:
-      "180+ curated prompts optimized for GPT Image 2 and ChatGPT image generator. Photography, character design, poster, UI design, game art, and more.",
+      "175+ curated prompts optimized for GPT Image 2 and ChatGPT image generator. Photography, character design, poster, UI design, game art, and more.",
     type: "website",
     url: "https://drawprompt.org/gpt-image-2-prompts/",
   },

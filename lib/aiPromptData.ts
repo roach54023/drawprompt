@@ -5289,33 +5289,6 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
   // ─── May 11, 2025 Batch ────────────────────────────────────────────────────
 
   {
-    id: "prompt-172",
-    slug: "isometric-city-block-illustration",
-    title: "Isometric City Block — Vibrant Vector Illustration",
-    prompt: `Create an isometric illustration of a vibrant city block with detailed buildings, tiny people walking on sidewalks, trees lining the streets, and small shops with colorful awnings. The style should be clean vector art with a warm color palette. Include subtle details like a cat sitting in a window, a street musician, and steam rising from a manhole cover.`,
-    category: "infographic",
-    tags: ["isometric", "city", "vector-art", "illustration", "architecture", "detailed", "warm-palette", "urban"],
-    aiModels: ["gpt-image-2"],
-    difficulty: "intermediate",
-    imageAlt: "Vibrant isometric city block illustration with colorful buildings, tiny people, trees, and shops in clean vector art style",
-    imageUrl: "/prompts/isometric-city-block-illustration.jpg",
-    breakdown: {
-      subject: "A lively city block rendered in isometric perspective with buildings, people, and street-level details",
-      style: "Clean vector art with flat shading, warm and inviting color palette",
-      lighting: "Bright daylight with subtle warm tones, soft ambient shadows from buildings",
-      composition: "Isometric grid layout showing a full city block from an elevated angle",
-      details: "Cat in window, street musician, steam from manhole, colorful awnings, trees lining sidewalks",
-    },
-    tips: [
-      "Isometric prompts work best when you specify exact small details — it forces the AI to fill the scene",
-      "Mentioning 'clean vector art' prevents the AI from going photorealistic",
-      "Great for website hero sections, app illustrations, or social media graphics",
-      "Try swapping the city theme for a campus, village, or space station for different vibes",
-    ],
-    featured: true,
-    createdAt: "2025-05-11",
-  },
-  {
     id: "prompt-173",
     slug: "pathetic-art-emotional-creature",
     title: "Pathetic Art — MS Paint Redraw Challenge",
@@ -5533,7 +5506,6 @@ export function getRelatedPrompts(
 
 // Display order for featured prompts on homepage
 const FEATURED_ORDER = [
-  "prompt-172", // Isometric City Block (May 11 batch)
   "prompt-173", // Pathetic Art Emotional Creature
   "prompt-176", // 2008 Family Photo Recreation
   "prompt-174", // VR Headset Exploded View
