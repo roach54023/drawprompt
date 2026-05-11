@@ -5318,26 +5318,26 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
   {
     id: "prompt-173",
     slug: "pathetic-art-emotional-creature",
-    title: "Pathetic Art — Raw Emotional Creature Drawing",
-    prompt: `Create an image in the "pathetic art" style — a deliberately crude, emotionally expressive illustration that looks like it was drawn by someone pouring their feelings onto paper without caring about technical skill. Use wobbly lines, mismatched proportions, and raw emotional energy. The subject should be a small creature (like a blob or simple animal) experiencing a mundane life moment with overwhelming emotion.`,
+    title: "Pathetic Art — MS Paint Redraw Challenge",
+    prompt: `Redraw the attached image in the most clumsy, scribbly, and utterly pathetic way possible. Use a white background, and make it look like it was drawn in MS Paint with a mouse. It should be vaguely similar but also not really, kind of matching but also off in a confusing, awkward way, with that low-quality pixel-by-pixel feel that really emphasizes how ridiculously bad it is. Actually, you know what, whatever, just draw it however you want.`,
     category: "character",
-    tags: ["pathetic-art", "emotional", "crude-style", "expressive", "creature", "illustration", "raw", "internet-art"],
+    tags: ["pathetic-art", "ms-paint", "crude-style", "expressive", "redraw", "meme", "internet-art", "scribbly"],
     aiModels: ["gpt-image-2"],
     difficulty: "beginner",
-    imageAlt: "Deliberately crude emotional creature illustration in pathetic art style with wobbly lines and raw expression",
+    imageAlt: "Deliberately crude MS Paint-style redraw of an image with clumsy scribbly lines on white background",
     imageUrl: "/prompts/pathetic-art-emotional-creature.jpg",
     breakdown: {
-      subject: "A small blob-like creature experiencing mundane life with overwhelming emotion",
-      style: "Pathetic art — deliberately crude, childlike, emotionally raw illustration",
-      lighting: "Flat, no complex lighting — the style is intentionally simple",
-      composition: "Single character centered, minimal background, focus on emotional expression",
-      details: "Wobbly lines, mismatched proportions, visible imperfections as a feature, not a bug",
+      subject: "A redraw of any reference image in the most clumsy, pathetic way possible",
+      style: "MS Paint with a mouse — pixel-by-pixel, low-quality, deliberately bad",
+      lighting: "White background, flat, no complex lighting",
+      composition: "Vaguely similar to the original but off in a confusing, awkward way",
+      details: "Scribbly lines, pixel-level crudeness, intentional mismatches, the worse the better",
     },
     tips: [
-      "This is one of the hottest art trends online — 'pathetic art' celebrates imperfection",
-      "The prompt's power is in explicitly asking for crude, raw quality — AI usually tries to be polished",
-      "Perfect for memes, stickers, social media reactions, or personal expression",
-      "Try adding specific emotions: 'overwhelmed by having to choose a lunch spot' for relatable humor",
+      "This viral 'pathetic art' trend works by attaching any image and asking AI to redraw it badly",
+      "The magic is in the prompt's casual tone — 'whatever, just draw it however you want' gives the AI permission to be messy",
+      "Works best when you attach a well-known image (a famous painting, a pet photo, a meme)",
+      "Source: neuronad.com — one of the hottest AI art trends of 2025",
     ],
     featured: true,
     createdAt: "2025-05-11",
@@ -5345,26 +5345,68 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
   {
     id: "prompt-174",
     slug: "vr-headset-exploded-view-technical",
-    title: "VR Headset Exploded View — Technical Illustration",
-    prompt: `Create a technical exploded-view illustration of a VR headset, showing all internal components separated and floating in space with clean connecting lines. Include lenses, display panels, circuit boards, sensors, and the head strap mechanism. Style: clean white background, subtle shadows, precise engineering illustration with a modern Apple-product-photography aesthetic.`,
+    title: "VR Headset Exploded View — Product Poster",
+    prompt: `{
+  "type": "产品爆炸视图海报",
+  "subject": "VR 头显",
+  "style": "简洁的高科技 3D 渲染，摄影棚灯光，发光装饰",
+  "background": "柔和的紫蓝色渐变",
+  "header": {
+    "logo": "∞ Meta Quest 3",
+    "subtitle": "以全新的结构，重塑全新的现实。"
+  },
+  "layout": {
+    "centerpiece": "VR 头显的垂直堆叠爆炸视图，展示了 9 层不同的内部组件：外壳、摄像头传感器、带芯片的主板、Pancake 透镜、内部框架、电池组、侧带、顶部头带和面部接口衬垫。",
+    "callout_labels": {
+      "count": 8,
+      "left_side": [
+        "Snapdragon® XR2 Gen 2\\n卓越的处理性能，带来实时沉浸体验。",
+        "可调节 IPD 机构\\n为广大用户提供舒适的佩戴感。",
+        "精密设计的头带\\n追求舒适与稳定的工程学设计。"
+      ],
+      "right_side": [
+        "前面板\\n精致的设计与优化的重量平衡。",
+        "追踪摄像头\\n实现高精度的位置追踪与环境感知。",
+        "Pancake 透镜\\n轻薄设计，提供广阔视野与清晰画质。",
+        "高性能电池\\n优化电源设计，支持长时间续航。",
+        "柔软的面部接口\\n确保长时间佩戴依然舒适。"
+      ]
+    },
+    "footer": {
+      "left_text_block": {
+        "headline": "体验，源于结构的进化。",
+        "body": "每一个零件都蕴含着支撑沉浸式体验的前沿科技与匠心设计。Meta Quest 3 从内部构建未来，为您带来超乎想象的体验。"
+      },
+      "right_logo": "∞ Meta"
+    }
+  }
+}`,
+    originalPrompt: `{
+  "type": "产品爆炸视图海报",
+  "subject": "VR 头显",
+  "style": "简洁的高科技 3D 渲染，摄影棚灯光，发光装饰",
+  "background": "柔和的紫蓝色渐变",
+  "header": { "logo": "∞ Meta Quest 3", "subtitle": "以全新的结构，重塑全新的现实。" },
+  "layout": { "centerpiece": "VR 头显的垂直堆叠爆炸视图，展示了 9 层不同的内部组件" }
+}`,
     category: "product",
-    tags: ["exploded-view", "technical", "vr-headset", "product-design", "engineering", "apple-aesthetic", "clean", "illustration"],
+    tags: ["exploded-view", "technical", "vr-headset", "product-poster", "3d-render", "chinese-prompt", "json-prompt", "meta-quest"],
     aiModels: ["gpt-image-2"],
-    difficulty: "intermediate",
-    imageAlt: "Technical exploded-view illustration of VR headset showing internal components floating in space with clean white background",
+    difficulty: "advanced",
+    imageAlt: "VR headset exploded view product poster showing 9 internal component layers with callout labels on purple-blue gradient",
     imageUrl: "/prompts/vr-headset-exploded-view-technical.jpg",
     breakdown: {
-      subject: "VR headset with all internal components separated and floating in an exploded-view arrangement",
-      style: "Precise technical illustration with Apple product photography aesthetic, minimal and modern",
-      lighting: "Clean studio lighting on white background with subtle soft shadows",
-      composition: "Components floating in vertical arrangement with implied connecting lines showing assembly order",
-      details: "Lenses, display panels, circuit boards, sensors, head strap mechanism, all individually detailed",
+      subject: "Meta Quest 3 VR headset with 9 component layers shown in vertical stacked exploded view",
+      style: "Clean high-tech 3D render with studio lighting and glowing accents",
+      lighting: "Studio lighting with soft purple-blue gradient background",
+      composition: "Vertical stacked exploded view with 8 callout labels (3 left, 5 right) and header/footer layout",
+      details: "Snapdragon XR2 Gen 2 chip, Pancake lenses, tracking cameras, battery, face interface, adjustable IPD mechanism",
     },
     tips: [
-      "Exploded-view prompts are fantastic for product presentations and tech blogs",
-      "The 'Apple-product-photography aesthetic' cue tells the AI to go clean and premium",
-      "Works great for any product: headphones, cameras, watches, mechanical keyboards",
-      "Add 'with subtle labels and part numbers' for an even more technical look",
+      "This is a structured JSON prompt — GPT Image 2 can interpret JSON layout instructions directly",
+      "The Chinese text in the prompt is part of the original design — GPT Image 2 renders Chinese typography well",
+      "Swap the product (VR headset) and component list for any product to create similar exploded-view posters",
+      "By @WORY via appark.ai",
     ],
     featured: true,
     createdAt: "2025-05-11",
@@ -5372,26 +5414,49 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
   {
     id: "prompt-175",
     slug: "learn-english-educational-infographic",
-    title: "Learn English — Cheerful Educational Infographic",
-    prompt: `Design an educational infographic-style illustration for "Learn English" — showing a cheerful student surrounded by floating vocabulary words, grammar structures, speech bubbles in different languages, books, and cultural icons from English-speaking countries. Use a bright, friendly color palette with a flat design style that appeals to young adult learners.`,
+    title: "Learn English from Photos — Vocabulary Annotation Style",
+    prompt: `【任务目标】 在照片中识别 5 个物品，并为每个物品添加：1. 英文单词 2. 简单英文释义 3. 可选的简短例句
+
+【标注数量】只标记 5 个物品，不要超过 5 个。优先选择日常生活中常见、容易学习的物品。如果画面里物品很多，只挑最典型的 5 个。
+
+【画法要求】用白色细线手绘风格标注。线条像随手画上去的，一笔画感。沿着物体边缘轻轻描一圈轮廓。可以加少量箭头、虚线辅助指向。不要太工整，保持自然松弛感。不要把画面画满，保留留白。
+
+【文字格式】每个物品旁边写：英文单词、一句简单英文解释、可选一句简短例句。参考格式：
+coffee — a drink you can have in the morning. Example: I drink coffee every day.
+bread — soft food made from flour. Example: I had bread for breakfast.
+
+【文字风格】以英文为主。解释要简单，适合初学者。不要写得像词典，更像看图学单词的小笔记。单词更突出，解释和例句稍小一点。
+
+【整体感觉】像日常照片上的英语学习手写注释。清爽、自然、有留白。像社交媒体上的轻学习内容。不要太复杂，不要太满，不要太装饰化。
+
+【输出重点】重点是：只选 5 个物品 → 标英文单词 → 配简单用法解释 → 让整张图看起来轻松自然。Make the aspect ratio 9:16`,
+    originalPrompt: `【任务目标】 在照片中识别 5 个物品，并为每个物品添加：1. 英文单词 2. 简单英文释义 3. 可选的简短例句
+
+【标注数量】只标记 5 个物品，不要超过 5 个。优先选择日常生活中常见、容易学习的物品。
+
+【画法要求】用白色细线手绘风格标注。线条像随手画上去的，一笔画感。沿着物体边缘轻轻描一圈轮廓。
+
+【文字风格】以英文为主。解释要简单，适合初学者。不要写得像词典，更像看图学单词的小笔记。
+
+【整体感觉】像日常照片上的英语学习手写注释。清爽、自然、有留白。Make the aspect ratio 9:16`,
     category: "infographic",
-    tags: ["education", "english", "infographic", "flat-design", "colorful", "student", "language-learning", "illustration"],
+    tags: ["education", "english", "vocabulary", "annotation", "photo-learning", "chinese-prompt", "hand-drawn", "social-media"],
     aiModels: ["gpt-image-2"],
     difficulty: "beginner",
-    imageAlt: "Cheerful educational infographic illustration showing a student surrounded by floating English vocabulary, books, and cultural icons",
+    imageAlt: "Photo with hand-drawn white line annotations labeling 5 everyday objects with English vocabulary words and simple definitions",
     imageUrl: "/prompts/learn-english-educational-infographic.jpg",
     breakdown: {
-      subject: "A cheerful student character as the focal point surrounded by educational elements",
-      style: "Flat design infographic with bright, friendly color palette appealing to young adults",
-      lighting: "Flat and even — characteristic of infographic illustration style",
-      composition: "Central character with floating elements radiating outward: words, books, speech bubbles, icons",
-      details: "Vocabulary words, grammar structures, multilingual speech bubbles, cultural icons from English-speaking countries",
+      subject: "Upload any photo — the AI identifies 5 objects and labels them with English vocabulary",
+      style: "White hand-drawn line annotations over the photo, casual one-stroke sketch feel",
+      lighting: "Uses the original photo's lighting — annotations are white overlays",
+      composition: "9:16 vertical format, 5 labeled items with breathing room and whitespace",
+      details: "Each label has: English word (prominent), simple definition, optional example sentence",
     },
     tips: [
-      "This style is perfect for educational apps, course thumbnails, or social media posts",
-      "Swap 'English' for any subject — coding, math, music — and the layout adapts beautifully",
-      "The flat design cue prevents the AI from over-rendering with gradients and 3D effects",
-      "Great for teachers and content creators who need quick, professional educational visuals",
+      "Upload any everyday photo — kitchen, desk, street scene — and the AI turns it into a vocabulary card",
+      "The Chinese prompt instructions produce better results than English for this particular style",
+      "Perfect for language teachers creating social media content or study materials",
+      "By @林悦己Cheer via appark.ai",
     ],
     featured: true,
     createdAt: "2025-05-11",
@@ -5399,26 +5464,27 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
   {
     id: "prompt-176",
     slug: "2008-family-photo-recreation",
-    title: "2008 Family Photo — Early Digital Camera Recreation",
-    prompt: `Generate an image that looks like a candid family photo taken in 2008 with a point-and-shoot digital camera. Slightly overexposed flash, red-eye effect on one person, someone blinking, a messy living room in the background with a CRT TV showing a news channel. The family of four is posing awkwardly on a floral-print couch. The image should have that characteristic early digital camera quality — slightly warm white balance, mild noise, and 4:3 aspect ratio.`,
+    title: "2008 Family Photo — Chinese Park Snapshot Recreation",
+    prompt: `A candid family snapshot styled like a consumer digital camera photo from around 2008, showing a Chinese family of three posing closely together in a public park in springtime. The mother is on the left, crouching and leaning in, wearing a purple cardigan over a dark patterned top, blue jeans, and carrying a black shoulder bag. The child is in the center, standing or half-squatting between the parents, wearing a navy zip-up jacket with white and red striped sleeves and a large "86" print on the chest, with olive or brown pants. The father is on the right, crouching close to the child, wearing a black long-sleeve shirt, blue jeans, a wristwatch, and a gray backpack with visible shoulder straps. All three are gathered tightly and looking toward the camera in a typical casual family-photo pose. Place them on a light stone walkway beside a calm pond edged with large ornamental rocks. In the background, show lush green trees with fresh leaves, a traditional Chinese pavilion with a gray tiled roof, and small groups of park visitors scattered along the path and bridge area. Lighting is soft bright daytime with slight haze, realistic early-spring colors, and the modest image quality of an older compact camera: slightly flat contrast, mild blur, natural noise, and an authentic point-and-shoot snapshot feel. Add a yellow digital camera timestamp in the bottom right corner reading 2008/04/26 10:25. Composition should feel like a real family travel photo taken informally in China in the late 2000s, horizontal framing, eye-level perspective, documentary realism, no stylization.`,
+    originalPrompt: `一张来自 2008 年左右的写实数码相机照片，展示了一个中国三口之家在中国某公园内的合影。场景看起来就像是用早期的消费级卡片机拍摄的普通周末家庭快照，带有轻微的柔焦、淡淡的雾感、自然日光，以及 2000 年代末期小型数码相机摄影特有的随性写实感。一家人位于前景中心，蹲在平静池塘边的一条铺砌小路旁。照片中共有 3 人：左侧是母亲，中间是小男孩，右侧是父亲。母亲身穿紫色开衫，内搭深色上衣，下着蓝色牛仔裤，背着一个黑色单肩包；小男孩穿着一件未拉拉链的深蓝色运动外套，袖子上有白色和红色的条纹，胸前印有清晰的"86"字样，下着橄榄色或棕色长裤；父亲穿着深蓝色或黑色长袖衬衫，搭配蓝色牛仔裤，戴着手表，背着一个带有明显肩带的背包。他们的头向内倾斜，摆出亲密的家庭姿势，对着镜头微笑。背景中可以看到水对面有一座灰瓦屋顶的中国传统凉亭、池塘边不规则的装饰性岩石、长满嫩绿叶片的春季树木，以及远处零星的公园游客。构图应呈现出真实的个人旅行或家庭相册照片的感觉，而非精致的专业肖像。使用 4:3 的长宽比，平视构图，色彩饱满但色调略显柔和，天空有轻微的过曝感，右下角带有经典的黄色数码相机时间戳，显示为 2008/04/26 10:25。`,
     category: "photography",
-    tags: ["retro", "family-photo", "2008", "digital-camera", "nostalgia", "candid", "flash-photography", "realistic"],
+    tags: ["retro", "family-photo", "2008", "digital-camera", "nostalgia", "chinese-family", "park", "point-and-shoot", "timestamp"],
     aiModels: ["gpt-image-2"],
     difficulty: "advanced",
-    imageAlt: "Nostalgic 2008-style family photo with overexposed flash, red-eye, CRT TV, and early digital camera aesthetic",
+    imageAlt: "Realistic 2008-era digital camera family photo of Chinese family of three in a park with traditional pavilion and yellow timestamp",
     imageUrl: "/prompts/2008-family-photo-recreation.jpg",
     breakdown: {
-      subject: "A family of four posing awkwardly on a floral-print couch in a messy living room",
-      style: "Faux-authentic early 2000s digital photography with deliberate imperfections",
-      lighting: "Overexposed direct flash with harsh shadows, warm white balance cast",
-      composition: "4:3 aspect ratio, centered group shot, cluttered background with CRT TV visible",
-      details: "Red-eye on one person, someone blinking, mild sensor noise, warm color cast, CRT showing news",
+      subject: "Chinese family of three (mother, father, child) posing by a calm pond in a public park",
+      style: "Authentic consumer digital camera photo from 2008 — flat contrast, mild blur, natural noise",
+      lighting: "Soft bright daytime with slight haze, early-spring natural light, slightly overexposed sky",
+      composition: "Horizontal 4:3 framing, eye-level, family centered on stone walkway, pavilion in background",
+      details: "Yellow timestamp '2008/04/26 10:25' in corner, specific clothing details (purple cardigan, '86' jacket), ornamental rocks, park visitors",
     },
     tips: [
-      "This prompt is a masterclass in 'controlled imperfection' — every flaw is intentional",
-      "The specific year (2008) and camera type anchor the AI to a very precise aesthetic",
-      "Try different decades: 1995 disposable camera, 2003 flip phone, 2012 Instagram-era",
-      "Mentioning CRT TV and floral couch adds era-authentic environmental storytelling",
+      "The extreme level of detail (clothing, timestamp, background elements) is what makes this prompt work — it forces photorealism",
+      "The original Chinese prompt is even more detailed — use originalPrompt field for the full Chinese version",
+      "Change the year, timestamp, and clothing to recreate any era of family photography",
+      "By @投机实验室 via appark.ai",
     ],
     featured: true,
     createdAt: "2025-05-11",
