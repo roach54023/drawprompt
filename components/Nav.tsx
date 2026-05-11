@@ -29,6 +29,13 @@ const specials: Special[] = [
     hot: false,
     activeUntil: "2026-05-11",
   },
+  {
+    href: "/chibi-prompt",
+    label: "Chibi Prompt",
+    emoji: "🧸",
+    desc: "5 viral chibi styles for your photo",
+    hot: true,
+  },
   // 下次新专题直接加在这里，例如：
   // {
   //   href: "/fathers-day",

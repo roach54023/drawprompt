@@ -368,6 +368,7 @@ export default function HomeClient({
               { href: "/chatgpt-photo-prompts", title: "ChatGPT Photo Prompts", desc: "Photorealistic prompts crafted for ChatGPT\u2019s image generation — portraits, products, and more.", color: "#7b9eb8", bg: "#eef4f8", border: "#c8dce8" },
               { href: "/generate", title: "Generate AI Images", desc: "Type a prompt and create images instantly with GPT Image 2 — 1 free credit, no card needed.", color: "#b8924a", bg: "#fdf8e8", border: "#e8d8a8" },
               { href: "/drawing-prompts", title: "Drawing Prompts", desc: "Traditional art inspiration for sketching, painting, and illustration at every skill level.", color: "#c47ab8", bg: "#faf0f8", border: "#e8c0e0" },
+              { href: "/chibi-prompt", title: "Chibi Prompt", desc: "5 viral chibi styles — turn your photo into adorable 3D mini characters with one click.", color: "#7c3aed", bg: "#ede9fe", border: "#c4b5fd" },
             ].map((item) => (
               <Link
                 key={item.href}

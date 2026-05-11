@@ -162,6 +162,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Link href="/chatgpt-photo-prompts" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
                     Photo Prompts
                   </Link>
+                  <Link href="/chibi-prompt" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Chibi Prompt
+                  </Link>
                 </div>
               </div>
               <div>

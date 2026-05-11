@@ -750,8 +750,9 @@ export default function MothersDayClient() {
       <footer className="md-footer">
         <p>
           <Link href="/">DrawPrompt</Link> — free Mother&apos;s Day poster templates
-          and design ideas. Browse <Link href="/ai-prompts">all prompts</Link> or
-          try <Link href="/gpt-image-2-prompts">GPT Image 2 prompts</Link>.
+          and design ideas. Browse <Link href="/ai-prompts">all prompts</Link>,
+          try <Link href="/gpt-image-2-prompts">GPT Image 2 prompts</Link>,
+          or create adorable <Link href="/chibi-prompt">chibi art</Link> from your photos.
         </p>
       </footer>
     </div>

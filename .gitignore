@@ -46,3 +46,6 @@ local.db
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# daily prompt discovery workspace (not deployed)
+/daily/
