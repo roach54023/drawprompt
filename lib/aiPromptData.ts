@@ -5320,6 +5320,41 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
     slug: "vr-headset-exploded-view-technical",
     title: "VR Headset Exploded View — Product Poster",
     prompt: `{
+  "type": "Product Exploded View Poster",
+  "subject": "VR Headset",
+  "style": "Clean high-tech 3D render, studio lighting, glowing accents",
+  "background": "Soft purple-blue gradient",
+  "header": {
+    "logo": "∞ Meta Quest 3",
+    "subtitle": "Reimagine reality with an entirely new structure."
+  },
+  "layout": {
+    "centerpiece": "Vertical stacked exploded view of a VR headset showing 9 different internal component layers: outer shell, camera sensors, motherboard with chip, Pancake lenses, internal frame, battery pack, side straps, top head strap, and face interface cushion.",
+    "callout_labels": {
+      "count": 8,
+      "left_side": [
+        "Snapdragon® XR2 Gen 2\\nExceptional processing power for real-time immersion.",
+        "Adjustable IPD Mechanism\\nComfortable fit for a wide range of users.",
+        "Precision-Engineered Head Strap\\nEngineered for comfort and stability."
+      ],
+      "right_side": [
+        "Front Panel\\nRefined design with optimized weight balance.",
+        "Tracking Cameras\\nHigh-precision positional tracking and environmental awareness.",
+        "Pancake Lenses\\nSlim design delivering a wide field of view and crisp visuals.",
+        "High-Performance Battery\\nOptimized power design for extended use.",
+        "Soft Face Interface\\nEnsures long-wearing comfort."
+      ]
+    },
+    "footer": {
+      "left_text_block": {
+        "headline": "Experience born from structural evolution.",
+        "body": "Every component embodies the cutting-edge technology and craftsmanship that powers immersive experiences. Meta Quest 3 builds the future from within, delivering experiences beyond imagination."
+      },
+      "right_logo": "∞ Meta"
+    }
+  }
+}`,
+    originalPrompt: `{
   "type": "产品爆炸视图海报",
   "subject": "VR 头显",
   "style": "简洁的高科技 3D 渲染，摄影棚灯光，发光装饰",
@@ -5354,14 +5389,6 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
     }
   }
 }`,
-    originalPrompt: `{
-  "type": "产品爆炸视图海报",
-  "subject": "VR 头显",
-  "style": "简洁的高科技 3D 渲染，摄影棚灯光，发光装饰",
-  "background": "柔和的紫蓝色渐变",
-  "header": { "logo": "∞ Meta Quest 3", "subtitle": "以全新的结构，重塑全新的现实。" },
-  "layout": { "centerpiece": "VR 头显的垂直堆叠爆炸视图，展示了 9 层不同的内部组件" }
-}`,
     category: "product",
     tags: ["exploded-view", "technical", "vr-headset", "product-poster", "3d-render", "chinese-prompt", "json-prompt", "meta-quest"],
     aiModels: ["gpt-image-2"],
@@ -5388,7 +5415,22 @@ ignoring the uploaded photo, using the uploaded photo only as style inspiration,
     id: "prompt-175",
     slug: "learn-english-educational-infographic",
     title: "Learn English from Photos — Vocabulary Annotation Style",
-    prompt: `【任务目标】 在照片中识别 5 个物品，并为每个物品添加：1. 英文单词 2. 简单英文释义 3. 可选的简短例句
+    prompt: `[Task Goal] Identify 5 objects in the photo and add for each: 1. English word 2. Simple English definition 3. Optional short example sentence
+
+[Annotation Count] Only label 5 objects, no more than 5. Prioritize common, easy-to-learn everyday items. If there are many objects in the frame, pick only the 5 most typical ones.
+
+[Drawing Style] Use white thin-line hand-drawn style annotations. Lines should look casually sketched, with a one-stroke feel. Lightly trace around the object edges. You can add a few arrows or dashed lines to point. Don't be too neat — keep it natural and relaxed. Don't fill the entire frame, preserve whitespace.
+
+[Text Format] Next to each object write: English word, one simple English explanation, optional short example sentence. Reference format:
+coffee — a drink you can have in the morning. Example: I drink coffee every day.
+bread — soft food made from flour. Example: I had bread for breakfast.
+
+[Text Style] Primarily in English. Keep explanations simple, suitable for beginners. Don't write like a dictionary — more like visual vocabulary learning notes. Words should be more prominent, definitions and examples slightly smaller.
+
+[Overall Feel] Like hand-written English learning annotations on an everyday photo. Clean, natural, with breathing room. Like light learning content on social media. Not too complex, not too crowded, not too decorative.
+
+[Output Focus] Key point: pick only 5 objects → label with English words → add simple usage explanations → make the whole image look relaxed and natural. Make the aspect ratio 9:16`,
+    originalPrompt: `【任务目标】 在照片中识别 5 个物品，并为每个物品添加：1. 英文单词 2. 简单英文释义 3. 可选的简短例句
 
 【标注数量】只标记 5 个物品，不要超过 5 个。优先选择日常生活中常见、容易学习的物品。如果画面里物品很多，只挑最典型的 5 个。
 
@@ -5403,15 +5445,6 @@ bread — soft food made from flour. Example: I had bread for breakfast.
 【整体感觉】像日常照片上的英语学习手写注释。清爽、自然、有留白。像社交媒体上的轻学习内容。不要太复杂，不要太满，不要太装饰化。
 
 【输出重点】重点是：只选 5 个物品 → 标英文单词 → 配简单用法解释 → 让整张图看起来轻松自然。Make the aspect ratio 9:16`,
-    originalPrompt: `【任务目标】 在照片中识别 5 个物品，并为每个物品添加：1. 英文单词 2. 简单英文释义 3. 可选的简短例句
-
-【标注数量】只标记 5 个物品，不要超过 5 个。优先选择日常生活中常见、容易学习的物品。
-
-【画法要求】用白色细线手绘风格标注。线条像随手画上去的，一笔画感。沿着物体边缘轻轻描一圈轮廓。
-
-【文字风格】以英文为主。解释要简单，适合初学者。不要写得像词典，更像看图学单词的小笔记。
-
-【整体感觉】像日常照片上的英语学习手写注释。清爽、自然、有留白。Make the aspect ratio 9:16`,
     category: "infographic",
     tags: ["education", "english", "vocabulary", "annotation", "photo-learning", "chinese-prompt", "hand-drawn", "social-media"],
     aiModels: ["gpt-image-2"],
