@@ -136,8 +136,65 @@ function GeneratePageContent() {
     loadHistory();
   }, [loadHistory]);
 
+  /**
+   * Compress an image data-URL so the base64 payload stays under ~3 MB
+   * (Vercel Serverless body limit is 4.5 MB; we leave room for JSON overhead).
+   * Returns the (possibly re-encoded) data-URL.
+   */
+  const compressImage = useCallback((dataUrl: string, maxDim = 1600, quality = 0.82): Promise<string> => {
+    return new Promise((resolve) => {
+      const img = new window.Image();
+      img.onload = () => {
+        // If already small enough, keep original
+        const originalSizeKB = (dataUrl.length * 3) / 4 / 1024; // approximate decoded size
+        if (originalSizeKB < 2800 && img.width <= maxDim && img.height <= maxDim) {
+          resolve(dataUrl);
+          return;
+        }
+
+        const canvas = document.createElement("canvas");
+        let w = img.width;
+        let h = img.height;
+        if (w > maxDim || h > maxDim) {
+          const ratio = Math.min(maxDim / w, maxDim / h);
+          w = Math.round(w * ratio);
+          h = Math.round(h * ratio);
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d")!;
+        ctx.drawImage(img, 0, 0, w, h);
+        const compressed = canvas.toDataURL("image/jpeg", quality);
+        resolve(compressed);
+      };
+      img.onerror = () => resolve(dataUrl); // fallback to original
+      img.src = dataUrl;
+    });
+  }, []);
+
+  // Pick up reference image passed from activity pages (chibi-prompt, mothers-day, etc.)
+  useEffect(() => {
+    (async () => {
+      try {
+        const pendingImage = sessionStorage.getItem("pending_reference_image");
+        if (pendingImage) {
+          const pendingName = sessionStorage.getItem("pending_reference_filename") || "uploaded-image";
+          setReferenceFileName(pendingName);
+          // Clean up immediately so it doesn't persist on refresh
+          sessionStorage.removeItem("pending_reference_image");
+          sessionStorage.removeItem("pending_reference_filename");
+          // Compress before setting state (large photos would exceed Vercel 4.5 MB body limit)
+          const compressed = await compressImage(pendingImage);
+          setReferenceImage(compressed);
+        }
+      } catch {
+        // sessionStorage unavailable (SSR / private browsing edge case)
+      }
+    })();
+  }, [compressImage]);
+
   // Handle file upload for image-to-image
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 20 * 1024 * 1024) {
@@ -146,8 +203,10 @@ function GeneratePageContent() {
     }
     setReferenceFileName(file.name);
     const reader = new FileReader();
-    reader.onload = () => {
-      setReferenceImage(reader.result as string);
+    reader.onload = async () => {
+      const raw = reader.result as string;
+      const compressed = await compressImage(raw);
+      setReferenceImage(compressed);
     };
     reader.readAsDataURL(file);
   };
@@ -158,7 +217,45 @@ function GeneratePageContent() {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  // Handle generate
+  // Poll generation status until complete
+  const pollStatus = useCallback(async (generationId: string): Promise<{ image_url: string; credits_cost: number; credits_remaining: number; generation_id: string; model_used: string } | null> => {
+    const MAX_POLLS = 120; // 120 × 3 s = 6 minutes max
+    const POLL_INTERVAL = 3000;
+
+    for (let i = 0; i < MAX_POLLS; i++) {
+      await new Promise((r) => setTimeout(r, POLL_INTERVAL));
+
+      try {
+        const res = await fetch(`/api/generate/status?id=${generationId}`);
+        if (!res.ok) continue; // retry on transient errors
+
+        const data = await res.json();
+
+        if (data.status === "success" && data.image_url) {
+          return {
+            image_url: data.image_url,
+            credits_cost: data.credits_cost,
+            credits_remaining: 0,
+            generation_id: generationId,
+            model_used: "gpt-image-2",
+          };
+        }
+
+        if (data.status === "failed") {
+          throw new Error(data.error_message || "Image generation failed. Credits have been refunded.");
+        }
+
+        // still "pending" — continue polling
+      } catch (err) {
+        // If it's our own thrown error (failed status), re-throw
+        if (err instanceof Error && !err.message.includes("fetch")) throw err;
+        // Otherwise it's a network blip — keep polling
+      }
+    }
+    throw new Error("Generation is taking too long. Please check your history later — if it failed, credits will be refunded.");
+  }, []);
+
+  // Handle generate (async: submit → poll)
   const handleGenerate = async () => {
     if (!prompt.trim()) {
       setError("Please enter a prompt");
@@ -170,6 +267,7 @@ function GeneratePageContent() {
     setResult(null);
 
     try {
+      // Step 1: Submit — returns immediately with generation_id
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -181,7 +279,7 @@ function GeneratePageContent() {
         }),
       });
 
-      // 先检查响应是否为 JSON
+      // Check for non-JSON response (e.g. Cloudflare error page)
       const contentType = res.headers.get("content-type") || "";
       if (!contentType.includes("application/json")) {
         const text = await res.text();
@@ -197,11 +295,32 @@ function GeneratePageContent() {
         return;
       }
 
-      setProgress(100);
-      setResult(data);
-      await refreshUserData();
-      // Refresh history after successful generation
-      setTimeout(() => loadHistory(), 500);
+      // Step 2: If server returned a final result directly (backwards compat), use it
+      if (data.image_url) {
+        setProgress(100);
+        setResult(data);
+        await refreshUserData();
+        setTimeout(() => loadHistory(), 500);
+        return;
+      }
+
+      // Step 3: Poll for async result
+      const generationId = data.generation_id;
+      if (!generationId) {
+        setError("No generation ID returned");
+        return;
+      }
+
+      const finalResult = await pollStatus(generationId);
+      if (finalResult) {
+        setProgress(100);
+        setResult({
+          ...finalResult,
+          credits_remaining: data.credits_remaining ?? finalResult.credits_remaining,
+        });
+        await refreshUserData();
+        setTimeout(() => loadHistory(), 500);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Network error");
     } finally {

@@ -1,13 +1,16 @@
 /**
  * DrawPrompts — POST /api/generate
- * 核心接口：图片生成
- * 流程：验证 → 检查权限 → 扣积分 → 调 API → 上传 R2 → 返回结果
+ * 核心接口：图片生成（异步模式）
  *
- * 使用 fetch 直接调用 OpenAI 兼容 API
+ * 流程：验证 → 检查权限 → 扣积分 → 立即返回 generation_id → 后台调 API → 上传 R2 → 更新 DB
+ *
+ * 前端收到 generation_id 后轮询 /api/generate/status 获取最终结果。
+ * 这样每个 HTTP 响应都在几秒内返回，不会被 Cloudflare 100 s 代理超时截断。
  */
-export const maxDuration = 300; // Pro plan 最大 300 秒
+export const maxDuration = 300; // Vercel Pro plan 最大 300 秒
 
 import { NextRequest, NextResponse } from "next/server";
+import { after } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getUserByEmail } from "@/servers/user";
@@ -44,7 +47,7 @@ async function callImageAPI(params: {
     ? `${baseUrl}/v1/images/edits`
     : `${baseUrl}/v1/images/generations`;
 
-  console.log(`[Generate] Calling API: mode=${isEdit ? "edit" : "generate"}, model="${params.model}", size="${params.size}", quality="${params.quality}"`);
+  console.log(`[Generate] Calling API: mode=${isEdit ? "edit" : "generate"}, model="${params.model}", size="${params.size}", quality="${params.quality}", prompt_len=${params.prompt.length}`);
 
   let res: Response;
 
@@ -73,7 +76,7 @@ async function callImageAPI(params: {
       method: "POST",
       headers: { "Authorization": `Bearer ${apiKey}` },
       body: formData,
-      signal: AbortSignal.timeout(360000),
+      signal: AbortSignal.timeout(290000), // slightly under maxDuration
     });
   } else {
     // Text-to-image: use JSON
@@ -90,7 +93,7 @@ async function callImageAPI(params: {
         ...(params.size ? { size: params.size } : {}),
         ...(params.quality ? { quality: params.quality } : {}),
       }),
-      signal: AbortSignal.timeout(360000),
+      signal: AbortSignal.timeout(290000),
     });
   }
 
@@ -117,6 +120,68 @@ async function callImageAPI(params: {
   }
 
   return { b64_json: b64, model_used: params.model };
+}
+
+/**
+ * 后台执行图片生成（在 after() 中运行，不阻塞 HTTP 响应）
+ */
+async function executeGeneration(params: {
+  generationId: string;
+  userId: string;
+  promptText: string;
+  qualityConfig: (typeof QUALITY_CONFIG)[QualityTier];
+  referenceImageBase64?: string;
+  creditsBalance: number;
+}) {
+  const { generationId, userId, promptText, qualityConfig, referenceImageBase64 } = params;
+
+  try {
+    // DEV MOCK
+    const isMock = process.env.NODE_ENV === "development" && promptText.toLowerCase().includes("mock");
+
+    let result: GenerateImageResult;
+    if (isMock) {
+      result = {
+        b64_json: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+        model_used: "mock",
+      };
+    } else {
+      result = await callImageAPI({
+        prompt: promptText,
+        model: qualityConfig.apiModel,
+        size: qualityConfig.apiSize,
+        quality: qualityConfig.apiQuality,
+        referenceImageBase64,
+      });
+    }
+
+    // 上传到 R2
+    let imageUrl: string;
+    if (process.env.NODE_ENV === "development") {
+      imageUrl = `data:image/png;base64,${result.b64_json}`;
+    } else {
+      const fileName = `${generationId}.png`;
+      imageUrl = await uploadToR2(result.b64_json, fileName);
+    }
+
+    // 标记成功
+    await markGenerationSuccess(generationId, imageUrl);
+    console.log(`[Generate] Success: ${generationId}`);
+  } catch (apiError: unknown) {
+    const errorMessage = apiError instanceof Error ? apiError.message : "Unknown error";
+    const isTimeout = apiError instanceof Error && apiError.name === "TimeoutError";
+
+    // 退回积分
+    await refundCredits({
+      userId,
+      creditsCost: qualityConfig.credits,
+      generationId,
+      description: `Refund: generation failed -${qualityConfig.label}`,
+    });
+
+    await markGenerationFailed(generationId, errorMessage);
+    console.error(`[Generate] Failed: ${generationId}, timeout=${isTimeout}, error=${errorMessage}`);
+  }
 }
 
 
@@ -151,6 +216,10 @@ export async function POST(request: NextRequest) {
     // 解析请求
     const body = await request.json();
     const { prompt_slug, prompt_text, quality, turnstile_token, reference_image } = body;
+
+    // Diagnostic: log request payload size
+    const refImgSize = reference_image ? Math.round((reference_image.length * 3) / 4 / 1024) : 0;
+    console.log(`[Generate] prompt_len=${prompt_text?.length || 0}, ref_image_kb=${refImgSize}, quality=${quality}`);
 
     if (!prompt_text || !quality) {
       return NextResponse.json(
@@ -252,78 +321,37 @@ export async function POST(request: NextRequest) {
       apiSize: qualityConfig.apiSize,
     });
 
-    // 6. 调用 GPT Image API
-    try {
-      // DEV MOCK: prompt 包含 "mock" 时跳过真实 API 调用，返回测试图片
-      const isMock = process.env.NODE_ENV === "development" && prompt_text.toLowerCase().includes("mock");
-      
-      // 处理参考图：提取纯 base64（去除 data:image/...;base64, 前缀）
-      let referenceImageBase64: string | undefined;
-      if (reference_image && typeof reference_image === "string") {
-        if (reference_image.startsWith("data:")) {
-          referenceImageBase64 = reference_image.split(",", 2)[1];
-        } else {
-          referenceImageBase64 = reference_image;
-        }
-      }
-
-      let result: GenerateImageResult;
-      if (isMock) {
-        result = {
-          b64_json: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-          model_used: "mock",
-        };
+    // 6. 处理参考图
+    let referenceImageBase64: string | undefined;
+    if (reference_image && typeof reference_image === "string") {
+      if (reference_image.startsWith("data:")) {
+        referenceImageBase64 = reference_image.split(",", 2)[1];
       } else {
-        result = await callImageAPI({
-          prompt: prompt_text,
-          model: qualityConfig.apiModel,
-          size: qualityConfig.apiSize,
-          quality: qualityConfig.apiQuality,
-          referenceImageBase64,
-        });
+        referenceImageBase64 = reference_image;
       }
-
-      // 7. 上传到 R2
-      let imageUrl: string;
-      if (process.env.NODE_ENV === "development") {
-        imageUrl = `data:image/png;base64,${result.b64_json}`;
-      } else {
-        const fileName = `${generationId}.png`;
-        imageUrl = await uploadToR2(result.b64_json, fileName);
-      }
-
-      // 8. 标记成功
-      await markGenerationSuccess(generationId, imageUrl);
-
-      return NextResponse.json({
-        generation_id: generationId,
-        image_url: imageUrl,
-        credits_cost: qualityConfig.credits,
-        credits_remaining: credits.balance - qualityConfig.credits,
-        model_used: result.model_used,
-      });
-    } catch (apiError: unknown) {
-      // API 调用失败 - 退回积分
-      const errorMessage = apiError instanceof Error ? apiError.message : "Unknown error";
-
-      await refundCredits({
-        userId,
-        creditsCost: qualityConfig.credits,
-        generationId,
-        description: `Refund: generation failed -${qualityConfig.label}`,
-      });
-
-      await markGenerationFailed(generationId, errorMessage);
-
-      console.error("[Generate API] Image generation failed:", errorMessage);
-      return NextResponse.json(
-        {
-          error: "Image generation failed. Credits have been refunded.",
-          details: errorMessage,
-        },
-        { status: 502 }
-      );
     }
+
+    // 7. 用 after() 在后台执行图片生成，立即返回 generation_id
+    //    after() 在 response 发送后继续执行，Vercel 会保持函数运行直到 maxDuration。
+    //    前端通过轮询 /api/generate/status 获取结果。
+    after(
+      executeGeneration({
+        generationId,
+        userId,
+        promptText: prompt_text,
+        qualityConfig,
+        referenceImageBase64,
+        creditsBalance: credits.balance,
+      })
+    );
+
+    // 立即返回（< 2 秒），Cloudflare 不会超时
+    return NextResponse.json({
+      generation_id: generationId,
+      status: "pending",
+      credits_cost: qualityConfig.credits,
+      credits_remaining: credits.balance - qualityConfig.credits,
+    });
   } catch (error) {
     console.error("[POST /api/generate] Error:", error);
     return NextResponse.json(

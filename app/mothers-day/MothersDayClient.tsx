@@ -231,6 +231,14 @@ export default function MothersDayClient() {
 
   const handleGenerate = () => {
     if (!prompt.trim()) return;
+    // Pass the uploaded image via sessionStorage (too large for URL)
+    if (referenceImage) {
+      try { sessionStorage.setItem("pending_reference_image", referenceImage); } catch {}
+      try { sessionStorage.setItem("pending_reference_filename", referenceFileName); } catch {}
+    } else {
+      sessionStorage.removeItem("pending_reference_image");
+      sessionStorage.removeItem("pending_reference_filename");
+    }
     router.push(`/generate?prompt=${encodeURIComponent(prompt.trim())}`);
   };
 

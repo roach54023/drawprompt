@@ -69,6 +69,33 @@ export async function markGenerationFailed(
 }
 
 /**
+ * 获取单条生成记录（用于轮询状态）
+ */
+export async function getGeneration(generationId: string) {
+  const db = getDb();
+  const row = await db
+    .prepare(
+      `SELECT generation_id, user_id, prompt_text, quality, credits_cost, image_url, status, error_message, created_at
+       FROM generations WHERE generation_id = ?`
+    )
+    .bind(generationId)
+    .first<Record<string, unknown>>();
+
+  if (!row) return null;
+  return {
+    generation_id: row.generation_id as string,
+    user_id: row.user_id as string,
+    prompt_text: row.prompt_text as string,
+    quality: row.quality as string,
+    credits_cost: row.credits_cost as number,
+    image_url: row.image_url as string | null,
+    status: row.status as string,
+    error_message: row.error_message as string | null,
+    created_at: row.created_at as string,
+  };
+}
+
+/**
  * 获取用户生成历史（分页）
  */
 export async function getUserGenerations(
