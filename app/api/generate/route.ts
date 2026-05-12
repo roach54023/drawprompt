@@ -27,7 +27,7 @@ import {
 } from "@/lib/qualityConfig";
 
 /**
- * 判断错误是否为上游负载饱和 / 限流类错误，可以 fallback 到 default 分组重试
+ * 判断错误是否为上游负载饱和 / 限流类错误，可以用备用令牌重试
  */
 function isRetriableUpstreamError(status: number, message: string): boolean {
   if (status === 429 || status === 502 || status === 503) return true;
@@ -37,11 +37,9 @@ function isRetriableUpstreamError(status: number, message: string): boolean {
     || lower.includes("capacity") || lower.includes("too many requests");
 }
 
-/** fallback 模型名：apiyi default 分组也支持 image2 */
-const FALLBACK_MODEL = "default";
-
 /**
  * 使用 fetch 调用图片生成 API（单次请求，不含重试逻辑）
+ * @param apiKeyOverride - 可选，指定使用的 API Key（用于 fallback 到备用分组令牌）
  */
 async function callImageAPIOnce(params: {
   prompt: string;
@@ -49,8 +47,8 @@ async function callImageAPIOnce(params: {
   size?: string;
   quality?: string;
   referenceImageBase64?: string;
-}): Promise<GenerateImageResult> {
-  const apiKey = process.env.OPENAI_API_KEY;
+}, apiKeyOverride?: string): Promise<GenerateImageResult> {
+  const apiKey = apiKeyOverride || process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY environment variable is not set");
   }
@@ -139,7 +137,9 @@ async function callImageAPIOnce(params: {
 }
 
 /**
- * 调用图片生成 API，带 fallback：主分组负载饱和时自动切 default 分组重试
+ * 调用图片生成 API，带 fallback：
+ * 主令牌分组负载饱和时，自动用备用令牌（OPENAI_API_KEY_FALLBACK）重试。
+ * apiyi 的分组通过令牌绑定，不同 Key 对应不同分组（如 Default / image2Enterprise）。
  */
 async function callImageAPI(params: {
   prompt: string;
@@ -154,10 +154,12 @@ async function callImageAPI(params: {
     const statusCode = (firstError as Error & { statusCode?: number }).statusCode || 0;
     const message = firstError instanceof Error ? firstError.message : "";
 
-    // 只有负载饱和类错误才 fallback，内容审核/参数错误等不重试
-    if (params.model !== FALLBACK_MODEL && isRetriableUpstreamError(statusCode, message)) {
-      console.warn(`[Generate] Primary model "${params.model}" unavailable (${statusCode}: ${message}), falling back to "${FALLBACK_MODEL}"`);
-      return await callImageAPIOnce({ ...params, model: FALLBACK_MODEL });
+    const fallbackKey = process.env.OPENAI_API_KEY_FALLBACK;
+
+    // 只有负载饱和类错误 + 配置了备用令牌才 fallback，内容审核/参数错误等不重试
+    if (fallbackKey && isRetriableUpstreamError(statusCode, message)) {
+      console.warn(`[Generate] Primary key overloaded (${statusCode}: ${message}), retrying with fallback key`);
+      return await callImageAPIOnce(params, fallbackKey);
     }
 
     throw firstError;
