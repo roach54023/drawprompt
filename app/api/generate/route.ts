@@ -160,7 +160,9 @@ async function callImageAPI(params: {
     // 只有负载饱和类错误 + 配置了备用令牌才 fallback，内容审核/参数错误等不重试
     if (fallbackKey && isRetriableUpstreamError(statusCode, message)) {
       console.warn(`[Generate] Primary key overloaded (${statusCode}: ${message}), retrying with fallback key`);
-      return await callImageAPIOnce(params, fallbackKey);
+      const result = await callImageAPIOnce(params, fallbackKey);
+      result.used_fallback = true;
+      return result;
     }
 
     throw firstError;
@@ -179,6 +181,7 @@ async function executeGeneration(params: {
   creditsBalance: number;
 }) {
   const { generationId, userId, promptText, qualityConfig, referenceImageBase64 } = params;
+  const startTime = Date.now();
 
   try {
     // DEV MOCK
@@ -200,6 +203,9 @@ async function executeGeneration(params: {
       });
     }
 
+    const durationMs = Date.now() - startTime;
+    const usedFallback = result.used_fallback ?? false;
+
     // 上传到 R2
     let imageUrl: string;
     if (process.env.NODE_ENV === "development") {
@@ -210,9 +216,10 @@ async function executeGeneration(params: {
     }
 
     // 标记成功
-    await markGenerationSuccess(generationId, imageUrl);
-    console.log(`[Generate] Success: ${generationId}`);
+    await markGenerationSuccess(generationId, imageUrl, { usedFallback, durationMs });
+    console.log(`[Generate] Success: ${generationId}, duration=${durationMs}ms, fallback=${usedFallback}`);
   } catch (apiError: unknown) {
+    const durationMs = Date.now() - startTime;
     const errorMessage = apiError instanceof Error ? apiError.message : "Unknown error";
     const isTimeout = apiError instanceof Error && apiError.name === "TimeoutError";
 
@@ -224,8 +231,8 @@ async function executeGeneration(params: {
       description: `Refund: generation failed -${qualityConfig.label}`,
     });
 
-    await markGenerationFailed(generationId, errorMessage);
-    console.error(`[Generate] Failed: ${generationId}, timeout=${isTimeout}, error=${errorMessage}`);
+    await markGenerationFailed(generationId, errorMessage, { durationMs });
+    console.error(`[Generate] Failed: ${generationId}, duration=${durationMs}ms, timeout=${isTimeout}, error=${errorMessage}`);
   }
 }
 

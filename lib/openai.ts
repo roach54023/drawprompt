@@ -10,6 +10,7 @@ export interface GenerateImageParams {
 }
 
 export interface GenerateImageResult {
-  b64_json: string;
-  model_used: string;
+b64_json: string;
+model_used: string;
+used_fallback?: boolean;
 }

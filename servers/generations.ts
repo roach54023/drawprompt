@@ -41,14 +41,23 @@ export async function createGeneration(params: {
  */
 export async function markGenerationSuccess(
   generationId: string,
-  imageUrl: string
+  imageUrl: string,
+  extra?: { usedFallback?: boolean; durationMs?: number }
 ): Promise<void> {
   const db = getDb();
   await db
     .prepare(
-      `UPDATE generations SET status = 'success', image_url = ? WHERE generation_id = ?`
+      `UPDATE generations
+       SET status = 'success', image_url = ?,
+           used_fallback = ?, duration_ms = ?
+       WHERE generation_id = ?`
     )
-    .bind(imageUrl, generationId)
+    .bind(
+      imageUrl,
+      extra?.usedFallback ? 1 : 0,
+      extra?.durationMs ?? null,
+      generationId
+    )
     .run();
 }
 
@@ -57,14 +66,23 @@ export async function markGenerationSuccess(
  */
 export async function markGenerationFailed(
   generationId: string,
-  errorMessage: string
+  errorMessage: string,
+  extra?: { usedFallback?: boolean; durationMs?: number }
 ): Promise<void> {
   const db = getDb();
   await db
     .prepare(
-      `UPDATE generations SET status = 'failed', error_message = ? WHERE generation_id = ?`
+      `UPDATE generations
+       SET status = 'failed', error_message = ?,
+           used_fallback = ?, duration_ms = ?
+       WHERE generation_id = ?`
     )
-    .bind(errorMessage, generationId)
+    .bind(
+      errorMessage,
+      extra?.usedFallback ? 1 : 0,
+      extra?.durationMs ?? null,
+      generationId
+    )
     .run();
 }
 
@@ -75,7 +93,7 @@ export async function getGeneration(generationId: string) {
   const db = getDb();
   const row = await db
     .prepare(
-      `SELECT generation_id, user_id, prompt_text, quality, credits_cost, image_url, status, error_message, created_at
+      `SELECT generation_id, user_id, prompt_text, quality, credits_cost, image_url, status, error_message, used_fallback, duration_ms, created_at
        FROM generations WHERE generation_id = ?`
     )
     .bind(generationId)
@@ -91,6 +109,8 @@ export async function getGeneration(generationId: string) {
     image_url: row.image_url as string | null,
     status: row.status as string,
     error_message: row.error_message as string | null,
+    used_fallback: row.used_fallback as number,
+    duration_ms: row.duration_ms as number | null,
     created_at: row.created_at as string,
   };
 }
