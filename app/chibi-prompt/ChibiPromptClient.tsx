@@ -27,7 +27,7 @@ const TEMPLATES = [
     tag: "Trending",
     description:
       "A hand holds a transparent gashapon capsule toy with an adorable chibi figurine of you inside.",
-    imageUrl: "/prompts/chibi-3d-mini-me.jpg",
+    imageUrl: "/prompts/chibi-gashapon-capsule.jpg",
     needsPhoto: true,
     featured: false,
     prompt: `Create a hyper-realistic photograph of a hand gently holding a transparent gashapon capsule toy. Inside the capsule is an ultra-cute chibi 3D figurine version of the person in the uploaded photo — big head, tiny body, glossy anime-figure finish, same hairstyle, same outfit, same facial features preserved perfectly. The figurine sits in a natural pose on a small round base inside the capsule. The capsule is clear with a pastel-colored top half (soft pink or mint). Background is softly blurred (bokeh) showing a bright, clean pastel-toned room or toy store shelf. Lighting is soft studio-quality, showing reflections on the capsule surface. The overall mood is cute, collectible, and Instagram-worthy. The person's identity must be 100% recognizable in the chibi figurine.`,
