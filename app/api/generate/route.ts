@@ -27,9 +27,23 @@ import {
 } from "@/lib/qualityConfig";
 
 /**
- * 使用 fetch 调用图片生成 API
+ * 判断错误是否为上游负载饱和 / 限流类错误，可以 fallback 到 default 分组重试
  */
-async function callImageAPI(params: {
+function isRetriableUpstreamError(status: number, message: string): boolean {
+  if (status === 429 || status === 502 || status === 503) return true;
+  const lower = message.toLowerCase();
+  return lower.includes("负载") || lower.includes("饱和") || lower.includes("稍后")
+    || lower.includes("rate limit") || lower.includes("overloaded")
+    || lower.includes("capacity") || lower.includes("too many requests");
+}
+
+/** fallback 模型名：apiyi default 分组也支持 image2 */
+const FALLBACK_MODEL = "default";
+
+/**
+ * 使用 fetch 调用图片生成 API（单次请求，不含重试逻辑）
+ */
+async function callImageAPIOnce(params: {
   prompt: string;
   model: string;
   size?: string;
@@ -101,8 +115,10 @@ async function callImageAPI(params: {
 
   if (!res.ok) {
     const errorMessage = data?.error?.message || `API returned status ${res.status}`;
-    console.error(`[Generate] API Error: ${errorMessage}`);
-    throw new Error(errorMessage);
+    console.error(`[Generate] API Error (model=${params.model}): ${errorMessage}`);
+    const err = new Error(errorMessage);
+    (err as Error & { statusCode: number }).statusCode = res.status;
+    throw err;
   }
 
   let b64 = "";
@@ -120,6 +136,32 @@ async function callImageAPI(params: {
   }
 
   return { b64_json: b64, model_used: params.model };
+}
+
+/**
+ * 调用图片生成 API，带 fallback：主分组负载饱和时自动切 default 分组重试
+ */
+async function callImageAPI(params: {
+  prompt: string;
+  model: string;
+  size?: string;
+  quality?: string;
+  referenceImageBase64?: string;
+}): Promise<GenerateImageResult> {
+  try {
+    return await callImageAPIOnce(params);
+  } catch (firstError: unknown) {
+    const statusCode = (firstError as Error & { statusCode?: number }).statusCode || 0;
+    const message = firstError instanceof Error ? firstError.message : "";
+
+    // 只有负载饱和类错误才 fallback，内容审核/参数错误等不重试
+    if (params.model !== FALLBACK_MODEL && isRetriableUpstreamError(statusCode, message)) {
+      console.warn(`[Generate] Primary model "${params.model}" unavailable (${statusCode}: ${message}), falling back to "${FALLBACK_MODEL}"`);
+      return await callImageAPIOnce({ ...params, model: FALLBACK_MODEL });
+    }
+
+    throw firstError;
+  }
 }
 
 /**
