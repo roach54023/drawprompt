@@ -138,8 +138,9 @@ async function callImageAPIOnce(params: {
 
 /**
  * 调用图片生成 API，带 fallback：
- * 主令牌分组负载饱和时，自动用备用令牌（OPENAI_API_KEY_FALLBACK）重试。
- * apiyi 的分组通过令牌绑定，不同 Key 对应不同分组（如 Default / image2Enterprise）。
+ * 主令牌（image2Enterprise 企业分组，更便宜）负载饱和时，
+ * 自动用备用令牌（OPENAI_API_KEY_FALLBACK = Default 分组）重试。
+ * apiyi 的分组通过令牌绑定，不同 Key 对应不同分组。
  */
 async function callImageAPI(params: {
   prompt: string;
