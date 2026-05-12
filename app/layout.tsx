@@ -165,6 +165,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Link href="/chibi-prompt" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
                     Chibi Prompt
                   </Link>
+                  <Link href="/mothers-day" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Mother&#39;s Day
+                  </Link>
                 </div>
               </div>
               <div>
