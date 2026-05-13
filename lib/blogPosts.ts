@@ -648,6 +648,47 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
 
+  // ── 14. GPT Image 2 Effects GitHub Repo ──────────────────
+  {
+    slug: "gpt-image-2-effects-github",
+    title: "We Built a Free GitHub Repo of GPT Image 2 Effects (With Prompts)",
+    description: "A curated open-source collection of the most impressive GPT Image 2 visual effects and prompts — sourced from X, Reddit, and the AI art community. Free to browse, copy, and contribute.",
+    date: "2026-05-13",
+    category: "gpt-image-2",
+    categoryLabel: "GPT Image 2",
+    readingTime: 4,
+    heroColor: "#1d4ed8",
+    heroBg: "#eff6ff",
+    body: [
+      { type: "paragraph", text: "We\u2019ve been collecting GPT Image 2 prompts for a while now \u2014 hunting through X (Twitter), Reddit, Xiaohongshu, and Discord for the ones that actually produce something remarkable. Most of them live in our prompt library here on DrawPrompt. But we wanted to create something more open, more shareable, and easier to browse at a glance." },
+      { type: "paragraph", text: "So we built a GitHub repository: \u201Cgpt-image-2-effects\u201D. It\u2019s a curated collection of the most impressive GPT Image 2 visual effects, each with the full prompt, an example image, and a link back to the original source on social media." },
+
+      { type: "heading", text: "What\u2019s in the Repo" },
+      { type: "paragraph", text: "Right now the repo has 17 effects, covering a wide range of styles and use cases. There\u2019s the 7-word Rust game screenshot, the Sam Altman bear selfie, the surrealist Rolex fashion poster, the TikTok livestream UI, the 2008 family photo with its deliberate imperfections, the VR headset exploded-view technical diagram, the pathetic art emotional creature, and more. Each entry includes the full copy-paste prompt, the generated image, and a link to the original creator on X or wherever it came from." },
+      { type: "callout", text: "Browse the full collection on GitHub.", href: "https://github.com/roach54023/gpt-image-2-effects", linkText: "View on GitHub \u2192" },
+
+      { type: "heading", text: "Why GitHub?" },
+      { type: "paragraph", text: "A few reasons. First, GitHub is searchable and indexable in a way that social media isn\u2019t. If someone searches \u201CGPT Image 2 prompts\u201D on Google, a well-maintained GitHub repo has a real chance of showing up. Second, it\u2019s easy to contribute to \u2014 anyone can open a pull request to add a new effect. Third, it\u2019s a permanent record. Tweets get deleted. Reddit posts get removed. A GitHub repo stays." },
+      { type: "paragraph", text: "We also wanted a place where the prompts are presented alongside the images, not buried in a thread. The README format makes it easy to scroll through and immediately see what each prompt produces." },
+
+      { type: "heading", text: "How It\u2019s Organized" },
+      { type: "paragraph", text: "Each entry in the README follows the same format: a section heading with the effect name, the example image, the full prompt in a code block, the source (a link to the original X post or creator), and a link to the full prompt detail page on DrawPrompt where you can find more context, variations, and tips." },
+      { type: "paragraph", text: "The images are stored directly in the repo under an /images folder, so the README renders them inline on GitHub without needing any external hosting. Everything is self-contained." },
+
+      { type: "heading", text: "A Few Highlights" },
+      { type: "prompt-example", prompt: "A high-fashion surrealist poster for Rolex. A deep emerald green minimalist studio with a polished reflective floor. A massive Rolex watch stands upright like a monument. A male model in a tailored dark green suit leans casually against the watch face, wearing a matching Rolex.", note: "50 words. One of the most efficient prompts in the collection \u2014 every word earns its place." },
+      { type: "prompt-example", prompt: "Redraw the attached image in the most clumsy, scribbly, and utterly pathetic way possible. Use a white background, and make it look like it was drawn in MS Paint with a mouse.", note: "The \u2018pathetic art\u2019 prompt \u2014 asking AI to be deliberately bad is harder than it sounds, and the results are weirdly compelling." },
+
+      { type: "heading", text: "How to Contribute" },
+      { type: "paragraph", text: "If you\u2019ve found a GPT Image 2 prompt that produces something genuinely impressive, we\u2019d love to add it. Open a pull request with the image, the full prompt, and the original source link. The bar is: it should produce something that makes someone say \u201Cwait, how did it do that?\u201D" },
+      { type: "callout", text: "See all 17 effects with full prompts and source links.", href: "https://github.com/roach54023/gpt-image-2-effects", linkText: "gpt-image-2-effects on GitHub \u2192" },
+
+      { type: "heading", text: "And the Full Prompt Library" },
+      { type: "paragraph", text: "The GitHub repo is a snapshot \u2014 we update it periodically. For the most up-to-date collection, with more context, variations, and the ability to filter by style or use case, the full library is here on DrawPrompt. Every prompt in the GitHub repo has a corresponding detail page here with more information." },
+      { type: "callout", text: "Browse 175+ GPT Image 2 prompts with example images \u2014 all free.", href: "/ai-prompts", linkText: "Explore the prompt library \u2192" },
+    ],
+  },
+
 ];
 
 // ── Helper functions ────────────────────────────────────────
