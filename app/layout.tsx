@@ -316,6 +316,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="https://starterbest.com" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.7, transition: "opacity 0.15s", flexShrink: 0 }}>
                 <img src="https://starterbest.com/badages-awards.svg" alt="Starter Best 精选" style={{ height: 36, width: "auto", display: "block" }} />
               </a>
+              <a href="https://newtool.site/item/drawprompt" target="_blank" rel="noopener noreferrer" style={{ opacity: 0.7, transition: "opacity 0.15s", flexShrink: 0 }}>
+                <img src="https://newtool.site/badges/newtool-light.svg" alt="NewTool.site 精选" style={{ height: 54, width: "auto", display: "block" }} />
+              </a>
             </div>
           </div>
         </footer>
