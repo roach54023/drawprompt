@@ -445,11 +445,12 @@ export default function HomeClient({
 // ─── FeedCard — masonry card with natural image height ───────────────────────
 function FeedCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; categories: CategoryInfo[] }) {
   const catInfo = categories.find((c) => c.id === prompt.category);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}>
-      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
-        <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={600} height={400} style={{ width: "100%", height: "auto", display: "block" }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
+      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0, background: "var(--bg-warm)", ...(imgLoaded ? {} : { aspectRatio: "4 / 3" }) }}>
+        <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={600} height={400} style={{ width: "100%", height: imgLoaded ? "auto" : "100%", objectFit: imgLoaded ? undefined : "cover", display: "block" }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" onLoad={() => setImgLoaded(true)} />
         {/* Model badges on image */}
         <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
           {prompt.aiModels.slice(0, 1).map((model) => (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -118,7 +118,7 @@ const TIPS = [
   },
 ];
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 24;
 
 export default function GPTImage2Client() {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
@@ -143,6 +143,23 @@ export default function GPTImage2Client() {
 
   const visiblePrompts = filteredPrompts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPrompts.length;
+
+  // Infinite scroll via IntersectionObserver
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const loadMore = useCallback(() => {
+    if (hasMore) setVisibleCount((c) => c + PAGE_SIZE);
+  }, [hasMore]);
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) loadMore(); },
+      { rootMargin: "400px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [loadMore]);
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {
@@ -360,16 +377,9 @@ export default function GPTImage2Client() {
             ))}
           </div>
 
+          {/* Infinite scroll sentinel */}
           {hasMore && (
-            <div style={{ textAlign: "center", marginTop: 40 }}>
-              <button
-                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-                className="btn-secondary"
-                style={{ padding: "12px 32px", fontSize: 14 }}
-              >
-                Load more prompts ({filteredPrompts.length - visibleCount} remaining)
-              </button>
-            </div>
+            <div ref={sentinelRef} style={{ height: 1 }} />
           )}
 
           {filteredPrompts.length === 0 && (
@@ -559,17 +569,33 @@ function PromptGalleryCard({
     onCopy();
   };
 
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   const content = (
     <>
-      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
+      <div
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          lineHeight: 0,
+          background: "var(--bg-warm)",
+          ...(imgLoaded ? {} : { aspectRatio: "4 / 3" }),
+        }}
+      >
         <Image
           src={prompt.imageUrl}
           alt={prompt.imageAlt}
           width={600}
           height={400}
-          style={{ width: "100%", height: "auto", display: "block" }}
+          style={{
+            width: "100%",
+            height: imgLoaded ? "auto" : "100%",
+            objectFit: imgLoaded ? undefined : "cover",
+            display: "block",
+          }}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           loading="lazy"
+          onLoad={() => setImgLoaded(true)}
         />
         {/* Model badges on image */}
         <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -59,7 +59,7 @@ function sortAndInterleave(prompts: AIPrompt[]): AIPrompt[] {
 // Pre-compute interleaved list
 const allInterleaved = sortAndInterleave(aiPrompts);
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 24;
 
 export default function AIPromptsClient() {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
@@ -80,6 +80,23 @@ export default function AIPromptsClient() {
 
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
+
+  // Infinite scroll via IntersectionObserver
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const loadMore = useCallback(() => {
+    if (hasMore) setVisibleCount((c) => c + PAGE_SIZE);
+  }, [hasMore]);
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) loadMore(); },
+      { rootMargin: "400px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [loadMore]);
 
   const handleCopy = async (prompt: AIPrompt, e: React.MouseEvent) => {
     e.preventDefault();
@@ -214,40 +231,7 @@ export default function AIPromptsClient() {
 
             const card = (
               <>
-                <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
-                  <Image
-                    src={prompt.imageUrl}
-                    alt={prompt.imageAlt}
-                    width={600}
-                    height={400}
-                    style={{ width: "100%", height: "auto", display: "block" }}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    loading="lazy"
-                  />
-                  {/* Model badges on image */}
-                  <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
-                    {prompt.aiModels.map((model) => {
-                      const m = MODEL_DISPLAY[model];
-                      return (
-                        <span
-                          key={model}
-                          style={{
-                            padding: "3px 8px",
-                            borderRadius: 5,
-                            fontSize: 10,
-                            fontWeight: 600,
-                            color: "#fff",
-                            background: "rgba(0,0,0,0.5)",
-                            backdropFilter: "blur(6px)",
-                            WebkitBackdropFilter: "blur(6px)",
-                          }}
-                        >
-                          {m.label}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
+                <FeedImage src={prompt.imageUrl} alt={prompt.imageAlt} models={prompt.aiModels} />
                 {/* Card body */}
                 <div style={{ padding: "12px 14px 14px" }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
@@ -338,16 +322,9 @@ export default function AIPromptsClient() {
           })}
         </div>
 
+        {/* Infinite scroll sentinel */}
         {hasMore && (
-          <div style={{ textAlign: "center", marginTop: 40 }}>
-            <button
-              onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-              className="btn-secondary"
-              style={{ padding: "12px 32px", fontSize: 14 }}
-            >
-              Load more prompts ({filtered.length - visibleCount} remaining)
-            </button>
-          </div>
+          <div ref={sentinelRef} style={{ height: 1 }} />
         )}
 
         {filtered.length === 0 && (
@@ -374,6 +351,63 @@ export default function AIPromptsClient() {
           onClose={() => setModalPrompt(null)}
         />
       )}
+    </div>
+  );
+}
+
+// ─── FeedImage — fixed placeholder, switch to real aspect ratio on load ──────
+function FeedImage({ src, alt, models }: { src: string; alt: string; models: AIModel[] }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        lineHeight: 0,
+        background: "var(--bg-warm)",
+        // Before load: fixed 4:3 placeholder; after load: natural height
+        ...(loaded ? {} : { aspectRatio: "4 / 3" }),
+      }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={600}
+        height={400}
+        style={{
+          width: "100%",
+          height: loaded ? "auto" : "100%",
+          objectFit: loaded ? undefined : "cover",
+          display: "block",
+        }}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+      />
+      {/* Model badges */}
+      <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
+        {models.map((model) => {
+          const m = MODEL_DISPLAY[model];
+          return (
+            <span
+              key={model}
+              style={{
+                padding: "3px 8px",
+                borderRadius: 5,
+                fontSize: 10,
+                fontWeight: 600,
+                color: "#fff",
+                background: "rgba(0,0,0,0.5)",
+                backdropFilter: "blur(6px)",
+                WebkitBackdropFilter: "blur(6px)",
+              }}
+            >
+              {m.label}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }
