@@ -447,42 +447,60 @@ function FeedCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; co
   const catInfo = categories.find((c) => c.id === prompt.category);
 
   return (
-    <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={{ display: "block", textDecoration: "none", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}>
+    <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}>
       <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
         <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={600} height={400} style={{ width: "100%", height: "auto", display: "block" }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
-        {/* Hover overlay */}
-        <div className="feed-card-overlay" style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)", opacity: 0, transition: "opacity 0.2s", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 12 }}>
-          <div style={{ display: "flex", gap: 6 }}>
-            <button
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
-              style={{ padding: "6px 12px", borderRadius: 6, border: "none", background: "rgba(255,255,255,0.9)", color: "#1a1714", fontSize: 11, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
-            >
-              {copied ? "Copied!" : "Copy Prompt"}
-            </button>
-            <Link
-              href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
-              onClick={(e) => { e.stopPropagation(); }}
-              style={{ padding: "6px 12px", borderRadius: 6, border: "none", background: "var(--accent)", color: "#fff", fontSize: 11, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}
-            >
-              Generate
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div style={{ padding: "12px 14px" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
-            {catInfo?.label}
-          </span>
+        {/* Model badges on image */}
+        <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
           {prompt.aiModels.slice(0, 1).map((model) => (
-            <span key={model} style={{ fontSize: 10, fontWeight: 500, color: MODEL_DISPLAY[model].color, background: MODEL_DISPLAY[model].bg, padding: "2px 6px", borderRadius: 4 }}>
+            <span key={model} style={{ padding: "3px 8px", borderRadius: 5, fontSize: 10, fontWeight: 600, color: "#fff", background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}>
               {MODEL_DISPLAY[model].label}
             </span>
           ))}
         </div>
-        <h3 style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", margin: 0, lineHeight: 1.35, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+      </div>
+      <div style={{ padding: "12px 14px 14px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
+            {catInfo?.label}
+          </span>
+        </div>
+        <h3 style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
           {prompt.title}
         </h3>
+        {/* Buttons — always visible */}
+        <div style={{ display: "flex", gap: 6 }}>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
+            style={{
+              padding: "5px 10px", borderRadius: 6, border: "1px solid var(--border)",
+              background: copied ? "#eef6f2" : "var(--surface)", color: copied ? "#5a9e7a" : "var(--text-secondary)",
+              fontSize: 11, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, transition: "all 0.15s",
+            }}
+          >
+            {copied ? (
+              <>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                Copied!
+              </>
+            ) : (
+              <>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                </svg>
+                Copy
+              </>
+            )}
+          </button>
+          <Link
+            href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
+            onClick={(e) => e.stopPropagation()}
+            style={{ padding: "5px 10px", borderRadius: 6, border: "none", background: "var(--accent)", color: "#fff", fontSize: 11, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}
+          >
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+            Generate
+          </Link>
+        </div>
       </div>
     </Link>
   );

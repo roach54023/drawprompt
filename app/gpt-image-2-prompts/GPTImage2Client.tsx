@@ -15,44 +15,28 @@ import {
 import PromptDetailModal from "@/components/PromptDetailModal";
 
 /**
- * Interleave prompts so different categories appear alternately
- * instead of all photography/portrait prompts clustering at the top.
+ * Sort by createdAt descending, then interleave categories for variety.
  */
-function interleaveByCategory(prompts: AIPrompt[]): AIPrompt[] {
-  // Group by category, preserving original order within each group
-  const buckets = new Map<string, AIPrompt[]>();
-  // Define a preferred category rotation order (most variety first)
-  const categoryOrder = [
-    "poster",
-    "photography",
-    "ui-design",
-    "character",
-    "game",
-    "infographic",
-    "product",
-    "photo-editing",
-    "film",
-  ];
+function sortAndInterleave(prompts: AIPrompt[]): AIPrompt[] {
+  const sorted = [...prompts].sort((a, b) => {
+    const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return db - da;
+  });
 
-  for (const p of prompts) {
+  const buckets = new Map<string, AIPrompt[]>();
+  for (const p of sorted) {
     const list = buckets.get(p.category) ?? [];
     list.push(p);
     buckets.set(p.category, list);
   }
 
-  // Sort bucket keys by the defined order (unknown categories go last)
-  const sortedKeys = [...buckets.keys()].sort(
-    (a, b) =>
-      (categoryOrder.indexOf(a) === -1 ? 99 : categoryOrder.indexOf(a)) -
-      (categoryOrder.indexOf(b) === -1 ? 99 : categoryOrder.indexOf(b))
-  );
-
-  // Round-robin pick from each bucket
+  const keys = [...buckets.keys()];
   const result: AIPrompt[] = [];
   let remaining = true;
   while (remaining) {
     remaining = false;
-    for (const key of sortedKeys) {
+    for (const key of keys) {
       const bucket = buckets.get(key)!;
       if (bucket.length > 0) {
         result.push(bucket.shift()!);
@@ -63,14 +47,9 @@ function interleaveByCategory(prompts: AIPrompt[]): AIPrompt[] {
   return result;
 }
 
-// Pinned prompts at top (newest batch first)
-const PINNED_IDS = ["prompt-181", "prompt-180", "prompt-179", "prompt-178", "prompt-177", "prompt-173", "prompt-176", "prompt-174", "prompt-175", "prompt-169", "prompt-171", "prompt-170", "prompt-168"];
-const gptImage2Prompts = (() => {
-  const all = aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"));
-  const pinned = PINNED_IDS.map((id) => all.find((p) => p.id === id)).filter(Boolean) as AIPrompt[];
-  const rest = all.filter((p) => !PINNED_IDS.includes(p.id));
-  return [...pinned, ...interleaveByCategory(rest)];
-})();
+const gptImage2Prompts = sortAndInterleave(
+  aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"))
+);
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -151,7 +130,12 @@ export default function GPTImage2Client() {
 
   const filteredPrompts = useMemo(() => {
     if (activeCategory === "all") return gptImage2Prompts;
-    return gptImage2Prompts.filter((p) => p.category === activeCategory);
+    return gptImage2Prompts.filter((p) => p.category === activeCategory)
+      .sort((a, b) => {
+        const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+        const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+        return db - da;
+      });
   }, [activeCategory]);
 
   const handleCopy = async (prompt: AIPrompt) => {
@@ -357,8 +341,8 @@ export default function GPTImage2Client() {
             })}
           </div>
 
-          {/* Gallery */}
-          <div className="gallery-grid">
+          {/* Gallery — Masonry layout */}
+          <div className="feed-masonry">
             {filteredPrompts.map((prompt) => (
               <PromptGalleryCard
                 key={prompt.id}
@@ -549,44 +533,42 @@ function PromptGalleryCard({
   onSelect?: () => void;
 }) {
   const catInfo: CategoryInfo | undefined = categories.find((c) => c.id === prompt.category);
-  const truncatedPrompt =
-    prompt.prompt.length > 110
-      ? prompt.prompt.slice(0, 110).trimEnd() + "\u2026"
-      : prompt.prompt;
-
   const detail = hasDetailPage(prompt);
 
-  const sharedProps = {
-    className: "img-card",
-    style: { display: "block" as const, cursor: "pointer", textDecoration: "none", color: "inherit" },
+  const handleCopyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onCopy();
   };
 
   const content = (
     <>
-      <div className="img-card-image-wrap">
+      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
         <Image
           src={prompt.imageUrl}
           alt={prompt.imageAlt}
-          width={800}
-          height={600}
-          className="img-card-image"
+          width={600}
+          height={400}
+          style={{ width: "100%", height: "auto", display: "block" }}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          loading="lazy"
         />
-        <div className="img-card-overlay">
+        {/* Model badges on image */}
+        <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
           {prompt.aiModels.map((model) => {
             const m = MODEL_DISPLAY[model];
             return (
               <span
                 key={model}
                 style={{
-                  padding: "3px 10px",
-                  borderRadius: 6,
-                  fontSize: 11,
+                  padding: "3px 8px",
+                  borderRadius: 5,
+                  fontSize: 10,
                   fontWeight: 600,
-                  color: "#ffffff",
-                  background: "rgba(255,255,255,0.15)",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  color: "#fff",
+                  background: "rgba(0,0,0,0.5)",
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
                 }}
               >
                 {m.label}
@@ -595,99 +577,93 @@ function PromptGalleryCard({
           })}
         </div>
       </div>
-
-      <div className="img-card-body">
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-          <span
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              color: catInfo?.color ?? "var(--text-muted)",
-            }}
-          >
+      {/* Card body */}
+      <div style={{ padding: "12px 14px 14px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
             {catInfo?.label}
           </span>
-          <span
-            style={{
-              fontSize: 11,
-              fontWeight: 500,
-              color: "var(--text-muted)",
-              textTransform: "capitalize",
-            }}
-          >
-            {prompt.difficulty}
-          </span>
         </div>
-
-        <h3
-          className="font-serif"
-          style={{ fontSize: 17, fontWeight: 600, color: "var(--text-primary)", margin: 0, lineHeight: 1.3 }}
-        >
+        <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
           {prompt.title}
         </h3>
-
-        <p className="prompt-text-preview">{truncatedPrompt}</p>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: "auto" }}>
+        {/* Buttons — always visible */}
+        <div style={{ display: "flex", gap: 6 }}>
           <button
-            onClick={(e) => { e.stopPropagation(); onCopy(); }}
-            className={`btn-ghost ${copied ? "copy-success" : ""}`}
+            onClick={handleCopyClick}
             style={{
-              display: "inline-flex",
+              padding: "6px 12px",
+              borderRadius: 6,
+              border: "1px solid var(--border)",
+              background: copied ? "#eef6f2" : "var(--surface)",
+              color: copied ? "#5a9e7a" : "var(--text-secondary)",
+              fontSize: 11,
+              fontWeight: 600,
+              cursor: "pointer",
+              display: "flex",
               alignItems: "center",
-              gap: 5,
-              padding: "7px 14px",
-              fontSize: 12,
-              fontWeight: 500,
-              minWidth: 80,
+              gap: 4,
+              transition: "all 0.15s",
             }}
           >
             {copied ? (
               <>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5a9e7a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                 Copied!
               </>
             ) : (
               <>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
                 </svg>
                 Copy
               </>
             )}
           </button>
-          <span
-            className="btn-ghost"
+          <Link
+            href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
+            onClick={(e) => e.stopPropagation()}
             style={{
-              display: "inline-flex",
+              padding: "6px 12px",
+              borderRadius: 6,
+              border: "none",
+              background: "var(--accent)",
+              color: "#fff",
+              fontSize: 11,
+              fontWeight: 600,
+              textDecoration: "none",
+              display: "flex",
               alignItems: "center",
-              gap: 5,
-              padding: "7px 14px",
-              fontSize: 12,
-              fontWeight: 500,
+              gap: 4,
             }}
           >
-            Details
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+            Generate
+          </Link>
         </div>
       </div>
     </>
   );
 
+  const cardStyle = {
+    display: "block" as const,
+    textDecoration: "none" as const,
+    color: "inherit" as const,
+    cursor: "pointer" as const,
+    borderRadius: 12,
+    overflow: "hidden" as const,
+    background: "#fff",
+    border: "1px solid var(--border)",
+    breakInside: "avoid" as const,
+    marginBottom: 16,
+  };
+
   return detail ? (
-    <Link href={`/prompts/${prompt.slug}`} {...sharedProps}>
+    <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={cardStyle}>
       {content}
     </Link>
   ) : (
-    <div onClick={onSelect} {...sharedProps}>
+    <div onClick={onSelect} className="feed-card" style={cardStyle}>
       {content}
     </div>
   );
