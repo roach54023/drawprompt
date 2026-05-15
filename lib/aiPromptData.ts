@@ -5495,6 +5495,177 @@ bread — soft food made from flour. Example: I had bread for breakfast.
     featured: true,
     createdAt: "2025-05-11",
   },
+  {
+    id: "prompt-177",
+    slug: "chatgpt-caricature-portrait-professional",
+    title: "ChatGPT Caricature Portrait — Professional Edition",
+    prompt: `Create a professional caricature portrait of a [PROFESSION, e.g., software engineer / chef / teacher / doctor].
+Style: editorial caricature illustration — slightly exaggerated facial features (larger expressive eyes, emphasized jawline or cheekbones), warm and charming, not grotesque.
+The subject is dressed in profession-appropriate attire with [SPECIFIC PROPS, e.g., a laptop tucked under one arm and a coffee mug / a chef's knife and a sprig of herbs / a stack of books and a pointer].
+Background: a thematic setting that reflects the profession [e.g., a modern open-plan office with monitors / a professional kitchen with steam rising / a sunlit classroom with a chalkboard].
+Color palette: rich, saturated editorial illustration colors. Clean ink outline with vibrant digital coloring.
+Style reference: New Yorker magazine cover illustration meets modern digital portrait art.
+High detail. Portrait orientation 4:5.`,
+    category: "character",
+    tags: ["caricature", "portrait", "illustration", "editorial", "professional", "viral", "new-yorker-style"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Professional editorial caricature portrait of a person in their work attire with slightly exaggerated features, New Yorker illustration style",
+    imageUrl: "/prompts/chatgpt-caricature-portrait-professional.jpg",
+    breakdown: {
+      subject: "A professional person in their work attire with themed props and background",
+      style: "Editorial caricature illustration — New Yorker cover meets modern digital art, slightly exaggerated but warm",
+      lighting: "Bright editorial illustration lighting, no harsh shadows, clean and vibrant",
+      composition: "Portrait orientation 4:5, subject centered, thematic background fills the frame",
+      details: "Slightly enlarged expressive eyes, profession-specific props, rich saturated colors, clean ink outline",
+    },
+    tips: [
+      "The key is 'slightly exaggerated' — specify warm and charming, not grotesque, to avoid uncanny results",
+      "Adding specific props (laptop, chef's knife, books) dramatically improves the profession-specific feel",
+      "This trend went viral in February 2026 on LinkedIn — professionals sharing their caricature portraits",
+      "Works best with GPT Image 2's understanding of editorial illustration styles",
+    ],
+    featured: true,
+    createdAt: "2026-05-14",
+  },
+  {
+    id: "prompt-178",
+    slug: "childhood-self-portrait-diptych-studio",
+    title: "Childhood Self Portrait Diptych — Black & White Studio",
+    prompt: `Create a black-and-white studio photography diptych showing two portraits side by side:
+Left panel: a child aged [5–8] in [CASUAL OUTFIT, e.g., a striped t-shirt and jeans / a school uniform / a Sunday dress], looking directly at the camera with a curious, innocent expression.
+Right panel: the same person as an adult in [CURRENT OUTFIT, e.g., a blazer / casual sweater / business casual], same direct gaze, same slight smile.
+Both portraits share identical facial bone structure and eye shape — clearly the same person across time.
+Studio backdrop: seamless white or soft grey.
+Lighting: classic Rembrandt portrait lighting — one key light, soft shadow on one side of the face.
+Film grain texture. Timeless, emotional, documentary photography style.
+Format: wide landscape (2:1 ratio) to accommodate the diptych.`,
+    category: "photography",
+    tags: ["diptych", "portrait", "childhood", "black-and-white", "studio", "emotional", "viral", "film-grain"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Black and white studio diptych showing the same person as a child on the left and as an adult on the right, Rembrandt lighting, film grain",
+    imageUrl: "/prompts/childhood-self-portrait-diptych-studio.jpg",
+    breakdown: {
+      subject: "Same person shown at two ages — child (5–8) and adult — in matching studio portrait style",
+      style: "Classic black-and-white studio photography, documentary and timeless",
+      lighting: "Rembrandt portrait lighting — one key light with soft shadow on one side of the face",
+      composition: "Wide 2:1 landscape diptych, two panels side by side, seamless white or grey backdrop",
+      details: "Identical facial bone structure across both panels, film grain texture, direct eye contact",
+    },
+    tips: [
+      "Emphasize 'identical facial bone structure and eye shape' to ensure the AI maintains continuity across panels",
+      "Rembrandt lighting adds emotional depth — the soft shadow creates a contemplative, timeless mood",
+      "This format went viral in May 2026 on TikTok and Instagram for its emotional resonance",
+      "The 2:1 landscape ratio is essential — it gives both panels equal visual weight",
+    ],
+    featured: true,
+    createdAt: "2026-05-14",
+  },
+  {
+    id: "prompt-179",
+    slug: "rainy-neon-street-cinematic-low-angle",
+    title: "Rainy Neon Street — Cinematic Low-Angle Shot",
+    prompt: `Cinematic low-angle street photography shot of a rain-soaked urban alley at night.
+Camera positioned at ground level, lens almost touching the wet pavement.
+Neon signs in [LANGUAGE/STYLE, e.g., Japanese kanji / Chinese characters / English retro signage] reflect in the puddles on the ground — vivid magenta, cyan, and amber reflections.
+A lone figure in [OUTFIT, e.g., a long trench coat / a hooded raincoat] walks away from the camera in the middle distance, silhouetted against the neon glow.
+Shallow depth of field — foreground puddle in sharp focus, background bokeh.
+Anamorphic lens flare. Heavy rain streaks visible in the light.
+Color grade: teal and orange with neon accent pops.
+Shot on 35mm anamorphic. Cinematic aspect ratio 2.39:1.`,
+    category: "photography",
+    tags: ["cinematic", "neon", "rain", "street-photography", "night", "urban", "low-angle", "anamorphic", "bokeh"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Cinematic low-angle shot of a rain-soaked neon-lit urban alley at night, lone figure silhouetted, puddle reflections, anamorphic lens flare",
+    imageUrl: "/prompts/rainy-neon-street-cinematic-low-angle.jpg",
+    breakdown: {
+      subject: "Rain-soaked urban alley at night with a lone silhouetted figure walking away",
+      style: "Cinematic anamorphic photography, teal-and-orange color grade with neon accent pops",
+      lighting: "Neon signs as primary light source — magenta, cyan, amber reflections in wet pavement",
+      composition: "Ground-level camera, foreground puddle in sharp focus, figure in middle distance, 2.39:1 ratio",
+      details: "Anamorphic lens flare, heavy rain streaks, shallow depth of field, background bokeh",
+    },
+    tips: [
+      "The ground-level camera position is the key differentiator — specify 'lens almost touching the wet pavement'",
+      "Teal-and-orange color grade is the cinematic standard — it creates instant film-quality feel",
+      "By @DynamicWang via appark.ai — one of the most-shared cinematic prompts in May 2026",
+      "Swap the neon sign language (Japanese / Chinese / English) to change the city's cultural feel entirely",
+    ],
+    featured: true,
+    createdAt: "2026-05-14",
+  },
+  {
+    id: "prompt-180",
+    slug: "nostalgic-2000s-disposable-camera-snapshot",
+    title: "Nostalgic 2000s Disposable Camera Snapshot",
+    prompt: `Recreate a nostalgic early 2000s disposable camera snapshot of [SUBJECT/SCENE, e.g., a group of friends at a house party / a family road trip / a birthday celebration / a summer beach day].
+Setting: [LOCATION, e.g., a suburban living room with wood-paneled walls / a backyard BBQ / a school gymnasium decorated for prom / a beach boardwalk].
+Style: authentic disposable camera aesthetic —
+- Harsh direct on-camera flash causing blown-out highlights and red-eye
+- Slightly underexposed shadows with muddy dark tones
+- Warm yellow-green color cast from indoor incandescent lighting
+- Slight motion blur on moving subjects
+- Visible film grain and dust particles
+- Slightly off-center, casual framing as if taken by a non-photographer
+Clothing and props: era-accurate 2000s fashion [e.g., low-rise jeans, Von Dutch hats, frosted tips, flip phones visible, chunky sneakers].
+Photorealistic. The image should look like it was scanned from a physical print.`,
+    category: "photography",
+    tags: ["disposable-camera", "Y2K", "2000s", "retro", "film", "nostalgic", "snapshot", "flash-photography", "viral"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "beginner",
+    imageAlt: "Nostalgic early 2000s disposable camera snapshot with harsh flash, red-eye, warm color cast, film grain, and era-accurate Y2K fashion",
+    imageUrl: "/prompts/nostalgic-2000s-disposable-camera-snapshot.jpg",
+    breakdown: {
+      subject: "A casual social scene (friends, family, party) photographed in authentic early 2000s disposable camera style",
+      style: "Disposable camera aesthetic — harsh flash, red-eye, warm color cast, film grain, scanned print feel",
+      lighting: "Harsh direct on-camera flash with blown-out highlights; warm incandescent color cast indoors",
+      composition: "Slightly off-center casual framing, non-professional snapshot feel, 4:3 ratio",
+      details: "Red-eye, motion blur, dust particles, muddy shadows, era-accurate 2000s clothing and props",
+    },
+    tips: [
+      "List specific 2000s fashion items (Von Dutch, low-rise jeans, frosted tips) for maximum era authenticity",
+      "The 'scanned from a physical print' instruction adds subtle edge vignetting and paper texture",
+      "By @投机实验室 via appark.ai — complements the 2008 Family Photo prompt with a Western Y2K aesthetic",
+      "Works for any social scene — swap the setting and subjects while keeping the camera style instructions",
+    ],
+    featured: true,
+    createdAt: "2026-05-14",
+  },
+  {
+    id: "prompt-181",
+    slug: "teddy-bear-renaissance-painting-parody",
+    title: "Teddy Bear Renaissance Painting Parody",
+    prompt: `Create a hyper-realistic oil painting in the style of a High Renaissance masterpiece (Leonardo da Vinci / Raphael / Michelangelo era) depicting [SUBJECT, e.g., a group of teddy bears / stuffed animals / plush toys] reenacting [FAMOUS SCENE, e.g., The Last Supper / The School of Athens / The Creation of Adam / The Birth of Venus].
+The teddy bears / plush toys should be rendered with photorealistic fur texture and glass button eyes, but posed and lit exactly as the original painting's human figures.
+Setting: faithful recreation of the original painting's architectural background (e.g., the vaulted ceiling and long table of The Last Supper / the grand hall of The School of Athens).
+Lighting: dramatic chiaroscuro — deep shadows, warm candlelight or divine light from one side.
+Color palette: rich Renaissance earth tones — ochre, burnt sienna, deep crimson, gold.
+Cracked oil paint texture visible on the canvas surface. Museum-quality finish.
+Style: photorealistic oil painting, not digital illustration.`,
+    category: "character",
+    tags: ["renaissance", "oil-painting", "parody", "teddy-bear", "classic-art", "humor", "viral", "chiaroscuro", "masterpiece"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Hyper-realistic Renaissance oil painting parody featuring teddy bears reenacting The Last Supper with dramatic chiaroscuro lighting and cracked canvas texture",
+    imageUrl: "/prompts/teddy-bear-renaissance-painting-parody.jpg",
+    breakdown: {
+      subject: "Teddy bears / plush toys posed as figures in a famous Renaissance masterpiece",
+      style: "High Renaissance oil painting — Leonardo da Vinci / Raphael era, photorealistic canvas texture",
+      lighting: "Dramatic chiaroscuro — deep shadows with warm candlelight or divine light from one side",
+      composition: "Faithful recreation of the original painting's composition and architectural background",
+      details: "Photorealistic fur texture, glass button eyes, cracked oil paint surface, rich earth tones",
+    },
+    tips: [
+      "Name the specific painting (The Last Supper, The School of Athens) for best compositional accuracy",
+      "The contrast between 'photorealistic fur texture' and 'Renaissance masterpiece' is what makes this viral",
+      "By @Biteye小师妹 via appark.ai — the cute-vs-serious contrast formula drives high shareability",
+      "Swap teddy bears for any cute subject (rubber ducks, Funko Pops, cats) to create endless variations",
+    ],
+    featured: true,
+    createdAt: "2026-05-14",
+  },
 ];
 
 // ─── Helper Functions ───────────────────────────────────────────────────────
@@ -5539,6 +5710,11 @@ export function getRelatedPrompts(
 
 // Display order for featured prompts on homepage
 const FEATURED_ORDER = [
+  "prompt-181", // Teddy Bear Renaissance Painting Parody
+  "prompt-179", // Rainy Neon Street Cinematic Low-Angle
+  "prompt-177", // ChatGPT Caricature Portrait Professional
+  "prompt-180", // Nostalgic 2000s Disposable Camera Snapshot
+  "prompt-178", // Childhood Self Portrait Diptych Studio
   "prompt-173", // Pathetic Art Emotional Creature
   "prompt-176", // 2008 Family Photo Recreation
   "prompt-174", // VR Headset Exploded View

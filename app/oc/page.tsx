@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "oc prompt ideas",
   ],
   alternates: { canonical: "https://drawprompt.org/oc/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "OC Drawing Prompt Generator — Fandom & Original Character Ideas",
     description:

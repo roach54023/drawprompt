@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "drawing idea generator",
   ],
   alternates: { canonical: "https://drawprompt.org/custom/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Custom Drawing Prompt Generator — Build Your Own Art Brief",
     description:

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "daily art prompt",
   ],
   alternates: { canonical: "https://drawprompt.org/daily-challenge/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Daily Drawing Prompt Generator \u2014 New Challenge Every Day",
     description: "A new drawing prompt every day. Free, no sign-up. Build your drawing habit one prompt at a time.",

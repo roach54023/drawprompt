@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "manga prompt generator",
   ],
   alternates: { canonical: "https://drawprompt.org/anime/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Anime Drawing Prompt Generator — Manga & Anime Art Ideas",
     description:

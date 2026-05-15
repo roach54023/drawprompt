@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "random drawing ideas",
   ],
   alternates: { canonical: "https://drawprompt.org/random/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Random Drawing Prompt Generator \u2014 Instant Inspiration",
     description: "Hit generate and get a completely random drawing prompt. 150B+ combinations. Free, no sign-up.",

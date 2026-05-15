@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "drawing prompt character",
   ],
   alternates: { canonical: "https://drawprompt.org/character/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Character Drawing Prompt Generator — Figure Drawing & Character Design",
     description:

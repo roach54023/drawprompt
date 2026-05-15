@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "drawing prompt generator",
   ],
   alternates: { canonical: "https://drawprompt.org/drawing-prompts/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Drawing Prompts \u2014 150B+ Free Ideas for Artists & Beginners",
     description:
@@ -204,7 +205,7 @@ export default function DrawingPromptsPage() {
             Want AI to draw for you?
           </h2>
           <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: 24 }}>
-            If you&apos;re looking for prompts to use with AI image generators like ChatGPT, GPT Image 2, Midjourney, or DALL-E, we have a separate library of 175+ tested prompts with example images and detailed breakdowns.
+            If you&apos;re looking for prompts to use with AI image generators like ChatGPT, GPT Image 2, Midjourney, or DALL-E, we have a separate library of 180+ tested prompts with example images and detailed breakdowns.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <Link href="/gpt-image-2-prompts" className="btn-primary" style={{ textDecoration: "none" }}>GPT Image 2 Prompts</Link>

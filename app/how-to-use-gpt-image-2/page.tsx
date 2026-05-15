@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "How to Use GPT Image 2 \u2014 Complete Guide to ChatGPT Image Generator (2026)",
   description:
-    "Learn how to use GPT Image 2 in ChatGPT to create stunning AI images. Step-by-step guide with prompt writing tips, best practices, examples, and 175+ tested prompts you can copy-paste.",
+    "Learn how to use GPT Image 2 in ChatGPT to create stunning AI images. Step-by-step guide with prompt writing tips, best practices, examples, and 180+ tested prompts you can copy-paste.",
   keywords: [
     "how to use gpt image 2",
     "gpt image 2",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://drawprompt.org/how-to-use-gpt-image-2/" },
   openGraph: {
     title: "How to Use GPT Image 2 \u2014 Complete Guide to ChatGPT Image Generator",
-    description: "Step-by-step guide to creating AI images with GPT Image 2 in ChatGPT. Prompt writing tips, best practices, and 175+ tested prompts.",
+    description: "Step-by-step guide to creating AI images with GPT Image 2 in ChatGPT. Prompt writing tips, best practices, and 180+ tested prompts.",
     type: "article",
     url: "https://drawprompt.org/how-to-use-gpt-image-2/",
   },
@@ -64,7 +64,7 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "How do I write better prompts for GPT Image 2?",
-      acceptedAnswer: { "@type": "Answer", text: "Focus on five elements: subject, style, lighting, composition, and mood. The more specific you are, the better the result. Browse our 175+ tested prompts for examples." },
+      acceptedAnswer: { "@type": "Answer", text: "Focus on five elements: subject, style, lighting, composition, and mood. The more specific you are, the better the result. Browse our 180+ tested prompts for examples." },
     },
     {
       "@type": "Question",
@@ -107,7 +107,7 @@ export default function HowToUseGPTImage2Page() {
             GPT Image 2 is OpenAI&apos;s most powerful image generation model, built directly into ChatGPT. It creates photorealistic images, renders text accurately, and follows complex instructions better than any previous model. This guide shows you how to get the best results.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/gpt-image-2-prompts" className="btn-primary" style={{ textDecoration: "none" }}>Browse 175+ Tested Prompts</Link>
+            <Link href="/gpt-image-2-prompts" className="btn-primary" style={{ textDecoration: "none" }}>Browse 180+ Tested Prompts</Link>
             <Link href="/ai-prompts" className="btn-secondary" style={{ textDecoration: "none" }}>All AI Prompts</Link>
           </div>
         </section>
@@ -183,7 +183,7 @@ export default function HowToUseGPTImage2Page() {
           <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--text-secondary)", display: "flex", flexDirection: "column", gap: 14 }}>
             <p>GPT Image 2 particularly excels in several areas compared to other AI image generators. It handles text and typography rendering better than any competitor &mdash; you can ask it to create posters, book covers, and UI mockups with accurate, readable text. It maintains photorealistic quality for portraits, product photography, and architectural visualization.</p>
             <p>It&apos;s also uniquely good at photo editing workflows. You can upload an existing photo and ask it to change the background, apply a style transfer (like Studio Ghibli or vintage film), add or remove elements, or completely transform the aesthetic &mdash; all through natural conversation.</p>
-            <p>For creative professionals, GPT Image 2 is strongest at poster and graphic design, UI/UX mockups, product photography, character concept art, and infographic creation. Browse our <Link href="/gpt-image-2-prompts" style={{ color: "var(--accent)", textDecoration: "underline" }}>175+ tested prompts</Link> to see real examples across all these categories.</p>
+            <p>For creative professionals, GPT Image 2 is strongest at poster and graphic design, UI/UX mockups, product photography, character concept art, and infographic creation. Browse our <Link href="/gpt-image-2-prompts" style={{ color: "var(--accent)", textDecoration: "underline" }}>180+ tested prompts</Link> to see real examples across all these categories.</p>
           </div>
         </section>
 
@@ -194,7 +194,7 @@ export default function HowToUseGPTImage2Page() {
               Ready to start creating?
             </h2>
             <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 24 }}>
-              Skip the trial and error. Browse our library of 175+ prompts that have already been tested with GPT Image 2, complete with example images and detailed breakdowns.
+              Skip the trial and error. Browse our library of 180+ prompts that have already been tested with GPT Image 2, complete with example images and detailed breakdowns.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
               <Link href="/gpt-image-2-prompts" className="btn-primary" style={{ textDecoration: "none" }}>GPT Image 2 Prompts</Link>

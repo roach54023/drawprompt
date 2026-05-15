@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "children drawing prompt",
   ],
   alternates: { canonical: "https://drawprompt.org/for-kids/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Drawing Prompt Generator for Kids — Fun & Age-Appropriate",
     description:

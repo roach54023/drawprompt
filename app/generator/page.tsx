@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "give me a drawing prompt",
   ],
   alternates: { canonical: "https://drawprompt.org/generator/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Drawing Prompt Generator \u2014 150B+ Free Art Prompt Combinations",
     description:
@@ -46,7 +47,7 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "Can I use these prompts for AI image generation?",
-      acceptedAnswer: { "@type": "Answer", text: "These prompts are designed for human artists and sketchbooks. If you want prompts optimized for AI image generators like GPT Image 2, ChatGPT, or Midjourney, check out our AI Prompts library with 175+ tested prompts." },
+      acceptedAnswer: { "@type": "Answer", text: "These prompts are designed for human artists and sketchbooks. If you want prompts optimized for AI image generators like GPT Image 2, ChatGPT, or Midjourney, check out our AI Prompts library with 180+ tested prompts." },
     },
   ],
 };

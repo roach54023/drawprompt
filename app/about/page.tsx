@@ -4,12 +4,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & Nano Banana 2",
   description:
-    "DrawPrompt is a curated AI image prompt library with 175+ tested prompts for GPT Image 2 & Nano Banana 2. Browse, copy, and generate stunning AI images directly on site.",
+    "DrawPrompt is a curated AI image prompt library with 180+ tested prompts for GPT Image 2 & Nano Banana 2. Browse, copy, and generate stunning AI images directly on site.",
   alternates: { canonical: "https://drawprompt.org/about/" },
   openGraph: {
     title: "About DrawPrompt — AI Image Prompt Library for GPT Image 2 & Nano Banana 2",
     description:
-      "DrawPrompt is a curated AI image prompt library with 175+ tested prompts for GPT Image 2 & Nano Banana 2.",
+      "DrawPrompt is a curated AI image prompt library with 180+ tested prompts for GPT Image 2 & Nano Banana 2.",
     type: "website",
     url: "https://drawprompt.org/about/",
   },
@@ -19,7 +19,7 @@ const HOW_IT_WORKS = [
   {
     step: "01",
     title: "Browse the AI image prompt library",
-    desc: "Explore 175+ curated AI image prompts across 9 categories. Each prompt is tagged by model compatibility (GPT Image 2, ChatGPT, Midjourney, DALL-E) and difficulty.",
+    desc: "Explore 180+ curated AI image prompts across 9 categories. Each prompt is tagged by model compatibility (GPT Image 2, ChatGPT, Midjourney, DALL-E) and difficulty.",
     color: "#c4714a",
     bg: "#fdf0e8",
     border: "#f0c4a8",
@@ -64,7 +64,7 @@ export default function AboutPage() {
             The AI image prompt library that lets you generate the same result.
           </h1>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--text-secondary)" }}>
-            DrawPrompt is a curated library of 175+ tested AI image prompts for GPT Image 2 &amp; Nano Banana 2. Every prompt comes with an example image, a breakdown of why it works, and a one-click generate button.
+            DrawPrompt is a curated library of 180+ tested AI image prompts for GPT Image 2 &amp; Nano Banana 2. Every prompt comes with an example image, a breakdown of why it works, and a one-click generate button.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export default function AboutPage() {
               a direct generate button so you can reproduce the result in one click.
             </p>
             <p>
-              We focus on quality over quantity. 175+ hand-picked, tested prompts across 9
+              We focus on quality over quantity. 180+ hand-picked, tested prompts across 9
               categories — each one vetted to work reliably with GPT Image 2 and Nano Banana 2.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function AboutPage() {
             Ready to create?
           </h2>
           <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 24 }}>
-            Browse 175+ AI image prompts for free — no sign-up required to copy.
+            Browse 180+ AI image prompts for free — no sign-up required to copy.
           </p>
           <Link href="/ai-prompts" className="btn-primary" style={{ display: "inline-flex", textDecoration: "none" }}>
             Browse AI image prompts

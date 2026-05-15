@@ -644,7 +644,7 @@ export const blogArticles: BlogArticle[] = [
 
       { type: "heading", text: "What Makes These Prompts Work" },
       { type: "paragraph", text: "Looking at all four together, there\u2019s a pattern: the best prompts are specific about intent, not just content. \u2018Pathetic art\u2019 works because it names the style explicitly. The 2008 photo works because it lists exact clothing and environmental details. The VR headset works because the JSON structure gives the AI a precise visual blueprint. And the Chinese-language prompts (VR, Learn English) prove that GPT Image 2 handles non-English instructions beautifully. Vague prompts get vague results. The more precisely you describe the feeling, era, or visual language you want, the better the AI delivers." },
-      { type: "callout", text: "Explore 175+ free AI image prompts \u2014 all copy-paste ready with example images.", href: "/ai-prompts", linkText: "Browse all prompts \u2192" },
+      { type: "callout", text: "Explore 180+ free AI image prompts \u2014 all copy-paste ready with example images.", href: "/ai-prompts", linkText: "Browse all prompts \u2192" },
     ],
   },
 
@@ -685,7 +685,7 @@ export const blogArticles: BlogArticle[] = [
 
       { type: "heading", text: "And the Full Prompt Library" },
       { type: "paragraph", text: "The GitHub repo is a snapshot \u2014 we update it periodically. For the most up-to-date collection, with more context, variations, and the ability to filter by style or use case, the full library is here on DrawPrompt. Every prompt in the GitHub repo has a corresponding detail page here with more information." },
-      { type: "callout", text: "Browse 175+ GPT Image 2 prompts with example images \u2014 all free.", href: "/ai-prompts", linkText: "Explore the prompt library \u2192" },
+      { type: "callout", text: "Browse 180+ GPT Image 2 prompts with example images \u2014 all free.", href: "/ai-prompts", linkText: "Explore the prompt library \u2192" },
     ],
   },
 

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "drawing prompt community",
   ],
   alternates: { canonical: "https://drawprompt.org/gallery/" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Drawing Prompt Gallery — Artist Submissions & Inspiration",
     description:
