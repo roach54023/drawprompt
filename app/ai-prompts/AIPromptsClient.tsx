@@ -59,10 +59,13 @@ function sortAndInterleave(prompts: AIPrompt[]): AIPrompt[] {
 // Pre-compute interleaved list
 const allInterleaved = sortAndInterleave(aiPrompts);
 
+const PAGE_SIZE = 12;
+
 export default function AIPromptsClient() {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const filtered =
     activeCategory === "all"
@@ -74,6 +77,9 @@ export default function AIPromptsClient() {
             const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
             return db - da;
           });
+
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
 
   const handleCopy = async (prompt: AIPrompt, e: React.MouseEvent) => {
     e.preventDefault();
@@ -137,7 +143,7 @@ export default function AIPromptsClient() {
           }}
         >
           <button
-            onClick={() => setActiveCategory("all")}
+            onClick={() => { setActiveCategory("all"); setVisibleCount(PAGE_SIZE); }}
             style={{
               padding: "8px 18px",
               borderRadius: "var(--radius-md)",
@@ -159,7 +165,7 @@ export default function AIPromptsClient() {
             return (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => { setActiveCategory(cat.id); setVisibleCount(PAGE_SIZE); }}
                 style={{
                   padding: "8px 18px",
                   borderRadius: "var(--radius-md)",
@@ -201,7 +207,7 @@ export default function AIPromptsClient() {
         }}
       >
         <div className="feed-masonry">
-          {filtered.map((prompt) => {
+          {visible.map((prompt) => {
             const catInfo = categories.find((c) => c.id === prompt.category);
             const copied = copiedId === prompt.id;
             const detail = hasDetailPage(prompt);
@@ -331,6 +337,18 @@ export default function AIPromptsClient() {
             );
           })}
         </div>
+
+        {hasMore && (
+          <div style={{ textAlign: "center", marginTop: 40 }}>
+            <button
+              onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+              className="btn-secondary"
+              style={{ padding: "12px 32px", fontSize: 14 }}
+            >
+              Load more prompts ({filtered.length - visibleCount} remaining)
+            </button>
+          </div>
+        )}
 
         {filtered.length === 0 && (
           <div style={{ textAlign: "center", padding: "60px 0" }}>

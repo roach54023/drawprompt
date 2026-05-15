@@ -118,10 +118,13 @@ const TIPS = [
   },
 ];
 
+const PAGE_SIZE = 12;
+
 export default function GPTImage2Client() {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const availableCategories = useMemo(() => {
     const catIds = new Set(gptImage2Prompts.map((p) => p.category));
@@ -137,6 +140,9 @@ export default function GPTImage2Client() {
         return db - da;
       });
   }, [activeCategory]);
+
+  const visiblePrompts = filteredPrompts.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredPrompts.length;
 
   const handleCopy = async (prompt: AIPrompt) => {
     try {
@@ -301,7 +307,7 @@ export default function GPTImage2Client() {
           {/* Category filters */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
             <button
-              onClick={() => setActiveCategory("all")}
+              onClick={() => { setActiveCategory("all"); setVisibleCount(PAGE_SIZE); }}
               style={{
                 padding: "8px 18px",
                 borderRadius: "var(--radius-md)",
@@ -322,7 +328,7 @@ export default function GPTImage2Client() {
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
+                  onClick={() => { setActiveCategory(cat.id); setVisibleCount(PAGE_SIZE); }}
                   style={{
                     padding: "8px 18px",
                     borderRadius: "var(--radius-md)",
@@ -343,7 +349,7 @@ export default function GPTImage2Client() {
 
           {/* Gallery — Masonry layout */}
           <div className="feed-masonry">
-            {filteredPrompts.map((prompt) => (
+            {visiblePrompts.map((prompt) => (
               <PromptGalleryCard
                 key={prompt.id}
                 prompt={prompt}
@@ -353,6 +359,18 @@ export default function GPTImage2Client() {
               />
             ))}
           </div>
+
+          {hasMore && (
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <button
+                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                className="btn-secondary"
+                style={{ padding: "12px 32px", fontSize: 14 }}
+              >
+                Load more prompts ({filteredPrompts.length - visibleCount} remaining)
+              </button>
+            </div>
+          )}
 
           {filteredPrompts.length === 0 && (
             <div style={{ textAlign: "center", padding: "48px 24px", color: "var(--text-muted)", fontSize: 14 }}>
