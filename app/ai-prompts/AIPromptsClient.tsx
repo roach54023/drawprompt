@@ -4,12 +4,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  aiPrompts,
-  categories,
-  hasDetailPage,
   type AIPrompt,
   type AIPromptCategory,
   type AIModel,
+  type CategoryInfo,
 } from "@/lib/aiPromptData";
 import PromptDetailModal from "@/components/PromptDetailModal";
 
@@ -20,48 +18,15 @@ const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string 
   "dall-e":      { label: "DALL-E",        color: "#7b9eb8", bg: "#eef4f8" },
 };
 
-/**
- * Sort by createdAt descending, then interleave categories for variety.
- */
-function sortAndInterleave(prompts: AIPrompt[]): AIPrompt[] {
-  // Sort by date descending first
-  const sorted = [...prompts].sort((a, b) => {
-    const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-    const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-    return db - da;
-  });
-
-  // Group by category preserving date order within each group
-  const buckets = new Map<string, AIPrompt[]>();
-  for (const p of sorted) {
-    const list = buckets.get(p.category) ?? [];
-    list.push(p);
-    buckets.set(p.category, list);
-  }
-
-  // Round-robin pick from each bucket
-  const keys = [...buckets.keys()];
-  const result: AIPrompt[] = [];
-  let remaining = true;
-  while (remaining) {
-    remaining = false;
-    for (const key of keys) {
-      const bucket = buckets.get(key)!;
-      if (bucket.length > 0) {
-        result.push(bucket.shift()!);
-        remaining = remaining || bucket.length > 0;
-      }
-    }
-  }
-  return result;
-}
-
-// Pre-compute interleaved list
-const allInterleaved = sortAndInterleave(aiPrompts);
-
 const PAGE_SIZE = 12;
 
-export default function AIPromptsClient() {
+interface Props {
+  allPrompts: AIPrompt[];       // pre-sorted & interleaved from server
+  categories: CategoryInfo[];
+  totalCount: number;
+}
+
+export default function AIPromptsClient({ allPrompts, categories, totalCount }: Props) {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
@@ -69,8 +34,8 @@ export default function AIPromptsClient() {
 
   const filtered =
     activeCategory === "all"
-      ? allInterleaved
-      : aiPrompts
+      ? allPrompts
+      : allPrompts
           .filter((p) => p.category === activeCategory)
           .sort((a, b) => {
             const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
@@ -81,10 +46,21 @@ export default function AIPromptsClient() {
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
 
-  // Infinite scroll via IntersectionObserver
+  // Reset pagination when category changes
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [activeCategory]);
+
+  // Infinite scroll via IntersectionObserver (with throttle protection)
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const loadingRef = useRef(false);
+
   const loadMore = useCallback(() => {
-    if (hasMore) setVisibleCount((c) => c + PAGE_SIZE);
+    if (!hasMore || loadingRef.current) return;
+    loadingRef.current = true;
+    setVisibleCount((c) => c + PAGE_SIZE);
+    // Throttle: prevent rapid-fire triggers
+    setTimeout(() => { loadingRef.current = false; }, 100);
   }, [hasMore]);
 
   useEffect(() => {
@@ -92,7 +68,7 @@ export default function AIPromptsClient() {
     if (!el) return;
     const observer = new IntersectionObserver(
       (entries) => { if (entries[0].isIntersecting) loadMore(); },
-      { rootMargin: "400px" }
+      { rootMargin: "200px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -160,7 +136,7 @@ export default function AIPromptsClient() {
           }}
         >
           <button
-            onClick={() => { setActiveCategory("all"); setVisibleCount(PAGE_SIZE); }}
+            onClick={() => setActiveCategory("all")}
             style={{
               padding: "8px 18px",
               borderRadius: "var(--radius-md)",
@@ -182,7 +158,7 @@ export default function AIPromptsClient() {
             return (
               <button
                 key={cat.id}
-                onClick={() => { setActiveCategory(cat.id); setVisibleCount(PAGE_SIZE); }}
+                onClick={() => setActiveCategory(cat.id)}
                 style={{
                   padding: "8px 18px",
                   borderRadius: "var(--radius-md)",
@@ -211,7 +187,7 @@ export default function AIPromptsClient() {
             marginBottom: 32,
           }}
         >
-          {filtered.length} of {aiPrompts.length} prompts
+          {filtered.length} of {totalCount} prompts
         </div>
       </section>
 
@@ -227,10 +203,14 @@ export default function AIPromptsClient() {
           {visible.map((prompt) => {
             const catInfo = categories.find((c) => c.id === prompt.category);
             const copied = copiedId === prompt.id;
-            const detail = hasDetailPage(prompt);
 
-            const card = (
-              <>
+            return (
+              <Link
+                key={prompt.id}
+                href={`/prompts/${prompt.slug}`}
+                className="feed-card"
+                style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}
+              >
                 <FeedImage src={prompt.imageUrl} alt={prompt.imageAlt} models={prompt.aiModels} />
                 {/* Card body */}
                 <div style={{ padding: "12px 14px 14px" }}>
@@ -297,27 +277,7 @@ export default function AIPromptsClient() {
                     </Link>
                   </div>
                 </div>
-              </>
-            );
-
-            return detail ? (
-              <Link
-                key={prompt.id}
-                href={`/prompts/${prompt.slug}`}
-                className="feed-card"
-                style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}
-              >
-                {card}
               </Link>
-            ) : (
-              <div
-                key={prompt.id}
-                className="feed-card"
-                onClick={() => setModalPrompt(prompt)}
-                style={{ cursor: "pointer", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}
-              >
-                {card}
-              </div>
             );
           })}
         </div>
@@ -366,7 +326,6 @@ function FeedImage({ src, alt, models }: { src: string; alt: string; models: AIM
         overflow: "hidden",
         lineHeight: 0,
         background: "var(--bg-warm)",
-        // Before load: fixed 4:3 placeholder; after load: natural height
         ...(loaded ? {} : { aspectRatio: "4 / 3" }),
         transition: "aspect-ratio 0.3s ease",
       }}

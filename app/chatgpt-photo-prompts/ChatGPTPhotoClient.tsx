@@ -4,30 +4,9 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 // Note: Link is still used for the "Browse All AI Prompts" CTA below
 import {
-  aiPrompts,
-  categories,
   type AIPrompt,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
-
-// ─── Filter prompts for this page ─────────────────────────────────────────
-function getChatGPTPhotoPrompts(): {
-  creation: AIPrompt[];
-  editing: AIPrompt[];
-} {
-  const chatgptPhoto = aiPrompts.filter(
-    (p) =>
-      (p.category === "photography" || p.category === "photo-editing") &&
-      p.aiModels.includes("chatgpt")
-  );
-  return {
-    creation: chatgptPhoto.filter((p) => p.category === "photography"),
-    editing: chatgptPhoto.filter((p) => p.category === "photo-editing"),
-  };
-}
-
-const photographyCategory = categories.find((c) => c.id === "photography");
-const photoEditingCategory = categories.find((c) => c.id === "photo-editing");
 
 // ─── Model display config ─────────────────────────────────────────────────
 const MODEL_DISPLAY: Record<string, { label: string; color: string; bg: string }> = {
@@ -62,8 +41,14 @@ const FAQ_ITEMS = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────
-export default function ChatGPTPhotoClient() {
-  const { creation, editing } = useMemo(() => getChatGPTPhotoPrompts(), []);
+interface Props {
+  creation: AIPrompt[];
+  editing: AIPrompt[];
+  photographyCategory: CategoryInfo | undefined;
+  photoEditingCategory: CategoryInfo | undefined;
+}
+
+export default function ChatGPTPhotoClient({ creation, editing, photographyCategory, photoEditingCategory }: Props) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const handleCopy = async (prompt: AIPrompt) => {

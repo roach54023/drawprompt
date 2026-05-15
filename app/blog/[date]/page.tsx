@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getBlogPost, getRecentBlogPosts } from "@/lib/blogData";
+import { getAllArticleSlugs, getBlogPost, getRecentBlogPosts } from "@/lib/blogData";
 import { getArticleBySlug, getRecentArticles, type ContentBlock } from "@/lib/blogPosts";
 import { notFound } from "next/navigation";
 
@@ -17,6 +17,13 @@ const MOOD_THEMES: Record<string, { color: string; bg: string; border: string }>
   "dark romantic": { color: "#8b5a7a", bg: "#f8f0f4", border: "#d8b8cc" },
 };
 const DEFAULT_THEME = { color: "#c4714a", bg: "#fdf0e8", border: "#f0c4a8" };
+
+export function generateStaticParams() {
+  return [
+    ...getAllArticleSlugs().map((date) => ({ date })),
+    ...getRecentBlogPosts(14).map((post) => ({ date: post.slug })),
+  ];
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { date: slug } = await params;

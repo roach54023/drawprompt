@@ -1,5 +1,16 @@
 import type { Metadata } from "next";
+import { aiPrompts, categories } from "@/lib/aiPromptData";
 import ChatGPTPhotoClient from "./ChatGPTPhotoClient";
+
+const chatgptPhoto = aiPrompts.filter(
+  (p) =>
+    (p.category === "photography" || p.category === "photo-editing") &&
+    p.aiModels.includes("chatgpt")
+);
+const creation = chatgptPhoto.filter((p) => p.category === "photography");
+const editing = chatgptPhoto.filter((p) => p.category === "photo-editing");
+const photographyCategory = categories.find((c) => c.id === "photography");
+const photoEditingCategory = categories.find((c) => c.id === "photo-editing");
 
 export const metadata: Metadata = {
   title: "ChatGPT Photo Prompts — AI Photo Editing & Generation with GPT Image 2",
@@ -75,7 +86,12 @@ export default function ChatGPTPhotoPromptsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ChatGPTPhotoClient />
+      <ChatGPTPhotoClient
+        creation={creation}
+        editing={editing}
+        photographyCategory={photographyCategory}
+        photoEditingCategory={photoEditingCategory}
+      />
     </>
   );
 }

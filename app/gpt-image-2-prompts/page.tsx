@@ -1,6 +1,45 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { aiPrompts, categories } from "@/lib/aiPromptData";
 import GPTImage2Client from "./GPTImage2Client";
+
+/**
+ * Sort by createdAt descending, then interleave categories for variety.
+ * Runs at build time (server), not in the client bundle.
+ */
+function sortAndInterleave(prompts: typeof aiPrompts) {
+  const sorted = [...prompts].sort((a, b) => {
+    const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return db - da;
+  });
+  const buckets = new Map<string, (typeof prompts)[number][]>();
+  for (const p of sorted) {
+    const list = buckets.get(p.category) ?? [];
+    list.push(p);
+    buckets.set(p.category, list);
+  }
+  const keys = [...buckets.keys()];
+  const result: (typeof prompts)[number][] = [];
+  let remaining = true;
+  while (remaining) {
+    remaining = false;
+    for (const key of keys) {
+      const bucket = buckets.get(key)!;
+      if (bucket.length > 0) {
+        result.push(bucket.shift()!);
+        remaining = remaining || bucket.length > 0;
+      }
+    }
+  }
+  return result;
+}
+
+const gptImage2Prompts = sortAndInterleave(
+  aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"))
+);
+const availableCategories = categories.filter((c) =>
+  gptImage2Prompts.some((p) => p.category === c.id)
+);
 
 /* ── FAQ JSON-LD for rich snippets ──────────────────────────── */
 const faqJsonLd = {
@@ -103,7 +142,11 @@ export default function GPTImage2PromptsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <GPTImage2Client />
+      <GPTImage2Client
+        allPrompts={gptImage2Prompts}
+        availableCategories={availableCategories}
+        totalCount={gptImage2Prompts.length}
+      />
     </>
   );
 }

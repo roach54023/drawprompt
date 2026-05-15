@@ -4,52 +4,12 @@ import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  aiPrompts,
-  categories,
-  hasDetailPage,
   type AIPrompt,
   type AIPromptCategory,
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
 import PromptDetailModal from "@/components/PromptDetailModal";
-
-/**
- * Sort by createdAt descending, then interleave categories for variety.
- */
-function sortAndInterleave(prompts: AIPrompt[]): AIPrompt[] {
-  const sorted = [...prompts].sort((a, b) => {
-    const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-    const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-    return db - da;
-  });
-
-  const buckets = new Map<string, AIPrompt[]>();
-  for (const p of sorted) {
-    const list = buckets.get(p.category) ?? [];
-    list.push(p);
-    buckets.set(p.category, list);
-  }
-
-  const keys = [...buckets.keys()];
-  const result: AIPrompt[] = [];
-  let remaining = true;
-  while (remaining) {
-    remaining = false;
-    for (const key of keys) {
-      const bucket = buckets.get(key)!;
-      if (bucket.length > 0) {
-        result.push(bucket.shift()!);
-        remaining = remaining || bucket.length > 0;
-      }
-    }
-  }
-  return result;
-}
-
-const gptImage2Prompts = sortAndInterleave(
-  aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"))
-);
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -120,34 +80,45 @@ const TIPS = [
 
 const PAGE_SIZE = 12;
 
-export default function GPTImage2Client() {
+interface Props {
+  allPrompts: AIPrompt[];
+  availableCategories: CategoryInfo[];
+  totalCount: number;
+}
+
+export default function GPTImage2Client({ allPrompts, availableCategories, totalCount }: Props) {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-  const availableCategories = useMemo(() => {
-    const catIds = new Set(gptImage2Prompts.map((p) => p.category));
-    return categories.filter((c) => catIds.has(c.id));
-  }, []);
-
   const filteredPrompts = useMemo(() => {
-    if (activeCategory === "all") return gptImage2Prompts;
-    return gptImage2Prompts.filter((p) => p.category === activeCategory)
+    if (activeCategory === "all") return allPrompts;
+    return allPrompts.filter((p) => p.category === activeCategory)
       .sort((a, b) => {
         const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
         const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
         return db - da;
       });
-  }, [activeCategory]);
+  }, [activeCategory, allPrompts]);
 
   const visiblePrompts = filteredPrompts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPrompts.length;
 
-  // Infinite scroll via IntersectionObserver
+  // Reset pagination when category changes
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [activeCategory]);
+
+  // Infinite scroll via IntersectionObserver (with throttle)
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const loadingRef = useRef(false);
+
   const loadMore = useCallback(() => {
-    if (hasMore) setVisibleCount((c) => c + PAGE_SIZE);
+    if (!hasMore || loadingRef.current) return;
+    loadingRef.current = true;
+    setVisibleCount((c) => c + PAGE_SIZE);
+    setTimeout(() => { loadingRef.current = false; }, 100);
   }, [hasMore]);
 
   useEffect(() => {
@@ -155,7 +126,7 @@ export default function GPTImage2Client() {
     if (!el) return;
     const observer = new IntersectionObserver(
       (entries) => { if (entries[0].isIntersecting) loadMore(); },
-      { rootMargin: "400px" }
+      { rootMargin: "200px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -229,7 +200,7 @@ export default function GPTImage2Client() {
             {/* Stats */}
             <div style={{ display: "flex", gap: 40, flexWrap: "wrap" }}>
               {[
-                { value: `${gptImage2Prompts.length}+`, label: "Prompts" },
+                { value: `${totalCount}+`, label: "Prompts" },
                 { value: `${availableCategories.length}`, label: "Categories" },
                 { value: "Free", label: "No Sign-up" },
               ].map((stat) => (
@@ -316,7 +287,7 @@ export default function GPTImage2Client() {
               All GPT Image 2 Prompts
             </h2>
             <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
-              {gptImage2Prompts.length} prompts across {availableCategories.length} categories.
+              {totalCount} prompts across {availableCategories.length} categories.
               Filter by type, copy any prompt, or click for the full breakdown.
             </p>
           </div>
@@ -324,7 +295,7 @@ export default function GPTImage2Client() {
           {/* Category filters */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
             <button
-              onClick={() => { setActiveCategory("all"); setVisibleCount(PAGE_SIZE); }}
+              onClick={() => setActiveCategory("all")}
               style={{
                 padding: "8px 18px",
                 borderRadius: "var(--radius-md)",
@@ -337,15 +308,15 @@ export default function GPTImage2Client() {
                 transition: "all 0.15s",
               }}
             >
-              All ({gptImage2Prompts.length})
+              All ({totalCount})
             </button>
             {availableCategories.map((cat) => {
-              const count = gptImage2Prompts.filter((p) => p.category === cat.id).length;
+              const count = allPrompts.filter((p) => p.category === cat.id).length;
               const isActive = activeCategory === cat.id;
               return (
                 <button
                   key={cat.id}
-                  onClick={() => { setActiveCategory(cat.id); setVisibleCount(PAGE_SIZE); }}
+                  onClick={() => setActiveCategory(cat.id)}
                   style={{
                     padding: "8px 18px",
                     borderRadius: "var(--radius-md)",
@@ -372,7 +343,7 @@ export default function GPTImage2Client() {
                 prompt={prompt}
                 copied={copiedId === prompt.id}
                 onCopy={() => handleCopy(prompt)}
-                onSelect={hasDetailPage(prompt) ? undefined : () => setModalPrompt(prompt)}
+                categories={availableCategories}
               />
             ))}
           </div>
@@ -541,7 +512,7 @@ export default function GPTImage2Client() {
       {modalPrompt && (
         <PromptDetailModal
           prompt={modalPrompt}
-          catInfo={categories.find((c) => c.id === modalPrompt.category)}
+          catInfo={availableCategories.find((c) => c.id === modalPrompt.category)}
           onClose={() => setModalPrompt(null)}
         />
       )}
@@ -553,15 +524,14 @@ function PromptGalleryCard({
   prompt,
   copied,
   onCopy,
-  onSelect,
+  categories,
 }: {
   prompt: AIPrompt;
   copied: boolean;
   onCopy: () => void;
-  onSelect?: () => void;
+  categories: CategoryInfo[];
 }) {
-  const catInfo: CategoryInfo | undefined = categories.find((c) => c.id === prompt.category);
-  const detail = hasDetailPage(prompt);
+  const catInfo = categories.find((c) => c.id === prompt.category);
 
   const handleCopyClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -580,6 +550,7 @@ function PromptGalleryCard({
           lineHeight: 0,
           background: "var(--bg-warm)",
           ...(imgLoaded ? {} : { aspectRatio: "4 / 3" }),
+          transition: "aspect-ratio 0.3s ease",
         }}
       >
         <Image
@@ -592,6 +563,8 @@ function PromptGalleryCard({
             height: imgLoaded ? "auto" : "100%",
             objectFit: imgLoaded ? undefined : "cover",
             display: "block",
+            transition: "height 0.3s ease, opacity 0.4s ease",
+            opacity: imgLoaded ? 1 : 0.6,
           }}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           loading="lazy"
@@ -702,13 +675,9 @@ function PromptGalleryCard({
     marginBottom: 16,
   };
 
-  return detail ? (
+  return (
     <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={cardStyle}>
       {content}
     </Link>
-  ) : (
-    <div onClick={onSelect} className="feed-card" style={cardStyle}>
-      {content}
-    </div>
   );
 }

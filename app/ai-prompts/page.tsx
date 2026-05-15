@@ -1,5 +1,40 @@
 import type { Metadata } from "next";
+import { aiPrompts, categories } from "@/lib/aiPromptData";
 import AIPromptsClient from "./AIPromptsClient";
+
+/**
+ * Sort by createdAt descending, then interleave categories for variety.
+ * Runs at build time (server), not in the client bundle.
+ */
+function sortAndInterleave(prompts: typeof aiPrompts) {
+  const sorted = [...prompts].sort((a, b) => {
+    const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return db - da;
+  });
+  const buckets = new Map<string, (typeof prompts)[number][]>();
+  for (const p of sorted) {
+    const list = buckets.get(p.category) ?? [];
+    list.push(p);
+    buckets.set(p.category, list);
+  }
+  const keys = [...buckets.keys()];
+  const result: (typeof prompts)[number][] = [];
+  let remaining = true;
+  while (remaining) {
+    remaining = false;
+    for (const key of keys) {
+      const bucket = buckets.get(key)!;
+      if (bucket.length > 0) {
+        result.push(bucket.shift()!);
+        remaining = remaining || bucket.length > 0;
+      }
+    }
+  }
+  return result;
+}
+
+const allInterleaved = sortAndInterleave(aiPrompts);
 
 export const metadata: Metadata = {
   title: "AI Image Prompts — 180+ Prompts for GPT Image 2 & Nano Banana 2",
@@ -91,7 +126,11 @@ export default function AIPromptsPage() {
       >
         AI Image Prompts — 180+ Tested Prompts for GPT Image 2 & Nano Banana 2
       </h1>
-      <AIPromptsClient />
+      <AIPromptsClient
+        allPrompts={allInterleaved}
+        categories={categories}
+        totalCount={aiPrompts.length}
+      />
     </>
   );
 }
