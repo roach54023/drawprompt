@@ -81,10 +81,39 @@ export const metadata: Metadata = {
   },
 };
 
+function getHomeFeedPrompts(count: number) {
+  // Sort by createdAt descending (newest first)
+  const sorted = [...aiPrompts].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+  // Interleave categories so the feed is visually diverse
+  const result: typeof aiPrompts = [];
+  const usedCategories = new Set<string>();
+  const remaining = [...sorted];
+
+  while (result.length < count && remaining.length > 0) {
+    // First pass: pick one from each unseen category
+    const pick = remaining.findIndex(
+      (p) => !usedCategories.has(p.category)
+    );
+    if (pick !== -1) {
+      usedCategories.add(remaining[pick].category);
+      result.push(remaining[pick]);
+      remaining.splice(pick, 1);
+    } else {
+      // All categories seen in this round — reset and continue
+      usedCategories.clear();
+      // Pick the next available (still sorted by date)
+      result.push(remaining.shift()!);
+    }
+  }
+  return result;
+}
+
 export default function HomePage() {
   // Featured prompts for hero showcase + larger feed for the gallery section
   const featured = getFeaturedAIPrompts(6);
-  const feedPrompts = aiPrompts.slice(0, 24); // 24 prompts for the image feed
+  const feedPrompts = getHomeFeedPrompts(24);
   return (
     <>
       <script
