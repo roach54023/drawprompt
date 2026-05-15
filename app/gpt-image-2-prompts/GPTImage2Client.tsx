@@ -118,7 +118,7 @@ const TIPS = [
   },
 ];
 
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 12;
 
 export default function GPTImage2Client() {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");

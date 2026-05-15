@@ -282,10 +282,10 @@ export default function HomeClient({
         </div>
 
         <div style={{ textAlign: "center", marginTop: 48 }}>
-          <Link href="/ai-prompts/" className="btn-secondary" style={{ textDecoration: "none" }}>
+          <a href="/ai-prompts/" className="btn-secondary" style={{ textDecoration: "none" }}>
             View all 180+ prompts
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -449,8 +449,8 @@ function FeedCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; co
 
   return (
     <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}>
-      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0, background: "var(--bg-warm)", ...(imgLoaded ? {} : { aspectRatio: "4 / 3" }) }}>
-        <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={600} height={400} style={{ width: "100%", height: imgLoaded ? "auto" : "100%", objectFit: imgLoaded ? undefined : "cover", display: "block" }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" onLoad={() => setImgLoaded(true)} />
+      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0, background: "var(--bg-warm)", ...(imgLoaded ? {} : { aspectRatio: "4 / 3" }), transition: "aspect-ratio 0.3s ease" }}>
+        <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={600} height={400} style={{ width: "100%", height: imgLoaded ? "auto" : "100%", objectFit: imgLoaded ? undefined : "cover", display: "block", transition: "height 0.3s ease, opacity 0.4s ease", opacity: imgLoaded ? 1 : 0.6 }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" onLoad={() => setImgLoaded(true)} />
         {/* Model badges on image */}
         <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
           {prompt.aiModels.slice(0, 1).map((model) => (

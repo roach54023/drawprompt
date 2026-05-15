@@ -59,7 +59,7 @@ function sortAndInterleave(prompts: AIPrompt[]): AIPrompt[] {
 // Pre-compute interleaved list
 const allInterleaved = sortAndInterleave(aiPrompts);
 
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 12;
 
 export default function AIPromptsClient() {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
@@ -368,6 +368,7 @@ function FeedImage({ src, alt, models }: { src: string; alt: string; models: AIM
         background: "var(--bg-warm)",
         // Before load: fixed 4:3 placeholder; after load: natural height
         ...(loaded ? {} : { aspectRatio: "4 / 3" }),
+        transition: "aspect-ratio 0.3s ease",
       }}
     >
       <Image
@@ -380,6 +381,8 @@ function FeedImage({ src, alt, models }: { src: string; alt: string; models: AIM
           height: loaded ? "auto" : "100%",
           objectFit: loaded ? undefined : "cover",
           display: "block",
+          transition: "height 0.3s ease, opacity 0.4s ease",
+          opacity: loaded ? 1 : 0.6,
         }}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         loading="lazy"
