@@ -34,9 +34,11 @@ const HERO_SUGGESTIONS = [
 
 export default function HomeClient({
   featured,
+  feedPrompts,
   categories,
 }: {
   featured: AIPrompt[];
+  feedPrompts: AIPrompt[];
   categories: CategoryInfo[];
 }) {
   const router = useRouter();
@@ -61,7 +63,7 @@ export default function HomeClient({
 
   return (
     <div>
-      {/* ══════════ HERO — AI-focused with prompt input ══════════ */}
+      {/* ══════════ HERO — with floating image showcase ══════════ */}
       <section className="section-dark" style={{ position: "relative", overflow: "hidden" }}>
         <div
           style={{
@@ -69,15 +71,38 @@ export default function HomeClient({
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           }}
         />
-        <div
-          style={{
-            position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
-            width: 1, height: 48,
-            background: "linear-gradient(to bottom, transparent, var(--accent))", opacity: 0.3,
-          }}
-        />
 
-        <div style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "88px 32px 64px", textAlign: "center" }}>
+        {/* ── Floating showcase images (left + right columns) ── */}
+        <div className="hero-showcase-left" style={{
+          position: "absolute", left: 0, top: 0, bottom: 0, width: "22%",
+          display: "flex", flexDirection: "column", justifyContent: "center", gap: 12,
+          padding: "48px 16px", pointerEvents: "none", opacity: 0.55,
+        }}>
+          {featured.slice(0, 3).map((p, i) => (
+            <div key={p.id} style={{
+              borderRadius: 12, overflow: "hidden", transform: `rotate(${i % 2 === 0 ? -2 : 2}deg)`,
+              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            }}>
+              <Image src={p.imageUrl} alt={p.imageAlt} width={280} height={200} style={{ width: "100%", height: "auto", display: "block" }} sizes="200px" />
+            </div>
+          ))}
+        </div>
+        <div className="hero-showcase-right" style={{
+          position: "absolute", right: 0, top: 0, bottom: 0, width: "22%",
+          display: "flex", flexDirection: "column", justifyContent: "center", gap: 12,
+          padding: "48px 16px", pointerEvents: "none", opacity: 0.55,
+        }}>
+          {featured.slice(3, 6).map((p, i) => (
+            <div key={p.id} style={{
+              borderRadius: 12, overflow: "hidden", transform: `rotate(${i % 2 === 0 ? 2 : -2}deg)`,
+              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            }}>
+              <Image src={p.imageUrl} alt={p.imageAlt} width={280} height={200} style={{ width: "100%", height: "auto", display: "block" }} sizes="200px" />
+            </div>
+          ))}
+        </div>
+
+        <div style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "88px 32px 64px", textAlign: "center", position: "relative", zIndex: 2 }}>
           <div className="animate-fade-up" style={{ opacity: 0, animationDelay: "0.1s", animationFillMode: "forwards", marginBottom: 20 }}>
             <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--accent)" }}>
               Powered by GPT Image 2
@@ -107,7 +132,7 @@ export default function HomeClient({
               opacity: 0, animationDelay: "0.3s", animationFillMode: "forwards",
             }}
           >
-            Type a prompt and create stunning AI images instantly. Browse 167+ curated prompts
+            Type a prompt and create stunning AI images instantly. Browse 180+ curated prompts
             for GPT Image 2 & Nano Banana 2.
           </p>
 
@@ -187,7 +212,7 @@ export default function HomeClient({
           {/* Stats */}
           <div className="animate-fade-up" style={{ display: "inline-flex", gap: 48, paddingTop: 24, borderTop: "1px solid var(--border-dark)", opacity: 0, animationDelay: "0.55s", animationFillMode: "forwards" }}>
             {[
-              { value: "167+", label: "AI Prompts" },
+              { value: "180+", label: "AI Prompts" },
               { value: "GPT Image 2", label: "Latest Model" },
               { value: "4", label: "AI Models" },
               { value: "Free", label: "To Browse" },
@@ -232,40 +257,33 @@ export default function HomeClient({
         </Link>
       </section> */}
 
-      {/* ══════════ FOR AI — Curated AI image prompts ══════════ */}
+      {/* ══════════ IMAGE FEED — Gallery-style prompt showcase ══════════ */}
       <section style={{ maxWidth: "var(--max-w)", margin: "0 auto", padding: "80px 32px" }}>
-        <div style={{ marginBottom: 48, maxWidth: 560 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-            <span style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
-              padding: "4px 12px", borderRadius: 100, fontSize: 11, fontWeight: 600,
-              letterSpacing: "0.08em", textTransform: "uppercase",
-              color: "#c06a3e", background: "#fdf0e8", border: "1px solid #e8c0a0",
-            }}>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" />
-              </svg>
-              For AI
-            </span>
+        <div style={{ marginBottom: 40, textAlign: "center" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 100, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "#c06a3e", background: "#fdf0e8", border: "1px solid #e8c0a0", marginBottom: 16 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" />
+            </svg>
+            Prompt Gallery
           </div>
           <h2 className="font-serif" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", fontWeight: 700, marginBottom: 12, letterSpacing: "-0.02em" }}>
-            AI image prompts, tested & ready
+            From viral images to reusable prompts
           </h2>
-          <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
-            Each prompt comes with an example image, a detailed breakdown of why it works,
-            and tips for customization. Copy, paste, create.
+          <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, margin: "0 auto", maxWidth: 560 }}>
+            Each prompt is tested with real output. Copy, paste, and get the same result — or remix for your own style.
           </p>
         </div>
 
-<div className="featured-grid">
-{featured.map((prompt) => (
-<FeaturedPromptCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} categories={categories} />
-))}
-</div>
+        {/* Masonry / waterfall layout — images keep natural aspect ratio */}
+        <div className="feed-masonry">
+          {feedPrompts.map((prompt) => (
+            <FeedCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} categories={categories} />
+          ))}
+        </div>
 
         <div style={{ textAlign: "center", marginTop: 48 }}>
           <Link href="/ai-prompts/" className="btn-secondary" style={{ textDecoration: "none" }}>
-            View all AI prompts
+            View all 180+ prompts
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </Link>
         </div>
@@ -421,6 +439,52 @@ export default function HomeClient({
         />
       )}
     </div>
+  );
+}
+
+// ─── FeedCard — masonry card with natural image height ───────────────────────
+function FeedCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; categories: CategoryInfo[] }) {
+  const catInfo = categories.find((c) => c.id === prompt.category);
+
+  return (
+    <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={{ display: "block", textDecoration: "none", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}>
+      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
+        <Image src={prompt.imageUrl} alt={prompt.imageAlt} width={600} height={400} style={{ width: "100%", height: "auto", display: "block" }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
+        {/* Hover overlay */}
+        <div className="feed-card-overlay" style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)", opacity: 0, transition: "opacity 0.2s", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 12 }}>
+          <div style={{ display: "flex", gap: 6 }}>
+            <button
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
+              style={{ padding: "6px 12px", borderRadius: 6, border: "none", background: "rgba(255,255,255,0.9)", color: "#1a1714", fontSize: 11, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
+            >
+              {copied ? "Copied!" : "Copy Prompt"}
+            </button>
+            <Link
+              href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
+              onClick={(e) => { e.stopPropagation(); }}
+              style={{ padding: "6px 12px", borderRadius: 6, border: "none", background: "var(--accent)", color: "#fff", fontSize: 11, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}
+            >
+              Generate
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div style={{ padding: "12px 14px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
+            {catInfo?.label}
+          </span>
+          {prompt.aiModels.slice(0, 1).map((model) => (
+            <span key={model} style={{ fontSize: 10, fontWeight: 500, color: MODEL_DISPLAY[model].color, background: MODEL_DISPLAY[model].bg, padding: "2px 6px", borderRadius: 4 }}>
+              {MODEL_DISPLAY[model].label}
+            </span>
+          ))}
+        </div>
+        <h3 style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", margin: 0, lineHeight: 1.35, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {prompt.title}
+        </h3>
+      </div>
+    </Link>
   );
 }
 

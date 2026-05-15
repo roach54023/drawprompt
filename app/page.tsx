@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import HomeClient from "@/components/HomeClient";
-import { getFeaturedAIPrompts, categories } from "@/lib/aiPromptData";
+import { getFeaturedAIPrompts, categories, aiPrompts } from "@/lib/aiPromptData";
 
 /* ── BreadcrumbList JSON-LD for homepage ─────────────────────── */
 const breadcrumbJsonLd = {
@@ -82,8 +82,9 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Fetch data on the server — only 6 prompts sent to client, not all 167
+  // Featured prompts for hero showcase + larger feed for the gallery section
   const featured = getFeaturedAIPrompts(6);
+  const feedPrompts = aiPrompts.slice(0, 24); // 24 prompts for the image feed
   return (
     <>
       <script
@@ -94,7 +95,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <HomeClient featured={featured} categories={categories} />
+      <HomeClient featured={featured} feedPrompts={feedPrompts} categories={categories} />
     </>
   );
 }

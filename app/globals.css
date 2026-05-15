@@ -476,6 +476,41 @@ body.menu-open {
   }
 }
 
+/* ─── Feed Masonry Layout ─── */
+.feed-masonry {
+  columns: 4;
+  column-gap: 16px;
+}
+@media (max-width: 1100px) {
+  .feed-masonry { columns: 3; }
+}
+@media (max-width: 768px) {
+  .feed-masonry { columns: 2; }
+}
+@media (max-width: 480px) {
+  .feed-masonry { columns: 1; }
+}
+
+/* ─── Feed Card hover effects ─── */
+.feed-card {
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.feed-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(26, 23, 20, 0.1);
+}
+.feed-card:hover .feed-card-overlay {
+  opacity: 1 !important;
+}
+
+/* ─── Hero showcase — hide on mobile/tablet ─── */
+@media (max-width: 1100px) {
+  .hero-showcase-left,
+  .hero-showcase-right {
+    display: none !important;
+  }
+}
+
 /* ─── Smooth image loading ─── */
 img {
   transition: opacity 0.3s ease;

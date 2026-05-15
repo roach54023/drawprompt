@@ -429,21 +429,24 @@ export default function PricingSection() {
                   </div>
                 ) : (
                   <button
-                    disabled={true}
+                    disabled={isSubscribing}
+                    onClick={() => handleSubscribe(plan)}
                     style={{
                       width: "100%",
                       padding: "14px 24px",
                       borderRadius: 8,
                       border: "none",
-                      background: "#ccc",
+                      background: isSubscribing ? "#ccc" : isPopular ? "#c8a77a" : "#2d2926",
                       color: "#fff",
                       fontSize: 15,
                       fontWeight: 600,
-                      cursor: "not-allowed",
+                      cursor: isSubscribing ? "not-allowed" : "pointer",
                       transition: "all 0.2s",
                     }}
                   >
-                    <span>Coming Soon — ${config.price}/mo</span>
+                    <span>
+                      {isSubscribing ? "Redirecting to PayPal..." : `Subscribe — $${config.price}/mo`}
+                    </span>
                   </button>
                 )
               ) : (
