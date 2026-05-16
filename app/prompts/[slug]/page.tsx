@@ -225,8 +225,8 @@ export default async function PromptDetailPage({ params }: Props) {
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 36 }}>
         <Link href="/ai-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>All AI Prompts</Link>
         <Link href="/gpt-image-2-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>GPT Image 2 Prompts</Link>
-        <Link href="/drawing-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Drawing Prompts</Link>
-        <Link href="/generator" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Prompt Generator</Link>
+<Link href="/ai-prompts/photography" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Photography Prompts</Link>
+<Link href="/ai-prompts/character-design" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Character Design</Link>
       </div>
 
       {/* Related prompts */}

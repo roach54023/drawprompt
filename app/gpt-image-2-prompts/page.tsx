@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { aiPrompts, categories } from "@/lib/aiPromptData";
+import { categoryContent } from "@/lib/categoryContent";
 import GPTImage2Client, { type GPTPromptListItem } from "./GPTImage2Client";
+
+/** Map category IDs to their URL slugs */
+const categorySlugs: Record<string, string> = Object.fromEntries(
+  Object.entries(categoryContent).map(([id, c]) => [id, c.slug])
+);
 
 /**
  * Sort by createdAt descending, then interleave categories for variety.
@@ -157,6 +163,7 @@ export default function GPTImage2PromptsPage() {
         allPrompts={gptImage2Prompts}
         availableCategories={availableCategories}
         totalCount={gptImage2Prompts.length}
+        categorySlugs={categorySlugs}
       />
     </>
   );

@@ -93,9 +93,10 @@ interface Props {
   allPrompts: GPTPromptListItem[];
   availableCategories: CategoryInfo[];
   totalCount: number;
+  categorySlugs: Record<string, string>;
 }
 
-export default function GPTImage2Client({ allPrompts, availableCategories, totalCount }: Props) {
+export default function GPTImage2Client({ allPrompts, availableCategories, totalCount, categorySlugs }: Props) {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -306,9 +307,9 @@ export default function GPTImage2Client({ allPrompts, availableCategories, total
               const count = allPrompts.filter((p) => p.category === cat.id).length;
               const isActive = activeCategory === cat.id;
               return (
-                <button
+                <Link
                   key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
+                  href={`/ai-prompts/${categorySlugs[cat.id]}`}
                   style={{
                     padding: "8px 18px",
                     borderRadius: "var(--radius-md)",
@@ -319,10 +320,11 @@ export default function GPTImage2Client({ allPrompts, availableCategories, total
                     border: isActive ? `1px solid ${cat.color}` : "1px solid var(--border)",
                     cursor: "pointer",
                     transition: "all 0.15s",
+                    textDecoration: "none",
                   }}
                 >
                   {cat.label} ({count})
-                </button>
+                </Link>
               );
             })}
           </div>

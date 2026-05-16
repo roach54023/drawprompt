@@ -74,14 +74,14 @@ export const blogArticles: BlogArticle[] = [
       { type: "prompt-example", prompt: "A mermaid who traded her voice for a pair of wings, drawn in a single continuous line without lifting the pen.", note: "One-line drawing + a character with a story = a great 15-minute exercise." },
       { type: "prompt-example", prompt: "A forest spirit with antlers wreathed in autumn leaves, using only 3 colors plus black and white.", note: "Limited palette is one of the best ways to level up your color sense." },
 
-      { type: "callout", text: "Want more? Our drawing prompt generator creates prompts like these with 150 billion+ unique combinations. Choose your theme, mood, and difficulty.", href: "/generator", linkText: "Try the Generator" },
+      { type: "callout", text: "Want more? Our drawing prompt generator creates prompts like these with 150 billion+ unique combinations. Choose your theme, mood, and difficulty.", href: "/ai-prompts", linkText: "Try the Generator" },
 
       { type: "heading", text: "Tips for Drawing Fantasy Prompts" },
       { type: "paragraph", text: "The biggest mistake with fantasy prompts is trying to draw everything at once. Pick the one element that excites you most and build outward from there. If the prompt mentions a \u201Cforest where every tree is a petrified warrior,\u201D maybe start with just one tree-warrior and get that right before adding the forest." },
       { type: "paragraph", text: "Also: don\u2019t skip the thumbnail stage. Fantasy scenes are complex, and a 2-minute thumbnail will save you an hour of frustration. Rough out the composition, figure out where the light is coming from, and then commit." },
       { type: "paragraph", text: "If you\u2019re looking for prompts that are more grounded in reality, check out our everyday and urban drawing prompts. And if you want to feed these into an AI image generator, our GPT Image 2 prompts page has tested, copy-paste versions optimized for AI." },
 
-      { type: "callout", text: "Browse all drawing prompt categories including fantasy, nature, urban, and cozy themes.", href: "/drawing-prompts", linkText: "Explore Drawing Prompts" },
+      { type: "callout", text: "Browse all drawing prompt categories including fantasy, nature, urban, and cozy themes.", href: "/ai-prompts", linkText: "Explore Drawing Prompts" },
     ],
   },
 
@@ -115,11 +115,11 @@ export const blogArticles: BlogArticle[] = [
       { type: "prompt-example", prompt: "A second-hand bookshop where the owner knows every customer by name. In clay, sand, and weathered wood tones.", note: "The books are characters too. Give them personality through wear and tear." },
       { type: "prompt-example", prompt: "A small garden where someone has just planted seeds for spring, with dirt under their fingernails and hope in the arrangement. Warm with possibility.", note: "The \u201Cdirt under fingernails\u201D detail is what makes this prompt specific enough to draw." },
 
-      { type: "callout", text: "Get a random cozy prompt instantly \u2014 no decisions needed.", href: "/random", linkText: "Random Prompt" },
+      { type: "callout", text: "Get a random cozy prompt instantly \u2014 no decisions needed.", href: "/ai-prompts", linkText: "Random Prompt" },
 
       { type: "paragraph", text: "Cozy prompts are secretly great for skill-building. They force you to work with subtle value ranges (no dramatic shadows to hide behind), practice interior perspective, and render everyday textures like fabric, wood, and glass. If you can make a kitchen scene feel warm, you can draw anything." },
 
-      { type: "callout", text: "Our daily challenge gives you a new prompt every day \u2014 sometimes cozy, sometimes epic, always interesting.", href: "/daily-challenge", linkText: "Today\u2019s Challenge" },
+      { type: "callout", text: "Our daily challenge gives you a new prompt every day \u2014 sometimes cozy, sometimes epic, always interesting.", href: "/ai-prompts", linkText: "Today\u2019s Challenge" },
     ],
   },
 
@@ -206,11 +206,11 @@ export const blogArticles: BlogArticle[] = [
       { type: "paragraph", text: "Mood is the most powerful single dimension in a prompt. You can change the subject, the setting, the style \u2014 but changing the mood changes the meaning. A melancholic wolf and a tense wolf are not the same drawing, even if the wolf looks identical." },
       { type: "paragraph", text: "This is true for AI prompts too. If you\u2019re using GPT Image 2 or Midjourney and your results feel \u201Cflat,\u201D the fix is almost always to add a stronger mood. Don\u2019t just say \u201Ca wolf by a lake.\u201D Say \u201Ca quietly sorrowful wolf by a frozen lake.\u201D The AI needs emotional direction just like a human artist does." },
 
-      { type: "callout", text: "Try it yourself: pick a subject in our generator and cycle through all 8 moods.", href: "/generator", linkText: "Open the Generator" },
+      { type: "callout", text: "Try it yourself: pick a subject in our generator and cycle through all 8 moods.", href: "/ai-prompts", linkText: "Open the Generator" },
 
       { type: "paragraph", text: "We\u2019re going to keep running experiments like this. Next up: what happens when you change only the challenge constraint (silhouette vs. one continuous line vs. 3-color limit) on the same prompt." },
 
-      { type: "callout", text: "Want a random prompt to experiment with? Hit the button and see what you get.", href: "/random", linkText: "Get a Random Prompt" },
+      { type: "callout", text: "Want a random prompt to experiment with? Hit the button and see what you get.", href: "/ai-prompts", linkText: "Get a Random Prompt" },
     ],
   },
 
@@ -290,11 +290,11 @@ export const blogArticles: BlogArticle[] = [
       { type: "heading", text: "7. Join a Daily Challenge" },
       { type: "paragraph", text: "External accountability helps. When there\u2019s a prompt waiting for you every day, and other people are drawing the same prompt, the barrier to starting drops dramatically. You\u2019re not deciding what to draw \u2014 you\u2019re just showing up." },
 
-      { type: "callout", text: "Our daily drawing challenge gives you a new prompt every day. Same prompt for everyone, so you can compare interpretations.", href: "/daily-challenge", linkText: "Join Today\u2019s Challenge" },
+      { type: "callout", text: "Our daily drawing challenge gives you a new prompt every day. Same prompt for everyone, so you can compare interpretations.", href: "/ai-prompts", linkText: "Join Today\u2019s Challenge" },
 
       { type: "paragraph", text: "The common thread in all of these techniques is the same: reduce the number of decisions you have to make before you start drawing. Creative block is a decision problem, not a creativity problem. Remove the decisions, and the creativity comes back." },
 
-      { type: "callout", text: "Need a prompt right now? No decisions, just hit the button.", href: "/random", linkText: "Get a Random Prompt" },
+      { type: "callout", text: "Need a prompt right now? No decisions, just hit the button.", href: "/ai-prompts", linkText: "Get a Random Prompt" },
     ],
   },
 
@@ -329,7 +329,7 @@ export const blogArticles: BlogArticle[] = [
       { type: "prompt-example", prompt: "A landscape that is slowly being erased, with a figure standing at the intersection of past and future. Veiled and unknowable.", note: "How do you draw something being erased? Fading edges, dissolving forms, white space creeping in." },
       { type: "prompt-example", prompt: "A ballroom where the dancers have been frozen mid-step. Tense with hidden meaning. Lit by a single dramatic light source.", note: "Frozen motion is one of the hardest things to draw well. This is a great challenge." },
 
-      { type: "callout", text: "Generate your own dark and mysterious prompts with our drawing prompt generator.", href: "/generator", linkText: "Try the Generator" },
+      { type: "callout", text: "Generate your own dark and mysterious prompts with our drawing prompt generator.", href: "/ai-prompts", linkText: "Try the Generator" },
 
       { type: "paragraph", text: "Dark prompts are excellent for developing your value range. Most artists don\u2019t go dark enough in their shadows or light enough in their highlights. These scenes demand the full spectrum from pure black to pure white, with very little in the comfortable middle." },
 
@@ -375,7 +375,7 @@ export const blogArticles: BlogArticle[] = [
 
       { type: "paragraph", text: "And if you\u2019re a traditional artist who doesn\u2019t use AI at all? These comparisons might still be useful for understanding what AI can and can\u2019t do. But for your own drawing practice, our prompt generator creates prompts designed for human artists, not machines." },
 
-      { type: "callout", text: "Drawing prompts designed for human artists, not AI.", href: "/drawing-prompts", linkText: "Drawing Prompts" },
+      { type: "callout", text: "Drawing prompts designed for human artists, not AI.", href: "/ai-prompts", linkText: "Drawing Prompts" },
     ],
   },
 
@@ -416,11 +416,11 @@ export const blogArticles: BlogArticle[] = [
         "Indigo + ochre + white \u2014 classic and bold",
       ] },
 
-      { type: "callout", text: "Try the 3-color challenge yourself. Our generator can add this constraint to any prompt.", href: "/generator", linkText: "Generate a 3-Color Prompt" },
+      { type: "callout", text: "Try the 3-color challenge yourself. Our generator can add this constraint to any prompt.", href: "/ai-prompts", linkText: "Generate a 3-Color Prompt" },
 
       { type: "paragraph", text: "If you want to take this further, try the same prompt with different 3-color combinations. You\u2019ll be amazed at how much the mood changes just by swapping the palette. It\u2019s one of the best exercises for developing your color intuition." },
 
-      { type: "callout", text: "More creative constraints: silhouette-only, one continuous line, negative space focus.", href: "/drawing-prompts", linkText: "Explore Drawing Prompts" },
+      { type: "callout", text: "More creative constraints: silhouette-only, one continuous line, negative space focus.", href: "/ai-prompts", linkText: "Explore Drawing Prompts" },
     ],
   },
 
@@ -513,9 +513,9 @@ export const blogArticles: BlogArticle[] = [
       { type: "paragraph", text: "Here\u2019s something most people don\u2019t realize: professional artists use prompts all the time. They\u2019re called \u201Cbriefs.\u201D Every commercial illustration, every concept art piece, every commissioned work starts with a brief \u2014 a set of constraints and requirements that the artist interprets creatively." },
       { type: "paragraph", text: "Using a drawing prompt for personal work is just giving yourself the same structure that professionals work within every day. It\u2019s not a crutch. It\u2019s a tool." },
 
-      { type: "callout", text: "Ready to try it? Our generator creates complete creative briefs with mood, subject, palette, style, and challenge.", href: "/generator", linkText: "Generate a Prompt" },
+      { type: "callout", text: "Ready to try it? Our generator creates complete creative briefs with mood, subject, palette, style, and challenge.", href: "/ai-prompts", linkText: "Generate a Prompt" },
 
-      { type: "callout", text: "Or join thousands of artists drawing the same prompt every day.", href: "/daily-challenge", linkText: "Daily Challenge" },
+      { type: "callout", text: "Or join thousands of artists drawing the same prompt every day.", href: "/ai-prompts", linkText: "Daily Challenge" },
     ],
   },
 
@@ -547,11 +547,11 @@ export const blogArticles: BlogArticle[] = [
       { type: "prompt-example", prompt: "A man sitting on his front step, watching the neighborhood wake up, coffee in hand. Quiet and contemplative. With the gentle colors of a spring morning.", note: "The simplest prompt on this list, and maybe the hardest to draw well. Stillness is difficult." },
       { type: "prompt-example", prompt: "A bookshop that somehow survives in the age of the internet, with a cat in the window and a handwritten sign. In clay, sand, and weathered wood tones.", note: "The handwritten sign is a character detail. What does it say? That\u2019s your story." },
 
-      { type: "callout", text: "Generate more urban prompts with specific moods, palettes, and challenges.", href: "/generator", linkText: "Try the Generator" },
+      { type: "callout", text: "Generate more urban prompts with specific moods, palettes, and challenges.", href: "/ai-prompts", linkText: "Try the Generator" },
 
       { type: "paragraph", text: "Urban scenes are some of the best subjects for practicing one-point and two-point perspective. If you\u2019re working on your perspective skills, try drawing these prompts with a ruler first, then freehand. The contrast will teach you a lot about where your perspective intuition is strong and where it needs work." },
 
-      { type: "callout", text: "For character-focused urban scenes, check out our character design prompts.", href: "/character", linkText: "Character Prompts" },
+      { type: "callout", text: "For character-focused urban scenes, check out our character design prompts.", href: "/ai-prompts/character-design", linkText: "Character Prompts" },
     ],
   },
 

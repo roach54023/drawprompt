@@ -55,15 +55,17 @@ const mainLinks = [
   { href: "/blog",                label: "Blog"                   },
 ];
 
-// More Tools 下拉
-const humanLinks = [
-  { href: "/drawing-prompts",  label: "Drawing Prompts"  },
-  { href: "/generator",        label: "Generator"        },
-  { href: "/random",           label: "Random Prompt"    },
-  { href: "/daily-challenge",  label: "Daily Challenge"  },
-  { href: "/character",        label: "Character Prompts"},
-  { href: "/anime",            label: "Anime Prompts"    },
-  { href: "/for-kids",         label: "For Kids"         },
+// Categories 下拉
+const categoryLinks = [
+  { href: "/ai-prompts/photography",         label: "Photography"       },
+  { href: "/ai-prompts/photo-editing",       label: "Photo Editing"     },
+  { href: "/ai-prompts/character-design",    label: "Character Design"  },
+  { href: "/ai-prompts/ui-ux-design",        label: "UI/UX Design"      },
+  { href: "/ai-prompts/poster-design",       label: "Poster Design"     },
+  { href: "/ai-prompts/infographic",         label: "Infographic"       },
+  { href: "/ai-prompts/film-cinematic",      label: "Film & Cinematic"  },
+  { href: "/ai-prompts/game-art",            label: "Game Art"          },
+  { href: "/ai-prompts/product-photography", label: "Product Photo"     },
 ];
 
 const otherLinks = [
@@ -126,7 +128,7 @@ export default function Nav() {
   const activeSpecials = specials.filter(s => !s.activeUntil || today <= s.activeUntil);
   const hasSpecials = activeSpecials.length > 0;
   const inSpecials = activeSpecials.some(s => pathname === s.href);
-  const inMore = [...humanLinks, ...otherLinks].some(l => pathname === l.href);
+  const inMore = [...categoryLinks, ...otherLinks].some(l => pathname === l.href || pathname.startsWith(l.href));
 
   // ── 样式工具 ──────────────────────────────────────────────────────
   const navLink = (active: boolean) => ({
@@ -235,21 +237,21 @@ export default function Nav() {
             </div>
           )}
 
-          {/* More Tools 下拉 */}
+          {/* Categories 下拉 */}
           <div ref={moreRef} style={{ position: "relative" }}>
             <button onClick={() => { setMoreOpen(v => !v); setSpecialsOpen(false); }}
               style={dropBtn(inMore, moreOpen)}
               aria-haspopup="true" aria-expanded={moreOpen}>
-              More Tools
+              Categories
               {chevron(moreOpen)}
             </button>
             {moreOpen && (
               <div style={dropPanel}>
-                <div style={sectionLabel}>Drawing Prompts</div>
-                {humanLinks.map(link => (
+                <div style={sectionLabel}>Prompt Categories</div>
+                {categoryLinks.map(link => (
                   <Link key={link.href} href={link.href}
                     onClick={() => setMoreOpen(false)}
-                    style={dropLink(pathname === link.href)}>
+                    style={dropLink(pathname === link.href || pathname.startsWith(link.href))}>
                     {link.label}
                   </Link>
                 ))}
@@ -377,16 +379,16 @@ export default function Nav() {
 
               <div style={{ height: 1, background: "var(--border)", margin: "8px 4px" }} />
 
-              {/* More Tools */}
+              {/* Categories */}
               <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", padding: "8px 8px 4px" }}>
-                More Tools
+                Categories
               </div>
-              {humanLinks.map(link => (
+              {categoryLinks.map(link => (
                 <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)} style={{
                   display: "block", padding: "11px 10px", borderRadius: 10, fontSize: 15,
-                  fontWeight: pathname === link.href ? 600 : 400,
-                  color: pathname === link.href ? "var(--text-primary)" : "var(--text-secondary)",
-                  background: pathname === link.href ? "var(--bg-warm)" : "transparent",
+                  fontWeight: pathname === link.href || pathname.startsWith(link.href) ? 600 : 400,
+                  color: pathname === link.href || pathname.startsWith(link.href) ? "var(--text-primary)" : "var(--text-secondary)",
+                  background: pathname === link.href || pathname.startsWith(link.href) ? "var(--bg-warm)" : "transparent",
                   textDecoration: "none", marginBottom: 2,
                 }}>
                   {link.label}

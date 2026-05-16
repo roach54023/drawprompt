@@ -387,9 +387,9 @@ function DailyPromptView({ post, slug }: { post: NonNullable<ReturnType<typeof g
 
       {/* Internal links */}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 36 }}>
-        <Link href="/drawing-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Drawing Prompts</Link>
-        <Link href="/daily-challenge" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Today&apos;s Challenge</Link>
-        <Link href="/generator" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Prompt Generator</Link>
+<Link href="/ai-prompts/photography" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Photography Prompts</Link>
+<Link href="/ai-prompts/poster-design" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Poster Design</Link>
+<Link href="/ai-prompts/game-art" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>Game Art</Link>
         <Link href="/gpt-image-2-prompts" style={{ textDecoration: "none", fontSize: 12, padding: "6px 14px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text-secondary)" }}>AI Prompts</Link>
       </div>
 

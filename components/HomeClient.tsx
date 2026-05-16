@@ -9,7 +9,6 @@ import {
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
-import PromptDetailModal from "@/components/PromptDetailModal";
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -36,29 +35,19 @@ export default function HomeClient({
   featured,
   feedPrompts,
   categories,
+  categorySlugs,
 }: {
   featured: AIPrompt[];
   feedPrompts: AIPrompt[];
   categories: CategoryInfo[];
+  categorySlugs: Record<string, string>;
 }) {
   const router = useRouter();
   const [heroInput, setHeroInput] = useState("");
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [selectedPrompt, setSelectedPrompt] = useState<AIPrompt | null>(null);
 
   const handleHeroGenerate = () => {
     if (!heroInput.trim()) return;
     router.push(`/generate?prompt=${encodeURIComponent(heroInput.trim())}`);
-  };
-
-  const handleCopy = async (prompt: AIPrompt) => {
-    try {
-      await navigator.clipboard.writeText(prompt.prompt);
-      setCopiedId(prompt.id);
-      setTimeout(() => setCopiedId(null), 2000);
-    } catch {
-      /* fallback */
-    }
   };
 
   return (
@@ -277,7 +266,7 @@ export default function HomeClient({
         {/* Masonry / waterfall layout — images keep natural aspect ratio */}
         <div className="feed-masonry">
           {feedPrompts.map((prompt) => (
-            <FeedCard key={prompt.id} prompt={prompt} copied={copiedId === prompt.id} onCopy={() => handleCopy(prompt)} categories={categories} />
+            <FeedCard key={prompt.id} prompt={prompt} categories={categories} />
           ))}
         </div>
 
@@ -303,7 +292,7 @@ export default function HomeClient({
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))", gap: 12 }}>
           {categories.map((cat) => (
-            <CategoryCard key={cat.id} category={cat} />
+            <CategoryCard key={cat.id} category={cat} slug={categorySlugs[cat.id]} />
           ))}
         </div>
       </section>
@@ -385,7 +374,7 @@ export default function HomeClient({
               { href: "/how-to-use-gpt-image-2", title: "How to Use GPT Image 2", desc: "Step-by-step guide to writing effective prompts for OpenAI\u2019s latest image model.", color: "#5a9e7a", bg: "#eef6f2", border: "#b8dcc8" },
               { href: "/chatgpt-photo-prompts", title: "ChatGPT Photo Prompts", desc: "Photorealistic prompts crafted for ChatGPT\u2019s image generation — portraits, products, and more.", color: "#7b9eb8", bg: "#eef4f8", border: "#c8dce8" },
               { href: "/generate", title: "Generate AI Images", desc: "Type a prompt and create images instantly with GPT Image 2 — 1 free credit, no card needed.", color: "#b8924a", bg: "#fdf8e8", border: "#e8d8a8" },
-              { href: "/drawing-prompts", title: "Drawing Prompts", desc: "Traditional art inspiration for sketching, painting, and illustration at every skill level.", color: "#c47ab8", bg: "#faf0f8", border: "#e8c0e0" },
+              { href: "/ai-prompts/film-cinematic", title: "Film & Cinematic Prompts", desc: "Generate cinematic stills, movie scenes, and film-inspired compositions with AI.", color: "#c47ab8", bg: "#faf0f8", border: "#e8c0e0" },
               { href: "/chibi-prompt", title: "Chibi Prompt", desc: "5 viral chibi styles — turn your photo into adorable 3D mini characters with one click.", color: "#7c3aed", bg: "#ede9fe", border: "#c4b5fd" },
               { href: "/mothers-day", title: "Mother's Day Poster Templates", desc: "4 curated poster designs to generate gallery-quality art prints for Mom — pick a template, upload your photo.", color: "#e06088", bg: "#fef0f4", border: "#f0b8c8" },
             ].map((item) => (
@@ -430,20 +419,12 @@ export default function HomeClient({
         </a>
       </div>
 
-      {/* Modal */}
-      {selectedPrompt && (
-        <PromptDetailModal
-          prompt={selectedPrompt}
-          catInfo={categories.find((c) => c.id === selectedPrompt.category)}
-          onClose={() => setSelectedPrompt(null)}
-        />
-      )}
     </div>
   );
 }
 
 // ─── FeedCard — masonry card with natural image height ───────────────────────
-function FeedCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; categories: CategoryInfo[] }) {
+function FeedCard({ prompt, categories }: { prompt: AIPrompt; categories: CategoryInfo[] }) {
   const catInfo = categories.find((c) => c.id === prompt.category);
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -469,46 +450,17 @@ function FeedCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; co
         <h3 style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
           {prompt.title}
         </h3>
-        {/* Buttons — always visible */}
-        <div style={{ display: "flex", gap: 6 }}>
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCopy(); }}
-            style={{
-              padding: "5px 10px", borderRadius: 6, border: "1px solid var(--border)",
-              background: copied ? "#eef6f2" : "var(--surface)", color: copied ? "#5a9e7a" : "var(--text-secondary)",
-              fontSize: 11, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, transition: "all 0.15s",
-            }}
-          >
-            {copied ? (
-              <>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
-                Copied!
-              </>
-            ) : (
-              <>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                </svg>
-                Copy
-              </>
-            )}
-          </button>
-          <Link
-            href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
-            onClick={(e) => e.stopPropagation()}
-            style={{ padding: "5px 10px", borderRadius: 6, border: "none", background: "var(--accent)", color: "#fff", fontSize: 11, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}
-          >
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-            Generate
-          </Link>
-        </div>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 11, fontWeight: 600, color: "var(--text-secondary)" }}>
+          View Details
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+        </span>
       </div>
     </Link>
   );
 }
 
 // ─── FeaturedPromptCard (links to detail page) ──────────────────────────────
-function FeaturedPromptCard({ prompt, copied, onCopy, categories }: { prompt: AIPrompt; copied: boolean; onCopy: () => void; categories: CategoryInfo[] }) {
+function FeaturedPromptCard({ prompt, categories }: { prompt: AIPrompt; categories: CategoryInfo[] }) {
   const catInfo = categories.find((c) => c.id === prompt.category);
   const truncatedPrompt = prompt.prompt.length > 110 ? prompt.prompt.slice(0, 110).trimEnd() + "\u2026" : prompt.prompt;
 
@@ -545,41 +497,11 @@ function FeaturedPromptCard({ prompt, copied, onCopy, categories }: { prompt: AI
         <p className="prompt-text-preview">{truncatedPrompt}</p>
 
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
-          <button
-            onClick={(e) => { e.stopPropagation(); onCopy(); }}
-            className={`btn-ghost ${copied ? "copy-success" : ""}`}
-            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500, minWidth: 80 }}
-          >
-            {copied ? (
-              <>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5a9e7a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
-                Copied!
-              </>
-            ) : (
-              <>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                </svg>
-                Copy
-              </>
-            )}
-          </button>
-          <Link
-            href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
-            onClick={(e) => { e.stopPropagation(); }}
-            className="btn-ghost"
-            style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500, textDecoration: "none", color: "#c06a3e" }}
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-            </svg>
-            Generate
-          </Link>
           <span
             className="btn-ghost"
             style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 14px", fontSize: 12, fontWeight: 500 }}
           >
-            Details
+            View Details
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
           </span>
         </div>
@@ -589,10 +511,10 @@ function FeaturedPromptCard({ prompt, copied, onCopy, categories }: { prompt: AI
 }
 
 // ─── CategoryCard ────────────────────────────────────────────────────────────
-function CategoryCard({ category }: { category: CategoryInfo }) {
+function CategoryCard({ category, slug }: { category: CategoryInfo; slug: string }) {
   return (
     <Link
-      href={`/ai-prompts?category=${category.id}`}
+      href={`/ai-prompts/${slug}`}
       className="card"
       style={{ display: "flex", alignItems: "center", gap: 16, padding: "20px 24px", textDecoration: "none", transition: "box-shadow 0.2s, border-color 0.2s, transform 0.2s" }}
     >

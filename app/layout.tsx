@@ -181,17 +181,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     marginBottom: 16,
                   }}
                 >
-                  Tools
+                  Categories
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  <Link href="/generator" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
-                    Drawing Generator
+                  <Link href="/ai-prompts/photography" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Photography
                   </Link>
-                  <Link href="/random" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
-                    Random Prompt
+                  <Link href="/ai-prompts/character-design" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Character Design
                   </Link>
-                  <Link href="/daily-challenge" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
-                    Daily Challenge
+                  <Link href="/ai-prompts/poster-design" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Poster Design
+                  </Link>
+                  <Link href="/ai-prompts/game-art" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Game Art
+                  </Link>
+                  <Link href="/ai-prompts/product-photography" style={{ fontSize: 13, color: "var(--text-on-dark-2)", textDecoration: "none" }}>
+                    Product Photography
                   </Link>
                 </div>
               </div>

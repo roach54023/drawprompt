@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllArticleSlugs } from "@/lib/blogData";
 import { aiPrompts } from "@/lib/aiPromptData";
+import { categoryContent } from "@/lib/categoryContent";
 
 const BASE = "https://drawprompt.org";
 
@@ -70,12 +71,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${BASE}/drawing-prompts/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
       url: `${BASE}/how-to-use-gpt-image-2/`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -83,62 +78,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // ── Drawing generator & tools ────────────────────────────────────
+  // ── Category landing pages ─────────────────────────────────────
+  const categoryPages: MetadataRoute.Sitemap = Object.values(categoryContent).map((cat) => ({
+    url: `${BASE}/ai-prompts/${cat.slug}/`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
+  // ── Utility & info pages ────────────────────────────────────────
   const toolPages: MetadataRoute.Sitemap = [
-    {
-      url: `${BASE}/generator/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE}/random/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE}/daily-challenge/`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE}/character/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${BASE}/anime/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${BASE}/for-kids/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${BASE}/oc/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${BASE}/custom/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${BASE}/gallery/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
     {
       url: `${BASE}/blog/`,
       lastModified: now,
@@ -183,5 +132,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: i === 0 ? 0.6 : 0.4,
   }));
 
-  return [...aiPages, ...toolPages, ...promptPages, ...articlePages, ...blogPages];
+  return [...aiPages, ...categoryPages, ...toolPages, ...promptPages, ...articlePages, ...blogPages];
 }

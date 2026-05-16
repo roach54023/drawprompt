@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HomeClient from "@/components/HomeClient";
 import { getFeaturedAIPrompts, categories, aiPrompts } from "@/lib/aiPromptData";
+import { categoryContent } from "@/lib/categoryContent";
 
 /* ── BreadcrumbList JSON-LD for homepage ─────────────────────── */
 const breadcrumbJsonLd = {
@@ -114,6 +115,13 @@ export default function HomePage() {
   // Featured prompts for hero showcase + larger feed for the gallery section
   const featured = getFeaturedAIPrompts(6);
   const feedPrompts = getHomeFeedPrompts(24);
+
+  // Build category → slug mapping for client-side links
+  const categorySlugs: Record<string, string> = {};
+  for (const [id, content] of Object.entries(categoryContent)) {
+    categorySlugs[id] = content.slug;
+  }
+
   return (
     <>
       <script
@@ -124,7 +132,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <HomeClient featured={featured} feedPrompts={feedPrompts} categories={categories} />
+      <HomeClient featured={featured} feedPrompts={feedPrompts} categories={categories} categorySlugs={categorySlugs} />
     </>
   );
 }

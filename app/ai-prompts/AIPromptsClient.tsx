@@ -33,9 +33,10 @@ interface Props {
   allPrompts: PromptListItem[];
   categories: CategoryInfo[];
   totalCount: number;
+  categorySlugs: Record<string, string>; // categoryId → URL slug
 }
 
-export default function AIPromptsClient({ allPrompts, categories, totalCount }: Props) {
+export default function AIPromptsClient({ allPrompts, categories, totalCount, categorySlugs }: Props) {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -144,9 +145,9 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
           {categories.map((cat) => {
             const active = activeCategory === cat.id;
             return (
-              <button
+              <Link
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                href={`/ai-prompts/${categorySlugs[cat.id]}`}
                 style={{
                   padding: "8px 18px",
                   borderRadius: "var(--radius-md)",
@@ -158,10 +159,11 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
                   cursor: "pointer",
                   transition: "all 0.15s",
                   letterSpacing: "0.01em",
+                  textDecoration: "none",
                 }}
               >
                 {cat.label}
-              </button>
+              </Link>
             );
           })}
         </div>
