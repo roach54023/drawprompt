@@ -1,15 +1,13 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  type AIPrompt,
   type AIPromptCategory,
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
-import PromptDetailModal from "@/components/PromptDetailModal";
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -80,27 +78,31 @@ const TIPS = [
 
 const PAGE_SIZE = 12;
 
+/** Slim prompt shape — only fields needed for the list card */
+export interface GPTPromptListItem {
+  id: string;
+  slug: string;
+  title: string;
+  category: AIPromptCategory;
+  imageUrl: string;
+  imageAlt: string;
+  aiModels: AIModel[];
+}
+
 interface Props {
-  allPrompts: AIPrompt[];
+  allPrompts: GPTPromptListItem[];
   availableCategories: CategoryInfo[];
   totalCount: number;
 }
 
 export default function GPTImage2Client({ allPrompts, availableCategories, totalCount }: Props) {
   const [activeCategory, setActiveCategory] = useState<"all" | AIPromptCategory>("all");
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-  const filteredPrompts = useMemo(() => {
-    if (activeCategory === "all") return allPrompts;
-    return allPrompts.filter((p) => p.category === activeCategory)
-      .sort((a, b) => {
-        const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-        const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-        return db - da;
-      });
-  }, [activeCategory, allPrompts]);
+  const filteredPrompts =
+    activeCategory === "all"
+      ? allPrompts
+      : allPrompts.filter((p) => p.category === activeCategory);
 
   const visiblePrompts = filteredPrompts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPrompts.length;
@@ -131,16 +133,6 @@ export default function GPTImage2Client({ allPrompts, availableCategories, total
     observer.observe(el);
     return () => observer.disconnect();
   }, [loadMore]);
-
-  const handleCopy = async (prompt: AIPrompt) => {
-    try {
-      await navigator.clipboard.writeText(prompt.prompt);
-      setCopiedId(prompt.id);
-      setTimeout(() => setCopiedId(null), 2000);
-    } catch {
-      // Fallback
-    }
-  };
 
   return (
     <div>
@@ -288,7 +280,7 @@ export default function GPTImage2Client({ allPrompts, availableCategories, total
             </h2>
             <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
               {totalCount} prompts across {availableCategories.length} categories.
-              Filter by type, copy any prompt, or click for the full breakdown.
+              Filter by type, click any card for the full prompt and breakdown.
             </p>
           </div>
 
@@ -337,15 +329,43 @@ export default function GPTImage2Client({ allPrompts, availableCategories, total
 
           {/* Gallery — Masonry layout */}
           <div className="feed-masonry">
-            {visiblePrompts.map((prompt) => (
-              <PromptGalleryCard
-                key={prompt.id}
-                prompt={prompt}
-                copied={copiedId === prompt.id}
-                onCopy={() => handleCopy(prompt)}
-                categories={availableCategories}
-              />
-            ))}
+            {visiblePrompts.map((prompt) => {
+              const catInfo = availableCategories.find((c) => c.id === prompt.category);
+              return (
+                <Link
+                  key={prompt.id}
+                  href={`/prompts/${prompt.slug}`}
+                  className="feed-card"
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    color: "inherit",
+                    borderRadius: 12,
+                    overflow: "hidden",
+                    background: "#fff",
+                    border: "1px solid var(--border)",
+                    breakInside: "avoid",
+                    marginBottom: 16,
+                  }}
+                >
+                  <FeedImage src={prompt.imageUrl} alt={prompt.imageAlt} models={prompt.aiModels} />
+                  <div style={{ padding: "12px 14px 14px" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+                      <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
+                        {catInfo?.label}
+                      </span>
+                    </div>
+                    <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
+                      {prompt.title}
+                    </h3>
+                    <span style={{ fontSize: 11, fontWeight: 500, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 4 }}>
+                      View prompt
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Infinite scroll sentinel */}
@@ -507,177 +527,65 @@ export default function GPTImage2Client({ allPrompts, availableCategories, total
           Browse All AI Prompts
         </Link>
       </div>
-
-      {/* Modal for prompts without detail page */}
-      {modalPrompt && (
-        <PromptDetailModal
-          prompt={modalPrompt}
-          catInfo={availableCategories.find((c) => c.id === modalPrompt.category)}
-          onClose={() => setModalPrompt(null)}
-        />
-      )}
     </div>
   );
 }
 
-function PromptGalleryCard({
-  prompt,
-  copied,
-  onCopy,
-  categories,
-}: {
-  prompt: AIPrompt;
-  copied: boolean;
-  onCopy: () => void;
-  categories: CategoryInfo[];
-}) {
-  const catInfo = categories.find((c) => c.id === prompt.category);
-
-  const handleCopyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onCopy();
-  };
-
-  const [imgLoaded, setImgLoaded] = useState(false);
-
-  const content = (
-    <>
-      <div
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          lineHeight: 0,
-          background: "var(--bg-warm)",
-          ...(imgLoaded ? {} : { aspectRatio: "4 / 3" }),
-          transition: "aspect-ratio 0.3s ease",
-        }}
-      >
-        <Image
-          src={prompt.imageUrl}
-          alt={prompt.imageAlt}
-          width={600}
-          height={400}
-          style={{
-            width: "100%",
-            height: imgLoaded ? "auto" : "100%",
-            objectFit: imgLoaded ? undefined : "cover",
-            display: "block",
-            transition: "height 0.3s ease, opacity 0.4s ease",
-            opacity: imgLoaded ? 1 : 0.6,
-          }}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          loading="lazy"
-          onLoad={() => setImgLoaded(true)}
-        />
-        {/* Model badges on image */}
-        <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
-          {prompt.aiModels.map((model) => {
-            const m = MODEL_DISPLAY[model];
-            return (
-              <span
-                key={model}
-                style={{
-                  padding: "3px 8px",
-                  borderRadius: 5,
-                  fontSize: 10,
-                  fontWeight: 600,
-                  color: "#fff",
-                  background: "rgba(0,0,0,0.5)",
-                  backdropFilter: "blur(6px)",
-                  WebkitBackdropFilter: "blur(6px)",
-                }}
-              >
-                {m.label}
-              </span>
-            );
-          })}
-        </div>
-      </div>
-      {/* Card body */}
-      <div style={{ padding: "12px 14px 14px" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
-            {catInfo?.label}
-          </span>
-        </div>
-        <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
-          {prompt.title}
-        </h3>
-        {/* Buttons — always visible */}
-        <div style={{ display: "flex", gap: 6 }}>
-          <button
-            onClick={handleCopyClick}
-            style={{
-              padding: "6px 12px",
-              borderRadius: 6,
-              border: "1px solid var(--border)",
-              background: copied ? "#eef6f2" : "var(--surface)",
-              color: copied ? "#5a9e7a" : "var(--text-secondary)",
-              fontSize: 11,
-              fontWeight: 600,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              transition: "all 0.15s",
-            }}
-          >
-            {copied ? (
-              <>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
-                Copied!
-              </>
-            ) : (
-              <>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                </svg>
-                Copy
-              </>
-            )}
-          </button>
-          <Link
-            href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              padding: "6px 12px",
-              borderRadius: 6,
-              border: "none",
-              background: "var(--accent)",
-              color: "#fff",
-              fontSize: 11,
-              fontWeight: 600,
-              textDecoration: "none",
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-            }}
-          >
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-            Generate
-          </Link>
-        </div>
-      </div>
-    </>
-  );
-
-  const cardStyle = {
-    display: "block" as const,
-    textDecoration: "none" as const,
-    color: "inherit" as const,
-    cursor: "pointer" as const,
-    borderRadius: 12,
-    overflow: "hidden" as const,
-    background: "#fff",
-    border: "1px solid var(--border)",
-    breakInside: "avoid" as const,
-    marginBottom: 16,
-  };
+// ─── FeedImage — fixed placeholder, switch to real aspect ratio on load ──────
+function FeedImage({ src, alt, models }: { src: string; alt: string; models: AIModel[] }) {
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <Link href={`/prompts/${prompt.slug}`} className="feed-card" style={cardStyle}>
-      {content}
-    </Link>
+    <div
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        lineHeight: 0,
+        background: "var(--bg-warm)",
+        ...(loaded ? {} : { aspectRatio: "4 / 3" }),
+        transition: "aspect-ratio 0.3s ease",
+      }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={600}
+        height={400}
+        style={{
+          width: "100%",
+          height: loaded ? "auto" : "100%",
+          objectFit: loaded ? undefined : "cover",
+          display: "block",
+          transition: "height 0.3s ease, opacity 0.4s ease",
+          opacity: loaded ? 1 : 0.6,
+        }}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+      />
+      {/* Model badges */}
+      <div style={{ position: "absolute", top: 8, left: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
+        {models.map((model) => {
+          const m = MODEL_DISPLAY[model];
+          return (
+            <span
+              key={model}
+              style={{
+                padding: "3px 8px",
+                borderRadius: 5,
+                fontSize: 10,
+                fontWeight: 600,
+                color: "#fff",
+                background: "rgba(0,0,0,0.5)",
+                backdropFilter: "blur(6px)",
+                WebkitBackdropFilter: "blur(6px)",
+              }}
+            >
+              {m.label}
+            </span>
+          );
+        })}
+      </div>
+    </div>
   );
 }

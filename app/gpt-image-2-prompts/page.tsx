@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { aiPrompts, categories } from "@/lib/aiPromptData";
-import GPTImage2Client from "./GPTImage2Client";
+import GPTImage2Client, { type GPTPromptListItem } from "./GPTImage2Client";
 
 /**
  * Sort by createdAt descending, then interleave categories for variety.
@@ -34,12 +34,23 @@ function sortAndInterleave(prompts: typeof aiPrompts) {
   return result;
 }
 
-const gptImage2Prompts = sortAndInterleave(
+const gptImage2PromptsFull = sortAndInterleave(
   aiPrompts.filter((p) => p.aiModels.includes("gpt-image-2"))
 );
 const availableCategories = categories.filter((c) =>
-  gptImage2Prompts.some((p) => p.category === c.id)
+  gptImage2PromptsFull.some((p) => p.category === c.id)
 );
+
+/** Only pass the fields the list view needs — keeps RSC payload small */
+const gptImage2Prompts: GPTPromptListItem[] = gptImage2PromptsFull.map((p) => ({
+  id: p.id,
+  slug: p.slug,
+  title: p.title,
+  category: p.category,
+  imageUrl: p.imageUrl,
+  imageAlt: p.imageAlt,
+  aiModels: p.aiModels,
+}));
 
 /* ── FAQ JSON-LD for rich snippets ──────────────────────────── */
 const faqJsonLd = {

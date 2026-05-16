@@ -4,12 +4,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  type AIPrompt,
   type AIPromptCategory,
   type AIModel,
   type CategoryInfo,
 } from "@/lib/aiPromptData";
-import PromptDetailModal from "@/components/PromptDetailModal";
 
 const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string }> = {
   "gpt-image-2": { label: "GPT Image 2", color: "#c06a3e", bg: "#fdf0e8" },
@@ -20,28 +18,31 @@ const MODEL_DISPLAY: Record<AIModel, { label: string; color: string; bg: string 
 
 const PAGE_SIZE = 12;
 
+/** Slim prompt shape — only fields needed for the list card */
+export interface PromptListItem {
+  id: string;
+  slug: string;
+  title: string;
+  category: AIPromptCategory;
+  imageUrl: string;
+  imageAlt: string;
+  aiModels: AIModel[];
+}
+
 interface Props {
-  allPrompts: AIPrompt[];       // pre-sorted & interleaved from server
+  allPrompts: PromptListItem[];
   categories: CategoryInfo[];
   totalCount: number;
 }
 
 export default function AIPromptsClient({ allPrompts, categories, totalCount }: Props) {
   const [activeCategory, setActiveCategory] = useState<AIPromptCategory | "all">("all");
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [modalPrompt, setModalPrompt] = useState<AIPrompt | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const filtered =
     activeCategory === "all"
       ? allPrompts
-      : allPrompts
-          .filter((p) => p.category === activeCategory)
-          .sort((a, b) => {
-            const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-            const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-            return db - da;
-          });
+      : allPrompts.filter((p) => p.category === activeCategory);
 
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
@@ -51,7 +52,7 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
     setVisibleCount(PAGE_SIZE);
   }, [activeCategory]);
 
-  // Infinite scroll via IntersectionObserver (with throttle protection)
+  // Infinite scroll via IntersectionObserver (with throttle)
   const sentinelRef = useRef<HTMLDivElement>(null);
   const loadingRef = useRef(false);
 
@@ -59,7 +60,6 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
     if (!hasMore || loadingRef.current) return;
     loadingRef.current = true;
     setVisibleCount((c) => c + PAGE_SIZE);
-    // Throttle: prevent rapid-fire triggers
     setTimeout(() => { loadingRef.current = false; }, 100);
   }, [hasMore]);
 
@@ -73,18 +73,6 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
     observer.observe(el);
     return () => observer.disconnect();
   }, [loadMore]);
-
-  const handleCopy = async (prompt: AIPrompt, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(prompt.prompt);
-      setCopiedId(prompt.id);
-      setTimeout(() => setCopiedId(null), 2000);
-    } catch {
-      // clipboard unavailable
-    }
-  };
 
   return (
     <div>
@@ -202,7 +190,6 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
         <div className="feed-masonry">
           {visible.map((prompt) => {
             const catInfo = categories.find((c) => c.id === prompt.category);
-            const copied = copiedId === prompt.id;
 
             return (
               <Link
@@ -222,60 +209,11 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
                   <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
                     {prompt.title}
                   </h3>
-                  {/* Buttons — always visible */}
-                  <div style={{ display: "flex", gap: 6 }}>
-                    <button
-                      onClick={(e) => handleCopy(prompt, e)}
-                      style={{
-                        padding: "6px 12px",
-                        borderRadius: 6,
-                        border: "1px solid var(--border)",
-                        background: copied ? "#eef6f2" : "var(--surface)",
-                        color: copied ? "#5a9e7a" : "var(--text-secondary)",
-                        fontSize: 11,
-                        fontWeight: 600,
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
-                        transition: "all 0.15s",
-                      }}
-                    >
-                      {copied ? (
-                        <>
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
-                          Copied!
-                        </>
-                      ) : (
-                        <>
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                          </svg>
-                          Copy
-                        </>
-                      )}
-                    </button>
-                    <Link
-                      href={`/generate?prompt=${encodeURIComponent(prompt.prompt)}`}
-                      onClick={(e) => e.stopPropagation()}
-                      style={{
-                        padding: "6px 12px",
-                        borderRadius: 6,
-                        border: "none",
-                        background: "var(--accent)",
-                        color: "#fff",
-                        fontSize: 11,
-                        fontWeight: 600,
-                        textDecoration: "none",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
-                      }}
-                    >
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-                      Generate
-                    </Link>
-                  </div>
+                  {/* View detail hint */}
+                  <span style={{ fontSize: 11, fontWeight: 500, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 4 }}>
+                    View prompt
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  </span>
                 </div>
               </Link>
             );
@@ -302,15 +240,6 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount }: 
           </div>
         )}
       </section>
-
-      {/* Modal for prompts without detail page */}
-      {modalPrompt && (
-        <PromptDetailModal
-          prompt={modalPrompt}
-          catInfo={categories.find((c) => c.id === modalPrompt.category)}
-          onClose={() => setModalPrompt(null)}
-        />
-      )}
     </div>
   );
 }

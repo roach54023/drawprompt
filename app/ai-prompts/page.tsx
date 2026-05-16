@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { aiPrompts, categories } from "@/lib/aiPromptData";
-import AIPromptsClient from "./AIPromptsClient";
+import AIPromptsClient, { type PromptListItem } from "./AIPromptsClient";
 
 /**
  * Sort by createdAt descending, then interleave categories for variety.
@@ -34,7 +34,16 @@ function sortAndInterleave(prompts: typeof aiPrompts) {
   return result;
 }
 
-const allInterleaved = sortAndInterleave(aiPrompts);
+/** Only pass the fields the list view needs — keeps RSC payload small */
+const allInterleaved: PromptListItem[] = sortAndInterleave(aiPrompts).map((p) => ({
+  id: p.id,
+  slug: p.slug,
+  title: p.title,
+  category: p.category,
+  imageUrl: p.imageUrl,
+  imageAlt: p.imageAlt,
+  aiModels: p.aiModels,
+}));
 
 export const metadata: Metadata = {
   title: "AI Image Prompts — 180+ Prompts for GPT Image 2 & Nano Banana 2",
