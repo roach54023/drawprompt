@@ -36,6 +36,12 @@ export interface AIPrompt {
   difficulty: PromptDifficulty;
   imageAlt: string;
   imageUrl: string;
+  /** Additional gallery images — when present, shows a "View Gallery" link */
+  galleryImages?: string[];
+  /** Source tweet URL (for attribution) */
+  sourceUrl?: string;
+  /** When true, this prompt is a showcase/专题 — card links to gallery page directly */
+  showcase?: boolean;
   breakdown: {
     subject: string;
     style: string;
@@ -5665,6 +5671,447 @@ Style: photorealistic oil painting, not digital illustration.`,
     ],
     featured: true,
     createdAt: "2026-05-14",
+  },
+  // ─── Twitter Collection 2026-05-17 ────────────────────────────────────────
+  {
+    id: "prompt-182",
+    slug: "premium-brand-identity-system-poster",
+    title: "Premium Brand Identity System Poster",
+    prompt: `Using the uploaded logo, generate a highly detailed, premium brand identity system poster.
+
+GOAL:
+Create a complete, visually rich brand kit that looks like it was made by a top design agency.
+This must feel like a real professional brand guideline board, not a simple mockup.
+
+CORE RULE:
+Everything must be derived from the uploaded logo:
+- colors
+- style
+- tone
+- personality
+
+STRUCTURE (VERY IMPORTANT):
+Vertical 4:5 poster, multi-layered grid system, dense but clean composition.
+
+TOP SECTION:
+- Brand name (clean typography)
+- Short brand statement (max 6 words)
+- 3-word brand identity (e.g. "Modern / Bold / Minimal")
+
+COLOR SYSTEM (ADVANCED):
+- Primary palette (3–5 colors)
+- Secondary palette (3–5 colors)
+- Accent colors
+For each: large color blocks, HEX codes, usage indicators (primary / highlight / background).
+Add: gradient examples, color combinations.
+
+TYPOGRAPHY SYSTEM:
+- Headline font style
+- Subheadline style
+- Body text style
+Show: real text examples (short phrases), hierarchy clearly visible.
+
+VISUAL LANGUAGE:
+Define: image style (editorial, cinematic, minimal, etc.), lighting direction, texture / material inspiration.
+Show: 3–5 visual tiles (image-style previews).
+
+BRAND APPLICATIONS (VERY IMPORTANT):
+Show multiple realistic mockups:
+- product packaging
+- website hero section
+- mobile UI screen
+- social media posts (3 variations)
+- business card
+- billboard or ad
+
+LAYOUT SYSTEM:
+- UI blocks, card components, spacing system
+Show: buttons, cards, layout examples.
+
+ICONOGRAPHY:
+- 6–10 icons in brand style
+- consistent line / fill style
+
+PATTERNS & ELEMENTS:
+- background patterns
+- decorative shapes
+- visual motifs derived from logo
+
+VISUAL STYLE (CRITICAL):
+- modern editorial + tech design hybrid
+- extremely clean but information-rich
+- layered composition, strong hierarchy
+
+DEPTH:
+- 30–50 visual elements total
+- mix of large + small components
+- dense but organized
+
+FINAL FEEL:
+Like a Behance top project, a real agency brand guideline board, something clients would pay for.
+NOT basic, minimal, or template-like.`,
+    category: "poster",
+    tags: ["brand-identity", "design-system", "logo", "branding", "typography", "color-palette", "mockup", "viral"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "advanced",
+    imageAlt: "Premium brand identity system poster with color palette, typography, mockups, and iconography",
+    imageUrl: "/prompts/premium-brand-identity-system-poster.jpg",
+    galleryImages: [
+      "/prompts/premium-brand-identity-system-poster.jpg",
+      "/prompts/premium-brand-identity-system-poster-2.jpg",
+    ],
+    sourceUrl: "https://x.com/Naiknelofar788/status/2050229191841620373",
+    breakdown: {
+      subject: "A complete brand identity system poster derived from an uploaded logo",
+      style: "Modern editorial + tech design hybrid, extremely clean but information-rich, layered composition",
+      lighting: "Clean, professional — even lighting to showcase design elements clearly",
+      composition: "Vertical 4:5, multi-layered grid system with 30–50 visual elements densely organized",
+      details: "Color palette with HEX codes, typography hierarchy, brand applications mockups, iconography, patterns",
+    },
+    tips: [
+      "Upload your own logo first — the AI derives all colors, style, and tone from it",
+      "The prompt demands specific sections (color system, typography, applications) — don't skip any for best results",
+      "121K views on Twitter — this is the #1 most viral GPT Image 2 prompt format for designers",
+      "By @Naiknelofar788 — works best with simple, clean logos",
+    ],
+    featured: true,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-183",
+    slug: "stylized-anime-character-poster",
+    title: "Stylized Anime Character Poster",
+    prompt: `Create a stylized illustration of {character_name} from {franchise}.
+
+Character Analysis:
+Derive the character's core personality archetype based on canon portrayal (e.g., heroic, calm, mysterious, aggressive).
+Identify the signature color from the original design and use it as the primary visual accent.
+
+Pose & Body Language:
+Generate an iconic pose that reflects the personality archetype:
+- Energetic / Heroic: dynamic action, wide stance, explosive movement
+- Calm / Confident: balanced, relaxed posture, minimal motion
+- Dark / Mysterious: low stance, subtle movement, sharp or hidden gaze
+- Aggressive / Intense: forward-leaning attack stance, visible tension, clenched fists
+
+Facial Expression:
+Match expression precisely to the character's personality and emotional tone.
+
+Art Style:
+Anime × streetwear × graphic poster hybrid
+Clean lineart, semi-flat shading, high contrast
+Modern, minimal, and visually striking
+
+Composition:
+Vertical format, off-center subject placement, strong diagonal visual flow, layered depth for a dynamic poster feel.
+
+Outfit Design:
+Reimagine the original costume as modern streetwear / techwear. Preserve recognizable identity elements.
+
+Color Palette:
+Dominant clean white background. Use signature color as the primary accent. Add one secondary accent (complementary or analogous tone). Keep palette minimal, bold, and high-contrast.
+
+Background:
+Abstract geometric poster layout. Use negative space effectively. Integrate subtle accents using the character's color theme.
+
+Effects:
+Energy strokes, paint lines, and motion accents. Effects should follow the character's energy and color identity.
+
+Lighting:
+Sharp directional lighting, crisp shadows, subtle glow using the signature color.
+
+Rendering Quality:
+Ultra-clean vector-style finish, poster-quality composition, 4K resolution, high detail.`,
+    category: "character",
+    tags: ["anime", "character-design", "poster", "streetwear", "vector", "template", "customizable"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "intermediate",
+    imageAlt: "Stylized anime character poster with streetwear redesign on clean white background",
+    imageUrl: "/prompts/stylized-anime-character-poster.jpg",
+    galleryImages: [
+      "/prompts/stylized-anime-character-poster.jpg",
+      "/prompts/stylized-anime-character-poster-2.jpg",
+      "/prompts/stylized-anime-character-poster-3.jpg",
+      "/prompts/stylized-anime-character-poster-4.jpg",
+    ],
+    sourceUrl: "https://x.com/Kashberg_0/status/2051939034470224186",
+    breakdown: {
+      subject: "Any anime character reimagined in streetwear × graphic poster style",
+      style: "Anime × streetwear × graphic poster hybrid with clean lineart and semi-flat shading",
+      lighting: "Sharp directional lighting with crisp shadows and signature color glow",
+      composition: "Vertical format, off-center subject, diagonal visual flow, layered depth",
+      details: "Template-style prompt — replace {character_name} and {franchise} for any character",
+    },
+    tips: [
+      "Replace {character_name} and {franchise} with any anime character — the template adapts automatically",
+      "The 'personality archetype → pose' mapping ensures each character gets a unique treatment",
+      "Works great for creating a series of matching character posters with consistent style",
+      "By @Kashberg_0 — the white background + signature accent color formula is key",
+    ],
+    featured: true,
+    showcase: true,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-184",
+    slug: "minimalist-childrens-illustration-style",
+    title: "Minimalist Children's Illustration Style",
+    prompt: `Transform the photo into a delicate minimalist hand-drawn children's illustration with a soft whimsical fairy-tale aesthetic. Use simple elongated shapes, thin imperfect hand-drawn lines, flat pastel colors, minimal details, and a cute doll-like character style with rosy cheeks, tiny facial features, and simplified anatomy. Add subtle paper texture, soft pencil and pastel shading, watercolor softness, and a clean white background with small stars or sparkles.
+Stylize the clothing in a playful storybook way with simplified shapes and gentle decorative details. The overall mood should feel airy, cozy, naive, and charming, like a modern Scandinavian nursery postcard or children's book illustration. Avoid photorealism, 3D, cinematic lighting, glossy surfaces, complex shadows, realistic anatomy, and hyper-detail.`,
+    category: "poster",
+    tags: ["illustration", "children", "style-transfer", "scandinavian", "pastel", "storybook", "minimalist", "cute"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "beginner",
+    imageAlt: "Minimalist children's illustration in Scandinavian nursery postcard style with pastel colors",
+    imageUrl: "/prompts/minimalist-childrens-illustration-style.jpg",
+    galleryImages: [
+      "/prompts/minimalist-childrens-illustration-style.jpg",
+      "/prompts/minimalist-childrens-illustration-style-2.jpg",
+      "/prompts/minimalist-childrens-illustration-style-3.jpg",
+      "/prompts/minimalist-childrens-illustration-style-4.jpg",
+    ],
+    sourceUrl: "https://x.com/Ciri_ai/status/2055506404455374935",
+    breakdown: {
+      subject: "Photo transformed into a children's book illustration character",
+      style: "Minimalist hand-drawn, flat pastel colors, thin imperfect lines, doll-like characters",
+      lighting: "No cinematic lighting — soft, even, and airy with watercolor softness",
+      composition: "Clean white background with small stars or sparkles, simplified shapes",
+      details: "Paper texture, pencil/pastel shading, rosy cheeks, tiny facial features, simplified anatomy",
+    },
+    tips: [
+      "Upload any portrait photo — the prompt transforms it into a Scandinavian nursery illustration",
+      "The 'Avoid' list at the end is crucial for keeping the style minimal and non-photorealistic",
+      "26K views — parents love using this to create illustrated versions of their kids' photos",
+      "By @Ciri_ai — works best with clear, well-lit portrait photos",
+    ],
+    featured: true,
+    showcase: true,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-185",
+    slug: "crayon-style-drawing-transformation",
+    title: "Crayon-Style Drawing Transformation",
+    prompt: `Please turn the whole image into a crayon-style drawing. Simplify the details so it looks like something a 10-year-old would draw. Don't use the original colors from the photo. Make it look like it's drawn on white paper, with a very cute and playful feel. You can add adorable elements like flowers, candy, stars, clouds, etc., to make it look more childlike and innocent.`,
+    category: "poster",
+    tags: ["crayon", "kids-art", "style-transfer", "cute", "playful", "simple", "drawing"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "beginner",
+    imageAlt: "Photo transformed into a cute crayon-style drawing on white paper with playful decorations",
+    imageUrl: "/prompts/crayon-style-drawing-transformation.jpg",
+    galleryImages: [
+      "/prompts/crayon-style-drawing-transformation.jpg",
+      "/prompts/crayon-style-drawing-transformation-2.jpg",
+    ],
+    sourceUrl: "https://x.com/oggii_0/status/2053693605148336137",
+    breakdown: {
+      subject: "Any photo transformed into a child's crayon drawing",
+      style: "Crayon-style, childlike, simplified details like a 10-year-old's artwork",
+      lighting: "None — flat drawing on white paper, no shadows or complex lighting",
+      composition: "White paper background with added decorative elements (flowers, stars, clouds)",
+      details: "Non-original colors, cute add-ons (candy, stars), playful and innocent feel",
+    },
+    tips: [
+      "The simplicity of this prompt is its strength — keep it short and let GPT Image 2 interpret",
+      "Specifying '10-year-old' level sets the right abstraction (not too simple, not too detailed)",
+      "'Don't use original colors' ensures a creative reinterpretation rather than a trace",
+      "By @oggii_0 — 22K views, pair it with pet photos for maximum cuteness",
+    ],
+    featured: false,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-186",
+    slug: "chibi-clone-sticker-diary-photo",
+    title: "Chibi Clone Sticker Diary Photo",
+    prompt: `Create a high-quality "chibi clone sticker diary photo" based on the uploaded real-life image. Preserve the original person's identity, face, hairstyle, hair color, outfit, body proportions, pose, lighting, and background. Do not alter facial features or turn the subject into a full illustration—maintain a realistic photo look.
+
+Analyze the scene as a fitness/running lifestyle moment. Add 5–8 chibi mini clones of the same person around the subject, designed in a consistent kawaii sticker style (big head, small body, large expressive eyes, clean digital finish). Each clone must clearly resemble the real person (same hair, outfit, colors).
+
+Design each chibi with different running-related actions and emotions: jogging, stretching, drinking water, feeling tired, cheering, giving thumbs up, celebrating completion. Ensure all poses are unique and contextually relevant.
+
+Render each chibi as a sticker with white outlines, soft shadows, and a slightly floating effect. Arrange them around the subject and edges without covering the face or main body.
+
+Add light hand-drawn doodles (hearts, sparkles, arrows, motion lines, circles) in white with subtle pink accents, keeping a clean scrapbook diary feel.
+
+Include 5–8 short handwritten-style phrases matching a fitness mood (cute, energetic, encouraging). Use mostly white text with slight pink highlights and small decorative marks.
+
+Composition: keep the real person as the central focus, surrounded by chibi stickers and doodles. The result should feel like a polished, playful, high-resolution social media lifestyle diary image—clean, balanced, and visually rich without clutter.`,
+    category: "character",
+    tags: ["chibi", "sticker", "kawaii", "lifestyle", "diary", "photo-edit", "social-media", "viral", "cute"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "intermediate",
+    imageAlt: "Real photo with chibi mini-clone stickers of the same person arranged around the subject",
+    imageUrl: "/prompts/chibi-clone-sticker-diary-photo.jpg",
+    galleryImages: [
+      "/prompts/chibi-clone-sticker-diary-photo.jpg",
+      "/prompts/chibi-clone-sticker-diary-photo-2.jpg",
+    ],
+    sourceUrl: "https://x.com/Kashberg_0/status/2050922155676930544",
+    breakdown: {
+      subject: "Real person photo augmented with chibi mini-clones of the same person",
+      style: "Kawaii sticker style — big head, small body, large expressive eyes, clean digital finish",
+      lighting: "Preserved from original photo — chibis have soft shadows and floating effect",
+      composition: "Central real person surrounded by 5–8 chibis, doodles, and handwritten phrases",
+      details: "White outlines on stickers, hand-drawn doodles, scrapbook diary aesthetic, pink accents",
+    },
+    tips: [
+      "Upload a clear full-body photo — the AI needs to see your outfit and pose to create matching chibis",
+      "Change 'fitness/running' to any theme (cooking, studying, traveling) for different chibi actions",
+      "69K views — this is one of the most viral GPT Image 2 creative formats",
+      "By @Kashberg_0 — the key is 'preserve the realistic photo' while adding illustrated stickers",
+    ],
+    featured: true,
+    showcase: true,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-187",
+    slug: "encyclopedia-style-educational-infographic",
+    title: "Encyclopedia-Style Educational Infographic",
+    prompt: `Create a high-quality vertical encyclopedia-style educational infographic titled: "THE MANTIS SHRIMP — Nature's Most Dangerous Fist"
+
+Subject: Peacock Mantis Shrimp (Odontodactylus scyllarus)
+
+Overall style: Premium natural history field guide crossed with a modern editorial science magazine. Clean cream/off-white background. Soft teal, coral, and gold accent palette. Gentle drop shadows on all panels. Small refined line icons. Rounded corner information boxes. High information density without feeling crowded. Feels like a collectible reference card from a scientific journal series.
+
+—— LAYOUT STRUCTURE (top to bottom) ——
+
+[HEADER BLOCK]
+Large elegant serif title: "MANTIS SHRIMP"
+Subtitle: "Odontodactylus scyllarus · Stomatopoda"
+Small tagline badge: "The Ocean's Most Extraordinary Hunter"
+Classification strip: Kingdom → Animalia | Phylum → Arthropoda | Class → Malacostraca | Order → Stomatopoda
+
+[MAIN HERO IMAGE]
+One hyper-detailed full-color illustration of a Peacock Mantis Shrimp in dramatic three-quarter profile view, raptorial claws extended. Iridescent full-spectrum coloring. Scientifically accurate, illustration style similar to a Smithsonian field guide plate.
+
+[ANATOMY ZOOM PANELS — 3 circular close-up detail sections]
+① Raptorial Dactyl Club — cross-section showing helicoidal fiber impact-absorbing structure, labeled: "Hits with the force of a .22 caliber bullet"
+② Compound Eye — showing 16 photoreceptor types illustrated in spectrum bands, labeled: "Sees UV, infrared, and polarized light simultaneously"
+③ Telson Shield — the armored tail plate used to block rival strikes, labeled: "Natural ballistic shield"
+
+[QUICK STATS CARD — horizontal strip]
+Icons + numbers in small rounded tiles:
+• Strike Speed: 23 m/s (0.002 seconds)
+• Strike Force: 1,500 Newtons
+• Color Vision: 16 color channels (humans: 3)
+• Lifespan: 20+ years
+• Size: 2–7 inches
+• Habitat Depth: 1–30 meters
+
+[SUPERPOWER INDEX — visual scoring module]
+Vertical bar or radial chart rating 6 abilities out of 10:
+Strike Power 10/10
+Vision Range 10/10
+Armor Defense 8/10
+Camouflage 7/10
+Intelligence 6/10
+Speed 9/10`,
+    category: "infographic",
+    tags: ["encyclopedia", "educational", "natural-history", "infographic", "science", "field-guide", "data-viz", "viral"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "advanced",
+    imageAlt: "Encyclopedia-style infographic about the Mantis Shrimp with anatomy panels and stats",
+    imageUrl: "/prompts/encyclopedia-style-educational-infographic.jpg",
+    galleryImages: [
+      "/prompts/encyclopedia-style-educational-infographic.jpg",
+      "/prompts/encyclopedia-style-educational-infographic-2.jpg",
+      "/prompts/encyclopedia-style-educational-infographic-3.jpg",
+      "/prompts/encyclopedia-style-educational-infographic-4.jpg",
+    ],
+    sourceUrl: "https://x.com/Ciri_ai/status/2052005067730120896",
+    breakdown: {
+      subject: "Peacock Mantis Shrimp presented as a premium natural history field guide",
+      style: "Natural history field guide × modern editorial science magazine, cream background",
+      lighting: "Clean, even illustration lighting — no dramatic shadows, scientific accuracy focus",
+      composition: "Vertical layout: header → hero illustration → anatomy panels → stats → ability chart",
+      details: "Teal/coral/gold palette, rounded info boxes, line icons, drop shadows, serif typography",
+    },
+    tips: [
+      "Replace 'Mantis Shrimp' with ANY animal/plant/phenomenon — the layout template works universally",
+      "The prompt's section-by-section structure (HEADER → HERO → ANATOMY → STATS) is what makes it work",
+      "The more specific your data (numbers, Latin names, measurements), the more realistic the result",
+      "By @Ciri_ai — the 'Superpower Index' radial chart is what makes it engaging and shareable",
+    ],
+    featured: true,
+    showcase: true,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-188",
+    slug: "social-media-influencer-card",
+    title: "Social Media Influencer Card",
+    prompt: `Create a 3D floating cityscape influencer card with the following elements:
+- A person standing confidently in the center of the frame
+- 3D miniature city buildings floating around and behind the subject
+- Large neon-glowing typography with the person's name/handle
+- Instagram-style follower count and engagement stats overlaid
+- Golden hour warm lighting with dramatic lens flare
+- Cinematic depth of field — subject sharp, background softly blurred
+- Social media icons (Instagram, YouTube, TikTok) as floating 3D elements
+- Color palette: warm golds, deep purples, electric blues
+- Overall mood: aspirational, modern, premium personal branding`,
+    category: "poster",
+    tags: ["social-media", "influencer", "personal-branding", "3d", "neon", "cityscape", "card"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "intermediate",
+    imageAlt: "3D influencer card with floating cityscape and neon typography",
+    imageUrl: "/prompts/social-media-influencer-card.jpg",
+    sourceUrl: "https://x.com/HaniaAi12/status/2055919233327051040",
+    breakdown: {
+      subject: "Person as the central figure in an influencer branding card",
+      style: "3D floating elements, neon glow, cinematic personal branding aesthetic",
+      lighting: "Golden hour warm lighting with dramatic lens flare and neon accents",
+      composition: "Center-focused subject with 3D miniature city and floating social icons around",
+      details: "Follower stats overlay, warm golds/deep purples/electric blues palette, aspirational mood",
+    },
+    tips: [
+      "Upload your own photo for personalized results — the AI will integrate you into the scene",
+      "Change the social media icons and stats to match your actual platforms",
+      "The '3D floating cityscape' element is what gives it that premium creative agency look",
+      "By @HaniaAi12 — great for social media profile headers and media kits",
+    ],
+    featured: false,
+    createdAt: "2026-05-17",
+  },
+  {
+    id: "prompt-189",
+    slug: "sports-fan-photo-enhancement",
+    title: "Sports Fan Photo Enhancement",
+    prompt: `Transform the uploaded photo into a professional sports fan portrait:
+- Place the subject in a basketball arena/court environment
+- Dress them in team jersey (e.g., Chicago Bulls red #23)
+- Add realistic crowd atmosphere in the background with arena lighting
+- Dramatic sports photography lighting — overhead spots with rim light
+- Motion blur on background elements to suggest energy and movement
+- Slight sweat/glow effect on skin for realism
+- Team colors dominating the palette
+- Candid action pose feel — as if caught mid-celebration
+- ESPN broadcast quality photography style
+- Sharp focus on subject with bokeh on crowd behind`,
+    category: "photography",
+    tags: ["sports", "basketball", "fan-photo", "photo-enhancement", "arena", "portrait", "action"],
+    aiModels: ["gpt-image-2"],
+    difficulty: "beginner",
+    imageAlt: "Sports fan portrait with basketball arena atmosphere and team jersey",
+    imageUrl: "/prompts/sports-fan-photo-enhancement.jpg",
+    sourceUrl: "https://x.com/HaniaAi12/status/2055544968291426761",
+    breakdown: {
+      subject: "Person transformed into a sports fan in an arena environment",
+      style: "ESPN broadcast quality sports photography with dramatic arena lighting",
+      lighting: "Overhead sports arena spots with rim light and background bokeh",
+      composition: "Center subject with blurred crowd behind, candid celebration pose",
+      details: "Team jersey, sweat/glow effect, motion blur background, team color palette",
+    },
+    tips: [
+      "Change 'Chicago Bulls' to any team — works with any sport (soccer, football, cricket)",
+      "Upload a photo where your pose could pass as a celebration for most natural results",
+      "22K views — sports fans love creating 'what if I played for...' fantasy photos",
+      "By @HaniaAi12 — combine with specific game moments for extra realism",
+    ],
+    featured: false,
+    createdAt: "2026-05-17",
   },
 ];
 

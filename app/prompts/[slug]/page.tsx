@@ -127,6 +127,36 @@ export default async function PromptDetailPage({ params }: Props) {
             </span>
           ))}
         </div>
+        {/* Gallery badge */}
+        {prompt.galleryImages && prompt.galleryImages.length > 1 && (
+          <Link
+            href={`/prompts/${slug}/gallery`}
+            style={{
+              position: "absolute",
+              bottom: 16,
+              right: 16,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "6px 14px",
+              borderRadius: 8,
+              fontSize: 12,
+              fontWeight: 600,
+              color: "#fff",
+              background: "rgba(0,0,0,0.6)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              textDecoration: "none",
+              transition: "background 0.15s",
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" />
+            </svg>
+            View {prompt.galleryImages.length} images
+          </Link>
+        )}
       </div>
 
       {/* Meta */}
@@ -168,6 +198,54 @@ export default async function PromptDetailPage({ params }: Props) {
           <GenerateOrSignIn promptText={prompt.prompt} />
         </div>
       </div>
+
+      {/* Source attribution */}
+      {prompt.sourceUrl && (
+        <div style={{ marginBottom: 24, display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-muted)" }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+          <span>Source:</span>
+          <a href={prompt.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-link, #c06a3e)", textDecoration: "underline" }}>
+            Original tweet
+          </a>
+        </div>
+      )}
+
+      {/* Gallery preview strip */}
+      {prompt.galleryImages && prompt.galleryImages.length > 1 && (
+        <Link
+          href={`/prompts/${slug}/gallery`}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            padding: "14px 18px",
+            borderRadius: "var(--radius-lg)",
+            background: "var(--surface-2)",
+            border: "1px solid var(--border)",
+            marginBottom: 24,
+            textDecoration: "none",
+            color: "inherit",
+            transition: "border-color 0.15s",
+          }}
+        >
+          <div style={{ display: "flex", gap: 6 }}>
+            {prompt.galleryImages.slice(0, 4).map((img, i) => (
+              <div key={img} style={{ width: 48, height: 48, borderRadius: 8, overflow: "hidden", border: "1px solid var(--border-soft)" }}>
+                <Image src={img} alt={`Preview ${i + 1}`} width={96} height={96} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+            ))}
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)" }}>
+              View all {prompt.galleryImages.length} variations
+            </div>
+            <div style={{ fontSize: 11, color: "var(--text-muted)" }}>
+              See different results generated with this prompt
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </Link>
+      )}
 
       {/* Original prompt (if translated) */}
       {prompt.originalPrompt && (

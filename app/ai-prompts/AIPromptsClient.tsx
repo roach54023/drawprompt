@@ -27,6 +27,8 @@ export interface PromptListItem {
   imageUrl: string;
   imageAlt: string;
   aiModels: AIModel[];
+  showcase?: boolean;
+  galleryImages?: string[];
 }
 
 interface Props {
@@ -192,13 +194,16 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount, ca
         <div className="feed-masonry">
           {visible.map((prompt) => {
             const catInfo = categories.find((c) => c.id === prompt.category);
+            const cardHref = prompt.showcase
+              ? `/prompts/${prompt.slug}/gallery`
+              : `/prompts/${prompt.slug}`;
 
             return (
               <Link
                 key={prompt.id}
-                href={`/prompts/${prompt.slug}`}
+                href={cardHref}
                 className="feed-card"
-                style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}
+                style={{ display: "block", textDecoration: "none", color: "inherit", borderRadius: 12, overflow: "hidden", background: "#fff", border: prompt.showcase ? "1.5px solid var(--accent, #c06a3e)" : "1px solid var(--border)", breakInside: "avoid", marginBottom: 16 }}
               >
                 <FeedImage src={prompt.imageUrl} alt={prompt.imageAlt} models={prompt.aiModels} />
                 {/* Card body */}
@@ -207,13 +212,18 @@ export default function AIPromptsClient({ allPrompts, categories, totalCount, ca
                     <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: catInfo?.color ?? "var(--text-muted)" }}>
                       {catInfo?.label}
                     </span>
+                    {prompt.showcase && (
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "#c06a3e", background: "#fdf0e8", padding: "2px 8px", borderRadius: 4 }}>
+                        Showcase
+                      </span>
+                    )}
                   </div>
                   <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", margin: "0 0 10px", lineHeight: 1.35 }}>
                     {prompt.title}
                   </h3>
                   {/* View detail hint */}
-                  <span style={{ fontSize: 11, fontWeight: 500, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 4 }}>
-                    View prompt
+                  <span style={{ fontSize: 11, fontWeight: 500, color: prompt.showcase ? "#c06a3e" : "var(--text-muted)", display: "flex", alignItems: "center", gap: 4 }}>
+                    {prompt.showcase ? `View ${prompt.galleryImages?.length ?? ""} examples` : "View prompt"}
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </span>
                 </div>

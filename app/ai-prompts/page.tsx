@@ -49,6 +49,7 @@ const allInterleaved: PromptListItem[] = sortAndInterleave(aiPrompts).map((p) =>
   imageUrl: p.imageUrl,
   imageAlt: p.imageAlt,
   aiModels: p.aiModels,
+  ...(p.showcase ? { showcase: true, galleryImages: p.galleryImages } : {}),
 }));
 
 export const metadata: Metadata = {
