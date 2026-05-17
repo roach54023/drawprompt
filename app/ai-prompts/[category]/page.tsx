@@ -28,6 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = categories.find((c) => c.id === catId)!;
   const content = categoryContent[catId];
 
+  // noindex thin categories (fewer than 5 prompts)
+  const promptCount = aiPrompts.filter((p) => p.category === catId).length;
+  const isThin = promptCount < 5;
+
   return {
     title: cat.seoTitle,
     description: cat.seoDescription,
@@ -40,6 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "copy paste prompts",
     ],
     alternates: { canonical: `https://drawprompt.org/ai-prompts/${content.slug}/` },
+    ...(isThin && { robots: { index: false, follow: true } }),
     openGraph: {
       title: cat.seoTitle,
       description: cat.seoDescription,

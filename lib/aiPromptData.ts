@@ -5666,6 +5666,889 @@ Style: photorealistic oil painting, not digital illustration.`,
     featured: true,
     createdAt: "2026-05-14",
   },
+
+  // ─── Action Figure Prompts ──────────────────────────────────────────────────
+
+  {
+    id: "prompt-182",
+    slug: "ai-action-figure-blister-pack",
+    title: "AI Action Figure in Blister Pack",
+    prompt: `Create a hyper-realistic product photograph of a custom action figure of [SUBJECT] inside sealed retail blister packaging.
+
+The figure is a highly detailed 6-inch scale collectible action figure with glossy plastic skin, accurate clothing sculpt, painted facial features matching the subject precisely, and articulated joints visible at shoulders and hips.
+
+Packaging:
+- Clear molded plastic blister shell showing the figure
+- Printed cardboard backing with bold stylized logo text: "[NAME]" at the top
+- Tagline at bottom: "[OCCUPATION / TITLE / CATCHPHRASE]"
+- Accessories displayed beside the figure in the blister: [e.g., laptop, coffee cup, phone, headphones]
+- Barcode, "Ages 25+" warning, and small brand logo in corner
+
+Style: Professional product photography. Clean white studio background. Soft even lighting with subtle reflections on the plastic shell. The figure and packaging should look like a real commercially produced collectible you would find on a toy store shelf.
+
+Photorealistic. The person's face, hairstyle, body type, and outfit must be recognizable in the action figure form.`,
+    category: "character",
+    tags: ["action-figure", "toy", "packaging", "collectible", "blister-pack", "viral", "trending", "figurine", "product-photography"],
+    aiModels: ["gpt-image-2", "chatgpt", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Hyper-realistic AI-generated action figure in sealed blister pack retail packaging with accessories",
+    imageUrl: "/prompts/ai-action-figure-blister-pack.jpg",
+    breakdown: {
+      subject: "A custom action figure of a real person inside sealed retail blister packaging",
+      style: "Professional product photography of a commercially-produced collectible toy",
+      lighting: "Soft even studio lighting with subtle reflections on the clear plastic blister shell",
+      composition: "Front-facing product shot showing the full blister pack with figure and accessories",
+      details: "Glossy plastic skin, articulated joints, printed cardboard backing, barcode, age warning, accessories in tray",
+    },
+    tips: [
+      "List 3-4 specific accessories relevant to the person's profession or hobbies for maximum personalization",
+      "Include the text instructions for the cardboard backing — the name and tagline sell the realism",
+      "Inspired by viral LinkedIn action figure and startup founder figurine trends on X/Twitter",
+      "Works best with a full-body reference photo showing the person's typical outfit",
+    ],
+    featured: true,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-183",
+    slug: "action-figure-open-box-diorama",
+    title: "Action Figure Open Box Diorama Display",
+    prompt: `Create a photorealistic image of a premium collectible action figure displayed in an open-front box diorama.
+
+Subject: A highly detailed 1/6 scale action figure of [SUBJECT]. The figure has realistic face paint with accurate likeness, detailed fabric clothing (not molded plastic), multiple points of articulation, and a natural standing pose with one hand slightly raised.
+
+Display box:
+- Open-front premium collector display box
+- Interior themed diorama backdrop: [e.g., office desk scene / city skyline / workshop / nature]
+- LED-style accent lighting built into the box (warm glow)
+- Velvet or dark foam base with nameplate: "[NAME] — Limited Edition [NUMBER]/500"
+
+Shot from a slight 3/4 angle. Shallow depth of field focusing on the figure's face. Dark moody background with the box's internal lighting creating dramatic contrast. The figure should look like a real Hot Toys or Sideshow Collectibles premium figurine.`,
+    category: "character",
+    tags: ["action-figure", "diorama", "collectible", "hot-toys", "display-box", "premium", "figurine", "viral"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Premium collectible action figure in open-front diorama display box with LED accent lighting",
+    imageUrl: "/prompts/action-figure-open-box-diorama.jpg",
+    breakdown: {
+      subject: "A premium 1/6 scale collectible action figure with fabric clothing in a display diorama box",
+      style: "Premium collectible photography in Hot Toys / Sideshow style",
+      lighting: "Internal LED accent lighting in the box creating dramatic contrast against dark background",
+      composition: "Slight 3/4 angle, shallow depth of field focused on figure face, open-front box visible",
+      details: "Fabric clothing, realistic face paint, nameplate with limited edition numbering, themed backdrop",
+    },
+    tips: [
+      "The 'fabric clothing' instruction prevents the AI from making a cheap-looking all-plastic toy",
+      "Mentioning 'Hot Toys or Sideshow Collectibles' anchors the quality expectation for the AI",
+      "The limited edition numbering adds premium collectible authenticity",
+      "Choose a themed backdrop that matches the person's world: office for executives, workshop for makers",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-184",
+    slug: "action-figure-toy-store-shelf",
+    title: "Action Figure on Toy Store Shelf",
+    prompt: `Generate a photorealistic image showing a sealed action figure package on a real toy store shelf, as if you are browsing and spotted it among other toys.
+
+The action figure package features:
+- A 6-inch figure of [SUBJECT] visible through the clear plastic window
+- The figure wears [OUTFIT DESCRIPTION] and holds [ACCESSORY]
+- Colorful printed cardboard packaging in [COLOR SCHEME, e.g., red and gold / blue and silver]
+- Large bold title text: "[CHARACTER/PERSON NAME]"
+- Subtitle: "[Series name, e.g., Tech Titans Series / Everyday Heroes Collection]"
+- "NEW!" starburst badge in corner
+- Small text: "Includes [X] accessories!" and age rating
+
+Environment:
+- Toy store shelf with other slightly blurred action figure packages on either side
+- Shelf price tag visible below: "$24.99"
+- Natural retail store fluorescent lighting
+- Shot from eye-level as if a shopper is looking at the toy
+
+Style: candid retail photography feel, slight warm color grading, utterly realistic.`,
+    category: "character",
+    tags: ["action-figure", "toy-store", "retail", "packaging", "viral", "trending", "figurine", "shelf"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "beginner",
+    imageAlt: "AI action figure in colorful retail packaging on a toy store shelf next to other toys",
+    imageUrl: "/prompts/action-figure-toy-store-shelf.jpg",
+    breakdown: {
+      subject: "A sealed action figure package featuring a person, displayed on a real toy store shelf",
+      style: "Candid retail photography with warm color grading, utterly realistic",
+      lighting: "Retail store fluorescent lighting with slight warm color grading",
+      composition: "Eye-level shopper perspective, other packages blurred on either side, price tag visible",
+      details: "Clear plastic window, colorful printed card, NEW badge, price tag, accessories listed",
+    },
+    tips: [
+      "The eye-level shopper perspective with blurred packages beside it sells the in-store realism",
+      "Add a specific price tag and NEW badge: small retail details make it feel real",
+      "Name a fictional series (e.g., Tech Titans Series 3) as if it is part of a product line",
+      "This went viral on X when people made their own 'spotted my action figure at Target' posts",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-185",
+    slug: "action-figure-accessories-flatlay",
+    title: "Action Figure Accessories Lineup Flatlay",
+    prompt: `Create a top-down flatlay photograph of an unboxed action figure and all its accessories laid out neatly on a clean surface.
+
+Center: A 6-inch action figure of [SUBJECT] lying flat, viewed from directly above.
+
+Arranged symmetrically around the figure:
+- 2 alternate hand sets (open palms, fists, pointing, phone-holding)
+- 1 alternate head sculpt with different expression
+- 3-4 character-specific accessories: [e.g., laptop, coffee mug, book, headphones, badge, tool]
+- 1 display stand base with nameplate
+- 1 small instruction booklet / collector card
+
+Surface: clean matte black background (or white seamless).
+Lighting: even, shadowless product photography lighting from above.
+Style: professional collectible figure review / unboxing flatlay.
+
+Each item is spaced evenly with mathematical precision. Everything looks like a real physical product.`,
+    category: "character",
+    tags: ["action-figure", "flatlay", "unboxing", "accessories", "collectible", "top-down", "product-photography"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Top-down flatlay of unboxed action figure with all accessories laid out symmetrically on black background",
+    imageUrl: "/prompts/action-figure-accessories-flatlay.jpg",
+    breakdown: {
+      subject: "An unboxed action figure with all accessories arranged in a symmetrical top-down flatlay",
+      style: "Professional product flatlay / collector unboxing review photography",
+      lighting: "Even, shadowless product photography lighting from directly above",
+      composition: "Top-down bird's eye view, mathematical symmetrical spacing, clean background",
+      details: "Alternate hands, alternate head, character-specific accessories, display stand, collector card",
+    },
+    tips: [
+      "The mathematical precision spacing instruction gives it that satisfying collector-review aesthetic",
+      "List specific accessories that tell a story about the person: their tools, hobbies, signature items",
+      "Including an alternate head sculpt with different expression is a real premium figure detail",
+      "Popular format for unboxing content: great for social media or as a personalized gift mock-up",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-186",
+    slug: "action-figure-battle-scene-dynamic",
+    title: "Action Figure Dynamic Battle Scene",
+    prompt: `Create a dramatic action photograph of a highly detailed collectible action figure in a dynamic battle/action pose.
+
+Figure: A 1/6 scale premium action figure of [SUBJECT] in [OUTFIT]. The figure is captured mid-action with a dynamic pose (leaping forward, throwing a punch, or power stance). Fabric clothing shows realistic wrinkles from motion. Hair and accessories show wind-blown movement. Intense facial expression painted on the figure.
+
+Environment:
+- [SETTING: rooftop with city lights / burning building / futuristic lab / ancient ruins]
+- Practical effects: sparks, debris, dust particles, motion blur on background
+- Dramatic rim lighting from behind with [COLOR glow: orange fire / blue neon / white explosion]
+
+Camera: low angle looking up at the figure, wide aperture with bokeh background, slight motion blur on extremities.
+
+Style: like a high-budget action movie still but it is clearly a real physical action figure. You can see the joint articulation points and the slightly glossy plastic skin texture on close inspection.`,
+    category: "character",
+    tags: ["action-figure", "dynamic-pose", "battle", "cinematic", "dramatic", "figurine", "special-effects"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "advanced",
+    imageAlt: "Dynamic action figure in dramatic battle pose with cinematic lighting, sparks, and motion blur",
+    imageUrl: "/prompts/action-figure-battle-scene-dynamic.jpg",
+    breakdown: {
+      subject: "A premium action figure in a dramatic mid-action battle pose with special effects",
+      style: "Cinematic action movie still that is identifiable as a real physical action figure",
+      lighting: "Dramatic rim lighting from behind with colored glow, sparks and debris",
+      composition: "Low angle looking up, wide aperture with bokeh, slight motion blur on extremities",
+      details: "Fabric clothing wrinkles from motion, wind-blown hair, visible joint articulation, glossy plastic texture",
+    },
+    tips: [
+      "The key instruction is 'clearly a real physical action figure' to prevent full CGI look",
+      "Mentioning joint articulation points and glossy plastic skin texture keeps the toy aesthetic",
+      "Practical effects (sparks, debris) around a figure create the epic toy photography genre look",
+      "Popular among the toy photography community on Instagram with #actionfigurephotography",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+
+  // ─── Caricature Prompts ─────────────────────────────────────────────────────
+
+  {
+    id: "prompt-187",
+    slug: "ai-caricature-corporate-headshot",
+    title: "AI Caricature Corporate Headshot",
+    prompt: `Transform [UPLOADED PHOTO] into a professional caricature illustration suitable for a corporate profile or LinkedIn avatar.
+
+Style:
+- Exaggerated but flattering proportions: slightly enlarged head (about 1.3x), normal body
+- Emphasize the subject's most distinctive facial features (eyes, smile, jawline, hair) while keeping them recognizable and attractive
+- Clean vector-illustration style with smooth gradients and subtle shadows
+- Professional attire rendered in simplified but elegant detail
+
+Color palette: Warm, professional tones. Skin rendered with natural warmth and subtle blush. Background: clean gradient (soft blue-to-white or warm gray).
+
+Composition: Shoulders-up portrait, slight 3/4 turn, confident friendly smile with teeth showing, direct eye contact.
+
+The result should look like a premium custom illustration you would commission from a professional caricature artist for a company retreat: fun and personalized but corporate-appropriate. NOT a cartoon or comic strip style.`,
+    category: "character",
+    tags: ["caricature", "corporate", "headshot", "portrait", "professional", "linkedin", "avatar", "illustration"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "beginner",
+    imageAlt: "Professional AI caricature corporate headshot with slightly exaggerated features in clean vector style",
+    imageUrl: "/prompts/ai-caricature-corporate-headshot.jpg",
+    breakdown: {
+      subject: "A professional caricature portrait with slightly exaggerated but flattering facial features",
+      style: "Clean vector-illustration with smooth gradients, premium custom caricature",
+      lighting: "Subtle studio-style shadows with warm professional tones and natural skin warmth",
+      composition: "Shoulders-up portrait, slight 3/4 turn, confident friendly expression, direct eye contact",
+      details: "Enlarged head at 1.3x, emphasized distinctive features, simplified elegant professional attire",
+    },
+    tips: [
+      "The flattering and corporate-appropriate instructions prevent the AI from making mean exaggerations",
+      "Specifying 1.3x head size gives subtle caricature effect without looking like a bobblehead",
+      "This style works great for team pages, LinkedIn, Slack avatars, or company swag",
+      "Upload a clear well-lit headshot for best results so the AI can identify key features to exaggerate",
+    ],
+    featured: true,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-188",
+    slug: "caricature-street-artist-sketch",
+    title: "Street Artist Caricature Sketch",
+    prompt: `Create a traditional street-artist-style caricature of [SUBJECT / UPLOADED PHOTO] as if drawn by a skilled caricaturist at a tourist boardwalk or theme park.
+
+Style:
+- Hand-drawn look with visible marker/pen strokes and cross-hatching
+- Dramatically exaggerated head (2-3x body size) on a tiny comical body
+- Wildly exaggerated most prominent feature: [e.g., big smile / large eyes / distinctive nose / voluminous hair]
+- Body shown doing a fun activity: [e.g., surfing / playing guitar / coding on laptop / cooking / riding a rocket]
+- Bold black outlines with bright marker-style coloring (Copic marker aesthetic)
+
+Background: simple themed vignette (palm trees, music notes, code symbols) or solid color with hand-drawn border decorations.
+
+Medium: looks like it was drawn on thick white marker paper. You can almost see the paper texture and marker bleed.
+
+Text at bottom in hand-lettered style: "[NAME]" with optional subtitle "[TITLE / JOKE]"
+
+The result should feel warm, fun, and personal, like a treasured souvenir from a vacation. Exaggerated but never mean-spirited.`,
+    category: "character",
+    tags: ["caricature", "street-art", "hand-drawn", "marker", "sketch", "exaggerated", "fun", "souvenir", "portrait"],
+    aiModels: ["gpt-image-2", "chatgpt", "midjourney"],
+    difficulty: "beginner",
+    imageAlt: "Street artist style caricature with dramatically exaggerated head, hand-drawn marker strokes, and fun activity pose",
+    imageUrl: "/prompts/caricature-street-artist-sketch.jpg",
+    breakdown: {
+      subject: "A traditional boardwalk-style caricature with wildly exaggerated head and tiny body doing a fun activity",
+      style: "Hand-drawn marker/pen aesthetic with bold outlines, cross-hatching, Copic marker coloring",
+      lighting: "Flat illustration lighting, even and cheerful marker-style rendering",
+      composition: "Large exaggerated head (2-3x body), tiny body in action pose, themed vignette background",
+      details: "Visible pen strokes, paper texture, marker bleed, hand-lettered name text, border decorations",
+    },
+    tips: [
+      "Describe the activity body pose (surfing, coding, cooking) to add personality and humor",
+      "Specify which feature to exaggerate most. The AI will pick something if you don't, but your choice is better",
+      "Adding paper texture and marker bleed makes it look like a real physical drawing, not digital",
+      "Great for team gifts, wedding guest favors, or personalized birthday presents",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-189",
+    slug: "caricature-magazine-cover-portrait",
+    title: "Caricature Magazine Cover Portrait",
+    prompt: `Create a high-quality editorial caricature illustration of [SUBJECT / UPLOADED PHOTO] styled as a premium magazine cover (like The New Yorker, TIME, or Rolling Stone).
+
+Style:
+- Sophisticated editorial caricature with painterly brushwork
+- Rich, layered color with visible texture (oil pastel or gouache feel)
+- Facial features exaggerated with wit and intelligence (not slapstick)
+- Full or 3/4 body pose conveying [THEME: power, creativity, disruption, genius, charm]
+- Dressed in [OUTFIT] with symbolic props: [e.g., holding globe, surrounded by tech devices, chess pieces]
+
+Layout:
+- Magazine masthead text at top: "[MAGAZINE NAME, e.g., VISIONARY / DISRUPTOR / GENIUS MONTHLY]"
+- Cover lines on side: "[HEADLINE, e.g., The Mind Behind X]" and "[SUB-HEADLINE]"
+- All text styled in classic editorial magazine typography (serif headers, sans-serif body)
+
+Background: Solid bold color or subtle pattern. The overall composition should feel like a real publication you would see on a newsstand.
+
+Aspect ratio: standard magazine cover (roughly 2:3 portrait).`,
+    category: "character",
+    tags: ["caricature", "magazine-cover", "editorial", "portrait", "new-yorker", "sophisticated", "illustration", "viral"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Sophisticated editorial caricature magazine cover with painterly brushwork and magazine typography",
+    imageUrl: "/prompts/caricature-magazine-cover.jpg",
+    breakdown: {
+      subject: "A sophisticated editorial caricature portrait styled as a premium magazine cover",
+      style: "Painterly editorial illustration with oil pastel or gouache texture",
+      lighting: "Painted/rendered lighting with rich layered color, not photographic",
+      composition: "Magazine cover layout (2:3 portrait) with masthead, cover lines, and editorial typography",
+      details: "Symbolic props, themed pose, serif/sans-serif typography, newsstand-quality finish",
+    },
+    tips: [
+      "Choose a theme (power, creativity, disruption) and let the pose/props reinforce it to elevate beyond simple caricature",
+      "The 'wit and intelligence' instruction prevents grotesque exaggeration and keeps it classy",
+      "Real editorial caricaturists use visible brushwork: mention gouache or oil pastel for that authentic feel",
+      "Makes an incredible personalized gift for executives, entrepreneurs, or creatives",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-190",
+    slug: "caricature-bobblehead-3d-figurine",
+    title: "3D Caricature Bobblehead Figurine",
+    prompt: `Create a photorealistic image of a custom bobblehead figurine of [SUBJECT / UPLOADED PHOTO].
+
+The bobblehead features:
+- Oversized head (roughly 3x the body) with the subject's face sculpted in a slightly exaggerated but recognizable way: bigger eyes, wider smile, prominent distinctive features
+- Small body in a signature pose wearing [OUTFIT: business suit, sports jersey, chef outfit, lab coat]
+- Holding or interacting with [PROP: trophy, guitar, laptop, spatula, stethoscope]
+- Standing on a round black base with a gold nameplate: "[NAME]"
+
+Material:
+- Smooth painted resin/polymer clay finish
+- Subtle paint texture visible up close (hand-painted collectible quality)
+- Glossy clear coat on hair, matte finish on clothing
+
+Photography:
+- Studio product shot on clean white/light gray background
+- Soft directional lighting from upper left
+- Shallow depth of field with slight bokeh
+- Shot from a slightly elevated 3/4 angle
+
+The overall result should look like a real physical bobblehead you could order from a custom figurine company: fun, recognizable, and high-quality.`,
+    category: "character",
+    tags: ["caricature", "bobblehead", "3d", "figurine", "collectible", "custom", "resin", "product-shot"],
+    aiModels: ["gpt-image-2", "chatgpt", "midjourney"],
+    difficulty: "beginner",
+    imageAlt: "Photorealistic custom 3D bobblehead figurine with oversized head and signature pose on display base",
+    imageUrl: "/prompts/caricature-bobblehead-3d.jpg",
+    breakdown: {
+      subject: "A custom bobblehead figurine with oversized head and recognizable exaggerated features",
+      style: "Photorealistic product photography of a painted resin collectible figurine",
+      lighting: "Soft directional studio lighting from upper left, clean white/gray background",
+      composition: "Slightly elevated 3/4 angle, shallow depth of field, product-shot framing",
+      details: "Glossy hair finish, matte clothing, gold nameplate, hand-painted collectible quality, round black base",
+    },
+    tips: [
+      "Specify painted resin/polymer clay finish to prevent the AI from making a cartoon or digital render",
+      "The nameplate and base make it look like a real purchasable product and adds commercial authenticity",
+      "Choose a pose and prop that captures what the person is known for to make it personal",
+      "These make excellent virtual gifts: generate one of a friend/colleague and send the image",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-191",
+    slug: "caricature-courtroom-sketch-style",
+    title: "Courtroom Sketch Caricature",
+    prompt: `Create an image of [SUBJECT / UPLOADED PHOTO] rendered in the style of a dramatic courtroom sketch artist illustration, but with a humorous caricature twist.
+
+Style:
+- Loose, gestural pastel and charcoal strokes on tan/cream sketch paper
+- Slightly exaggerated facial features (larger head, emphasized expression) but maintaining the urgency and drama of a real courtroom sketch
+- The subject is depicted in a dramatic scene: [e.g., passionately presenting at a podium / pointing at evidence on a screen / standing defiantly with arms crossed]
+- Background figures loosely sketched (audience, judge, jury) watching intently
+- Color palette: muted earth tones with one accent color (e.g., blue tie, red dress)
+
+Composition:
+- Landscape format (like a real courtroom sketch pad)
+- Subject takes up center 60% of the image
+- Loose sketch quality increases toward the edges (more detailed at center face)
+- Artist's rough date and initials scratched in corner
+
+The tone should be humorous and flattering, as if the subject did something impressive enough to be courtroom-sketch-worthy. NOT actually legal/criminal in tone.`,
+    category: "character",
+    tags: ["caricature", "courtroom-sketch", "illustration", "charcoal", "pastel", "humor", "editorial", "sketch"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Courtroom sketch style caricature with pastel and charcoal strokes on tan paper, humorous dramatic scene",
+    imageUrl: "/prompts/caricature-courtroom-sketch.jpg",
+    breakdown: {
+      subject: "A person rendered in courtroom sketch style with slight caricature exaggeration and dramatic pose",
+      style: "Courtroom sketch artist illustration with loose gestural pastel and charcoal on tan paper",
+      lighting: "Sketched impression of dramatic overhead courtroom lighting, muted earth tones",
+      composition: "Landscape format, subject at center 60%, background figures loosely sketched, detail fades at edges",
+      details: "Visible paper texture, charcoal strokes, one accent color, date/initials in corner, audience in background",
+    },
+    tips: [
+      "Frame the scene as something impressive or funny: product launch, cooking competition, epic presentation",
+      "The humorous and flattering instruction is crucial to prevent it from looking like actual criminal proceedings",
+      "Mentioning detail fades at edges mimics how real courtroom sketchers work with time pressure",
+      "This became viral on X when people posted their CEO doing a keynote as courtroom sketch images",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+
+  // ─── Younger Self / Time Travel Prompts ─────────────────────────────────────
+
+  {
+    id: "prompt-192",
+    slug: "meet-your-younger-self-studio-portrait",
+    title: "Meet Your Younger Self — Studio Portrait",
+    prompt: `Create a heartfelt portrait showing two versions of the same person side by side: their current adult self and their younger childhood self (around age 5-10), as if they have traveled through time to meet.
+
+Use the uploaded photos: [CURRENT PHOTO] and [CHILDHOOD PHOTO].
+
+Setting: A warm, softly lit photography studio or living room environment.
+Composition: The adult is crouching or sitting at eye level with the child version of themselves. They might be gently holding the child's hand, both looking at the camera with matching smiles, the adult's arm around the child's shoulder, or sharing a moment together.
+
+Key requirements:
+- Both faces must maintain perfect likeness to their respective reference photos
+- Clothing should feel era-appropriate (child in vintage style matching their childhood decade)
+- Warm, golden-hour style lighting (soft, nostalgic)
+- Shallow depth of field with soft bokeh background
+- Natural, candid emotional connection between the two figures
+
+Mood: Tender, nostalgic, bittersweet warmth. A letter to your younger self come to life.
+Style: Photorealistic portrait photography, NOT illustration or painting.`,
+    category: "photography",
+    tags: ["younger-self", "time-travel", "portrait", "nostalgia", "childhood", "viral", "trending", "emotional", "diptych"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Heartfelt portrait of adult meeting their younger childhood self with warm golden-hour studio lighting",
+    imageUrl: "/prompts/meet-your-younger-self-studio.jpg",
+    breakdown: {
+      subject: "Two versions of the same person, adult and childhood self, meeting in a tender moment",
+      style: "Photorealistic portrait photography with warm, nostalgic, bittersweet tone",
+      lighting: "Warm golden-hour style studio lighting, soft and nostalgic with shallow depth of field",
+      composition: "Adult crouching at child's eye level, natural emotional connection, eye contact with camera or each other",
+      details: "Era-appropriate clothing, perfect likeness preservation for both ages, candid emotional moment",
+    },
+    tips: [
+      "Upload both a current photo and a childhood photo for the most accurate result",
+      "The crouching at eye level instruction creates intimate emotional equality between the two versions",
+      "Specify the decade for the child's clothing (80s, 90s, 2000s) to add era-authentic detail",
+      "This prompt went mega-viral across Instagram, TikTok, and X due to its universal emotional resonance",
+    ],
+    featured: true,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-193",
+    slug: "younger-self-walking-together-street",
+    title: "Walking With Your Younger Self — Street Scene",
+    prompt: `Generate a photorealistic image of an adult and their childhood self walking together down a street, holding hands, as if a time portal brought them together.
+
+Adult: [CURRENT PHOTO REFERENCE]
+Child: [CHILDHOOD PHOTO REFERENCE, approximately age 5-8]
+
+Scene:
+- Walking together on [SETTING: a sunlit neighborhood sidewalk / a park path with autumn leaves / a city street at golden hour / a seaside boardwalk]
+- Holding hands naturally while walking in the same direction
+- Shot from behind or from a 3/4 angle walking toward camera
+- The adult looks down at the child with warmth; the child looks up with trust and wonder
+
+Technical:
+- Natural daylight, golden hour timing (long warm shadows)
+- Shallow depth of field, subjects sharp, background gently blurred
+- Film-like color grading: slightly warm highlights, soft lifted shadows (Kodak Portra 400 feel)
+- Full body shot showing both walking in stride
+
+Both must be recognizably the same person at different ages. Era-appropriate clothing for the child (vintage style matching their childhood decade).
+
+Mood: Hopeful, peaceful, protective. The adult guiding their younger self forward.`,
+    category: "photography",
+    tags: ["younger-self", "time-travel", "walking", "street", "nostalgia", "golden-hour", "viral", "emotional", "film"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Adult and their younger childhood self walking together holding hands on a sunlit street at golden hour",
+    imageUrl: "/prompts/younger-self-walking-together.jpg",
+    breakdown: {
+      subject: "An adult and their childhood self walking together holding hands on a street",
+      style: "Photorealistic film photography with Kodak Portra 400 color grading",
+      lighting: "Natural golden hour daylight with long warm shadows",
+      composition: "Full body, shot from behind or 3/4 angle, walking in stride, one looking up and one looking down",
+      details: "Era-appropriate vintage clothing for child, hand-holding, natural stride, shallow depth of field",
+    },
+    tips: [
+      "The from behind angle is easier for the AI to execute well and feels more cinematic/emotional",
+      "Mentioning Kodak Portra 400 gives it that warm analog film look that enhances the nostalgic mood",
+      "Autumn leaves or golden hour settings amplify the passage-of-time metaphor naturally",
+      "One of the most shared variations of the younger-self trend due to its visual storytelling simplicity",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-194",
+    slug: "younger-self-hug-emotional",
+    title: "Hugging Your Younger Self — Emotional Embrace",
+    prompt: `Create an emotionally powerful photograph of an adult embracing their childhood self in a tight, warm hug.
+
+References: [CURRENT PHOTO] and [CHILDHOOD PHOTO, age 5-8].
+
+The scene:
+- The adult is kneeling on the ground, wrapping both arms around the small child version of themselves
+- The child hugs back, small arms around the adult's neck or waist
+- Both have their eyes closed with peaceful, emotional expressions
+- The embrace should feel genuine and protective
+
+Setting: [Choose one]
+- A quiet, empty room with soft window light streaming in
+- An open field at sunset with warm backlight creating a halo effect
+- Their childhood bedroom recreated in soft focus behind them
+
+Technical requirements:
+- Perfect likeness match for both faces
+- Clothing: adult in [current style], child in era-appropriate [decade] clothing
+- Soft, diffused lighting (window light or golden backlight)
+- Tight framing focused on the embrace
+- Shallow depth of field, background heavily blurred
+- Slight film grain for emotional texture
+
+Mood: Healing, self-compassion, unconditional love. The image should evoke the feeling of telling your younger self: everything is going to be okay.`,
+    category: "photography",
+    tags: ["younger-self", "hug", "emotional", "healing", "self-compassion", "viral", "trending", "portrait", "childhood"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "intermediate",
+    imageAlt: "Emotionally powerful photograph of an adult kneeling and hugging their childhood self with eyes closed",
+    imageUrl: "/prompts/younger-self-hug-emotional.jpg",
+    breakdown: {
+      subject: "An adult kneeling and embracing their childhood self in a genuine, protective hug",
+      style: "Emotionally powerful portrait photography with film grain texture",
+      lighting: "Soft diffused window light or golden backlight creating a halo effect",
+      composition: "Tight framing on the embrace, kneeling adult at child's level, eyes closed, heavily blurred background",
+      details: "Both eyes closed, small arms around neck/waist, era-appropriate clothing, slight film grain",
+    },
+    tips: [
+      "Eyes closed on both figures makes the emotion read more powerfully and is easier for AI to generate accurately",
+      "The kneeling position makes the size difference natural and the embrace physically believable",
+      "Add slight film grain for emotional texture: this instruction adds subtle warmth the AI otherwise might skip",
+      "This is the most emotionally resonant variation and the most shared on social media",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-195",
+    slug: "younger-self-same-pose-comparison",
+    title: "Younger Self Same Pose — Then & Now Split",
+    prompt: `Create a side-by-side or split-screen image showing the same person recreating an iconic childhood photo as an adult.
+
+Left half (THEN): Recreation of [CHILDHOOD PHOTO] — the child version in the original setting and pose.
+Right half (NOW): The adult version in the exact same pose, same framing, same angle, but [current age].
+
+Requirements:
+- Identical pose, angle, and framing in both halves
+- Left side should feel authentically vintage (matching the original photo era):
+  - Slightly faded colors, film grain, lower resolution feel
+  - Era-appropriate clothing, hairstyle, and setting
+- Right side should feel modern and crisp:
+  - Clean digital camera quality
+  - Current clothing style but intentionally mimicking the original outfit's vibe
+  - Same location or setting recreated
+- A clean vertical dividing line or subtle gradient blend between the two halves
+- Both faces must match their respective reference photos perfectly
+
+Style: photorealistic photography. The contrast between vintage and modern should be immediately striking. Add subtle text overlay: "Then" on left, "Now" on right (small, elegant font at bottom).`,
+    category: "photography",
+    tags: ["younger-self", "then-and-now", "split-screen", "comparison", "nostalgia", "recreation", "viral", "trending"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "advanced",
+    imageAlt: "Split-screen then and now comparison showing same person recreating a childhood photo as an adult",
+    imageUrl: "/prompts/younger-self-same-pose-comparison.jpg",
+    breakdown: {
+      subject: "Same person recreating a childhood photo pose as an adult in a split-screen comparison",
+      style: "Photorealistic side-by-side: vintage film look on left, modern digital on right",
+      lighting: "Left half has era-authentic lighting (warm/faded), right half has clean modern lighting",
+      composition: "Side-by-side split screen, identical pose/angle/framing in both halves, vertical dividing line",
+      details: "Vintage film grain and faded colors on left, crisp digital quality on right, matching poses precisely",
+    },
+    tips: [
+      "The more specific you are about the original pose, the better the AI can recreate it accurately",
+      "Mentioning era-specific details (clothing, hairstyle, camera quality) sells the time gap authentically",
+      "This format works especially well for milestone ages (30, 40, 50) and social media anniversaries",
+      "The subtle Then/Now text overlay adds context without being distracting",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-196",
+    slug: "younger-self-advice-letter-scene",
+    title: "Letter to Your Younger Self — Reading Scene",
+    prompt: `Create a touching scene where an adult is sitting next to their childhood self, reading a handwritten letter together.
+
+References: [CURRENT PHOTO] and [CHILDHOOD PHOTO, age 6-10].
+
+Scene composition:
+- Both sitting on [SETTING: a park bench / bedroom floor / library steps / window seat]
+- The adult holds a handwritten letter/note, angled so the child can see it too
+- The child looks at the letter with curiosity and wonder
+- The adult has a gentle, knowing smile
+- Warm soft lighting (afternoon sun through a window or dappled tree shade)
+
+Visible on the letter (partial handwriting, slightly blurred but readable):
+"Dear little [NAME], I want you to know that everything works out. You are braver than you think..."
+
+Technical:
+- Photorealistic style
+- Warm color palette (golden tones, soft shadows)
+- Medium shot showing both figures and their interaction
+- Shallow depth of field on background
+- Natural, candid posing (not stiff or posed)
+
+Mood: Wisdom, gentleness, and time-spanning connection. The visual embodiment of self-compassion.`,
+    category: "photography",
+    tags: ["younger-self", "letter", "advice", "reading", "emotional", "self-compassion", "viral", "wisdom", "portrait"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "advanced",
+    imageAlt: "Adult and childhood self sitting together reading a handwritten letter with warm afternoon lighting",
+    imageUrl: "/prompts/younger-self-advice-letter.jpg",
+    breakdown: {
+      subject: "Adult and childhood self sitting together reading a handwritten letter",
+      style: "Photorealistic portrait with warm, candid, story-driven composition",
+      lighting: "Warm afternoon sun through a window or dappled tree shade",
+      composition: "Medium shot, both sitting together, letter held between them, child looking with curiosity",
+      details: "Visible partial handwriting on letter, knowing smile on adult, wonder on child's face",
+    },
+    tips: [
+      "The partial readable text on the letter adds narrative depth and emotional punch",
+      "Choose a setting that matches a real childhood memory for maximum personal resonance",
+      "Natural/candid posing (not stiff) instruction is crucial because AI tends to make people look posed",
+      "This variation adds a narrative element beyond just meeting, making it more shareable",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+
+  // ─── Polaroid / Instant Film Prompts ────────────────────────────────────────
+
+  {
+    id: "prompt-197",
+    slug: "ai-polaroid-vintage-instant-photo",
+    title: "AI Polaroid Vintage Instant Photo",
+    prompt: `Create an image that looks exactly like a real physical Polaroid instant photograph lying on a surface.
+
+Subject in the Polaroid: [SUBJECT/SCENE DESCRIPTION]
+
+Polaroid characteristics:
+- Classic Polaroid SX-70 format: square image area with the iconic wide white bottom border
+- Slightly imperfect exposure (mild overexposure in highlights, slightly crushed shadows)
+- Characteristic Polaroid color science: slightly warm/yellow cast, muted but rich colors, soft contrast
+- Very slight blur/softness (instant film is not razor sharp)
+- Visible fine-grain film texture
+
+Physical photo details:
+- The Polaroid is lying at a slight angle on [SURFACE: wooden table / cork board / scattered among other polaroids / held between fingers]
+- Slight curl at the edges (aged paper)
+- Shadow cast by the photo on the surface
+- Optional: handwritten caption in the white border area: "[CAPTION TEXT]"
+
+Camera quality: The overall image (showing the Polaroid on the surface) should be shot with a modern high-quality camera. The Polaroid itself has the vintage instant-film look. This contrast sells the realism.`,
+    category: "photography",
+    tags: ["polaroid", "instant-film", "vintage", "retro", "analog", "physical-photo", "nostalgia", "film"],
+    aiModels: ["gpt-image-2", "chatgpt", "midjourney"],
+    difficulty: "beginner",
+    imageAlt: "Realistic Polaroid instant photograph lying on a wooden surface with characteristic warm color cast and white border",
+    imageUrl: "/prompts/ai-polaroid-vintage-instant.jpg",
+    breakdown: {
+      subject: "A scene rendered as a physical Polaroid instant photograph lying on a surface",
+      style: "Physical Polaroid SX-70 instant film on a real surface, photographed with a modern camera",
+      lighting: "Characteristic Polaroid color science: warm/yellow cast, muted rich colors, soft contrast",
+      composition: "Polaroid at slight angle on surface with shadow, square image area with wide white bottom border",
+      details: "Film grain, slight edge curl, soft blur, optional handwritten caption, shadow on surface",
+    },
+    tips: [
+      "The contrast between modern camera quality (overall shot) and vintage Polaroid (inside) is what sells it",
+      "Add a handwritten caption in the white border to make it feel like a real memory snapshot",
+      "Mentioning slight curl at edges and shadow on surface adds physical object realism",
+      "Works great for social media posts that want a nostalgic, analog, physical-object aesthetic",
+    ],
+    featured: true,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-198",
+    slug: "polaroid-scattered-memories-flatlay",
+    title: "Scattered Polaroid Memories Flatlay",
+    prompt: `Create a top-down flatlay photograph of 5-7 Polaroid instant photos scattered casually on [SURFACE: a wooden desk / bedspread / cork bulletin board / scrapbook page].
+
+Each Polaroid shows a different scene from [THEME: a summer vacation / a relationship timeline / a year in review / a city trip / childhood memories]:
+1. [Scene 1 description]
+2. [Scene 2 description]
+3. [Scene 3 description]
+4. [Scene 4 description]
+5. [Scene 5 description]
+
+Each Polaroid should have:
+- Classic white-bordered Polaroid format
+- Slightly different color casts and exposures (as if shot at different times)
+- Some rotated at different angles
+- Optional handwritten dates or captions in margins
+
+Surrounding props scattered between the photos:
+- [PROPS: dried flowers / plane tickets / a pen / washi tape / coffee cup ring stain / seashells / concert ticket stubs]
+
+Lighting: soft natural daylight from a window (casting gentle shadows from the polaroids on the surface).
+Style: aesthetic lifestyle photography / Pinterest flatlay. Warm and nostalgic.`,
+    category: "photography",
+    tags: ["polaroid", "flatlay", "scattered", "memories", "collection", "aesthetic", "nostalgia", "lifestyle", "pinterest"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Top-down flatlay of scattered Polaroid photos with different scenes surrounded by nostalgic props on wooden surface",
+    imageUrl: "/prompts/polaroid-scattered-memories-flatlay.jpg",
+    breakdown: {
+      subject: "5-7 Polaroid instant photos scattered on a surface showing themed scenes",
+      style: "Aesthetic lifestyle flatlay photography in Pinterest aesthetic, warm and nostalgic",
+      lighting: "Soft natural daylight from a window casting gentle shadows from the polaroids",
+      composition: "Top-down flatlay, Polaroids at different angles, props scattered between them",
+      details: "Different color casts per photo, handwritten captions, surrounding themed props, coffee ring stains",
+    },
+    tips: [
+      "Give each Polaroid a specific scene description (not vague) for the most interesting results",
+      "The surrounding props should match the theme (seashells for vacation, ticket stubs for concerts)",
+      "Specify slightly different color casts for each Polaroid to simulate being shot at different times",
+      "This format works great for social media year-in-review posts and travel memories",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-199",
+    slug: "polaroid-held-against-real-scene",
+    title: "Polaroid Held Against Real Scene",
+    prompt: `Create an image of a hand holding up a Polaroid instant photo in front of the actual scene it depicts, creating a photo-within-a-photo effect.
+
+The Polaroid shows: [SCENE captured in the Polaroid, e.g., the same landscape from a different time/season, a person who was there before, the location years ago]
+
+The real background behind the held Polaroid: [CURRENT VERSION of the scene, e.g., same location in current season, the empty space where the person stood, the modernized version of the building]
+
+Details:
+- A real human hand (natural skin tone, possibly showing some finger details) holding the Polaroid by the white bottom border with thumb and forefinger
+- The Polaroid is held at a slight angle, not perfectly flat
+- The scene in the Polaroid aligns roughly (but not perfectly) with the background
+- The background is in sharp focus with the Polaroid also in focus (deep depth of field)
+- Natural outdoor lighting on both the Polaroid and the background
+
+The visual contrast between the Polaroid content and the current background should tell a story about time passing, seasons changing, or memory vs. reality.
+
+Style: documentary photography, natural and unstaged, emotionally resonant.`,
+    category: "photography",
+    tags: ["polaroid", "photo-within-photo", "memory", "time", "contrast", "documentary", "creative", "storytelling"],
+    aiModels: ["gpt-image-2", "chatgpt", "midjourney"],
+    difficulty: "intermediate",
+    imageAlt: "Hand holding a Polaroid photo up against the real scene it depicts creating a photo-within-a-photo time contrast",
+    imageUrl: "/prompts/polaroid-held-against-scene.jpg",
+    breakdown: {
+      subject: "A hand holding a Polaroid up against the real scene, creating a photo-within-a-photo effect",
+      style: "Documentary photography, natural and unstaged, emotionally resonant",
+      lighting: "Natural outdoor lighting on both the Polaroid and the background scene",
+      composition: "Hand holding Polaroid in foreground with aligned background scene, deep depth of field",
+      details: "Slight angle on the held photo, rough alignment with background, contrast between then/now",
+    },
+    tips: [
+      "The time contrast is what makes this powerful: same location different season, or place where someone used to be",
+      "Deep depth of field (both sharp) is important so viewers can compare the Polaroid to the background",
+      "The slight misalignment between Polaroid and background adds realism and visual interest",
+      "This technique is used by professional photographers and works beautifully for travel/memory content",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-200",
+    slug: "polaroid-photo-booth-strip",
+    title: "Photo Booth Strip — 4 Polaroid Frames",
+    prompt: `Create a realistic photo booth strip showing 4 sequential photos in a vertical arrangement, styled as vintage instant-film frames.
+
+Subject: [PERSON/COUPLE/GROUP]
+Setting: Classic photo booth with dark curtain background or [THEMED BACKDROP].
+
+The 4 frames show a sequence (top to bottom):
+1. Normal smiling pose (warm, natural)
+2. Silly/funny face or laughing candid
+3. Cool/serious model pose (playful dramatic)
+4. Spontaneous genuine laugh or group hug moment
+
+Each frame:
+- Has the slightly warm, soft-contrast Polaroid/instant film look
+- Subtle differences in exposure (flash intensity varies slightly)
+- Classic white border around each frame
+- All connected vertically as one strip
+
+Physical strip details:
+- The strip appears to be lying on [SURFACE: dark background / corkboard / taped to a mirror / stuck in a journal]
+- Slight paper curl, natural shadow beneath
+- Optional: date stamp printed in small text at bottom frame: "[DATE]"
+
+Style: authentic vintage photo booth aesthetic. Should look like a real physical strip you would get from a mall photo booth in the 90s or 2000s. Warm, fun, candid energy.`,
+    category: "photography",
+    tags: ["polaroid", "photo-booth", "strip", "sequence", "vintage", "fun", "candid", "nostalgia", "retro"],
+    aiModels: ["gpt-image-2", "chatgpt"],
+    difficulty: "beginner",
+    imageAlt: "Vintage photo booth strip with 4 sequential polaroid-style frames showing different expressions",
+    imageUrl: "/prompts/polaroid-photo-booth-strip.jpg",
+    breakdown: {
+      subject: "4 sequential photo booth frames in a vertical strip showing different expressions/poses",
+      style: "Vintage photo booth aesthetic from the 90s/2000s, warm and candid",
+      lighting: "Flash photography varying slightly between frames, warm instant-film color cast",
+      composition: "Vertical strip of 4 connected frames, lying on a surface with natural shadow and curl",
+      details: "White borders, slight exposure variation between frames, date stamp, paper curl, surface shadow",
+    },
+    tips: [
+      "The 4-frame sequence (normal, silly, cool, laughing) creates natural storytelling progression",
+      "Mentioning flash intensity varies slightly between frames adds authentic photo booth realism",
+      "Works great for couples, friends, family, or even professional headshot alternatives",
+      "Specify the surface the strip is lying on for added physical-object realism",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
+  {
+    id: "prompt-201",
+    slug: "polaroid-string-lights-wall-display",
+    title: "Polaroid String Lights Wall Display",
+    prompt: `Create a cozy photograph of multiple Polaroid instant photos clipped to string lights on a wall, creating a warm memory display.
+
+The display:
+- 6-9 Polaroid photos hanging from fairy string lights via small wooden clothespins
+- Photos arranged in 1-2 rows across the wall
+- Each Polaroid shows: [DESCRIBE EACH SCENE or THEME, e.g., travel memories / couple moments / pet photos / family gatherings]
+- Some photos hang straight, others at playful angles
+- The fairy lights cast warm golden bokeh spots between the photos
+
+Wall and setting:
+- [WALL TYPE: exposed brick / white bedroom wall / dorm room / cozy cabin wood paneling]
+- Shot from slightly below looking up at the display
+- The room is dimly lit (evening/night) with the string lights as the primary light source
+- A hint of the room visible at edges (bed corner, plant, bookshelf)
+
+Technical:
+- Shallow depth of field (some photos in front row sharp, back row slightly soft)
+- Warm white balance emphasizing the fairy light glow
+- Visible string light bokeh (large, circular, golden orbs)
+
+Mood: cozy, intimate, personal. Like stepping into someone's carefully curated happy-memories wall.`,
+    category: "photography",
+    tags: ["polaroid", "string-lights", "fairy-lights", "wall-display", "cozy", "memories", "aesthetic", "home-decor", "bokeh"],
+    aiModels: ["gpt-image-2", "midjourney"],
+    difficulty: "beginner",
+    imageAlt: "Cozy wall display of Polaroid photos clipped to fairy string lights with warm golden bokeh in dimly lit room",
+    imageUrl: "/prompts/polaroid-string-lights-wall.jpg",
+    breakdown: {
+      subject: "Multiple Polaroid photos clipped to string lights on a wall as a memory display",
+      style: "Cozy lifestyle photography with fairy light bokeh and intimate mood",
+      lighting: "Fairy string lights as primary light source in a dimly lit room, warm golden glow",
+      composition: "Slightly below looking up, 1-2 rows of photos on strings, some sharp and some soft (depth of field)",
+      details: "Wooden clothespins, playful angles, golden bokeh orbs, room hints at edges, warm white balance",
+    },
+    tips: [
+      "String lights as the primary light source creates that cozy Instagram-aesthetic room vibe automatically",
+      "Specify the wall type (brick, white, wood) to match the mood you want for the overall scene",
+      "The shallow depth of field with some photos sharp and others soft adds dimension to an otherwise flat display",
+      "Great for home decor inspiration, gift ideas, or social media aesthetics content",
+    ],
+    featured: false,
+    createdAt: "2026-05-15",
+  },
 ];
 
 // ─── Helper Functions ───────────────────────────────────────────────────────
@@ -5710,6 +6593,10 @@ export function getRelatedPrompts(
 
 // Display order for featured prompts on homepage
 const FEATURED_ORDER = [
+  "prompt-182", // AI Action Figure in Blister Pack
+  "prompt-192", // Meet Your Younger Self — Studio Portrait
+  "prompt-187", // AI Caricature Corporate Headshot
+  "prompt-197", // AI Polaroid Vintage Instant Photo
   "prompt-181", // Teddy Bear Renaissance Painting Parody
   "prompt-179", // Rainy Neon Street Cinematic Low-Angle
   "prompt-177", // ChatGPT Caricature Portrait Professional

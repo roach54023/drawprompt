@@ -65,6 +65,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE}/action-figure-prompt/`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/caricature-prompt/`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/younger-self-prompt/`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/polaroid-prompt/`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE}/pricing/`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -78,13 +102,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // ── Category landing pages ─────────────────────────────────────
-  const categoryPages: MetadataRoute.Sitemap = Object.values(categoryContent).map((cat) => ({
-    url: `${BASE}/ai-prompts/${cat.slug}/`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
+  // ── Category landing pages (only include categories with 5+ prompts) ──
+  const categoryPages: MetadataRoute.Sitemap = Object.entries(categoryContent)
+    .filter(([catId]) => aiPrompts.filter((p) => p.category === catId).length >= 5)
+    .map(([, cat]) => ({
+      url: `${BASE}/ai-prompts/${cat.slug}/`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    }));
 
   // ── Utility & info pages ────────────────────────────────────────
   const toolPages: MetadataRoute.Sitemap = [

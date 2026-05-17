@@ -43,8 +43,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!prompt) return {};
 
   const cat = categories.find((c) => c.id === prompt.category);
-  const title = `${prompt.title} \u2014 AI Prompt for ${cat?.label ?? "Image Generation"}`;
-  const description = `Copy-paste this ${prompt.difficulty} ${cat?.label?.toLowerCase() ?? "AI"} prompt for GPT Image 2. ${prompt.prompt.slice(0, 120)}...`;
+  const title = `${prompt.title} — AI ${cat?.label ?? "Image"} Prompt | DrawPrompt`;
+
+  // Build a human-quality meta description from structured breakdown data
+  const { subject, style, lighting } = prompt.breakdown;
+  const modelNames = prompt.aiModels.map((m) => MODEL_DISPLAY[m].label).join(", ");
+  const description = `Use this ${prompt.difficulty} ${cat?.label?.toLowerCase() ?? "AI"} prompt to create ${subject.toLowerCase()} with ${style.toLowerCase()}${lighting ? ` and ${lighting.toLowerCase()} lighting` : ""}. Works with ${modelNames}. Copy-paste ready with tips and example image.`;
 
   return {
     title,

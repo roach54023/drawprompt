@@ -5,7 +5,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Providers from "@/components/Providers";
 
-/* ── Global JSON-LD: WebSite + SearchAction ─────────────────── */
+/* ── Global JSON-LD: WebSite ──────────────────────────────────── */
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -13,11 +13,6 @@ const websiteJsonLd = {
   url: "https://drawprompt.org",
   description:
     "180+ copy-paste AI image prompts for GPT Image 2 & Nano Banana 2. Plus a free drawing prompt generator with 150B+ combinations for artists.",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: "https://drawprompt.org/ai-prompts?q={search_term_string}",
-    "query-input": "required name=search_term_string",
-  },
 };
 
 export const metadata: Metadata = {

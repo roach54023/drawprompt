@@ -49,10 +49,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
   const seoTitle = `${post.mood} ${post.subject} Drawing Prompt \u2014 ${slug}`;
   const seoDesc = `Daily drawing prompt for ${slug}: ${post.prompt.slice(0, 120)}. A ${post.mood.toLowerCase()} ${post.theme.toLowerCase()} scene. Free daily art challenge.`;
+
+  // noindex daily prompts older than 30 days to prevent thin-content URL bloat
+  const postDate = new Date(slug + "T12:00:00");
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const isOld = postDate.getTime() < thirtyDaysAgo.getTime();
+
   return {
     title: seoTitle,
     description: seoDesc,
     alternates: { canonical: `https://drawprompt.org/blog/${slug}/` },
+    ...(isOld && { robots: { index: false, follow: true } }),
     openGraph: {
       title: seoTitle,
       description: `Daily drawing prompt: ${post.prompt.slice(0, 120)}.`,
