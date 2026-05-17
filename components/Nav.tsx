@@ -36,34 +36,6 @@ const specials: Special[] = [
     desc: "5 viral chibi styles for your photo",
     hot: true,
   },
-  {
-    href: "/action-figure-prompt",
-    label: "Action Figure",
-    emoji: "🦸",
-    desc: "Turn yourself into a collectible toy",
-    hot: true,
-  },
-  {
-    href: "/caricature-prompt",
-    label: "Caricature",
-    emoji: "🎨",
-    desc: "5 AI caricature styles from your photo",
-    hot: true,
-  },
-  {
-    href: "/younger-self-prompt",
-    label: "Younger Self",
-    emoji: "👶",
-    desc: "Meet your childhood self — viral trend",
-    hot: true,
-  },
-  {
-    href: "/polaroid-prompt",
-    label: "Polaroid",
-    emoji: "📸",
-    desc: "Vintage instant film photo effects",
-    hot: true,
-  },
 ];
 // ═══════════════════════════════════════════════════════════════════
 
